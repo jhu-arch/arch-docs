@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logging in to Rockfish &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="File Transfers" href="File_Transfers.html" />
+    <link rel="prev" title="Navigating" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rockfish</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Quickstart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Resources/index.html">Resources</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Navigating</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Logging in to Rockfish</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#access-to-login-node">Access to Login Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiplexing-ssh-connections">Multiplexing SSH Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="File_Transfers.html">File Transfers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Slurm/index.html">Slurm on Rockfish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6_Tutorials/index.html">Rockfish Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../DSAI/index.html">DSAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Rockfish</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Navigating</a></li>
+      <li class="breadcrumb-item active">Logging in to Rockfish</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/1_Clusters/Rockfish/2_Navigating/Connecting_to_Rockfish.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="logging-in-to-rockfish">
+<h1>Logging in to Rockfish<a class="headerlink" href="#logging-in-to-rockfish" title="Permalink to this heading"></a></h1>
+<p>This section covers how to log into Rockfish and transfer files to and from the system.</p>
+<p>Use Secure Shell (SSH) to connect:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -XY &lt;userid&gt;@login.rockfish.jhu.edu</span>
+</pre></div>
+</div>
+<p>You can also use:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -XY login.rockfish.jhu.edu -l &lt;userid&gt;</span>
+</pre></div>
+</div>
+<p><strong>Gateway:</strong> <code class="docutils literal notranslate"><span class="pre">login.rockfish.jhu.edu</span></code></p>
+<section id="access-to-login-node">
+<h2>Access to Login Node<a class="headerlink" href="#access-to-login-node" title="Permalink to this heading"></a></h2>
+<p>Once you establish a connection, SSH will prompt for your password. Once you have signed into the login node, you should see the Message of the Day “MOTD”.</p>
+<p>Quota information will be provided to users automatically on login, but users can use the <code class="docutils literal notranslate"><span class="pre">quotas.py</span></code> command at anytime to view quota and usage information.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Thu Mar 10 09:45:29 2022 from 172.28.3.75</span>
+<span class="go"> ____            _    _____ _     _</span>
+<span class="go">|  _ \ ___   ___| | _|  ___(_)___| |__</span>
+<span class="go">| |_) / _ \ / __| |/ / |_  | / __| |_ \</span>
+<span class="go">|  _ &lt; (_) | (__|   &lt;|  _| | \__ \ | | |</span>
+<span class="go">|_| \_\___/ \___|_|\_\_|   |_|___/_| |_|</span>
+<span class="go">[STATUS] loading software modules</span>
+<span class="go">[STATUS] modules are Lmod (https://lmod.readthedocs.io/en/latest/)</span>
+<span class="go">[STATUS] software is Spack (https://spack.readthedocs.io/en/latest/)</span>
+<span class="go">[STATUS] the default modules (&quot;module restore&quot;) use GCC 9 and OpenMPI 3.1</span>
+<span class="go">[STATUS] you can search available modules with: module spider &lt;name&gt;</span>
+<span class="go">[STATUS] you can list available modules with: module avail</span>
+<span class="go">[STATUS] loading a compiler, MPI, Python, or R will reveal new packages</span>
+<span class="go">[STATUS] and you can check your loaded modules with: module list --terse</span>
+<span class="go">[STATUS] to hide this message in the future: touch ~/.no_rf_banner</span>
+<span class="go">[STATUS] restoring your default module collection now</span>
+
+<span class="go">Quota and usage information. Updated hourly. Use &#39;gpfsquota&#39;</span>
+<span class="go">Usage for group MyGroup</span>
+<span class="go">FS         Usage   Quota  Files_Count  File_Quota</span>
+<span class="go">---        ---     ---    ---          ---</span>
+<span class="go">data       5.07T   10T    2287948      4194304</span>
+<span class="go">scratch16  1.939T  10T    1005210      10240000</span>
+<span class="go">scratch4   4.177T  10T    1159700      20480000</span>
+<span class="gp">[userid@login02 ~]$</span>
+</pre></div>
+</div>
+</section>
+<section id="multiplexing-ssh-connections">
+<h2>Multiplexing SSH Connections<a class="headerlink" href="#multiplexing-ssh-connections" title="Permalink to this heading"></a></h2>
+<p>To avoid re-entering your password and two-factor code with each connection, you can enable SSH multiplexing:</p>
+<ol class="arabic">
+<li><p>Edit (or create) <code class="docutils literal notranslate"><span class="pre">~/.ssh/config</span></code> on your local Unix-based machine:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Host login.rockfish.jhu.edu
+    ControlMaster auto
+    ControlPath ~/.ssh/control:%h:%p:%r
+</pre></div>
+</div>
+</li>
+<li><p>Start the master connection:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -fNM -X login.rockfish.jhu.edu -l &lt;userid&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To stop the connection:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ssh -O stop login.rockfish.jhu.edu</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Large file transfers and terminal sessions may experience lag when using the same multiplexed connection.</p>
+</div>
+<p><strong>Windows users:</strong> Use <a class="reference external" href="https://www.putty.org">PuTTY</a> or <cite>MobaXterm</cite> (Home Edition → Installer edition) to connect. MobaXterm includes an X11 server for GUI apps and supports SFTP file transfers.</p>
+<p><strong>Mac users:</strong> Use the built-in Terminal. For GUI support, install <cite>XQuartz</cite>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Navigating" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="File_Transfers.html" class="btn btn-neutral float-right" title="File Transfers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

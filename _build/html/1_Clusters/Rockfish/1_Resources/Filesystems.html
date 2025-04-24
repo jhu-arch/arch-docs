@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filesystems on Rockfish &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Navigating" href="../2_Navigating/index.html" />
+    <link rel="prev" title="Compute Node Summary" href="Hardware.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rockfish</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Quickstart.html">Quick Start</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Resources</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Hardware.html">Compute Node Summary</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Filesystems on Rockfish</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general-guidelines">General Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystems-at-a-glance">Filesystems at a Glance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quota-reporting-with-quotas-py">Quota Reporting with <cite>quotas.py</cite></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Navigating/index.html">Navigating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Slurm/index.html">Slurm on Rockfish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../6_Tutorials/index.html">Rockfish Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../DSAI/index.html">DSAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Rockfish</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Resources</a></li>
+      <li class="breadcrumb-item active">Filesystems on Rockfish</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/1_Clusters/Rockfish/1_Resources/Filesystems.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="filesystems-on-rockfish">
+<h1>Filesystems on Rockfish<a class="headerlink" href="#filesystems-on-rockfish" title="Permalink to this heading"></a></h1>
+<p>Rockfish uses a combination of high-performance and research-tier file systems to support a wide range of workloads. Most storage is backed by IBM Spectrum Scale (GPFS), with additional storage from Krieger IT (VAST) for eligible researchers.</p>
+<p>Storage on Rockfish is intended solely for research and educational purposes. Users are expected to manage their data responsibly, and storage quotas are enforced per group.</p>
+<section id="general-guidelines">
+<h2>General Guidelines<a class="headerlink" href="#general-guidelines" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Data stored on ARCH-managed filesystems is not backed up by default.</strong></p></li>
+<li><p>Users are responsible for maintaining their own backups or purchasing backup services.</p></li>
+<li><p>Storage increases are granted on a case-by-case basis, based on need and system capacity.</p></li>
+<li><p>ARCH reserves the right to delete or move data as necessary to maintain system stability.</p></li>
+<li><p>Temporary storage for large projects is available — please contact ARCH staff.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Data subject to restrictions such as HIPAA or PHI is <strong>not permitted</strong> on Rockfish.
+If your research involves an IRB and the data is de-identified, please reach out to
+<a class="reference external" href="mailto:help&#37;&#52;&#48;rockfish&#46;jhu&#46;edu">help<span>&#64;</span>rockfish<span>&#46;</span>jhu<span>&#46;</span>edu</a> for further guidance.</p>
+</div>
+</section>
+<section id="filesystems-at-a-glance">
+<h2>Filesystems at a Glance<a class="headerlink" href="#filesystems-at-a-glance" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File System</p></th>
+<th class="head"><p>System Type</p></th>
+<th class="head"><p>Total Size</p></th>
+<th class="head"><p>Block Size</p></th>
+<th class="head"><p>Default Quota</p></th>
+<th class="head"><p>Files per TB</p></th>
+<th class="head"><p>Backed Up?</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/home/</p></td>
+<td><p>NVMe SSD (ZFS)</p></td>
+<td><p>20 TB</p></td>
+<td><p>128 KB</p></td>
+<td><p>50 GB per user</p></td>
+<td><p>N/A</p></td>
+<td><p>Limited</p></td>
+</tr>
+<tr class="row-odd"><td><p>/scratch4/</p></td>
+<td><p>IBM GPFS</p></td>
+<td><p>3.8 PB</p></td>
+<td><p>4 MB</p></td>
+<td><p>1 TB per group</p></td>
+<td><p>2M</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>/scratch16/</p></td>
+<td><p>IBM GPFS</p></td>
+<td><p>3.6 PB</p></td>
+<td><p>16 MB</p></td>
+<td><p>By request</p></td>
+<td><p>1M</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-odd"><td><p>/data/</p></td>
+<td><p>IBM GPFS</p></td>
+<td><p>5.1 PB</p></td>
+<td><p>16 MB</p></td>
+<td><p>10 TB per group</p></td>
+<td><p>400K</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>/vast/</p></td>
+<td><p>VAST</p></td>
+<td><p>N/A</p></td>
+<td><p>32 KB</p></td>
+<td><p>By request</p></td>
+<td><p>N/A</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+<section id="local-scratch">
+<h3>Local Scratch<a class="headerlink" href="#local-scratch" title="Permalink to this heading"></a></h3>
+<p>Each compute node has a local 1+ TB NVMe hard drive mounted as “/tmp”. The latency to these  NVMe flash drives is orders of magnitude lower than for spinning disk  (GPFS), usually microseconds versus milliseconds. Users who read/write small files may want to use this space instead of the scratch file sets. It will provide better performance. Make sure you write files back to “scratch” or “data” before the job ends. Likewise, make sure you delete files and directories at the end of jobs.</p>
+</section>
+<section id="home">
+<h3>/home/<a class="headerlink" href="#home" title="Permalink to this heading"></a></h3>
+<p>Each user receives 50 GB of storage in <cite>/home/</cite>, backed by high-speed NVMe SSDs and ZFS.
+This area is intended for frequently used code, scripts, and configuration files.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><cite>/home/</cite> is <strong>not intended for I/O</strong> from jobs. Use <cite>/scratch</cite> instead.</p>
+</div>
+<p>Limited file recovery may be possible, but is <strong>not guaranteed</strong>.</p>
+</section>
+<section id="scratch4">
+<h3>/scratch4/<a class="headerlink" href="#scratch4" title="Permalink to this heading"></a></h3>
+<p>This default scratch space is optimized for high file-count and smaller file sizes using a 4 MB block size.</p>
+<ul class="simple">
+<li><p>1 TB per group (default)</p></li>
+<li><p>Suitable for: <strong>genomics, bioinformatics, mechanical engineering</strong></p></li>
+<li><p>Purged automatically after 30 days of inactivity (based on access time)</p></li>
+<li><p>Not backed up or recoverable</p></li>
+</ul>
+</section>
+<section id="scratch16">
+<h3>/scratch16/<a class="headerlink" href="#scratch16" title="Permalink to this heading"></a></h3>
+<p>This scratch space is optimized for sequential I/O and streaming workloads.</p>
+<ul class="simple">
+<li><p>Available <strong>by request</strong> with justification</p></li>
+<li><p>16 MB block size</p></li>
+<li><p>Suitable for: <strong>physics, large-scale simulations, chemistry</strong></p></li>
+<li><p>Same 30-day purge policy applies</p></li>
+<li><p>Not backed up or recoverable</p></li>
+</ul>
+</section>
+<section id="data">
+<h3>/data/<a class="headerlink" href="#data" title="Permalink to this heading"></a></h3>
+<p>Groups are given 10 TB of allocation by default in <cite>/data/</cite>.</p>
+<p>This area is ideal for storing high-value data generated during or after computation, including:</p>
+<ul class="simple">
+<li><p>Processed results</p></li>
+<li><p>Intermediate analysis</p></li>
+<li><p>Files you want to retain longer than 30 days</p></li>
+</ul>
+<p>/data/ is <strong>not backed up</strong>, so users must implement their own preservation strategy.</p>
+</section>
+<section id="vast">
+<h3>/vast/<a class="headerlink" href="#vast" title="Permalink to this heading"></a></h3>
+<p>This all-flash storage is provided by <strong>Krieger IT</strong> for researchers who have purchased space.</p>
+<ul class="simple">
+<li><p>Mounted at <cite>/vast/</cite> on Rockfish</p></li>
+<li><p>Available to all JHU researchers</p></li>
+<li><p>Request form and pricing info:</p></li>
+</ul>
+<p>📄 <a class="reference external" href="https://jh.qualtrics.com/jfe/form/SV_4SJJTnPMp8dHKwm">Request VAST Storage &amp; View Pricing</a></p>
+</section>
+</section>
+<section id="quota-reporting-with-quotas-py">
+<h2>Quota Reporting with <cite>quotas.py</cite><a class="headerlink" href="#quota-reporting-with-quotas-py" title="Permalink to this heading"></a></h2>
+<p>ARCH provides a command-line tool called <cite>quotas.py</cite> to help users monitor their disk usage across the <cite>/home</cite>, <cite>/data</cite>, <cite>/scratch4</cite>, <cite>/scratch16</cite>, and <cite>/vast</cite> filesystems.</p>
+<p>This tool runs automatically at login and displays the current usage for your home directory and your research group’s shared allocations. However, you can manually run it at any time to check your usage or monitor quotas for your research group.</p>
+<section id="usage">
+<h3>Usage:<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h3>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">quotas.py</span>
+</pre></div>
+</div>
+</section>
+<section id="example-output">
+<h3>Example Output:<a class="headerlink" href="#example-output" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[root@login01 ~]# quotas.py
++---------------------------------------------------------------------------------+
+|         Home Usage for user &lt;your_username&gt; as of Tue Apr 15 15:00:06 2025     |
++---------------------+-------------------+-------------------+-------------------+
+|         Used        |       Quota       |      Percent      |       Files       |
++---------------------+-------------------+-------------------+-------------------+
+|       XX.XX GB      |      50.00 GB     |      68.56%       |      XXX,XXX      |
++---------------------+-------------------+-------------------+-------------------+
+
++-----------------------------------------------------------------------------------------------+
+|         GPFS Usage for Group &lt;group_name&gt; as of Tue Apr 15 15:00:17 2025                      |
++-------------+------------+-------------+----------+--------------+----------------+-----------+
+|      FS     |    Used    |    Quota    |  Used %  |    Files     |  Files Quota   |  Files %  |
++-------------+------------+-------------+----------+--------------+----------------+-----------+
+|     data    |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   40,960,000   |   XX.XX%  |
+|   scratch4  |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   20,480,000   |   XX.XX%  |
+|  scratch16  |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   10,240,000   |   XX.XX%  |
++-------------+------------+-------------+----------+--------------+----------------+-----------+
+</pre></div>
+</div>
+</section>
+<section id="fields">
+<h3>Fields:<a class="headerlink" href="#fields" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Used</strong>: Current usage for the filesystem</p></li>
+<li><p><strong>Quota</strong>: Allocated quota for the user or group</p></li>
+<li><p><strong>Percent</strong>: Percentage of usage relative to quota</p></li>
+<li><p><strong>Files</strong>: Number of files currently stored</p></li>
+<li><p><strong>Files Quota</strong>: Maximum allowed number of files</p></li>
+<li><p><strong>Files %</strong>: Percent of file quota used</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>File quotas are just as important as storage size. Exceeding your file quota may prevent new files from being written even if space remains.</p>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Hardware.html" class="btn btn-neutral float-left" title="Compute Node Summary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../2_Navigating/index.html" class="btn btn-neutral float-right" title="Navigating" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

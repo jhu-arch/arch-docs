@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Environment &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Short Tutorials" href="Shorts.html" />
+    <link rel="prev" title="Singularity container" href="Singularity.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_Clusters/Rockfish/index.html">Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Clusters/DSAI/index.html">DSAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Clusters/EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Singularity.html">Singularity container</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Virtual Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python">Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pip">pip</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-install-pip">How to install pip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#anaconda">Anaconda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conda">Conda</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-environment-from-the-environment-yml">Create the environment from the environment.yml</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#conda-pack">Conda-Pack</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#on-the-source-machine">On the source machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#on-the-target-machine">On the target machine</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#spack">Spack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tutorial">Tutorial</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Virtual Environment</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/5_Reproducible/Virtual.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="virtual-environment">
+<span id="virtual-env"></span><h1>Virtual Environment<a class="headerlink" href="#virtual-environment" title="Permalink to this heading"></a></h1>
+<p>A virtual environment is used to isolating projects, interpreters like python, libraries and scripts, from those that are installed as part of your operating system.</p>
+<p>There are <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">Anaconda</span></code> installed on Rockfish cluster. The environments and packages that can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code> and/or <code class="docutils literal notranslate"><span class="pre">conda</span></code>. They differ in how dependency relationships within an environment are performed.</p>
+<section id="python">
+<h2>Python<a class="headerlink" href="#python" title="Permalink to this heading"></a></h2>
+<a class="reference external image-reference" href="https://python.readthedocs.io/en/latest/?badge=latest"><img alt="The Python programming language" src="https://readthedocs.org/projects/python/badge/?version=latest" /></a>
+<p>There are several python versions installed. Users can use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">spider</span></code>. command to check the installed versions:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>ml<span class="w"> </span>spider<span class="w"> </span>python
+<span class="go">-------------------------------------------------------------------------</span>
+<span class="go">  python:</span>
+<span class="go">-------------------------------------------------------------------------</span>
+<span class="go">     Versions:</span>
+<span class="go">        python/3.7.9</span>
+<span class="go">        python/3.8.6</span>
+<span class="go">        python/3.9.0</span>
+</pre></div>
+</div>
+<p>Once you have a version of python loaded, you can use <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">avail</span></code> command to check if any python packages are available to load.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>module<span class="w"> </span>load<span class="w"> </span>python/3.8.6
+<span class="gp">[userid@login03 ~]$ </span>module<span class="w"> </span>avail
+
+<span class="go">*** RockFish Software ***</span>
+<span class="go">Use &quot;module spider &lt;name&gt;&quot; to search all software.</span>
+<span class="go">The available software depends on the compiler, MPI,</span>
+<span class="go">Python, and R modules you have already loaded.</span>
+<span class="go">https://lmod.readthedocs.io/en/latest/010_user.html</span>
+
+<span class="go">------------------------------ python (3.8) ------------------------------</span>
+<span class="go">   py-cython/0.29.21    py-pip/20.2               py-scipy/1.5.3</span>
+<span class="go">   py-joblib/0.14.0     py-pybind11/2.5.0         py-setuptools/50.1.0</span>
+<span class="go">   py-numpy/1.18.5      py-scikit-learn/0.23.2    py-threadpoolctl/2.0.0</span>
+</pre></div>
+</div>
+<p>To create a virtual environment, users can check the python version used and create a directory.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>module<span class="w"> </span>list<span class="w"> </span>python
+
+<span class="go">Currently Loaded Modules Matching: python</span>
+<span class="go"> 1) python/3.8.6</span>
+<span class="gp">[userid@login03 ~]$ </span>mkdir<span class="w"> </span>python3.8
+<span class="gp">[userid@login03 ~]$ </span><span class="nb">cd</span><span class="w"> </span>python3.8/
+<span class="gp">[userid@login03 python3.8]$</span>
+</pre></div>
+</div>
+<p>Once enter the directory, users can run the <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">venv</span></code> command to create a virtual environment.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 python3.8]$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>math-packages
+<span class="gp">[userid@login03 python3.8]$ </span>ls<span class="w"> </span>math-packages/
+<span class="go">bin  include  lib  lib64  pyvenv.cfg</span>
+</pre></div>
+</div>
+<p>the environment will be created under the <code class="docutils literal notranslate"><span class="pre">math-packages</span></code> directory. You can use activate the environment by sourcing the <code class="docutils literal notranslate"><span class="pre">activate</span></code> script under the bin directory.</p>
+<p>Once it is activated, the name of the environment <code class="docutils literal notranslate"><span class="pre">math-packages</span></code> will be displayed the prompt.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 python3.8]$ </span><span class="nb">source</span><span class="w"> </span>math-packages/bin/activate
+<span class="gp gp-VirtualEnv">(math-packages)</span> <span class="gp">[userid@login03 python3.8]$</span>
+</pre></div>
+</div>
+<p>Also, the python packages can be installed under this environment using the <code class="docutils literal notranslate"><span class="pre">pip</span></code> command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(math-packages)</span> <span class="gp">[userid@login03 python3.8]$ </span>pip<span class="w"> </span>install<span class="w"> </span>numpy
+<span class="go">Collecting numpy</span>
+<span class="go">  Downloading numpy-1.22.3-cp38-cp38-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.8 MB)</span>
+<span class="go">     |████████████████████████████████| 16.8 MB 85 kB/s</span>
+<span class="go">Installing collected packages: numpy</span>
+<span class="go">Successfully installed numpy-1.22.3</span>
+</pre></div>
+</div>
+<p>It multiple python packages with your specific versions can be installed.</p>
+<section id="pip">
+<h3>pip<a class="headerlink" href="#pip" title="Permalink to this heading"></a></h3>
+<a class="reference external image-reference" href="https://pypi.org/project/pip/"><img alt="https://img.shields.io/pypi/v/pip.svg" src="https://img.shields.io/pypi/v/pip.svg" /></a>
+<a class="reference external image-reference" href="https://pip.pypa.io/en/latest"><img alt="https://readthedocs.org/projects/pip/badge/?version=latest" src="https://readthedocs.org/projects/pip/badge/?version=latest" /></a>
+<p>pip is a package manager. If more packages are needed, the <code class="docutils literal notranslate"><span class="pre">pip</span></code> command to install them.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Users are not able to install packages in the python installed as part of your operating system.</p>
+</div>
+<p>Users can use the <code class="docutils literal notranslate"><span class="pre">pip</span></code> with <code class="docutils literal notranslate"><span class="pre">--user</span></code> option to install in the hidden directory ~/.local.</p>
+<p>However, many packages can be installed. It is difficult to gathering all requirements in a global installation. Users has autonomy to create virtual environments, install packages and manage them. In this way, multiple environments can be created to avoid conflicts and ensure reproducibility.</p>
+<section id="how-to-install-pip">
+<h4>How to install pip<a class="headerlink" href="#how-to-install-pip" title="Permalink to this heading"></a></h4>
+<p>Install pip for non-root users.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>ml<span class="w"> </span>python/3.9.0
+<span class="gp">[userid@login03 ~]$ </span>curl<span class="w"> </span>-O<span class="w"> </span>https://bootstrap.pypa.io/get-pip.py
+<span class="gp">[userid@login03 ~]$ </span>python<span class="w"> </span>get-pip.py<span class="p">;</span><span class="w">  </span>rm<span class="w"> </span>get-pip.py
+<span class="gp">[userid@login03 ~]$ </span>ml<span class="w"> </span>-python/3.9.0
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="anaconda">
+<h2>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this heading"></a></h2>
+<a class="reference external image-reference" href="https://copr.fedorainfracloud.org/coprs/g/rhinstaller/Anaconda/package/anaconda/"><img alt="Build status" src="https://copr.fedorainfracloud.org/coprs/g/rhinstaller/Anaconda/package/anaconda/status_image/last_build.png" /></a>
+<a class="reference external image-reference" href="https://anaconda-installer.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/anaconda-installer/badge/?version=latest" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/rhinstaller/anaconda"><img alt="Coverage status" src="https://codecov.io/gh/rhinstaller/anaconda/branch/master/graph/badge.svg" /></a>
+<a class="reference external image-reference" href="https://translate.fedoraproject.org/engage/anaconda/?utm_source=widget"><img alt="Translation status" src="https://translate.fedoraproject.org/widgets/anaconda/-/master/svg-badge.svg" /></a>
+<p>There are many ananconda installed on the Rockfish cluster. Once loaded a anaconda, you can use conda command to create conda environments.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 conda]$ </span>module<span class="w"> </span>load<span class="w"> </span>anaconda
+<span class="gp">[userid@login03 conda]$ </span>conda<span class="w"> </span>-V
+<span class="go">conda 4.8.3</span>
+</pre></div>
+</div>
+<p>Users are suggested to use conda environments for installing and running packages.</p>
+<p>For example, to create an environment called <code class="docutils literal notranslate"><span class="pre">my_tensorflow</span></code>, execute <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">my_tensorflow</span> <span class="pre">-y</span></code>. Also, for example, to create an environment called <code class="docutils literal notranslate"><span class="pre">my_conda</span></code>, execute the command with <code class="docutils literal notranslate"><span class="pre">-p</span></code> option.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>conda<span class="w"> </span>create<span class="w"> </span>-p<span class="w"> </span>conda/my_env
+<span class="go">Collecting package metadata (current_repodata.json): done</span>
+<span class="go">Solving environment: done</span>
+
+<span class="go">==&gt; WARNING: A newer version of conda exists. &lt;==</span>
+<span class="go">  current version: 4.8.3</span>
+<span class="go">  latest version: 4.11.0</span>
+
+<span class="go">Please update conda by running</span>
+
+<span class="gp">    $ </span>conda<span class="w"> </span>update<span class="w"> </span>-n<span class="w"> </span>base<span class="w"> </span>-c<span class="w"> </span>defaults<span class="w"> </span>conda
+
+<span class="gp">#</span><span class="c1"># Package Plan ##</span>
+
+<span class="go">  environment location: /home/userid/conda/my_env</span>
+
+<span class="go">Proceed ([y]/n)? y</span>
+</pre></div>
+</div>
+<section id="conda">
+<h3>Conda<a class="headerlink" href="#conda" title="Permalink to this heading"></a></h3>
+<a class="reference external image-reference" href="https://github.com/conda/conda/actions/workflows/ci.yml"><img alt="CI Tests (GitHub Actions)" src="https://github.com/conda/conda/actions/workflows/ci.yml/badge.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/conda/conda/actions/workflows/ci-images.yml"><img alt="CI Images (GitHub Actions)" src="https://github.com/conda/conda/actions/workflows/ci-images.yml/badge.svg" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/conda/conda/branch/master"><img alt="Codecov Status" src="https://img.shields.io/codecov/c/github/conda/conda/master.svg?label=coverage" /></a>
+<a class="reference external image-reference" href="https://github.com/conda/conda/releases"><img alt="latest release version" src="https://img.shields.io/github/release/conda/conda.svg" /></a>
+<p>Conda is a tool to manager virtual environments, it allows to create, removing or packaging virtual environments, as well as package manager.</p>
+<p>Users can now activate the environment by the conda activate command with the directory path:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 conda]$ </span><span class="nb">cd</span><span class="w"> </span>conda
+<span class="gp">[userid@login03 conda]$ </span>conda<span class="w"> </span>activate<span class="w"> </span>./my_env
+</pre></div>
+</div>
+<section id="create-the-environment-from-the-environment-yml">
+<h4>Create the environment from the environment.yml<a class="headerlink" href="#create-the-environment-from-the-environment-yml" title="Permalink to this heading"></a></h4>
+<p>Let’s suppose you want to create a new environment, we can use the environment.yml file to create it.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">machine</span><span class="o">-</span><span class="n">learning</span><span class="o">-</span><span class="n">env</span>
+
+<span class="n">dependencies</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">ipython</span><span class="o">=</span><span class="mf">7.13</span>
+  <span class="o">-</span> <span class="n">matplotlib</span><span class="o">=</span><span class="mf">3.1</span>
+  <span class="o">-</span> <span class="n">pandas</span><span class="o">=</span><span class="mf">1.0</span>
+  <span class="o">-</span> <span class="n">pip</span><span class="o">=</span><span class="mf">20.0</span>
+  <span class="o">-</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.6</span>
+  <span class="o">-</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span><span class="o">=</span><span class="mf">0.22</span>
+</pre></div>
+</div>
+<p>Using a prompt for the following steps:</p>
+<ol class="arabic simple">
+<li><p>Create the environment from the <code class="docutils literal notranslate"><span class="pre">environment.yml</span></code> file:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[userid@login03 ~]$ conda env create -f environment.yml
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The first line of the <code class="docutils literal notranslate"><span class="pre">yml</span></code> file sets the new environment’s name.</p>
+<p>If you have created your environment, you can use the –file flag with the conda install command as:</p>
+<p>conda install –file requirements.txt</p>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Activate the new environment: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">myenv</span></code></p></li>
+<li><p>Verify that the new environment was installed correctly:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[userid@login03 ~]$ conda env list
+</pre></div>
+</div>
+<p>You can also use <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">info</span> <span class="pre">--envs</span></code>.</p>
+<p>You can control where a conda environment, providing a path to a target directory when creating the environment.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[userid@login03 ~]$ conda create --prefix ./envs jupyterlab=3.2 matplotlib=3.5 numpy=1.21
+</pre></div>
+</div>
+<p>You then activate an environment created with a prefix using the same
+command used to activate environments created by name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[userid@login03 ~]$ conda activate ./envs
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Specifying a path to a subdirectory of your project directory when
+creating an environment has the following benefits:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>It makes it easy to tell if your project uses an isolated environment
+by including the environment as a subdirectory.</p></li>
+<li><p>It makes your project more self-contained as everything, including
+the required software, is contained in a single project directory.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>An additional benefit of creating your project’s environment inside a
+subdirectory is that you can then use the same name for all your
+environments. If you keep all of your environments in your <code class="docutils literal notranslate"><span class="pre">envs</span></code>
+folder, you’ll have to give each environment a different name.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>salloc<span class="w"> </span>-p<span class="w"> </span>a100<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>--gres<span class="o">=</span>gpu:1<span class="w"> </span>-t<span class="w"> </span><span class="m">120</span><span class="w"> </span>-A<span class="w"> </span>&lt;PI-userid&gt;_gpu<span class="w"> </span>srun<span class="w"> </span>--pty<span class="w"> </span>bash
+<span class="gp">[userid@gpu02 ~]$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/envs/tf_2.4.0
+<span class="gp">[userid@gpu02 ~]$ </span><span class="nb">cd</span><span class="w"> </span>~/envs/
+<span class="gp">[userid@gpu02 ~]$ </span>ml<span class="w"> </span>anaconda<span class="w"> </span>cuda/11.1.0<span class="w"> </span>cudnn
+<span class="gp">[userid@gpu02 ~]$ </span>cat<span class="w"> </span>&gt;<span class="w"> </span>environment.yaml<span class="w"> </span>&lt;&lt;<span class="w"> </span>EOF
+<span class="go">                  dependencies:</span>
+<span class="go">                   - pip</span>
+<span class="go">                   - pip:</span>
+<span class="go">                   - tensorflow==2.4.0</span>
+<span class="go">                  EOF</span>
+<span class="gp">[userid@gpu02 ~]$ </span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>--prefix<span class="w"> </span>~/envs/tf_2.4.0<span class="w"> </span>--file<span class="w"> </span>environment.yaml
+<span class="gp">[userid@gpu02 ~]$ </span>conda<span class="w"> </span>activate<span class="w"> </span>~/envs/tf_2.4.0
+</pre></div>
+</div>
+</section>
+</section>
+<section id="conda-pack">
+<h3>Conda-Pack<a class="headerlink" href="#conda-pack" title="Permalink to this heading"></a></h3>
+<p><a class="reference external" href="https://conda.github.io/conda-pack/">conda-pack</a> is a command line tool for creating relocatable conda environments. This is useful for deploying code in a consistent environment, potentially in a location where python/conda is not installed.</p>
+<p><strong>Install via conda</strong></p>
+<p>conda-pack is available from <a class="reference external" href="https://anaconda.org">Anaconda</a> as well as from conda-forge:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">conda install conda-pack</span>
+<span class="go">conda install -c conda-forge conda-pack</span>
+</pre></div>
+</div>
+<p><strong>Install via pip</strong></p>
+<p>While conda-pack requires an existing conda install, it can also be installed from PyPI:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install conda-pack</span>
+</pre></div>
+</div>
+<p><strong>Install from source</strong></p>
+<p>It can be installed from source.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install git+https://github.com/conda/conda-pack.git</span>
+</pre></div>
+</div>
+<p><strong>Usage</strong></p>
+<p>conda-pack is primarily a commandline tool, see <a class="reference external" href="https://conda.github.io/conda-pack/cli.html">docs</a> for full details.</p>
+<section id="on-the-source-machine">
+<h4>On the source machine<a class="headerlink" href="#on-the-source-machine" title="Permalink to this heading"></a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Pack<span class="w"> </span>environment<span class="w"> </span>my_env<span class="w"> </span>into<span class="w"> </span>my_env.tar.gz
+<span class="gp">$ </span>conda<span class="w"> </span>pack<span class="w"> </span>-n<span class="w"> </span>my_env
+
+<span class="gp"># </span>Pack<span class="w"> </span>environment<span class="w"> </span>my_env<span class="w"> </span>into<span class="w"> </span>out_name.tar.gz
+<span class="gp">$ </span>conda<span class="w"> </span>pack<span class="w"> </span>-n<span class="w"> </span>my_env<span class="w"> </span>-o<span class="w"> </span>out_name.tar.gz
+
+<span class="gp"># </span>Pack<span class="w"> </span>environment<span class="w"> </span>located<span class="w"> </span>at<span class="w"> </span>an<span class="w"> </span>explicit<span class="w"> </span>path<span class="w"> </span>into<span class="w"> </span>my_env.tar.gz
+<span class="gp">$ </span>conda<span class="w"> </span>pack<span class="w"> </span>-p<span class="w"> </span>/explicit/path/to/my_env
+</pre></div>
+</div>
+</section>
+<section id="on-the-target-machine">
+<h4>On the target machine<a class="headerlink" href="#on-the-target-machine" title="Permalink to this heading"></a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Unpack<span class="w"> </span>environment<span class="w"> </span>into<span class="w"> </span>directory<span class="w"> </span><span class="sb">`</span>my_env<span class="sb">`</span>
+<span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>my_env
+<span class="gp">$ </span>tar<span class="w"> </span>-xzf<span class="w"> </span>my_env.tar.gz<span class="w"> </span>-C<span class="w"> </span>my_env
+
+<span class="gp"># </span>Use<span class="w"> </span>python<span class="w"> </span>without<span class="w"> </span>activating<span class="w"> </span>or<span class="w"> </span>fixing<span class="w"> </span>the<span class="w"> </span>prefixes.<span class="w"> </span>Most<span class="w"> </span>python
+<span class="gp"># </span>libraries<span class="w"> </span>will<span class="w"> </span>work<span class="w"> </span>fine,<span class="w"> </span>but<span class="w"> </span>things<span class="w"> </span>that<span class="w"> </span>require<span class="w"> </span>prefix<span class="w"> </span>cleanups
+<span class="gp"># </span>will<span class="w"> </span>fail.
+<span class="gp">$ </span>./my_env/bin/python
+
+<span class="gp"># </span>Activate<span class="w"> </span>the<span class="w"> </span>environment.<span class="w"> </span>This<span class="w"> </span>adds<span class="w"> </span><span class="sb">`</span>my_env/bin<span class="sb">`</span><span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>path
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>my_env/bin/activate
+
+<span class="gp"># </span>Run<span class="w"> </span>python<span class="w"> </span>from<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>environment
+<span class="gp gp-VirtualEnv">(my_env)</span> <span class="gp">$ </span>python
+
+<span class="gp"># </span>Cleanup<span class="w"> </span>prefixes<span class="w"> </span>from<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>active<span class="w"> </span>environment.
+<span class="gp"># </span>Note<span class="w"> </span>that<span class="w"> </span>this<span class="w"> </span><span class="nb">command</span><span class="w"> </span>can<span class="w"> </span>also<span class="w"> </span>be<span class="w"> </span>run<span class="w"> </span>without<span class="w"> </span>activating<span class="w"> </span>the<span class="w"> </span>environment
+<span class="gp"># </span>as<span class="w"> </span>long<span class="w"> </span>as<span class="w"> </span>some<span class="w"> </span>version<span class="w"> </span>of<span class="w"> </span>python<span class="w"> </span>is<span class="w"> </span>already<span class="w"> </span>installed<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>machine.
+<span class="gp gp-VirtualEnv">(my_env)</span> <span class="gp">$ </span>conda-unpack
+
+<span class="gp"># </span>At<span class="w"> </span>this<span class="w"> </span>point<span class="w"> </span>the<span class="w"> </span>environment<span class="w"> </span>is<span class="w"> </span>exactly<span class="w"> </span>as<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>installed<span class="w"> </span>it<span class="w"> </span>here
+<span class="gp"># </span>using<span class="w"> </span>conda<span class="w"> </span>directly.<span class="w"> </span>All<span class="w"> </span>scripts<span class="w"> </span>should<span class="w"> </span>work<span class="w"> </span>fine.
+<span class="gp gp-VirtualEnv">(my_env)</span> <span class="gp">$ </span>ipython<span class="w"> </span>--version
+
+<span class="gp"># </span>Deactivate<span class="w"> </span>the<span class="w"> </span>environment<span class="w"> </span>to<span class="w"> </span>remove<span class="w"> </span>it<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>path
+<span class="gp gp-VirtualEnv">(my_env)</span> <span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>my_env/bin/deactivate
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="spack">
+<h2>Spack<a class="headerlink" href="#spack" title="Permalink to this heading"></a></h2>
+<a class="reference external image-reference" href="https://github.com/spack/spack/actions"><img alt="Unit Tests" src="https://github.com/spack/spack/workflows/linux%20tests/badge.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/spack/spack/actions/workflows/bootstrap.yml"><img alt="Bootstrapping" src="https://github.com/spack/spack/actions/workflows/bootstrap.yml/badge.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/spack/spack/actions?query=workflow%3A%22macOS+builds+nightly%22"><img alt="macOS Builds (nightly)" src="https://github.com/spack/spack/workflows/macOS%20builds%20nightly/badge.svg?branch=develop" /></a>
+<a class="reference external image-reference" href="https://codecov.io/gh/spack/spack"><img alt="codecov" src="https://codecov.io/gh/spack/spack/branch/develop/graph/badge.svg" /></a>
+<a class="reference external image-reference" href="https://github.com/spack/spack/actions/workflows/build-containers.yml"><img alt="Containers" src="https://github.com/spack/spack/actions/workflows/build-containers.yml/badge.svg" /></a>
+<a class="reference external image-reference" href="https://spack.readthedocs.io"><img alt="Read the Docs" src="https://readthedocs.org/projects/spack/badge/?version=latest" /></a>
+<a class="reference external image-reference" href="https://slack.spack.io"><img alt="Slack" src="https://slack.spack.io/badge.svg" /></a>
+<p>Spack is simple package management tool. It was designed for large supercomputing centers. It is non-destructive: installing a new version does not break existing installations, so many configurations can coexist on the same system.</p>
+<p>Get spack from the <a class="reference external" href="https://github.com/spack/spack">github repository</a> and install your first
+package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>-c<span class="w"> </span>feature.manyFiles<span class="o">=</span><span class="nb">true</span><span class="w"> </span>https://github.com/spack/spack.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>spack/bin
+<span class="gp">$ </span>./spack<span class="w"> </span>install<span class="w"> </span>zlib
+</pre></div>
+</div>
+<section id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading"></a></h3>
+<p>[<strong>Full documentation</strong>](<a class="reference external" href="https://spack.readthedocs.io/">https://spack.readthedocs.io/</a>) is available, or
+run <cite>spack help</cite> or <cite>spack help –all</cite>.</p>
+<p>For a cheat sheet on Spack syntax, run <cite>spack help –spec</cite>.</p>
+</section>
+<section id="tutorial">
+<h3>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading"></a></h3>
+<p>We maintain a
+[<strong>hands-on tutorial</strong>](<a class="reference external" href="https://spack.readthedocs.io/en/latest/tutorial.html">https://spack.readthedocs.io/en/latest/tutorial.html</a>).
+It covers basic to advanced usage, packaging, developer features, and large HPC
+deployments.  You can do all of the exercises on your own laptop using a
+Docker container.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Singularity.html" class="btn btn-neutral float-left" title="Singularity container" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Shorts.html" class="btn btn-neutral float-right" title="Short Tutorials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

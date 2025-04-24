@@ -1,7 +1,7 @@
 ARCH Terminology
 ################
 
-This is a high-level overview of core terms and architecture relevant to users of the Rockfish Cluster at ARCH.
+This is a high-level overview of core terms and architecture relevant to cluster users at ARCH.
 
 .. contents::
    :local:
@@ -48,7 +48,7 @@ Software and Scheduling
 The use of powerful computing systems to solve complex problems requiring significant processing power and parallelism.
 
 **Slurm:**  
-An open-source, fault-tolerant, and scalable job scheduler used to allocate resources and schedule jobs on Rockfish.  
+An open-source, fault-tolerant, and scalable job scheduler used to allocate resources and schedule jobs.  
 See the `Slurm overview <https://slurm.schedmd.com/overview.html>`__.
 
 **Job:**  
@@ -74,10 +74,10 @@ A grouping of nodes with shared characteristics (e.g., GPU-enabled, high-memory)
 
 **Interactive Session:**  
 A real-time login session on a compute node, often used for debugging, exploratory work, or running graphical tools.  
-Requested using `srun` or Rockfish’s `interact` command.
+Requested using `srun` or the `interact` command.
 
 **Module System (Lmod):**  
-Environment modules used to load and manage software packages on Rockfish. Users load software with:
+Environment modules used to load and manage software packages. Users load software with:
 
 .. code-block:: console
 
@@ -88,7 +88,7 @@ Data and Storage
 ****************
 
 **File System:**  
-The organizational structure for storing and accessing data on Rockfish. Common file systems include `/home`, `/data`, `/scratch4`, and `/scratch16`.
+The organizational structure for storing and accessing data on a cluster. Common file systems include `/home`, `/data`, `/scratch`.`
 
 **Scratch Space:**  
 Temporary high-performance storage intended for intermediate data. Files not accessed for 30 days are automatically purged. Not backed up.

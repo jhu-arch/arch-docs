@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reproducibility Framework (RF) &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Snakemake Workflows" href="Snakemake.html" />
+    <link rel="prev" title="Manage Group Permissions" href="../3_Common_Tasks/Managing_Group_Permissions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_Clusters/Rockfish/index.html">Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Clusters/DSAI/index.html">DSAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_Clusters/EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Reproducibility Framework (RF)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version-control">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tutorials">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Reproducibility Framework (RF)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/5_Reproducible/RF.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p id="reproducibility-framework">Reproducibility is an important characteristic of a good scientific project. Factors, like random seeds, versioning data to using virtual environments, might influence the reproducibility of scientific projects.</p>
+<p>This topic aims to present some tools to guarantee the pipeline reproducible.</p>
+<section id="reproducibility-framework-rf">
+<h1>Reproducibility Framework (RF)<a class="headerlink" href="#reproducibility-framework-rf" title="Permalink to this heading"></a></h1>
+<p>Analysis data usually involves the use of many software packages and in-house software. For each analysis step, there are many software tool options available, each with its proper capabilities, restrictions, and assumptions on input and output data.</p>
+<p>The pipeline development, e.g. the application of Bioinformatics, involves a lot of experimentation with different tools and parameters, considering how well each is suited to the big picture and the practical implications of its use, organizing data analysis can be challenging.</p>
+<p>In this tutorial, a set of methods and code examples are used to train the user on how to install and experiment extensively, keeping the healthy reproducible and organized in an intuitive way to organize computational analyzes using a directory structure constructed according to 3 simple principles.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Use of a directory structure to represent dependencies between analysis steps.</p></li>
+<li><p>Separation of user-generated data from program-generated data.</p></li>
+<li><p>Use of driver scripts.</p></li>
+</ol>
+</div></blockquote>
+<p>These 3 principles are desirable to help keep analysis organized, reproducible, and easier to understand.</p>
+<p>The data analysis is structured in a way that emphasizes reproducibility, organization, and clarity. Being simple and intuitive, adding and modifying analysis steps can be done easily with little extra effort.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This framework supports containers, docker and <a class="reference internal" href="Singularity.html#singularity-container"><span class="std std-ref">singularity</span></a>.</p>
+</div>
+<p>How to set up the framework on the system run Steps 1 and 2.</p>
+<p><strong>Step 1</strong> : Install the Reproducibility Framework (rf) on Rockfish</p>
+<p>Follow the preprint to install the <code class="docutils literal notranslate"><span class="pre">rf</span></code> on Linux. Make sure do you have a python 3.6 (preferably 3.6.2 or later) installed.</p>
+<p>Then, run <code class="docutils literal notranslate"><span class="pre">rf</span> <span class="pre">--help</span></code> and <code class="docutils literal notranslate"><span class="pre">rf</span> <span class="pre">run</span> <span class="pre">--help</span></code> to verify the installation.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 ~]$ </span>pip3<span class="w"> </span>install<span class="w"> </span>git+https://github.com/ricardojacomini/rf.git<span class="w"> </span>--upgrade<span class="w"> </span>--user
+<span class="gp">[userid@login01 ~]$ </span>rf<span class="w"> </span>--help
+<span class="gp">[userid@login01 ~]$ </span>rf<span class="w"> </span>run<span class="w"> </span>--help
+</pre></div>
+</div>
+<p><strong>Step 2</strong> : Install the tree command for non-root users</p>
+<p>To support the framework functionalities, it is necessary to install the tree command on GNU/Linux or macOS (brew install tree). If you do not have permission to install it on the system (root), you must install the tree command as a non-root user.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 ~]$ </span>curl<span class="w"> </span>-s<span class="w"> </span>https://raw.githubusercontent.com/ricardojacomini/rf/master/scripts/install_tree_non_root.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<span class="gp">[userid@login01 ~]$ </span>rf<span class="w"> </span>status
+<span class="gp">[userid@login01 ~]$ </span>rf<span class="w"> </span>status<span class="w"> </span>-p
+</pre></div>
+</div>
+<p>Consider the following directory structure:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 ~]$ </span>tree
+<span class="go">                    ├── nodeA</span>
+<span class="go">                    │   ├── _h         (human-generated data)</span>
+<span class="go">                    │   ├── _m         (machine-generated data)</span>
+<span class="go">                    │   └── nodeB</span>
+<span class="go">                    │       ├── _h</span>
+<span class="go">                    │       ├── _m</span>
+<span class="go">                    │       └── nodeC</span>
+<span class="go">                    │           ├── _h</span>
+</pre></div>
+</div>
+<p><strong>Principle 1</strong> Each node has two special subdirectories: <code class="docutils literal notranslate"><span class="pre">_h</span></code> and <code class="docutils literal notranslate"><span class="pre">_m</span></code> with well-defined purposes. The documentation, codes, and other human-generated data that describe this analysis step are put in the _h directory. For this reason, it is called _h the “human” directory. Likewise, the _m directory store the computation results of this analysis step. For this reason, it is called _m the “machine” directory.</p>
+<p><strong>Principle 2</strong> In the “human” directory is required a file named run. It is a script that is supposed to be performed without arguments. It is responsible to call the necessary programs that will do the computation in the analysis step and generate the contents/results on _m, “machine” directory.</p>
+<p><strong>Principle 3</strong> A directory structure is an intuitive way to represent data dependencies. Let’s consider you are at any _m directory looking at output files, and you examine how these results were generated. A pwd command will display the full path to that directory, which has a sequence of names of analysis steps involved in the generation of these files.</p>
+<p>The separation of computer-generated data from human-generated data is also helpful. It is a way to make sure that users may not edit output files. It is also useful to know which files are program-generated and know which files are OK to delete, given they can be computed again.</p>
+<p>Running driver scripts without arguments is a way to make sure computation doesn’t depend on manually specified parameters, which are easy to be forgotten.</p>
+<section id="version-control">
+<h2>Version control<a class="headerlink" href="#version-control" title="Permalink to this heading"></a></h2>
+<p>The division of human-generated data ( <code class="docutils literal notranslate"><span class="pre">_h</span></code> ) from machine-generated data ( <code class="docutils literal notranslate"><span class="pre">_m</span></code> ) makes it easy to use version control systems for an analysis tree.</p>
+<p>In the current implementation, it is used <code class="docutils literal notranslate"><span class="pre">git</span></code> for <code class="docutils literal notranslate"><span class="pre">_h</span></code> and <code class="docutils literal notranslate"><span class="pre">git-annex</span></code> for <code class="docutils literal notranslate"><span class="pre">_m</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">rf</span></code> command provides a wrapper for a few operations that involve more than one call to git or git-annex. Users can collaborate and share analyses trees in a similar they can do with code.</p>
+<p>The version control is not covered in this tutorial, see the <a class="reference external" href="http://biorxiv.org/content/early/2015/12/09/033654">Preprint</a> for more details.</p>
+</section>
+<section id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading"></a></h2>
+<p><strong>Tutorial 1.1</strong> : Runs driver scripts to generate the <code class="docutils literal notranslate"><span class="pre">_m</span></code> directories (results/contents)</p>
+<p>Let’s create a directory structure called repro to put this Reproducibility Framework (<code class="docutils literal notranslate"><span class="pre">rf</span></code>) into practice.</p>
+<p>Let’s create a simple run file to learn how <code class="docutils literal notranslate"><span class="pre">rf</span></code> works. Then, change the permissions on the run file to make it executable (<code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">#</span> <span class="pre">5</span></code>). Once it has been assigned, the run file is ready to be executed using the <code class="docutils literal notranslate"><span class="pre">rf</span></code> command (<code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">#</span> <span class="pre">8</span></code>).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Since <code class="docutils literal notranslate"><span class="pre">rf</span></code> was designed to work collaboratively and have version control, it is necessary to create a new Git repository local (<code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">#</span> <span class="pre">9</span></code>).</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">1.  [userid@login01 ~]$ mkdir tutorial/_h -p</span>
+<span class="go">2.  [userid@login01 ~]$ cd tutorial/</span>
+<span class="go">3.  [userid@login01 tutorial]$ echo &quot;date &gt; date.txt&quot; &gt; _h/run</span>
+<span class="go">4.  [userid@login01 tutorial]$ rf status</span>
+<span class="go">5.  [userid@login01 tutorial]$  .  no run script</span>
+<span class="go">6.  [userid@login01 tutorial]$ chmod +x _h/run</span>
+<span class="go">7.  [userid@login01 tutorial]$ rf status</span>
+<span class="go">8.  [userid@login01 tutorial]$  .   ready to run</span>
+<span class="go">9.  [userid@login01 tutorial]$ git init .</span>
+<span class="go">10. [userid@login01 tutorial]$ rf run .          # use: ( nohup rf run . &amp; ) to 11. run the rf immune to hangups</span>
+<span class="go">12. [userid@login01 tutorial]$ rf status</span>
+<span class="go">13. [userid@login01 tutorial]$  .           done</span>
+<span class="go">14. [userid@login01 tutorial]$ ls _m/*</span>
+<span class="go">15. [userid@login01 tutorial]$  _m/date.txt  _m/nohup.out  _m/SUCCESS</span>
+</pre></div>
+</div>
+<p><strong>Tutorial 1.2</strong> : Runs driver scripts to generate the _m directories (results/contents) via containers</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 tutorial]$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span>bedtools/_h
+<span class="gp">[userid@login01 tutorial]$ </span><span class="nb">cd</span><span class="w"> </span>bedtools/
+</pre></div>
+</div>
+<p>Let’s fire up our text editor (vim/nano/emacs) and type in our <a class="reference external" href="https://bedtools.readthedocs.io/en/latest/">bedtools</a> script as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>!/bin/bash
+<span class="go">set -o errexit -euo pipefail</span>
+
+<span class="go">bedtools genomecov -i ../_h/exons.bed -g ../_h/genome.txt -bg &gt; out.tsv</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 bedtools]$ </span>vi<span class="w"> </span>_h/run
+<span class="gp">[userid@login01 bedtools]$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>_h/run
+</pre></div>
+</div>
+<p>If you return a level (repro directory) and check the execution status of this pipeline (<code class="docutils literal notranslate"><span class="pre">rf</span> <span class="pre">status</span></code>), you can see that level 1 (repro) is done, and level 2 (<code class="docutils literal notranslate"><span class="pre">bedtools</span></code>) is ready to run. It is important to mind will be run the <code class="docutils literal notranslate"><span class="pre">bedtools</span></code> via container (singularity).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to note our purpose here is to use a container to isolate programs and not develop or share scripts within the container images. Keep it as simple as possible, and all scripts will be performed via the <code class="docutils literal notranslate"><span class="pre">rf</span></code> command, as will be shown below.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 bedtools]$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">BIND</span><span class="o">=</span><span class="k">$(</span>realpath<span class="w"> </span>.<span class="k">)</span>/_m
+<span class="gp">[userid@login01 bedtools]$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">IMG</span><span class="o">=</span>../_h/ubuntu_bedtools.sif
+<span class="gp">[userid@login01 bedtools]$ </span>rf<span class="w"> </span>run<span class="w"> </span>--container_image<span class="o">=</span><span class="si">${</span><span class="nv">IMG</span><span class="si">}</span><span class="w"> </span>--volume<span class="o">=</span><span class="si">${</span><span class="nv">BIND</span><span class="si">}</span><span class="w"> </span>-v<span class="w"> </span>.
+<span class="go">all: /home/userid/tutorial/bedtools/_m/SUCCESS</span>
+
+<span class="go">.ONESHELL:</span>
+<span class="go">/home/userid/tutorial/bedtools/_m/SUCCESS:</span>
+<span class="go">      echo -n &quot;Start /home/userid/tutorial/bedtools: &quot;; date --rfc-3339=seconds</span>
+<span class="go">      mkdir /home/userid/tutorial/bedtools/_m</span>
+<span class="go">      cd /home/userid/tutorial/bedtools/_m</span>
+<span class="go">      singularity exec --bind &#39;/home/userid/tutorial/bedtools/_m&#39; &#39;../_h/ubuntu_bedtools.sif&#39; bash -c &#39;cd &quot;/home/userid/tutorial/bedtools/_m&quot; &amp;&amp; ../_h/run &gt; nohup.out 2&gt;&amp;1&#39;</span>
+<span class="go">      touch SUCCESS</span>
+<span class="go">      echo -n &quot;End /home/userid/tutorial/bedtools: &quot;; date --rfc-3339=seconds</span>
+
+
+<span class="go">Start /home/userid/tutorial/bedtools: 2022-07-27 15:58:52-04:00</span>
+<span class="go">End /home/userid/tutorial/bedtools: 2022-07-27 16:04:16-04:00</span>
+
+<span class="gp">[userid@login01 bedtools]$ </span><span class="nb">cd</span><span class="w"> </span>..
+<span class="gp">[userid@login01 tutorial]$ </span>rf<span class="w"> </span>status
+<span class="gp">[userid@login01 tutorial]$    </span>.<span class="w">                      </span><span class="k">done</span><span class="w">      </span><span class="o">(</span>level<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>pipeline<span class="o">)</span>
+<span class="gp">[userid@login01 tutorial]$    </span>└──<span class="w"> </span>bedtools<span class="w">           </span><span class="k">done</span><span class="w">      </span><span class="o">(</span>level<span class="w"> </span><span class="m">2</span><span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>pipeline<span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To run <code class="docutils literal notranslate"><span class="pre">rf</span></code> command using singularity image it is necessary to enable interactive mode on Rockfish.
+See <a class="reference internal" href="Singularity.html#singularity-container"><span class="std std-ref">Singularity container</span></a> session how building a Singularity Container Image from definitions file.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../3_Common_Tasks/Managing_Group_Permissions.html" class="btn btn-neutral float-left" title="Manage Group Permissions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Snakemake.html" class="btn btn-neutral float-right" title="Snakemake Workflows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

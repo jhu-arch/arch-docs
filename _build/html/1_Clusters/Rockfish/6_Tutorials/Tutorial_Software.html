@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing Software Using Lmod &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Vscode" href="Tutorial_vscode.html" />
+    <link rel="prev" title="R &amp; RStudio" href="Tutorial_R.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rockfish</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Quickstart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Resources/index.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Navigating/index.html">Navigating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Slurm/index.html">Slurm on Rockfish</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Rockfish Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Managing Software Using Lmod</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-hierarchy-on-rockfish">Module Hierarchy on Rockfish</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basic-lmod-commands">Basic Lmod Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-module-collections">Using Module Collections</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-notes">Advanced Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_vscode.html">Vscode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../DSAI/index.html">DSAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Rockfish</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Rockfish Tutorials</a></li>
+      <li class="breadcrumb-item active">Managing Software Using Lmod</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/1_Clusters/Rockfish/6_Tutorials/Tutorial_Software.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-software-using-lmod">
+<h1>Managing Software Using Lmod<a class="headerlink" href="#managing-software-using-lmod" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>Rockfish uses <strong>Lmod</strong> (Lua-based environment modules) to manage a wide variety of scientific software packages. Lmod allows users to dynamically modify their environment (e.g., <cite>PATH</cite>, <cite>LD_LIBRARY_PATH</cite>) by loading or unloading software modules, and supports hierarchical environments based on compilers, MPI stacks, and more.</p>
+<p>Current Lmod version: <strong>8.7.24</strong></p>
+<p>Common software categories include:</p>
+<ul class="simple">
+<li><p><strong>Compilers</strong> — GCC, Intel, CUDA</p></li>
+<li><p><strong>MPI stacks</strong> — OpenMPI, Intel-MPI</p></li>
+<li><p><strong>Bioinformatics tools</strong> — BLAST, Trinity, Samtools, Trimmomatic</p></li>
+<li><p><strong>Numerical libraries</strong> — MKL, OpenBLAS, FFTW, HDF5</p></li>
+<li><p><strong>Commercial software</strong> — MATLAB, COMSOL, ABINIT, TotalView</p></li>
+</ul>
+</section>
+<section id="module-hierarchy-on-rockfish">
+<h2>Module Hierarchy on Rockfish<a class="headerlink" href="#module-hierarchy-on-rockfish" title="Permalink to this heading"></a></h2>
+<p>Lmod on Rockfish uses a <strong>hierarchical module system</strong>, organized by compiler and MPI stacks. The module paths include:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/data/apps/lmod/linux-rocky8-zen/Core
+/data/apps/lmod/linux-centos8-x86_64/alt/gcc/9.3.0/openmpi/3.1.6
+/data/apps/lmod/linux-rocky8-cascadelake/gcc/9.3.0
+/data/apps/lmod/linux-centos8-x86_64/Core
+...
+</pre></div>
+</div>
+<p>This structure ensures that only compatible software is visible once the appropriate compiler or MPI module is loaded.</p>
+</section>
+<section id="basic-lmod-commands">
+<h2>Basic Lmod Commands<a class="headerlink" href="#basic-lmod-commands" title="Permalink to this heading"></a></h2>
+<section id="explore-available-modules">
+<h3>Explore Available Modules<a class="headerlink" href="#explore-available-modules" title="Permalink to this heading"></a></h3>
+<p>To view all software available in the current environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail
+ml<span class="w"> </span>avail<span class="w">  </span><span class="c1"># shortcut for module avail</span>
+</pre></div>
+</div>
+<p>To search for a specific module name across the hierarchy:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>gcc
+module<span class="w"> </span>spider<span class="w"> </span>openmpi
+</pre></div>
+</div>
+<p>To get detailed info about a specific version:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider<span class="w"> </span>gcc/13.1.0
+module<span class="w"> </span>spider<span class="w"> </span>openmpi/4.1.6
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Lmod supports <strong>shell auto-completion</strong> for most commands, including
+<strong class="command">module spider</strong>.
+Type a partial name and hit &lt;Tab&gt; — e.g.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">spider</span> <span class="o">&lt;</span><span class="n">Tab</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>— and Lmod will attempt to complete (or list) matching modules.</p>
+</div>
+</section>
+<section id="load-and-use-a-module">
+<h3>Load and Use a Module<a class="headerlink" href="#load-and-use-a-module" title="Permalink to this heading"></a></h3>
+<p>Once you identify the module, load it into your session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gcc/9.3.0
+module<span class="w"> </span>load<span class="w"> </span>openmpi/3.1.6
+module<span class="w"> </span>load<span class="w"> </span>hdf5
+</pre></div>
+</div>
+<p>Use the <cite>ml</cite> command for convenience:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ml<span class="w"> </span>gcc/9.3.0<span class="w"> </span>openmpi/3.1.6
+</pre></div>
+</div>
+</section>
+<section id="check-purge-or-reset-your-environment">
+<h3>Check, purge, or reset your environment<a class="headerlink" href="#check-purge-or-reset-your-environment" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>list<span class="w">        </span><span class="c1"># show everything currently loaded</span>
+
+module<span class="w"> </span>purge<span class="w">       </span><span class="c1"># unload *all* modules (good hygiene before new jobs)</span>
+
+module<span class="w"> </span>reset<span class="w">       </span><span class="c1"># unload everything **and** re-load the default</span>
+<span class="w">                   </span><span class="c1"># modules defined in ~/.modulerc or site defaults</span>
+</pre></div>
+</div>
+</section>
+<section id="inspect-a-module">
+<h3>Inspect a Module<a class="headerlink" href="#inspect-a-module" title="Permalink to this heading"></a></h3>
+<p>To see what a module does to your environment (e.g., variables it sets, dependencies it loads):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>show<span class="w"> </span>openmpi/3.1.6
+</pre></div>
+</div>
+</section>
+</section>
+<section id="using-module-collections">
+<h2>Using Module Collections<a class="headerlink" href="#using-module-collections" title="Permalink to this heading"></a></h2>
+<p>You can save and restore custom module environments:</p>
+<p>Save your current environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>save<span class="w"> </span>my_default_env
+</pre></div>
+</div>
+<p>Load it later:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>restore<span class="w"> </span>my_default_env
+</pre></div>
+</div>
+</section>
+<section id="advanced-notes">
+<h2>Advanced Notes<a class="headerlink" href="#advanced-notes" title="Permalink to this heading"></a></h2>
+<section id="using-module-paths">
+<h3>Using Module Paths<a class="headerlink" href="#using-module-paths" title="Permalink to this heading"></a></h3>
+<p>In some advanced workflows (like EasyBuild or custom stacks), you may need to add a module path manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>use<span class="w"> </span>/path/to/custom/modules
+</pre></div>
+</div>
+</section>
+<section id="software-stacks-and-compatibility">
+<h3>Software Stacks and Compatibility<a class="headerlink" href="#software-stacks-and-compatibility" title="Permalink to this heading"></a></h3>
+<p>Some applications are only available after loading a specific stack, such as:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>gfbf/2023b
+module<span class="w"> </span>load<span class="w"> </span>R/4.4.1-gfbf-2023b
+</pre></div>
+</div>
+<p>These stacks are typically managed using <cite>standard</cite>, <cite>tools</cite>, or <cite>gfbf</cite> collections.</p>
+</section>
+<section id="avoiding-conflicts">
+<h3>Avoiding Conflicts<a class="headerlink" href="#avoiding-conflicts" title="Permalink to this heading"></a></h3>
+<p>Some modules are incompatible together (e.g., Python or Anaconda + certain R environments). Always:</p>
+<ol class="arabic simple">
+<li><p>Run <cite>module purge</cite> before starting new jobs.</p></li>
+<li><p>Avoid mixing software from different compiler/MPI stacks.</p></li>
+<li><p>Follow module hints (warnings or dependencies) shown via <cite>module spider</cite>.</p></li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tutorial_R.html" class="btn btn-neutral float-left" title="R &amp; RStudio" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tutorial_vscode.html" class="btn btn-neutral float-right" title="Vscode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

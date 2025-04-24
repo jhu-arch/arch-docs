@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Dependencies &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="JupyterLab on Rockfish" href="Tutorial_Jupyter.html" />
+    <link rel="prev" title="Aspera CLI" href="Tutorial_aspera_cli.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Job Dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#job-dependencies-in-slurm">Job Dependencies in SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#abaqus-job-script-abaqus-job-sh">Abaqus Job Script (<code class="docutils literal notranslate"><span class="pre">abaqus_job.sh</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#job-submission-script-submit-jobs-sh">Job Submission Script (<code class="docutils literal notranslate"><span class="pre">submit_jobs.sh</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-scripts-executable">Make Scripts Executable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submit-the-abaqus-job-chain">Submit the Abaqus Job Chain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Job Dependencies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/6_Tutorials/Tutorial_JobDependencies.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="job-dependencies">
+<h1>Job Dependencies<a class="headerlink" href="#job-dependencies" title="Permalink to this heading"></a></h1>
+<section id="job-dependencies-in-slurm">
+<h2>Job Dependencies in SLURM<a class="headerlink" href="#job-dependencies-in-slurm" title="Permalink to this heading"></a></h2>
+<p>Job dependencies are used to <strong>delay the execution of a job until specific conditions are met</strong>, such as the completion of other jobs. In SLURM, dependencies are specified using the <code class="docutils literal notranslate"><span class="pre">--dependency</span></code> option with <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>.</p>
+<p>This tutorial demonstrates how to <strong>limit the number of concurrently running Abaqus jobs to 5</strong>, using SLURM job dependencies.</p>
+</section>
+<section id="abaqus-job-script-abaqus-job-sh">
+<h2>Abaqus Job Script (<code class="docutils literal notranslate"><span class="pre">abaqus_job.sh</span></code>)<a class="headerlink" href="#abaqus-job-script-abaqus-job-sh" title="Permalink to this heading"></a></h2>
+<p>This is the standard SLURM script for running a single Abaqus job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=abaqus_job</span>
+<span class="c1">#SBATCH --output=abaqus_job_%j.out</span>
+<span class="c1">#SBATCH --error=abaqus_job_%j.err</span>
+<span class="c1">#SBATCH --time=01:00:00            # Adjust time as needed</span>
+<span class="c1">#SBATCH --ntasks=1                 # Set appropriately for Abaqus</span>
+<span class="c1">#SBATCH --mem=4000M                # Adjust memory based on model requirements</span>
+
+<span class="c1"># Load the Abaqus module</span>
+module<span class="w"> </span>load<span class="w"> </span>abaqus
+
+<span class="c1"># Run Abaqus with your input file</span>
+abaqus<span class="w"> </span><span class="nv">job</span><span class="o">=</span>my_abaqus_input_file<span class="w"> </span><span class="nv">input</span><span class="o">=</span>my_abaqus_input_file.inp
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can modify this script to dynamically insert input file names if needed.</p>
+</div>
+</section>
+<section id="job-submission-script-submit-jobs-sh">
+<h2>Job Submission Script (<code class="docutils literal notranslate"><span class="pre">submit_jobs.sh</span></code>)<a class="headerlink" href="#job-submission-script-submit-jobs-sh" title="Permalink to this heading"></a></h2>
+<p>This script submits multiple Abaqus jobs and uses dependencies to ensure that <strong>only 5 jobs run concurrently</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># Total number of jobs to submit</span>
+<span class="nv">total_jobs</span><span class="o">=</span><span class="m">100</span><span class="w">  </span><span class="c1"># Adjust this as needed</span>
+
+<span class="c1"># Function to submit a job and return its job ID</span>
+submit_job<span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">job_id</span><span class="o">=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>abaqus_job.sh<span class="k">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$job_id</span><span class="s2">&quot;</span>
+<span class="o">}</span>
+
+<span class="c1"># Array to store job IDs</span>
+<span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span>job_ids
+
+<span class="c1"># Submit the first 5 jobs (no dependencies)</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">5</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>job_ids<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span><span class="k">$(</span>submit_job<span class="k">)</span>
+<span class="k">done</span>
+
+<span class="c1"># Submit the remaining jobs with dependencies</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>seq<span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="nv">$total_jobs</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">dep_index</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">5</span><span class="k">))</span>
+<span class="w">    </span>job_ids<span class="o">[</span><span class="nv">$i</span><span class="o">]=</span><span class="k">$(</span>sbatch<span class="w"> </span>--parsable<span class="w"> </span>--dependency<span class="o">=</span>afterany:<span class="si">${</span><span class="nv">job_ids</span><span class="p">[</span><span class="nv">$dep_index</span><span class="p">]</span><span class="si">}</span><span class="w"> </span>abaqus_job.sh<span class="k">)</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">afterany:</span></code> ensures the job will run after the dependent job finishes, regardless of success or failure. You could use <code class="docutils literal notranslate"><span class="pre">afterok:</span></code> if you want the next job to start <strong>only</strong> if the previous job <strong>succeeds</strong>.</p>
+</div>
+</section>
+<section id="make-scripts-executable">
+<h2>Make Scripts Executable<a class="headerlink" href="#make-scripts-executable" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span>+x<span class="w"> </span>abaqus_job.sh
+chmod<span class="w"> </span>+x<span class="w"> </span>submit_jobs.sh
+</pre></div>
+</div>
+</section>
+<section id="submit-the-abaqus-job-chain">
+<h2>Submit the Abaqus Job Chain<a class="headerlink" href="#submit-the-abaqus-job-chain" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./submit_jobs.sh
+</pre></div>
+</div>
+<p>This will begin submitting your Abaqus jobs, with dependencies ensuring that no more than 5 are running at the same time.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tutorial_aspera_cli.html" class="btn btn-neutral float-left" title="Aspera CLI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tutorial_Jupyter.html" class="btn btn-neutral float-right" title="JupyterLab on Rockfish" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

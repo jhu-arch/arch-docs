@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Singularity container &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Virtual Environment" href="Virtual.html" />
+    <link rel="prev" title="Snakemake Workflows" href="Snakemake.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Singularity container</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#building-a-singularity-container-image-from-definitions-file">Building a Singularity Container Image from definitions file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-build-a-singularity-image-from-docker-hub">How to build a Singularity Image from Docker Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#non-root-users">Non-root users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-file-named-dockerfile">1. Create a file named Dockerfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#build-an-image-from-a-dockerfile">2. Build an image from a Dockerfile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-tag-target-image-that-refers-to-source-image">3. Create a tag target image that refers to source image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-a-command-in-a-new-container">4. Run a command in a new container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-one-or-more-stopped-containers">5. Start one or more stopped containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exec-perform-a-command-into-a-running-container">6. Exec (perform) a command into a running container</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-image-from-a-containers-changes">7. Create a new image from a container’s changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#push-an-image-or-a-repository-to-a-registry">8. Push an image or a repository to a registry</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pull-an-image-from-docker-hub">9. Pull an image from docker hub</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Singularity container</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/5_Reproducible/Singularity.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="singularity-container">
+<span id="id1"></span><h1>Singularity container<a class="headerlink" href="#singularity-container" title="Permalink to this heading"></a></h1>
+<a class="reference external image-reference" href="https://singularity-user-docs.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/singularity-user-docs/badge/?version=latest" /></a>
+<p>This tutorials will allow you to run <a class="reference external" href="https://singularity-user-docs.readthedocs.io/en/latest/quick_start.html">Singularity</a> containers on computers where you do not have root (administrative) privileges, like the Rockfish cluster at ARCH.</p>
+<p>A container allows you to put an application and all of its dependencies in a single package. Ensure portability and reproducibility of all dependency packages of an application.
+Here are some examples of things you can do with containers:</p>
+<ul class="simple">
+<li><p>Package an analysis pipeline so that it runs on your computer, in the cloud, and in a High Performance Computing (HPC) environment to produce the same result.</p></li>
+<li><p>Publish a paper and include a link to a container with all of the data and software that you used so that others can easily reproduce your results.</p></li>
+<li><p>Install and run an application that requires a complicated stack of dependencies with a few keystrokes.</p></li>
+<li><p>Create a pipeline or complex workflow where each individual program is meant to run on a different operating system.</p></li>
+</ul>
+<section id="building-a-singularity-container-image-from-definitions-file">
+<h2>Building a Singularity Container Image from definitions file<a class="headerlink" href="#building-a-singularity-container-image-from-definitions-file" title="Permalink to this heading"></a></h2>
+<p>Bootstrapping a <a class="reference external" href="https://singularity-tutorial.github.io/">singularity container</a> allows using a file called <code class="docutils literal notranslate"><span class="pre">definitions</span> <span class="pre">file</span></code> which can reproduce container configurations on demand.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login01 ~]$ </span>mkdir<span class="w"> </span>tutorial/container/_h<span class="w"> </span>-p
+<span class="gp">[userid@login01 ~]$ </span><span class="nb">cd</span><span class="w"> </span>tutorial/container/
+<span class="gp">[userid@container ~]$ </span>vi<span class="w"> </span>_h/ubuntu_bedtools.def
+</pre></div>
+</div>
+<p>Let’s first create a container with Ubuntu 20.10 and the <a class="reference external" href="https://bedtools.readthedocs.io/en/latest/">bedtools</a> command (toolset). Below are the contents of how the definitions file should look like.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Bootstrap: docker</span>
+<span class="go">From: ubuntu:20.10</span>
+
+<span class="gp">%</span>post
+<span class="go">    apt-get -y update</span>
+<span class="go">    apt-get -y install bedtools</span>
+
+<span class="gp">%</span>environment
+<span class="go">    export LC_ALL=C</span>
+</pre></div>
+</div>
+<p>Now let’s use this definition file as a starting point to build the <code class="docutils literal notranslate"><span class="pre">ubuntu_bedtools.sif</span></code> container. Note that the build command requires <code class="docutils literal notranslate"><span class="pre">sudo</span></code> privileges.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@container ~]$ </span>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>_h/ubuntu_bedtools.sif<span class="w"> </span>_h/ubuntu_bedtools.def
+</pre></div>
+</div>
+<p>Now let’s enter the new container and look around.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@container ~]$ </span>singularity<span class="w"> </span>shell<span class="w"> </span>ubuntu_bedtools.sif
+
+<span class="go">Singularity&gt;</span>
+<span class="go">Singularity&gt; bedtools --version</span>
+<span class="go">bedtools v2.29.2</span>
+</pre></div>
+</div>
+<p>Depending on the environment on your host system you may see your prompt change.
+Let’s exit the container and re-enter as root.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Singularity&gt; exit</span>
+<span class="gp">$ </span>sudo<span class="w"> </span>singularity<span class="w"> </span>shell<span class="w"> </span>--writable<span class="w"> </span>ubuntu_bedtools.sif
+</pre></div>
+</div>
+<p>Now as a root user inside the container. Note also the addition of the <code class="docutils literal notranslate"><span class="pre">--writable</span></code> option, it allows us to modify the container, and the changes will be saved into the container persisting across uses.</p>
+<div class="admonition warning" id="fakeroot-option">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--fakeroot</span></code> option provided in Singularity version 3.6.x (for use with the singularity <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">shell</span></code>, and <code class="docutils literal notranslate"><span class="pre">exec</span></code> commands) is not supported on Rockfish systems for security reasons.</p>
+</div>
+</section>
+<section id="how-to-build-a-singularity-image-from-docker-hub">
+<h2>How to build a Singularity Image from Docker Hub<a class="headerlink" href="#how-to-build-a-singularity-image-from-docker-hub" title="Permalink to this heading"></a></h2>
+<p>Singularity can also use containers directly from Docker images. You can <code class="docutils literal notranslate"><span class="pre">shell</span></code>, <code class="docutils literal notranslate"><span class="pre">import</span></code>, <code class="docutils literal notranslate"><span class="pre">run</span></code>, and <code class="docutils literal notranslate"><span class="pre">exec</span></code> Docker images directly from the <code class="docutils literal notranslate"><span class="pre">Docker</span> <span class="pre">Registry</span></code>. This feature was included because developers have been using Docker and scientists have already put many resources into creating Docker images.
+Docker images, opening up access to a large number of existing container images available on Docker Hub and other registries.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@container ~]$ </span>mkdir<span class="w"> </span>~/singularity
+<span class="gp">[userid@container ~]$ </span><span class="nb">cd</span><span class="w"> </span>~/singularity/
+<span class="gp">[userid@singularity ~]$ </span>singularity<span class="w"> </span>pull<span class="w"> </span>docker://ubuntu:latest
+<span class="gp">[userid@singularity ~]$ </span>singularity<span class="w"> </span>shell<span class="w"> </span>ubuntu_latest.sif
+</pre></div>
+</div>
+<p>However, you will not be able to change this image on Rockfish cluster, because there is no partition SIF writable, see <a class="reference internal" href="#fakeroot-option"><span class="std std-ref">fakeroot option</span></a>.</p>
+<p>We will prepare an image using <a class="reference external" href="https://docs.docker.com">Docker container</a>, and make it available on <a class="reference external" href="https://hub.docker.com">Docker Hub</a> and then an administrator will create a Singularity container to run it on Rockfish.</p>
+<p>In order to build the application, we need to use a <a class="reference external" href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a>. Then, we will generate a Dockerfile to create <a class="reference external" href="https://github.com/jts/nanopolish">Nanopolish</a> application as an example. The Nanopolish is a software package for signal-level analysis of Oxford Nanopore sequencing data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are different ways to run Nanopolish: via conda, via installation source or container. This tutorial will cover how to install it using singularity, via docker hub repository.</p>
+</div>
+<p><strong>Nanopolish</strong></p>
+<p>The Nanopolish package calculates an improved consensus sequence for a draft genome assembly, detect base modifications, call SNPs and indels with respect to a reference genome and more modules.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To create this container, we used the latest Nanopolish version 0.13.3 and Ubuntu 21.04. Also, you can use different platform GNU/Linux: Ubuntu, ArchLinux, Debian, Centos, etc.</p>
+</div>
+<section id="non-root-users">
+<h3>Non-root users<a class="headerlink" href="#non-root-users" title="Permalink to this heading"></a></h3>
+<p>The next steps were used to create it.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Create a file named <a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Dockerfile</a></p></li>
+<li><p>Build an image from a Dockerfile ( <a class="reference external" href="https://docs.docker.com/engine/reference/builder/">docker</a> <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/build/">build</a> )</p></li>
+<li><p>Create a tag <code class="docutils literal notranslate"><span class="pre">TARGET_IMAGE</span></code> that refers to <code class="docutils literal notranslate"><span class="pre">SOURCE_IMAGE</span></code> ( docker <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/tag/">tag</a> )</p></li>
+<li><p>Run a command in a new container ( docker <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/run/">run</a> )</p></li>
+<li><p>Start one or more stopped containers ( docker <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/start/">start</a> )</p></li>
+<li><p>Exec (perform) a command into a running container (docker <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/exec/">exec</a>)</p></li>
+<li><p>Create a new image from a container’s changes ( docker <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/commit/">commit</a> )</p></li>
+<li><p>Push an image or a repository to a registry ( docker <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/push/">push</a> )</p></li>
+</ol>
+</div></blockquote>
+<section id="create-a-file-named-dockerfile">
+<h4>1. Create a file named Dockerfile<a class="headerlink" href="#create-a-file-named-dockerfile" title="Permalink to this heading"></a></h4>
+<p>Docker builds images automatically by reading the instructions from a <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dockerfile is a text file that contains all commands, in order, needed to build a given image.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">FROM --platform=linux/amd64 ubuntu:21.04</span>
+
+<span class="go">MAINTAINER Ricardo S. Jacomini &lt;rdesouz4@jhu.edu&gt;</span>
+
+<span class="go">RUN uname -a</span>
+
+<span class="go">ENV TZ=America/New_York</span>
+
+<span class="go">RUN apt-get update -qq</span>
+
+<span class="go">RUN apt-get install -y tzdata</span>
+
+<span class="go">RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime &amp;&amp; dpkg-reconfigure -f noninteractive tzdata</span>
+
+<span class="go">RUN date</span>
+
+<span class="go">RUN apt-get install -yq --no-install-suggests --no-install-recommends \</span>
+
+<span class="go">    ca-certificates gcc g++ make git wget bzip2 libbz2-dev \</span>
+
+<span class="go">    zlib1g-dev liblzma-dev libncurses5-dev libncursesw5-dev xz-utils \</span>
+
+<span class="go">    bwa bedtools \</span>
+
+<span class="go">    software-properties-common</span>
+
+<span class="gp"># </span>****<span class="w"> </span>Install<span class="w"> </span>HTSLIB<span class="w"> </span>****
+
+<span class="go">RUN wget https://github.com/samtools/htslib/releases/download/1.9/htslib-1.9.tar.bz2</span>
+
+<span class="go">RUN tar -vxjf htslib-1.9.tar.bz2</span>
+
+<span class="go">WORKDIR htslib-1.9</span>
+
+<span class="go">RUN ./configure --prefix=/usr/local</span>
+
+<span class="go">RUN make</span>
+
+<span class="go">RUN make install</span>
+
+<span class="go">WORKDIR /</span>
+
+<span class="go">RUN rm htslib* -Rf</span>
+
+<span class="gp"># </span>****<span class="w"> </span>Install<span class="w"> </span>BCFTools<span class="w"> </span>****
+
+<span class="go">WORKDIR /</span>
+
+<span class="go">RUN wget https://github.com/samtools/bcftools/releases/download/1.9/bcftools-1.9.tar.bz2</span>
+
+<span class="go">RUN tar -vxjf bcftools-1.9.tar.bz2</span>
+
+<span class="go">WORKDIR bcftools-1.9</span>
+
+<span class="go">RUN ./configure --prefix=/usr/local</span>
+
+<span class="go">RUN make</span>
+
+<span class="go">RUN make install</span>
+
+<span class="go">WORKDIR /</span>
+
+<span class="go">RUN rm bcftools* -Rf</span>
+
+<span class="gp"># </span>****<span class="w"> </span>Install<span class="w"> </span>Canu<span class="w"> </span>****
+
+<span class="go">WORKDIR /opt</span>
+
+<span class="go">RUN git clone https://github.com/marbl/canu.git</span>
+
+<span class="go">WORKDIR canu/src</span>
+
+<span class="go">RUN make -j 4</span>
+
+<span class="go">WORKDIR /</span>
+
+<span class="gp"># </span>****<span class="w"> </span>Set<span class="w"> </span>up<span class="w"> </span>environment<span class="w"> </span>variable<span class="w"> </span>****
+
+<span class="go">ENV PATH=&quot;/opt/nanopolish:/opt/nanopolish/bin:/opt/canu/build/bin/:$PATH&quot;</span>
+
+<span class="go">ENV LD_LIBRARY_PATH=&quot;/opt/nanopolish/lib:$LD_LIBRARY_PATH&quot;</span>
+
+<span class="go">ENV C_INCLUDE_PATH =&quot;/opt/nanopolish/include:$LD_LIBRARY_PATH&quot;&gt;</span>
+
+<span class="gp"># </span>****<span class="w"> </span>Install<span class="w"> </span>Nanopolish<span class="w"> </span>****
+
+<span class="go">WORKDIR /opt</span>
+
+<span class="go">RUN git clone --recursive https://github.com/jts/nanopolish.git</span>
+
+<span class="go">WORKDIR /opt/nanopolish</span>
+
+<span class="go">RUN make all</span>
+
+<span class="go">RUN make test</span>
+
+<span class="go">RUN rm *.tar.*</span>
+</pre></div>
+</div>
+</section>
+<section id="build-an-image-from-a-dockerfile">
+<h4>2. Build an image from a Dockerfile<a class="headerlink" href="#build-an-image-from-a-dockerfile" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker build [OPTIONS] PATH | URL | -</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$  </span>docker<span class="w"> </span>build<span class="w"> </span>-<span class="w"> </span>&lt;<span class="w"> </span>Dockerfile
+</pre></div>
+</div>
+</section>
+<section id="create-a-tag-target-image-that-refers-to-source-image">
+<h4>3. Create a tag target image that refers to source image<a class="headerlink" href="#create-a-tag-target-image-that-refers-to-source-image" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</p>
+</div></blockquote>
+<p>Tag an image referenced by ID.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>image<span class="w"> </span>ls
+<span class="go">REPOSITORY                               TAG               IMAGE ID       CREATED          SIZE</span>
+<span class="go">&lt;none&gt;                                   &lt;none&gt;            540135da7ceb   47 minutes ago   1.96GB</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>tag<span class="w"> </span>540135da7ceb<span class="w"> </span>archrockfish/nanopolish:0.13.3
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>image<span class="w"> </span>ls
+<span class="go">REPOSITORY                               TAG               IMAGE ID       CREATED        SIZE</span>
+<span class="go">archrockfish/nanopolish                  0.13.3            540135da7ceb   49 minutes ago   1.96GB</span>
+</pre></div>
+</div>
+</section>
+<section id="run-a-command-in-a-new-container">
+<h4>4. Run a command in a new container<a class="headerlink" href="#run-a-command-in-a-new-container" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker run [OPTIONS] IMAGE [COMMAND] [ARG…]</p>
+</div></blockquote>
+<p>Run it will create a container and start a Bash session to a specified image using IMAGE ID.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>540135da7ceb<span class="w"> </span>bash
+<span class="gp">root@421451a1f942:/opt/nanopolish#</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>ps<span class="w"> </span>-all
+<span class="go">CONTAINER ID   IMAGE          COMMAND   CREATED          STATUS                     PORTS     NAMES</span>
+<span class="go">421451a1f942   540135da7ceb   &quot;bash&quot;    22 seconds ago   Exited (0) 5 seconds ago             stupefied_johnson</span>
+</pre></div>
+</div>
+<p>or you can Run it will create a container named nanopolish using <code class="docutils literal notranslate"><span class="pre">REPOSITORY</span></code>, if it was tagged. (<code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">3</span></code>)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>nanopolish<span class="w"> </span>-it<span class="w"> </span>archrockfish/nanopolish:0.13.3<span class="w"> </span>bash
+<span class="gp">root@0c192de0b227:/#</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>ps<span class="w"> </span>--all
+<span class="go">CONTAINER ID   IMAGE                            COMMAND   CREATED         STATUS          PORTS     NAMES</span>
+<span class="go">0c192de0b227   archrockfish/nanopolish:0.13.3   &quot;bash&quot;    3 minutes ago   Up 44 seconds             nanopolish</span>
+</pre></div>
+</div>
+</section>
+<section id="start-one-or-more-stopped-containers">
+<h4>5. Start one or more stopped containers<a class="headerlink" href="#start-one-or-more-stopped-containers" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker start [OPTIONS] CONTAINER [CONTAINER…]</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>start<span class="w"> </span>nanopolish
+<span class="go">nanopolish</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>ps
+<span class="go">CONTAINER ID   IMAGE          COMMAND   CREATED          STATUS         PORTS     NAMES</span>
+<span class="go">0c192de0b227   540135da7ceb   &quot;bash&quot;    46 seconds ago   Up 5 seconds             nanopolish</span>
+</pre></div>
+</div>
+</section>
+<section id="exec-perform-a-command-into-a-running-container">
+<h4>6. Exec (perform) a command into a running container<a class="headerlink" href="#exec-perform-a-command-into-a-running-container" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker exec [OPTIONS] CONTAINER COMMAND [ARG…]</p>
+</div></blockquote>
+<p>First, start a container (<code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">5</span></code>), or keep the container running (<code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">4</span></code>) in the background, to run it with <code class="docutils literal notranslate"><span class="pre">`--detach</span></code> (or <code class="docutils literal notranslate"><span class="pre">-d</span></code>) argument.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to delete that first before you can re-create a container with the same name with.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>stop<span class="w"> </span>nanopolish
+<span class="go">nanopolish</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>rm<span class="w"> </span>nanopolish
+<span class="go">nanopolish</span>
+<span class="go">or simply choose a different name for the new container.</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>nanopolish_local<span class="w"> </span>-dit<span class="w"> </span>archrockfish/nanopolish:0.13.3
+<span class="go">a3dcaa7760906861250329dca37b01f79caec10310e1bc37b7fdf6f341de5d27</span>
+<span class="go">Then, execute an interactive bash shell on the new container.</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nanopolish_local<span class="w"> </span>bash
+<span class="gp">root@a3dcaa776090:/opt/nanopolish#</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-new-image-from-a-containers-changes">
+<h4>7. Create a new image from a container’s changes<a class="headerlink" href="#create-a-new-image-from-a-containers-changes" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>ps<span class="w"> </span>-all
+<span class="go">CONTAINER ID   IMAGE                            COMMAND   CREATED          STATUS                      PORTS     NAMES</span>
+<span class="go">a3dcaa776090   archrockfish/nanopolish:0.13.3   &quot;bash&quot;    18 seconds ago   Exited (0) 14 seconds ago             nanopolish_local</span>
+
+<span class="gp">[userid@local ~]$  </span>docker<span class="w"> </span>commit<span class="w"> </span>a3dcaa776090<span class="w"> </span>archrockfish/nanopolish:0.13.3
+<span class="go">sha256:b379b32916535b146b1fce63a14fade2cdf60bbaacf36625732cec379e03dd96</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>inspect<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;{{ .Config.Env }}&quot;</span><span class="w"> </span>a3dcaa776090
+<span class="go">[PATH=/opt/nanopolish:/opt/nanopolish/bin:/opt/canu/build/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin TZ=America/New_York LD_LIBRARY_PATH=/opt/nanopolish/lib: C_INCLUDE_PATH==/opt/nanopolish/include:/opt/nanopolish/lib:]</span>
+
+<span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>image<span class="w"> </span>ls
+<span class="go">REPOSITORY                               TAG               IMAGE ID       CREATED         SIZE</span>
+<span class="go">archrockfish/nanopolish                  0.13.3            0375e5f8a31d   4 minutes ago   1.96GB</span>
+</pre></div>
+</div>
+</section>
+<section id="push-an-image-or-a-repository-to-a-registry">
+<h4>8. Push an image or a repository to a registry<a class="headerlink" href="#push-an-image-or-a-repository-to-a-registry" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ docker push [OPTIONS] NAME[:TAG]</p>
+</div></blockquote>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@local ~]$ </span>docker<span class="w"> </span>push<span class="w"> </span>archrockfish/nanopolish:0.13.3
+<span class="go">The push refers to repository [docker.io/archrockfish/nanopolish]</span>
+<span class="go">ee33934ad57b: Layer already exists</span>
+<span class="go">...</span>
+<span class="go">...</span>
+<span class="go">...</span>
+</pre></div>
+</div>
+</section>
+<section id="pull-an-image-from-docker-hub">
+<h4>9. Pull an image from docker hub<a class="headerlink" href="#pull-an-image-from-docker-hub" title="Permalink to this heading"></a></h4>
+<blockquote>
+<div><p><strong>Usage</strong> : $ singularity pull [pull options…] [output file] &lt;URI&gt;</p>
+</div></blockquote>
+<p>The last step you will be able to create a singularity container on Rockfish cluster.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Root users can use a <code class="docutils literal notranslate"><span class="pre">build</span></code> option, instead of <code class="docutils literal notranslate"><span class="pre">pull</span></code> command.</p>
+<p>$ sudo singularity build nanopolish.sif docker://archrockfish/nanopolish:0.13.3</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">[userid@login03 ~]$ </span>interact<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>-t<span class="w"> </span><span class="m">120</span>
+<span class="gp">[userid@c011 ~]$ </span>sudo<span class="w"> </span>singularity<span class="w"> </span>build<span class="w"> </span>nanopolish.sif<span class="w"> </span>docker://archrockfish/nanopolish:0.13.3
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You need to create a repository and assign who are the <a class="reference external" href="https://docs.docker.com/docker-hub/repos/">contributors</a> with permission to upload an image to this repository, before tag an image referenced by ID (<code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">3</span></code>).</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Snakemake.html" class="btn btn-neutral float-left" title="Snakemake Workflows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Virtual.html" class="btn btn-neutral float-right" title="Virtual Environment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

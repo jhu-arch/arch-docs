@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+# usage: $ snakemake -np mapped_reads/B.bam
+#          snakemake -np mapped_reads/A.bam mapped_reads/B.bam
+#          snakemake -np mapped_reads/{A,B}.bam
+
+
+rule samtools_sort:
+    input:
+        "../mapped_reads/{sample}.bam"
+    output:
+        "../sorted_reads/{sample}.bam"
+    shell:
+    '''
+        module load samtools
+
+        samtools sort -T sorted_reads/{wildcards.sample} -O bam {input} > {output}
+    '''

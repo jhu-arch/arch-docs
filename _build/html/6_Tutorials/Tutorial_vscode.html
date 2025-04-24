@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vscode &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Citing ARCH" href="../7_Support/Citing_Arch.html" />
+    <link rel="prev" title="Managing Software Using Lmod" href="Tutorial_Software.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Vscode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-vs-code-on-rockfish">Accessing VS Code on Rockfish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-open-ondemand-web-portal">Using Open OnDemand (Web Portal)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-vscode-server-sh-on-the-command-line">Using <code class="docutils literal notranslate"><span class="pre">vscode-server.sh</span></code> on the Command Line</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#connect-to-rockfish-login-node">Connect to Rockfish (login node)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-slurm-script">Create the Slurm script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#submit-the-job">Submit the job</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#locate-the-output-file">Locate the output file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-ssh-tunnel-instructions">Get SSH tunnel instructions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-ssh-tunnel-from-your-local-machine">Create the SSH tunnel (from your local machine)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-vs-code-in-your-browser">Open VS Code in your browser</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Vscode</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/6_Tutorials/Tutorial_vscode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vscode">
+<h1>Vscode<a class="headerlink" href="#vscode" title="Permalink to this heading"></a></h1>
+<section id="accessing-vs-code-on-rockfish">
+<h2>Accessing VS Code on Rockfish<a class="headerlink" href="#accessing-vs-code-on-rockfish" title="Permalink to this heading"></a></h2>
+<p>You can access Visual Studio Code on Rockfish in two ways:</p>
+</section>
+<section id="using-open-ondemand-web-portal">
+<h2>Using Open OnDemand (Web Portal)<a class="headerlink" href="#using-open-ondemand-web-portal" title="Permalink to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Connect to the Hopkins VPN
+Rockfish’s Open OnDemand (OOD) is only accessible within the JHU network.</p></li>
+<li><p>Open the portal
+Go to: <a class="reference external" href="https://portal.rockfish.jhu.edu">https://portal.rockfish.jhu.edu</a></p></li>
+<li><p>Login
+Use your Rockfish credentials.</p></li>
+<li><p>Launch VS Code
+- On the dashboard, click “VSCode Server IDE/Editor”
+- Choose your wall time, number of cores, and partition
+- Click Launch</p></li>
+<li><p>Connect
+When the session is ready, click the “Connect to VS Code” button on the new page.</p></li>
+</ol>
+</section>
+<section id="using-vscode-server-sh-on-the-command-line">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">vscode-server.sh</span></code> on the Command Line<a class="headerlink" href="#using-vscode-server-sh-on-the-command-line" title="Permalink to this heading"></a></h2>
+<p>This method is great for advanced users who prefer working directly via Slurm.</p>
+<section id="connect-to-rockfish-login-node">
+<h3>Connect to Rockfish (login node)<a class="headerlink" href="#connect-to-rockfish-login-node" title="Permalink to this heading"></a></h3>
+</section>
+<section id="create-the-slurm-script">
+<h3>Create the Slurm script<a class="headerlink" href="#create-the-slurm-script" title="Permalink to this heading"></a></h3>
+<p>Run the script with desired parameters (use <code class="docutils literal notranslate"><span class="pre">-h</span></code> for help):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vscode-server.sh<span class="w"> </span>-c<span class="w"> </span><span class="m">6</span><span class="w"> </span>-t<span class="w"> </span><span class="m">02</span>:00:00<span class="w"> </span>-p<span class="w"> </span>parallel
+</pre></div>
+</div>
+</section>
+<section id="submit-the-job">
+<h3>Submit the job<a class="headerlink" href="#submit-the-job" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>VSCode-Server.slurm.script
+</pre></div>
+</div>
+</section>
+<section id="locate-the-output-file">
+<h3>Locate the output file<a class="headerlink" href="#locate-the-output-file" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-ltr<span class="w"> </span>vscode-server.job*
+</pre></div>
+</div>
+<p>This will output a file like: <code class="docutils literal notranslate"><span class="pre">vscode-server.job.&lt;jobid&gt;.out</span></code></p>
+</section>
+<section id="get-ssh-tunnel-instructions">
+<h3>Get SSH tunnel instructions<a class="headerlink" href="#get-ssh-tunnel-instructions" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>vscode-server.job.&lt;jobid&gt;.out
+</pre></div>
+</div>
+<p>The file includes an <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-N</span> <span class="pre">-L</span> <span class="pre">...</span></code> command for setting up the SSH tunnel.</p>
+</section>
+<section id="create-the-ssh-tunnel-from-your-local-machine">
+<h3>Create the SSH tunnel (from your local machine)<a class="headerlink" href="#create-the-ssh-tunnel-from-your-local-machine" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span>&lt;local_port&gt;:localhost:&lt;remote_port&gt;<span class="w"> </span>&lt;your_user&gt;@rockfish.jhu.edu
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Paste the full command from the <code class="docutils literal notranslate"><span class="pre">.out</span></code> file</p></li>
+<li><p>Enter your Rockfish password when prompted</p></li>
+<li><p>Leave this terminal open (minimized is fine)</p></li>
+</ul>
+</section>
+<section id="open-vs-code-in-your-browser">
+<h3>Open VS Code in your browser<a class="headerlink" href="#open-vs-code-in-your-browser" title="Permalink to this heading"></a></h3>
+<p>Go to <code class="docutils literal notranslate"><span class="pre">http://localhost:&lt;local_port&gt;</span></code> (as provided in the <code class="docutils literal notranslate"><span class="pre">.out</span></code> file)</p>
+</section>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>You can run <code class="docutils literal notranslate"><span class="pre">vscode-server.sh</span> <span class="pre">-h</span></code> to see available options and usage.</p></li>
+<li><p>Don’t forget to close your job when done:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span>-f<span class="w"> </span>&lt;jobid&gt;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tutorial_Software.html" class="btn btn-neutral float-left" title="Managing Software Using Lmod" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../7_Support/Citing_Arch.html" class="btn btn-neutral float-right" title="Citing ARCH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

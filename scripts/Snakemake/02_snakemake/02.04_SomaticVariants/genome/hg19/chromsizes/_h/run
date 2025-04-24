@@ -1,0 +1,11 @@
+#!/bin/sh
+
+#SBATCH -J chromosizes
+#SBATCH -p defq
+#SBATCH --time=2:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --output=chromosizes.job.%j.out
+
+module load mysql/8.0.29
+
+mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -e "select chrom, size from hg19.chromInfo"  > hg19.genome

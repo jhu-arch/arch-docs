@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#
+# usage: $ snakemake -np sorted_reads/B.bam
+#          snakemake -np mapped_reads/A.bam mapped_reads/B.bam
+#          snakemake -np mapped_reads/{A,B}.bam
+
+
+rule bwa_map:
+    input:
+        "../data/genome.fa",
+        "../data/samples/{sample}.fastq"
+    output:
+        "../mapped_reads/{sample}.bam"
+    shell:
+    '''
+        module load bwa-mem
+        bwa mem {input} | samtools view -Sb - > {output}
+'''

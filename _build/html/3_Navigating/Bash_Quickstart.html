@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bash Quick Start &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Manage Group Permissions" href="Managing_Group_Permissions.html" />
+    <link rel="prev" title="File Transfers" href="File_Transfers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Bash Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-bash-startup-files">Understanding Bash Startup Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#protecting-your-path">Protecting Your $PATH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#aliases-quick-commands">Aliases: Quick Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#helpful-customizations">Helpful Customizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-bashrc-template">Example <cite>.bashrc</cite> Template</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#useful-bash-tricks-for-hpc-users">Useful Bash Tricks for HPC Users</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#history-expansion-and-reuse">History Expansion and Reuse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#timing-and-logging">Timing and Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#navigation-and-shortcuts">Navigation and Shortcuts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#monitoring-and-usage">Monitoring and Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-inspection">File Inspection</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-your-configuration">Testing Your Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy-default-bash-files">Copy Default Bash Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#further-resources">Further Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Bash Quick Start</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/3_Navigating/Bash_Quickstart.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bash-quick-start">
+<h1>Bash Quick Start<a class="headerlink" href="#bash-quick-start" title="Permalink to this heading"></a></h1>
+<p>This page introduces core Bash configuration practices to help Rockfish users customize their environment effectively. You’ll learn how to manage startup files, use aliases, extend your <cite>PATH</cite>, and improve your shell productivity with built-in tools.</p>
+<section id="understanding-bash-startup-files">
+<h2>Understanding Bash Startup Files<a class="headerlink" href="#understanding-bash-startup-files" title="Permalink to this heading"></a></h2>
+<p>When you connect to Rockfish, your shell session is initialized based on whether it’s a <strong>login</strong> or <strong>interactive</strong> shell:</p>
+<ul class="simple">
+<li><p><strong>Login shells</strong> (like SSH): Bash looks for and loads the first of these files: <cite>~/.bash_profile</cite>, <cite>~/.bash_login</cite>, or <cite>~/.profile</cite>.</p></li>
+<li><p><strong>Interactive non-login shells</strong> (like opening a terminal or launching <cite>bash</cite>): Bash loads <cite>~/.bashrc</cite>.</p></li>
+</ul>
+<p>To ensure consistent behavior across environments, your <cite>.bash_profile</cite> should source <cite>.bashrc</cite>. This is already set by default for Rockfish users:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Because <cite>.bashrc</cite> is sourced in every interactive shell, place all your personal configurations there — aliases, environment variables, <cite>$PATH</cite>, and module loads.</p>
+</section>
+<section id="protecting-your-path">
+<h2>Protecting Your $PATH<a class="headerlink" href="#protecting-your-path" title="Permalink to this heading"></a></h2>
+<p>When adding directories to your <cite>PATH</cite>, avoid doing so repeatedly in nested shells by using a guard variable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ROCKFISH_ENV</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROCKFISH_ENV</span><span class="o">=</span><span class="m">1</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>This ensures your custom paths are added only once per session.</p>
+</section>
+<section id="aliases-quick-commands">
+<h2>Aliases: Quick Commands<a class="headerlink" href="#aliases-quick-commands" title="Permalink to this heading"></a></h2>
+<p><strong>Aliases</strong> are shorthand for longer commands, helping you work more efficiently. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">alias</span><span class="w"> </span><span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -lFh&#39;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">usage</span><span class="o">=</span><span class="s1">&#39;quotas.py&#39;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">la</span><span class="o">=</span><span class="s1">&#39;ls -a&#39;</span>
+<span class="nb">alias</span><span class="w"> </span><span class="nv">gpustat</span><span class="o">=</span><span class="s1">&#39;nvidia-smi&#39;</span>
+</pre></div>
+</div>
+<p>To make these available every time you log in, define them in your <cite>~/.bashrc</cite>.</p>
+</section>
+<section id="helpful-customizations">
+<h2>Helpful Customizations<a class="headerlink" href="#helpful-customizations" title="Permalink to this heading"></a></h2>
+<p>Other useful customizations — like loading modules or setting environment variables — should also go in <cite>~/.bashrc</cite>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>intel/2020.2
+module<span class="w"> </span>load<span class="w"> </span>gcc/11.2.0
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>vim
+<span class="nb">export</span><span class="w"> </span><span class="nv">PROJECT_SCRIPTS</span><span class="o">=</span><span class="nv">$HOME</span>/projects/scripts
+</pre></div>
+</div>
+</section>
+<section id="example-bashrc-template">
+<h2>Example <cite>.bashrc</cite> Template<a class="headerlink" href="#example-bashrc-template" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Source system-wide defaults</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>/etc/bashrc<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span>.<span class="w"> </span>/etc/bashrc
+<span class="k">fi</span>
+
+<span class="c1"># Prevent re-initializing environment on every subshell</span>
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ROCKFISH_ENV</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROCKFISH_ENV</span><span class="o">=</span><span class="m">1</span>
+
+<span class="w">    </span><span class="c1"># Extend PATH for custom scripts</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+
+<span class="w">    </span><span class="c1"># Load frequently used modules</span>
+<span class="w">    </span>module<span class="w"> </span>load<span class="w"> </span>module_xyz
+
+<span class="w">    </span><span class="c1"># Set environment variables</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">EDITOR</span><span class="o">=</span>vim
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">PROJECT_SCRIPTS</span><span class="o">=</span><span class="nv">$HOME</span>/projects/scripts
+
+<span class="w">    </span><span class="c1"># Define helpful aliases</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">ll</span><span class="o">=</span><span class="s1">&#39;ls -lFh&#39;</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">la</span><span class="o">=</span><span class="s1">&#39;ls -a&#39;</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">gpustat</span><span class="o">=</span><span class="s1">&#39;nvidia-smi&#39;</span>
+<span class="w">    </span><span class="nb">alias</span><span class="w"> </span><span class="nv">usage</span><span class="o">=</span><span class="s1">&#39;quotas.py&#39;</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<section id="useful-bash-tricks-for-hpc-users">
+<h3>Useful Bash Tricks for HPC Users<a class="headerlink" href="#useful-bash-tricks-for-hpc-users" title="Permalink to this heading"></a></h3>
+<section id="history-expansion-and-reuse">
+<h4>History Expansion and Reuse<a class="headerlink" href="#history-expansion-and-reuse" title="Permalink to this heading"></a></h4>
+<ul>
+<li><p><strong>Repeat the last command:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!!
+</pre></div>
+</div>
+</li>
+<li><p><strong>Search your command history:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">history</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>slurm
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="timing-and-logging">
+<h4>Timing and Logging<a class="headerlink" href="#timing-and-logging" title="Permalink to this heading"></a></h4>
+<ul>
+<li><p><strong>Measure how long a command takes:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">time</span><span class="w"> </span>./my_script.sh
+</pre></div>
+</div>
+</li>
+<li><p><strong>Redirect standard output and error to a single file:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./script.sh<span class="w"> </span>&gt;<span class="w"> </span>script.out<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Append to an existing output log:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./script.sh<span class="w"> </span>&gt;&gt;<span class="w"> </span>script.out<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="navigation-and-shortcuts">
+<h4>Navigation and Shortcuts<a class="headerlink" href="#navigation-and-shortcuts" title="Permalink to this heading"></a></h4>
+<ul>
+<li><p><strong>Make a directory and immediately `cd` into it:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>~/project/output<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$_</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Use brace expansion to make multiple folders:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>scratch/<span class="o">{</span>day1,day2,day3<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Create a quick backup of a file:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>script.sh<span class="o">{</span>,.bak<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="monitoring-and-usage">
+<h4>Monitoring and Usage<a class="headerlink" href="#monitoring-and-usage" title="Permalink to this heading"></a></h4>
+<ul>
+<li><p><strong>Check your running processes:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>top<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Watch GPU usage in real time:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>watch<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span>nvidia-smi
+</pre></div>
+</div>
+</li>
+<li><p><strong>Show job efficiency stats (Slurm):</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>seff<span class="w"> </span>&lt;jobid&gt;
+reportseff<span class="w"> </span>&lt;jobid&gt;
+jobstats<span class="w"> </span>&lt;jobid&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="file-inspection">
+<h4>File Inspection<a class="headerlink" href="#file-inspection" title="Permalink to this heading"></a></h4>
+<ul>
+<li><p><strong>Preview the top or bottom of a file:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>logfile.txt
+tail<span class="w"> </span>-n<span class="w"> </span><span class="m">20</span><span class="w"> </span>logfile.txt
+</pre></div>
+</div>
+</li>
+<li><p><strong>Follow a growing log file in real time:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail<span class="w"> </span>-f<span class="w"> </span>logfile.txt
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="testing-your-configuration">
+<h2>Testing Your Configuration<a class="headerlink" href="#testing-your-configuration" title="Permalink to this heading"></a></h2>
+<p>To apply changes without logging out:</p>
+<ul class="simple">
+<li><p>Use <cite>source ~/.bashrc</cite> in an active terminal</p></li>
+<li><p>Open a second terminal to test changes independently</p></li>
+</ul>
+</section>
+<section id="copy-default-bash-files">
+<h2>Copy Default Bash Files<a class="headerlink" href="#copy-default-bash-files" title="Permalink to this heading"></a></h2>
+<p>If you don’t have a <cite>.bashrc</cite> or <cite>.profile</cite>, you can copy the cluster defaults from:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>/etc/skel/.bashrc<span class="w"> </span>~/.bashrc
+cp<span class="w"> </span>/etc/skel/.profile<span class="w"> </span>~/.profile
+</pre></div>
+</div>
+<p>Customize these as needed with your preferred modules, aliases, and paths.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h2>
+<p><strong>Q: Why isn’t my `.profile` being read?</strong>
+Bash loads the first available of the following: <cite>.bash_profile</cite>, <cite>.bash_login</cite>, or <cite>.profile</cite>. Use only one, and ensure it sources <cite>.bashrc</cite>.</p>
+<p><strong>Q: Why is my `$PATH` getting longer and longer?</strong>
+You’re likely appending to it every time <cite>.bashrc</cite> is sourced. Use a guard variable like <cite>ROCKFISH_ENV</cite> to prevent that.</p>
+</section>
+<section id="further-resources">
+<h2>Further Resources<a class="headerlink" href="#further-resources" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.gnu.org/software/bash/manual/">Bash Reference Manual</a></p></li>
+<li><p><a class="reference external" href="https://tldp.org/LDP/Bash-Beginners-Guide/html/">TLDP Bash Guide</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="File_Transfers.html" class="btn btn-neutral float-left" title="File Transfers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Managing_Group_Permissions.html" class="btn btn-neutral float-right" title="Manage Group Permissions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

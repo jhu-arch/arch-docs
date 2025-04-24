@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# create this module use need install rf
+# pip install git+git://github.com/ricardojacomini/rf.git --upgrade --user
+#
+# usage: rf run .
+
+# OPENJPEG Library and Applications
+
+module load cmake
+module load gcc
+
+VERSION=2.4.0
+APP_NAME=openjpeg
+
+# set to FALSE to install it on Rockfish as an external package
+EVAL=true
+
+if [ ${EVAL} ] ; then
+    # Installation in user home
+    PREFIX=${HOME}'/softwares_compiled/'${APP_NAME}'/'$VERSION
+    if [ ! -d "${PREFIX}" ]; then mkdir -p ${PREFIX}; fi
+    chown rdesouz4:rfadmin ${PREFIX}
+
+    cmd=`echo "cp ../_h/env.sh ${PREFIX}" > ./env.sh`
+
+    echo -e '\n Installation in '${PREFIX}' \n'
+    echo -e '\n Please, run the source env.sh to activate it. \n'
+else
+    PREFIX=/data/apps/extern/${APP_NAME}'/'$VERSION
+    if [ ! -d "${PREFIX}" ]; then mkdir -p ${PREFIX}; fi
+    chown rdesouz4:rfadmin ${PREFIX}
+
+    lmod=/data/apps/lmod/linux-centos8-x86_64/ext/${APP_NAME}/
+    if [ ! -d "${lmod}" ]; then mkdir -p ${lmod}; fi
+    chown rdesouz4:rfadmin ${lmod}
+
+    cmd=`echo "cp ../_h/${VERSION}.lua ${PREFIX}" > ./env.sh`
+    echo -e '\n Installation in '${PREFIX}' \n'
+fi
+
+DIR=`pwd`
+
+wget https://github.com/uclouvain/${APP_NAME}/archive/refs/tags/v${VERSION}.tar.gz
+
+tar -zxvf v2.4.0.tar.gz
+rm *.tar.gz
+
+cd $APP_NAME-$VERSION/
+mkdir build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_FLAGS="-O3 -msse4.1 -DNDEBUG" ..
+
+make -j 4
+make install DESTDIR=${PREFIX}
+
+cd $DIR
+
+echo "Copying the env script"
+
+sh env.sh

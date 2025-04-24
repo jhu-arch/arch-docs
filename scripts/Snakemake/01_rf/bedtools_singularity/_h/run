@@ -1,0 +1,4 @@
+#!/bin/bash
+set -o errexit -euo pipefail
+
+bedtools genomecov -i ../_h/refseq.chr1.exons.bed -g ../_h/knownGene.hg18.chr21.short.bed -bg > out.tsv 

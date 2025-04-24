@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#SBATCH -J bwamem
+#SBATCH -p defq
+#SBATCH --time=2:00:00
+#SBATCH --cpus-per-task=1
+#SBATCH --output=bwa.job.job.%j.out
+
+module load bwa-mem/0.7.17
+
+echo -n "Start: "; date --rfc-3339=seconds
+ln -s ../../_m/*.fa ../_m/.
+bwa index ../_m/*.fa
+echo -n "End: "; date --rfc-3339=seconds

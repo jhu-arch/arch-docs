@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# https://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html
+#
+# bedtools genomecov computes histograms (default), per-base reports (-d) and BEDGRAPH (-bg) summaries of feature coverage (e.g., aligned sequences) for a given genome.
+
+set -o errexit -euo pipefail
+
+bedtools genomecov -i ../_h/refseq.chr1.exons.bed -g ../_h/knownGene.hg18.chr21.short.bed -bg > out.tsv

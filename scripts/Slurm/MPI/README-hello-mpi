@@ -1,0 +1,22 @@
+It is a simple MPI (Message Passing Interface) program written in C. This program initializes MPI, retrieves the rank and size of the MPI communicator (the group of processes), and then prints a "Hello, World" message along with the process's rank and the total number of processes in the communicator. Finally, it finalizes MPI and returns 0.
+
+Here's a breakdown of the code:
+
+#include <mpi.h>: This line includes the MPI library header, allowing you to use MPI functions and types in your program.
+#include <stdio.h>: This line includes the standard I/O library header for functions like printf.
+In the main function:
+int rank, size;: Declares two integer variables, rank and size, which will be used to store the process rank and the number of processes in the communicator.
+MPI_Init(&argc, &argv);: Initializes the MPI environment. The &argc and &argv arguments allow you to pass command-line arguments to the MPI initialization function.
+MPI_Comm_rank(MPI_COMM_WORLD, &rank);: Retrieves the rank of the current process within the communicator MPI_COMM_WORLD and stores it in the rank variable.
+MPI_Comm_size(MPI_COMM_WORLD, &size);: Retrieves the total number of processes in the communicator MPI_COMM_WORLD and stores it in the size variable.
+printf("Hello, World. I am %d of %d\n", rank, size);: Prints a message to the standard output, including the rank and size of the communicator.
+MPI_Finalize();: Finalizes the MPI environment, freeing up resources and allowing the processes to exit gracefully.
+return 0;: Returns 0 to indicate successful execution.
+This program is a basic MPI "Hello, World" example that demonstrates the use of MPI functions to interact with a group of processes. When you run this program with MPI, you will see output similar to:
+
+Hello, World.  I am 0 of 4
+Hello, World.  I am 2 of 4
+Hello, World.  I am 1 of 4
+Hello, World.  I am 3 of 4
+
+The actual output may vary depending on the number of MPI processes and the order in which they execute.

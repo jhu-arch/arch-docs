@@ -1,0 +1,9 @@
+Bootstrap: docker
+From: ubuntu:20.10
+
+%post
+    apt-get -y update
+    apt-get -y install bedtools
+
+%environment
+    export LC_ALL=C

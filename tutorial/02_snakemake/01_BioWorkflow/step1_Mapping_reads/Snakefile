@@ -1,0 +1,24 @@
+# First load the module
+#        module load snakemake
+#
+#   --dry-run, --dryrun, -n
+#                        Do not execute anything, and display what would be done. If you have a very large workflow, use --dry-run --quiet to just print a summary of the DAG of jobs.
+#                        (default: False)
+#
+#   --printshellcmds, -p  Print out the shell commands that will be executed. (default: False)
+#
+# usage: $ snakemake -np ../mapped_reads/A.bam
+#          snakemake --cores 4 ../mapped_reads/A.bam
+
+
+rule bwa_map:
+    input:
+        "../data/genome.fa",
+        "../data/samples/A.fastq"
+    output:
+        "../mapped_reads/A.bam"
+    shell:
+        '''
+    module load bwa-mem samtools
+    bwa mem {input} | samtools view -Sb - > {output}
+'''

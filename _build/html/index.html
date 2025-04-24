@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rockfish Cluster Software Guide &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script src="_static/design-tabs.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="About ARCH" href="1_About_ARCH/About_ARCH.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#">
+            
+              <img src="_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Rockfish Cluster Software Guide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="rockfish-cluster-software-guide">
+<h1>Rockfish Cluster Software Guide<a class="headerlink" href="#rockfish-cluster-software-guide" title="Permalink to this heading"></a></h1>
+<p>This site serves as an introduction and how-to software guide for users of the Rockfish cluster at <a class="reference external" href="https://www.arch.jhu.edu/about-rockfish/">ARCH</a>. It includes training materials, quick-start instructions, and reference documentation to help researchers make effective use of advanced computing resources.</p>
+<p>The Advanced Research Computing at Hopkins (  <span class="guilabel">ARCH</span> ) — formerly known as MARCC — is a shared computing facility at Johns Hopkins University that enables research, discovery, and learning through advanced computing. ARCH administers high-performance computing resources, manages highly reliable data storage, and provides collaborative scientific support to empower computational research, scholarship, and innovation.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_About_ARCH/RF_Citizen.html#definitions">Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_About_ARCH/RF_Citizen.html#being-a-good-rockfish-citizen">Being a Good Rockfish Citizen</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/ARCH_Terminology.html">ARCH Terminology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/ARCH_Terminology.html#hardware-terminology">Hardware Terminology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/ARCH_Terminology.html#software-and-scheduling">Software and Scheduling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/ARCH_Terminology.html#data-and-storage">Data and Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/RF_Quickstart.html">Rockfish Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#what-you-need">What you need</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#load-software-modules">Load software modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#quick-interactive-work">Quick interactive work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#submit-your-first-batch-job">Submit your first batch job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#managing-python-jupyter-rstudio">Managing Python, Jupyter, RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#storage-locations">Storage locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#house-keeping">House-keeping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/RF_Quickstart.html#need-help">Need help?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/Allocation.html">Allocation and Account Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Allocation.html#requesting-an-allocation">Requesting an Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Allocation.html#requesting-user-accounts">Requesting User Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Allocation.html#storage-allocations">Storage Allocations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Allocation.html#allocation-types">Allocation Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Allocation.html#external-and-collaborative-access">External and Collaborative Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Allocation.html#password-management">Password Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Resources/Filesystems.html">Filesystems on Rockfish</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Filesystems.html#general-guidelines">General Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Filesystems.html#filesystems-at-a-glance">Filesystems at a Glance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_Resources/Filesystems.html#quota-reporting-with-quotas-py">Quota Reporting with <cite>quotas.py</cite></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Connecting_to_Rockfish.html#access-to-login-node">Access to Login Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Connecting_to_Rockfish.html#multiplexing-ssh-connections">Multiplexing SSH Connections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/File_Transfers.html">File Transfers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/File_Transfers.html#copy-files-with-scp">Copy Files with SCP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/File_Transfers.html#synchronize-with-rsync">Synchronize with Rsync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/File_Transfers.html#data-transfer-with-globus">Data Transfer with Globus</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html">Bash Quick Start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#understanding-bash-startup-files">Understanding Bash Startup Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#protecting-your-path">Protecting Your $PATH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#aliases-quick-commands">Aliases: Quick Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#helpful-customizations">Helpful Customizations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#example-bashrc-template">Example <cite>.bashrc</cite> Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#testing-your-configuration">Testing Your Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#copy-default-bash-files">Copy Default Bash Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Bash_Quickstart.html#further-resources">Further Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#checking-file-permissions-and-group-ownership">Checking File Permissions and Group Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#changing-group-ownership">Changing Group Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#viewing-your-group-membership">Viewing Your Group Membership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#setting-the-active-group">Setting the Active Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#default-group-on-login">Default Group on Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#group-permissions-and-quotas">Group Permissions and Quotas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="3_Navigating/Managing_Group_Permissions.html#summary-of-useful-commands">Summary of Useful Commands</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Slurm.html">SLURM Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Slurm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Slurm.html#interactive-sessions">Interactive Sessions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Slurm.html#learn-more">Learn More</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Partitions.html">Available Partitions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Partitions.html#partition-descriptions">Partition Descriptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Partitions.html#viewing-partition-configuration">Viewing Partition Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Partitions.html#key-fields-to-note">Key Fields to Note</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Partitions.html#helpful-tips">Helpful Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Partitions.html#partition-best-practices">Partition Best Practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Submission.html#overview-of-job-types">Overview of Job Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Submission.html#basic-job-submission">Basic Job Submission</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Submission.html#example-batch-script">Example Batch Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Submission.html#interactive-jobs">Interactive Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Submission.html#slurm-environment-variables">Slurm Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Submission.html#output-file-routing">Output File Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Example_Sbatch.html">Example Batch Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#basic-example">Basic Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#openmp-job-script">OpenMP Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#hybrid-mpi-openmp-job-script">Hybrid MPI + OpenMP Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#big-memory-job-script">Big Memory Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#gpu-job-script-namd-4-gpus">GPU Job Script (NAMD, 4 GPUs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#job-array-script">Job Array Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#jupyter-notebook-job-script">Jupyter Notebook Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Example_Sbatch.html#common-sbatch-options">Common sbatch Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Priority.html">Priority and Usage Calculation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Priority.html#how-job-priority-is-calculated">How Job Priority is Calculated</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Usage.html#core-only-partitions">Core-only partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Usage.html#gpu-partitions">GPU partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Usage.html#bigmem-partition">Bigmem partition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Status.html#sqme">sqme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Status.html#scontrol-show-job">scontrol show job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Status.html#sacct">sacct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Status.html#seff">seff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Status.html#reportseff">reportseff</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/Job_Status.html#jobstats">jobstats</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="4_Slurm/GPU_Jobs.html">GPU Jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#available-gpu-partitions">Available GPU Partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#access-requirements">Access Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#gpu-usage-limits">GPU Usage Limits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#gpu-job-submission-example">GPU Job Submission Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#monitoring-gpu-usage-with-jobstats">Monitoring GPU Usage with <cite>jobstats</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#helpful-commands">Helpful Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="4_Slurm/GPU_Jobs.html#additional-tips">Additional Tips</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/RF.html">Reproducibility Framework (RF)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/RF.html#version-control">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/RF.html#tutorials">Tutorials</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Snakemake.html">Snakemake Workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#pipeline">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#sra-toolkit">SRA Toolkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#cutadapt">Cutadapt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#burrows-wheeler-alignment-tool">Burrows-Wheeler Alignment Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#remove-duplicates">Remove duplicates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#add-tags">Add tags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Snakemake.html#tabix">Tabix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Singularity.html">Singularity container</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Singularity.html#building-a-singularity-container-image-from-definitions-file">Building a Singularity Container Image from definitions file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Singularity.html#how-to-build-a-singularity-image-from-docker-hub">How to build a Singularity Image from Docker Hub</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Virtual.html">Virtual Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Virtual.html#python">Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Virtual.html#anaconda">Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Virtual.html#spack">Spack</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="5_Reproducible/Shorts.html">Short Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Shorts.html#python-virtual-environment">Python virtual environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Shorts.html#anaconda-virtual-environment">Anaconda virtual environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Shorts.html#how-to-load-rockfish-r-submodules-into-an-r-session-or-r-studio-environment">How to load Rockfish R submodules into an R session or R-Studio environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_Reproducible/Shorts.html#how-to-create-a-slurm-script">How to create a Slurm script</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Conda_Python.html">Conda Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Conda_R.html">Conda R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Conda_Rstudio.html">Link Conda to RStudio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Conda_Jupyter.html">Link Conda to Jupyter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html">AlphaFold3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html#accessing-alphafold3">Accessing AlphaFold3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html#options">Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html#slurm-batch-script-example">SLURM Batch Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_alphafold3.html#running-interactively">Running Interactively</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html">Aspera CLI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html#start-an-interactive-session-optional">Start an Interactive Session (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html#install-ascli">Install <cite>ascli</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html#configure-ascli">Configure <cite>ascli</cite></a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html#downloading-data">Downloading Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_aspera_cli.html#using-ascli-in-the-future">Using <cite>ascli</cite> in the Future</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html">Job Dependencies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html#job-dependencies-in-slurm">Job Dependencies in SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html#abaqus-job-script-abaqus-job-sh">Abaqus Job Script (<code class="docutils literal notranslate"><span class="pre">abaqus_job.sh</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html#job-submission-script-submit-jobs-sh">Job Submission Script (<code class="docutils literal notranslate"><span class="pre">submit_jobs.sh</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html#make-scripts-executable">Make Scripts Executable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_JobDependencies.html#submit-the-abaqus-job-chain">Submit the Abaqus Job Chain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Jupyter.html">JupyterLab on Rockfish</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Jupyter.html#method-1-open-ondemand-portal">Method 1 – Open OnDemand portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Jupyter.html#method-2-command-line-helper-script">Method 2 – Command-line helper script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Jupyter.html#adding-extra-python-conda-environments">Adding extra Python / Conda environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Jupyter.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html#create-a-cluster-profile">Create a Cluster Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html#write-your-matlab-parallel-script">Write Your MATLAB Parallel Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html#submit-your-job-to-slurm">Submit Your Job to SLURM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Matlab_ParallelServer.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html">Nextflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html#install-and-set-up-nextflow">Install and Set Up Nextflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html#create-a-test-script">Create a Test Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html#write-the-slurm-script">Write the SLURM Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html#make-the-script-executable">Make the Script Executable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html#submit-the-job">Submit the Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Nextflow.html#view-the-output">View the Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html">Open OnDemand</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html#access-requirements">Access Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html#interactive-apps-plugins">Interactive Apps (Plugins)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html#remote-desktop">Remote Desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html#jupyter-lab-notebook">Jupyter Lab / Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_OpenOnDemand.html#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html">Parallel-computing jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html#shared-memory-threads">Shared-memory (threads)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html#distributed-memory-tasks">Distributed-memory (tasks)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html#hybrid-model-mpi-openmp">Hybrid model (MPI + OpenMP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html#gpu-parallelism">GPU parallelism</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Parallel.html#further-reading">Further reading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#creating-and-using-a-python-virtual-environment-venv-on-rockfish">Creating and Using a Python Virtual Environment (venv) on Rockfish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#create-your-python-virtual-environment">Create Your Python Virtual Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#activate-the-environment">Activate the Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#install-python-packages">Install Python Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#deactivate-the-environment">Deactivate the Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#reactivate-the-environment-later">Reactivate the Environment Later</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Python_Venv.html#running-python-scripts-in-your-venv">Running Python Scripts in Your venv</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_R.html">R &amp; RStudio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_R.html#interactive-rstudio-server">1  Interactive RStudio Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_R.html#command-line-r-outside-rstudio">2  Command-line R (outside RStudio)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_R.html#troubleshooting-faq">3  Troubleshooting &amp; FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html">Managing Software Using Lmod</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html#module-hierarchy-on-rockfish">Module Hierarchy on Rockfish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html#basic-lmod-commands">Basic Lmod Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html#using-module-collections">Using Module Collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_Software.html#advanced-notes">Advanced Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="6_Tutorials/Tutorial_vscode.html">Vscode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_vscode.html#accessing-vs-code-on-rockfish">Accessing VS Code on Rockfish</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_vscode.html#using-open-ondemand-web-portal">Using Open OnDemand (Web Portal)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_vscode.html#using-vscode-server-sh-on-the-command-line">Using <code class="docutils literal notranslate"><span class="pre">vscode-server.sh</span></code> on the Command Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="6_Tutorials/Tutorial_vscode.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/Citing_Arch.html">Citing ARCH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Citing_Arch.html#acknowledging-arch-in-publications">Acknowledging ARCH in Publications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Citing_Arch.html#community-awareness-and-impact">Community Awareness and Impact</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/Support.html">Support</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Support.html#open-a-ticket">Open a Ticket</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Support.html#training-workshops">Training &amp; Workshops</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="7_Support/Service_Level_Expectations.html">Service Level Expectations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Service_Level_Expectations.html#hours-response-times">Hours &amp; Response Times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Service_Level_Expectations.html#where-to-get-help">Where to Get Help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Service_Level_Expectations.html#what-we-expect-from-users">What We Expect from Users</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Service_Level_Expectations.html#whats-out-of-scope">What’s Out of Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="7_Support/Service_Level_Expectations.html#our-commitment">Our Commitment</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="1_About_ARCH/About_ARCH.html" class="btn btn-neutral float-right" title="About ARCH" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

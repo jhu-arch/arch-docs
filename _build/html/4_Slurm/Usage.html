@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checking Resource Usage &amp; Billing &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Viewing Job Status &amp; Efficiency" href="Job_Status.html" />
+    <link rel="prev" title="Priority and Usage Calculation" href="Priority.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Checking Resource Usage &amp; Billing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-only-partitions">Core-only partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gpu-partitions">GPU partitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bigmem-partition">Bigmem partition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Checking Resource Usage &amp; Billing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/4_Slurm/Usage.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="checking-resource-usage-billing">
+<h1>Checking Resource Usage &amp; Billing<a class="headerlink" href="#checking-resource-usage-billing" title="Permalink to this heading"></a></h1>
+<p>Rockfish charges jobs in <strong>core-hours</strong>.  A core-hour is one CPU-core used for
+one hour — or the equivalent, when GPUs or very large memory requests are
+involved.</p>
+<section id="core-only-partitions">
+<h2>Core-only partitions<a class="headerlink" href="#core-only-partitions" title="Permalink to this heading"></a></h2>
+<p>The classic formula is:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Core-hours =   Allocated CPU cores   ×   Wall-time (h)
+</pre></div>
+</div>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>1-hour job using 16 cores → 16 core-h</p></li>
+<li><p>6-hour job using 4 cores  → 24 core-h</p></li>
+</ul>
+<p>To inspect the actual billing for a finished/active job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sacct<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;<span class="w"> </span>--format<span class="o">=</span>JobID,User,Partition,State,Elapsed,CPUTime,NCPUS,AllocTRES
+</pre></div>
+</div>
+</section>
+<section id="gpu-partitions">
+<h2>GPU partitions<a class="headerlink" href="#gpu-partitions" title="Permalink to this heading"></a></h2>
+<p>GPU nodes are billed at a rate of: <strong>(GPUs requested * Billed Cores / Node) * Walltime</strong>.</p>
+<p>The ratio of “Billed Cores / GPU” comes from the number of available cores and GPUs on the node. For example, in the A100 partition, each node has 4 GPUs and 48 CPU cores, so the ratio is 12.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 25%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Partition</strong></p></th>
+<th class="head"><p><strong>GPUs / node</strong></p></th>
+<th class="head"><p><strong>Billed cores / GPU</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">v100</span></code></p></td>
+<td><p>4 × V100</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">a100</span></code></p></td>
+<td><p>4 × A100</p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">l40s</span></code></p></td>
+<td><p>8 × L40S</p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ica100</span></code></p></td>
+<td><p>4 × A100</p></td>
+<td><p>16</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mig_class</span></code></p></td>
+<td><p>12 × A100-MIG (2g.20gb)</p></td>
+<td><p>5 (per slice)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Billing formula</strong></p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Core-hours = ( GPUs × billed-cores/GPU ) × Wall-time(h)
+</pre></div>
+</div>
+<p><strong>Example for a100 parttion:</strong></p>
+<p>2xA100 GPUs for 3 hours → (2 × 12) × 3 = 72 core-hours</p>
+</section>
+<section id="bigmem-partition">
+<h2>Bigmem partition<a class="headerlink" href="#bigmem-partition" title="Permalink to this heading"></a></h2>
+<p>On <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> jobs are billed on the <strong>largest of (CPU cores) or (memory/32 GiB)</strong>,
+because each core is paired with 32 GiB of RAM:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Effective cores = max( requested CPUs ,
+                       requested memory (GiB) / 32 )
+
+Core-hours      = Effective cores × Wall-time(h)
+</pre></div>
+</div>
+<p><strong>Example for bigmem partition:</strong></p>
+<p>400 GiB Memory for 4 hours → (400/32) * 4 = 50 core-hours</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="viewing-historical-usage-and-efficiency">
+<h1>Viewing Historical Usage and Efficiency<a class="headerlink" href="#viewing-historical-usage-and-efficiency" title="Permalink to this heading"></a></h1>
+<p>For more on viewing efficiency and job usage statistics, refer to the page:</p>
+<p><a class="reference internal" href="Job_Status.html"><span class="doc">Viewing Job Status &amp; Efficiency</span></a></p>
+<p>This includes guidance on using:</p>
+<ul class="simple">
+<li><p><cite>sacct</cite> for historical usage</p></li>
+<li><p><cite>seff</cite> and <cite>reportseff</cite> for job efficiency</p></li>
+<li><p><cite>jobstats</cite> for GPU and memory metrics</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Priority.html" class="btn btn-neutral float-left" title="Priority and Usage Calculation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Job_Status.html" class="btn btn-neutral float-right" title="Viewing Job Status &amp; Efficiency" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

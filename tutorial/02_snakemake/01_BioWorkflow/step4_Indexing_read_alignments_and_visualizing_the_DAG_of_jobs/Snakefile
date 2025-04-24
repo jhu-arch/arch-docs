@@ -1,0 +1,19 @@
+#
+# First load the module
+#        module load snakemake
+#
+#  the /usr/bin/dot is only available on login nodes
+#
+# usage: $ snakemake --dag ../sorted_reads/{A,B}.bam.bai | dot -Tsvg > dag.svg
+
+
+rule samtools_index:
+    input:
+        "../sorted_reads/{sample}.bam"
+    output:
+        "../sorted_reads/{sample}.bam.bai"
+    shell:
+        '''
+    module load samtools
+    samtools index {input}
+'''

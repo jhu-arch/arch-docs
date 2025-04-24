@@ -1,0 +1,10 @@
+# Instruction to run rf using container
+
+# NOTE:
+#      1. singularity containers cannot run from a scratch folder
+#      2. Volume path must be absolute
+
+export BIND=$(realpath .)/_m
+export IMAGE=../_h/ubuntu_bedtools.sif
+
+nohup rf run --container_image=${IMAGE} --volume=${BIND}  -v . &

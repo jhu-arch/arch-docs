@@ -1,0 +1,53 @@
+salloc -J interact -N 1-1 -n 4 --time=1:00:00 -p defq srun --pty bash
+
+pip3 install git+https://github.com/ricardojacomini/rf.git --upgrade --user --force
+
+marcc.rtfd.io
+
+/data/rdesouz4/src
+
+/scratch4/rdesouz4/snakemake_rf_training/
+
+mkdir $HOME/snakemake_rf_training/; cd $HOME/snakemake_rf_training/
+
+
+git init
+git remote add -f origin https://github.com/ricardojacomini/arch-tutorial.git
+
+# sparse checkouts
+git config --global core.sparsecheckout true
+
+echo "pipeline/*" >> .git/info/sparse-checkout
+
+# fetch the files from the remote Git repository
+git pull origin main
+
+rsync -rav --exclude '*fastq.gz' /home/rdesouz4/pipeline/_m/ /scratch4/rdesouz4/snakemake_rf_training/pipeline/_m/
+
+rsync -rav --exclude '_m' /home/rdesouz4/pipeline/ $HOME/scr16_$USER/snakemake_rf_training/pipeline/
+
+
+rsync -rav --exclude '_m' /home/rdesouz4/tutorials/repro/ $HOME/scr16_$USER/snakemake_rf_training/tutorials/
+
+rf run --container_image=../_h/ubuntu_bedtools.sif --volume=/home/rdesouz4/tutorials/repro/bedtools/_m  -v .
+
+
+singularity pull docker://quay.io/comparative-genomics-toolkit/cactus
+
+
+/scratch16/jaimecomb/rdesouz4/snakemake_rf_training/tutorial
+
+
+cat > ~/.local/bin/rc << EOF
+#!/bin/bash
+if [ ! \$# -eq 0  ]; then
+    echo "\$1" | tr "[ATGCatgc]" "[TACGtacg]" | rev
+else
+    echo ""
+    echo "usage: rc DNASEQUENCE"
+    echo ""
+fi
+EOF
+
+
+pip3 install graphviz --user

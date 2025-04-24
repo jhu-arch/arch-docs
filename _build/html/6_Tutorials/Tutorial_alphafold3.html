@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AlphaFold3 &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Aspera CLI" href="Tutorial_aspera_cli.html" />
+    <link rel="prev" title="Link Conda to Jupyter" href="Tutorial_Conda_Jupyter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_Slurm/GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AlphaFold3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#accessing-alphafold3">Accessing AlphaFold3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options">Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-parameters">Required Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-parameters">Optional Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-with-a-single-input-json">Running with a Single Input (JSON)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-with-multiple-inputs">Running with Multiple Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-pipeline-only-cpu-stage-only">Data Pipeline Only (CPU Stage Only)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-inference-only-gpu-stage-only">Model Inference Only (GPU Stage Only)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#slurm-batch-script-example">SLURM Batch Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-interactively">Running Interactively</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AlphaFold3</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/6_Tutorials/Tutorial_alphafold3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alphafold3">
+<h1>AlphaFold3<a class="headerlink" href="#alphafold3" title="Permalink to this heading"></a></h1>
+<p>AlphaFold3 is available on Rockfish as a two-stage workflow that combines CPU-based preprocessing and GPU-based inference. This guide will walk you through accessing the module, running jobs, and preparing batch or interactive sessions.</p>
+<section id="accessing-alphafold3">
+<h2>Accessing AlphaFold3<a class="headerlink" href="#accessing-alphafold3" title="Permalink to this heading"></a></h2>
+<p>To access AlphaFold3, load the module:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>alphafold/3
+</pre></div>
+</div>
+<p>After loading, the wrapper script <cite>run_alphafold3.sh</cite> becomes available. This script runs AlphaFold3 (<cite>run_alphafold.py</cite>) in two stages:</p>
+<ul class="simple">
+<li><p><strong>CPU Stage</strong> – Data preparation (auto-submitted to a CPU node)</p></li>
+<li><p><strong>GPU Stage</strong> – Model inference (runs on a GPU node)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Recommended GPU Partition: Use <code class="docutils literal notranslate"><span class="pre">ica100</span></code> for best compatibility with AlphaFold3’s requirements.</p>
+</div>
+</section>
+<section id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run_alphafold3.sh<span class="w"> </span><span class="o">[</span>OPTIONS<span class="o">]</span><span class="w"> </span><span class="o">[</span>ALPHAFOLD_EXTRA_OPTS<span class="o">]</span>
+</pre></div>
+</div>
+</section>
+<section id="options">
+<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading"></a></h2>
+<section id="required-parameters">
+<h3>Required Parameters<a class="headerlink" href="#required-parameters" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--input_dir=</span></code>: Path to directory containing input file(s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--output_dir=</span></code>: Path to directory where results will be saved (must already exist)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--models_dir=</span></code>: Path to AF3 models → <code class="docutils literal notranslate"><span class="pre">/scratch4/datasets/alphafold3_models</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--db_dir=</span></code>: Path to AF3 databases → <code class="docutils literal notranslate"><span class="pre">/scratch4/datasets/alphafold3</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--input_file=</span></code>: Name of a JSON input file (for single inputs only)</p></li>
+</ul>
+</section>
+<section id="optional-parameters">
+<h3>Optional Parameters<a class="headerlink" href="#optional-parameters" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--cpu_partition=</span></code>: Default is <code class="docutils literal notranslate"><span class="pre">parallel</span></code>; use <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> for large jobs or <code class="docutils literal notranslate"><span class="pre">shared</span></code> for small jobs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cpus=</span></code>: Number of CPU cores (default: 24)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--account=</span></code>: Slurm account (required for <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> partition)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--qos=</span></code>: QoS flag (required for <code class="docutils literal notranslate"><span class="pre">bigmem</span></code> partition)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Additional options are forwarded directly to <code class="docutils literal notranslate"><span class="pre">run_alphafold.py</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<section id="running-with-a-single-input-json">
+<h3>Running with a Single Input (JSON)<a class="headerlink" href="#running-with-a-single-input-json" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run_alphafold3.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_dir<span class="o">=</span>/path/to/input<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="o">=</span>/path/to/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--models_dir<span class="o">=</span>/scratch4/datasets/alphafold3_models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--db_dir<span class="o">=</span>/scratch4/datasets/alphafold3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_file<span class="o">=</span>my_input.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpu_partition<span class="o">=</span>parallel<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpus<span class="o">=</span><span class="m">16</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For single input jobs:
+- Use <code class="docutils literal notranslate"><span class="pre">--input_dir</span></code> with the full path to the directory.
+- Use <code class="docutils literal notranslate"><span class="pre">--input_file</span></code> with the JSON file name.</p>
+</div>
+</section>
+<section id="running-with-multiple-inputs">
+<h3>Running with Multiple Inputs<a class="headerlink" href="#running-with-multiple-inputs" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run_alphafold3.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_dir<span class="o">=</span>/path/to/input<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="o">=</span>/path/to/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--models_dir<span class="o">=</span>/scratch4/datasets/alphafold3_models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--db_dir<span class="o">=</span>/scratch4/datasets/alphafold3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpu_partition<span class="o">=</span>bigmem<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--account<span class="o">=</span>myPI_bigmem<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--qos<span class="o">=</span>qos_bigmem
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For multiple input files, <code class="docutils literal notranslate"><span class="pre">--input_file</span></code> is not needed — use <code class="docutils literal notranslate"><span class="pre">--input_dir</span></code> with a directory of JSON files.</p>
+</div>
+</section>
+<section id="data-pipeline-only-cpu-stage-only">
+<h3>Data Pipeline Only (CPU Stage Only)<a class="headerlink" href="#data-pipeline-only-cpu-stage-only" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run_alphafold3.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_dir<span class="o">=</span>/path/to/input<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="o">=</span>/path/to/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--models_dir<span class="o">=</span>/scratch4/datasets/alphafold3_models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--db_dir<span class="o">=</span>/scratch4/datasets/alphafold3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--norun_inference
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will generate MSAs and templates only, skipping model inference.
+Output files can be used in later inference runs.</p>
+</div>
+</section>
+<section id="model-inference-only-gpu-stage-only">
+<h3>Model Inference Only (GPU Stage Only)<a class="headerlink" href="#model-inference-only-gpu-stage-only" title="Permalink to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>run_alphafold3.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_dir<span class="o">=</span>/path/to/data_jsons<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="o">=</span>/path/to/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--models_dir<span class="o">=</span>/scratch4/datasets/alphafold3_models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--db_dir<span class="o">=</span>/scratch4/datasets/alphafold3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--norun_data_pipeline
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This mode skips the CPU stage. JSON files must include precomputed MSAs and templates.</p>
+</div>
+</section>
+</section>
+<section id="slurm-batch-script-example">
+<h2>SLURM Batch Script Example<a class="headerlink" href="#slurm-batch-script-example" title="Permalink to this heading"></a></h2>
+<p>Recommended for production workloads:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=my_job_af3</span>
+<span class="c1">#SBATCH --partition=ica100</span>
+<span class="c1">#SBATCH --account=MyAccount_gpu</span>
+<span class="c1">#SBATCH --qos=qos_gpu</span>
+<span class="c1">#SBATCH --time=48:00:00</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+
+module<span class="w"> </span>load<span class="w"> </span>alphafold/3
+
+run_alphafold3.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_dir<span class="o">=</span>/path/to/input<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="o">=</span>/path/to/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--models_dir<span class="o">=</span>/scratch4/datasets/alphafold3_models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--db_dir<span class="o">=</span>/scratch4/datasets/alphafold3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpu_partition<span class="o">=</span>shared<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpus<span class="o">=</span><span class="m">16</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Submit to a GPU partition <strong>unless</strong> you use <code class="docutils literal notranslate"><span class="pre">--norun_inference</span></code>, which runs only the CPU portion.</p>
+</div>
+</section>
+<section id="running-interactively">
+<h2>Running Interactively<a class="headerlink" href="#running-interactively" title="Permalink to this heading"></a></h2>
+<p>To launch AlphaFold3 interactively on a GPU node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>interact<span class="w"> </span>-p<span class="w"> </span>ica100<span class="w"> </span>-q<span class="w"> </span>qos_gpu<span class="w"> </span>-a<span class="w"> </span>MyAccount_gpu<span class="w"> </span>-t<span class="w"> </span><span class="m">02</span>:00:00<span class="w"> </span>-g<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+<p>Once on the GPU node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>alphafold/3
+
+run_alphafold3.sh<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input_dir<span class="o">=</span>/path/to/input<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--output_dir<span class="o">=</span>/path/to/output<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--models_dir<span class="o">=</span>/scratch4/datasets/alphafold3_models<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--db_dir<span class="o">=</span>/scratch4/datasets/alphafold3<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpu_partition<span class="o">=</span>shared<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cpus<span class="o">=</span><span class="m">12</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Make sure to monitor your job’s resource usage and ensure it runs on a GPU node when required.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tutorial_Conda_Jupyter.html" class="btn btn-neutral float-left" title="Link Conda to Jupyter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tutorial_aspera_cli.html" class="btn btn-neutral float-right" title="Aspera CLI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

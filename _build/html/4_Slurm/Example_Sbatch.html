@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Batch Scripts &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Priority and Usage Calculation" href="Priority.html" />
+    <link rel="prev" title="Job Scheduling with Slurm" href="Job_Submission.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">About ARCH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/About_ARCH.html">About ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1_About_ARCH/RF_Citizen.html">Rockfish Citizen &amp; Terms of Use</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/RF_Quickstart.html">Rockfish Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Allocation.html">Allocation and Account Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Compute_Resources.html">Compute Node Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Resources/Filesystems.html">Filesystems on Rockfish</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Navigating Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Connecting_to_Rockfish.html">Logging in to Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/File_Transfers.html">File Transfers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_Navigating/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Slurm</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Partitions.html">Available Partitions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example Batch Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-example">Basic Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openmp-job-script">OpenMP Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hybrid-mpi-openmp-job-script">Hybrid MPI + OpenMP Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#big-memory-job-script">Big Memory Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gpu-job-script-namd-4-gpus">GPU Job Script (NAMD, 4 GPUs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#job-array-script">Job Array Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupyter-notebook-job-script">Jupyter Notebook Job Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#common-sbatch-options">Common sbatch Options</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Priority.html">Priority and Usage Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GPU_Jobs.html">GPU Jobs</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Matlab_ParallelServer.html">Matlab Parallel Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6_Tutorials/Tutorial_vscode.html">Vscode</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example Batch Scripts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/4_Slurm/Example_Sbatch.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-batch-scripts">
+<h1>Example Batch Scripts<a class="headerlink" href="#example-batch-scripts" title="Permalink to this heading"></a></h1>
+<p>When submitting a job with <cite>sbatch</cite>, you should specify the resources your job requires using the options below. These flags determine how many nodes, CPUs, memory, and other resources Slurm will reserve for your job. Properly requesting resources ensures that your job runs efficiently and is scheduled appropriately. Include these options at the top of your Slurm batch script as <cite>#SBATCH</cite> directives.</p>
+<section id="basic-example">
+<h2>Basic Example<a class="headerlink" href="#basic-example" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=MyJob</span>
+<span class="c1">#SBATCH --time=24:00:00</span>
+<span class="c1">#SBATCH --partition=shared</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=24</span>
+<span class="c1">#SBATCH --mail-type=end</span>
+<span class="c1">#SBATCH --mail-user=userid@jhu.edu</span>
+
+module<span class="w"> </span>load<span class="w"> </span>intel/2020.2<span class="w"> </span>intel-mpi/2020.2
+mpirun<span class="w"> </span>-n<span class="w"> </span><span class="nv">$SLURM_NTASKS</span><span class="w"> </span>./my_program.x<span class="w"> </span>&gt;<span class="w"> </span>output.log
+</pre></div>
+</div>
+</section>
+<section id="openmp-job-script">
+<h2>OpenMP Job Script<a class="headerlink" href="#openmp-job-script" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH --job-name=OpenMP-Job</span>
+<span class="c1">#SBATCH --output=myLog-file</span>
+<span class="c1">#SBATCH --partition=shared</span>
+<span class="c1">#SBATCH --time=00-01:30:15</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=8</span>
+<span class="c1">###SBATCH --mem-per-cpu=4GB</span>
+<span class="c1">#SBATCH --account=XYAWA</span>
+<span class="c1">#SBATCH --export=ALL</span>
+
+ml<span class="w"> </span>purge
+ml<span class="w"> </span>intel<span class="w"> </span>intel-mpi<span class="w"> </span>intel-mkl
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">8</span>
+<span class="nb">time</span><span class="w"> </span>./a.out<span class="w"> </span>&gt;<span class="w"> </span>MyOutput.log
+</pre></div>
+</div>
+</section>
+<section id="hybrid-mpi-openmp-job-script">
+<h2>Hybrid MPI + OpenMP Job Script<a class="headerlink" href="#hybrid-mpi-openmp-job-script" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH --job-name=MyLMJob</span>
+<span class="c1">#SBATCH --output=myLog-file</span>
+<span class="c1">#SBATCH --partition=parallel</span>
+<span class="c1">#SBATCH --time=02-01:30:15</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=8</span>
+<span class="c1">#SBATCH --cpus-per-task=6</span>
+<span class="c1">#SBATCH --account=XYAWA</span>
+<span class="c1">#SBATCH --export=ALL</span>
+
+ml<span class="w"> </span>gcc<span class="w"> </span>openmpi
+module<span class="w"> </span>load<span class="w"> </span>hwloc
+module<span class="w"> </span>load<span class="w"> </span>boost
+module<span class="w"> </span>load<span class="w"> </span>gromacs/2016-mpi-plumed
+module<span class="w"> </span>load<span class="w"> </span>plumed/2.3b
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_AUTO_BOOST</span><span class="o">=</span><span class="m">1</span>
+mpirun<span class="w"> </span>-np<span class="w"> </span><span class="m">8</span><span class="w"> </span>bin/gmx_mpi<span class="w"> </span>mdrun<span class="w"> </span>-deffnm<span class="w"> </span>options
+</pre></div>
+</div>
+</section>
+<section id="big-memory-job-script">
+<h2>Big Memory Job Script<a class="headerlink" href="#big-memory-job-script" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH --job-name=MyLMJob</span>
+<span class="c1">#SBATCH --output=myLog-file</span>
+<span class="c1">#SBATCH --partition=bigmem</span>
+<span class="c1">#SBATCH --time=02-01:30:15</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=8</span>
+<span class="c1">#SBATCH -A PI-userid_bigmem</span>
+<span class="c1">#SBATCH --export=ALL</span>
+
+ml<span class="w"> </span>purge
+ml<span class="w"> </span>intel
+./a.out<span class="w"> </span>&gt;<span class="w"> </span>MyLog.out
+</pre></div>
+</div>
+</section>
+<section id="gpu-job-script-namd-4-gpus">
+<h2>GPU Job Script (NAMD, 4 GPUs)<a class="headerlink" href="#gpu-job-script-namd-4-gpus" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH --job-name=namd4gpu</span>
+<span class="c1">#SBATCH --time=48:00:00</span>
+<span class="c1">#SBATCH --partition=a100</span>
+<span class="c1">#SBATCH --qos=qos_gpu</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=48</span>
+<span class="c1">####SBATCH --mem-per-cpu=4G</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH -A Slurm-account_gpu</span>
+
+ml<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>namd/2.14-cuda-smp
+ml
+
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="m">0</span>,1,2,3
+<span class="nb">export</span><span class="w"> </span><span class="nv">CONV_RSH</span><span class="o">=</span>ssh
+<span class="nv">GPUS_PER_NODE</span><span class="o">=</span><span class="m">4</span>
+<span class="nv">NODELIST</span><span class="o">=</span><span class="nv">$SLURM_JOBID</span>.nodes
+<span class="nv">JOBNODES</span><span class="o">=</span><span class="k">$(</span>scontrol<span class="w"> </span>show<span class="w"> </span>hostname<span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span><span class="k">)</span>
+
+<span class="nb">echo</span><span class="w"> </span>group<span class="w"> </span>main<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$NODELIST</span>
+<span class="k">for</span><span class="w"> </span>node<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$JOBNODES</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>host<span class="w"> </span><span class="nv">$node</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$NODELIST</span>
+<span class="k">done</span>
+
+<span class="nv">PPN</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nv">$GPUS_PER_NODE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="k">))</span>
+<span class="nv">P</span><span class="o">=</span><span class="k">$((</span><span class="w"> </span><span class="o">(</span><span class="w"> </span><span class="nv">$SLURM_NTASKS_PER_NODE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">$GPUS_PER_NODE</span><span class="w"> </span><span class="o">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nv">$SLURM_JOB_NUM_NODES</span><span class="w"> </span><span class="k">))</span>
+
+<span class="nv">COMMAND</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>which<span class="w"> </span>namd2<span class="k">)</span><span class="s2"> +ignoresharing +idlepoll +p 44 +setcpuaffinity +pemap 1-11,13-23,25-35,37-47 +commap 0,12,24,36 +devices 0,1,2,3&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$COMMAND</span>
+
+<span class="nv">$COMMAND</span><span class="w"> </span>step1_NPT.conf<span class="w"> </span>&gt;<span class="w"> </span>npt/npt.log
+<span class="nv">$COMMAND</span><span class="w"> </span>step2_NVT.conf<span class="w"> </span>&gt;<span class="w"> </span>nvt/nvt.log
+<span class="nv">$COMMAND</span><span class="w"> </span>step3_Production.conf<span class="w"> </span>&gt;<span class="w"> </span>production/production.log
+</pre></div>
+</div>
+</section>
+<section id="job-array-script">
+<h2>Job Array Script<a class="headerlink" href="#job-array-script" title="Permalink to this heading"></a></h2>
+<p>Job arrays are useful for submitting many similar jobs at once, such as parameter sweeps or batch processing with different input files.</p>
+<p>You can submit a job array using:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sbatch --array=0-15%4 script.sh</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Runs the job script 16 times (task IDs 0 through 15)</p></li>
+<li><p><cite>%4</cite> limits the number of concurrently running tasks to 4 (optional)</p></li>
+</ul>
+<p>Within your job script, you can use several environment variables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_JOB_ID</span></code>: The master job ID (same for all array tasks)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$SLURM_ARRAY_TASK_ID</span></code>: The index of the current array task (0–15 in this example)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$SLURM_JOBID</span></code>: Unique job ID for each task (can differ from array task ID)</p></li>
+</ul>
+<p>To control output file naming for each task:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#SBATCH -o slurm-%A_%a.out</span>
+</pre></div>
+</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%A</span></code> is replaced with the array job ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%a</span></code> is replaced with the array task index</p></li>
+</ul>
+<p>This will create uniquely named output files like:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>slurm-45000_0.out
+slurm-45000_1.out
+...
+slurm-45000_15.out
+</pre></div>
+</div>
+<p>You can also customize the array index pattern:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Run<span class="w"> </span>only<span class="w"> </span>tasks<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">7</span>
+<span class="go">sbatch --array=1,3,5,7 script.sh</span>
+
+<span class="gp"># </span>Run<span class="w"> </span>tasks<span class="w"> </span><span class="m">1</span><span class="w"> </span>to<span class="w"> </span><span class="m">7</span><span class="w"> </span>with<span class="w"> </span>a<span class="w"> </span>step<span class="w"> </span>of<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">(</span>i.e.,<span class="w"> </span><span class="m">1</span>,<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">5</span>,<span class="w"> </span><span class="m">7</span><span class="o">)</span>
+<span class="go">sbatch --array=1-7:2 script.sh</span>
+</pre></div>
+</div>
+<p>Job arrays provide a simple and scalable way to run multiple jobs with minor differences, while maintaining clean control over indexing and output.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash -l</span>
+<span class="c1">#SBATCH --job-name=small-array</span>
+<span class="c1">#SBATCH --time=48:00:00</span>
+<span class="c1">#SBATCH --partition=shared</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">###SBATCH --mem-per-cpu=4G</span>
+<span class="c1">#SBATCH --array=1-1000%480</span>
+
+ml<span class="w"> </span>purge
+module<span class="w"> </span>load<span class="w"> </span>intel
+ml
+
+<span class="nv">file</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>zmat*<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">SLURM_ARRAY_TASK_ID</span><span class="si">}</span>p<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span>
+
+<span class="nv">newstring</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">file</span><span class="p">:</span><span class="nv">4</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">basisdir</span><span class="o">=</span>/scratch16/jcombar1/LC-tests
+<span class="nb">export</span><span class="w"> </span><span class="nv">workdir</span><span class="o">=</span>/scratch16/jcombar1/LC-tests
+<span class="nb">export</span><span class="w"> </span><span class="nv">tmpdir</span><span class="o">=</span>/scratch16/jcombar1/TMP/<span class="nv">$SLURM_JOBID</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/scratch16/jcombar1/LC/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MKL_NUM_THREADS</span><span class="o">=</span><span class="m">1</span>
+
+mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$tmpdir</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$tmpdir</span>
+
+cp<span class="w"> </span><span class="nv">$workdir</span>/<span class="nv">$file</span><span class="w"> </span>ZMAT
+cp<span class="w"> </span><span class="nv">$basisdir</span>/GENBAS<span class="w"> </span>GENBAS
+
+./a.out<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$workdir</span>/out.<span class="nv">$newstring</span>
+
+<span class="nb">cd</span><span class="w"> </span>..
+<span class="se">\r</span>m<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$tmpdir</span>
+</pre></div>
+</div>
+</section>
+<section id="jupyter-notebook-job-script">
+<h2>Jupyter Notebook Job Script<a class="headerlink" href="#jupyter-notebook-job-script" title="Permalink to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --ntasks-per-node=1</span>
+<span class="c1">####SBATCH --mem-per-cpu=4G</span>
+<span class="c1">#SBATCH --time=1:00:00</span>
+<span class="c1">#SBATCH --job-name=jupyter-notebook</span>
+<span class="c1">#SBATCH --output=jupyter-notebook-%J.log</span>
+
+ml<span class="w"> </span>anaconda
+<span class="c1">## or use your own python/conda environment</span>
+
+<span class="nv">XDG_RUNTIME_DIR</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="nv">port</span><span class="o">=</span><span class="k">$(</span>shuf<span class="w"> </span>-i8000-9999<span class="w"> </span>-n1<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$port</span>
+<span class="nv">node</span><span class="o">=</span><span class="k">$(</span>hostname<span class="w"> </span>-s<span class="k">)</span>
+<span class="nv">user</span><span class="o">=</span><span class="k">$(</span>whoami<span class="k">)</span>
+
+jupyter-notebook<span class="w"> </span>--no-browser<span class="w"> </span>--port<span class="o">=</span><span class="si">${</span><span class="nv">port</span><span class="si">}</span><span class="w"> </span>--ip<span class="o">=</span><span class="si">${</span><span class="nv">node</span><span class="si">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check the file <cite>jupyter-notebook-JOBID.log</cite> for your connection details.</p>
+<ol class="arabic">
+<li><p>SSH tunnel command from your local machine:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="si">${</span><span class="nv">port</span><span class="si">}</span>:<span class="si">${</span><span class="nv">node</span><span class="si">}</span>:<span class="si">${</span><span class="nv">port</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">user</span><span class="si">}</span>@login.rockfish.jhu.edu
+</pre></div>
+</div>
+</li>
+<li><p>Copy the link provided in the log file into your browser (it starts with <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:&lt;PORT&gt;</span></code>).</p></li>
+</ol>
+</div>
+</section>
+<section id="common-sbatch-options">
+<h2>Common sbatch Options<a class="headerlink" href="#common-sbatch-options" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--job-name=MyJob</span></code></p></td>
+<td><p>Name of the job (shown in <code class="docutils literal notranslate"><span class="pre">squeue</span></code> and job reports)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--time=24:00:00</span></code></p></td>
+<td><p>Walltime (HH:MM:SS) requested for the job</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--nodes=1</span></code></p></td>
+<td><p>Number of physical nodes to request</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--ntasks=24</span></code></p></td>
+<td><p>Total number of tasks (often used for MPI)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--ntasks-per-node=24</span></code></p></td>
+<td><p>Number of tasks per node (used with MPI)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--cpus-per-task=6</span></code></p></td>
+<td><p>Number of CPU cores allocated to each task (useful for multi-threading)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--mem=120GB</span></code></p></td>
+<td><p>Total memory to allocate per node</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--mem-per-cpu=4GB</span></code></p></td>
+<td><p>Memory to allocate per CPU core</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--account=myaccount</span></code></p></td>
+<td><p>Charge the job to the specified allocation account</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--qos=qos_gpu</span></code></p></td>
+<td><p>Assign a specific Quality of Service (QOS)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--mail-type=end</span></code></p></td>
+<td><p>Send email notification at the end of the job</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--mail-user=your_email&#64;jhu.edu</span></code></p></td>
+<td><p>Email address to send job notifications</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--requeue</span></code></p></td>
+<td><p>Allow job to be requeued if interrupted</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--export=ALL</span></code></p></td>
+<td><p>Export environment variables (ALL, NONE, or list)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--workdir=/path/to/dir</span></code></p></td>
+<td><p>Set the working directory for job execution</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--array=0-15%4</span></code></p></td>
+<td><p>Submit a job array with optional concurrency limit (here, max 4 jobs run at a time)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--constraint=&quot;XXX&quot;</span></code></p></td>
+<td><p>Request nodes with specific features or hardware constraints</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Job_Submission.html" class="btn btn-neutral float-left" title="Job Scheduling with Slurm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Priority.html" class="btn btn-neutral float-right" title="Priority and Usage Calculation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

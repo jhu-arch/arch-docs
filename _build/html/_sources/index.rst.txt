@@ -1,55 +1,78 @@
-Rockfish Cluster Software Guide
-###############################
+ARCH Clusters Software Guide
+############################
 
-This site serves as an introduction and how-to software guide for users of the Rockfish cluster at `ARCH`_. It includes training materials, quick-start instructions, and reference documentation to help researchers make effective use of advanced computing resources.
+Welcome!  This site is the one-stop user guide for every high-performance cluster operated by `Advanced Research Computing at Hopkins (ARCH) <https://www.arch.jhu.edu/>`__
 
-The Advanced Research Computing at Hopkins (  :guilabel:`ARCH` ) — formerly known as MARCC — is a shared computing facility at Johns Hopkins University that enables research, discovery, and learning through advanced computing. ARCH administers high-performance computing resources, manages highly reliable data storage, and provides collaborative scientific support to empower computational research, scholarship, and innovation.
+The Advanced Research Computing at Hopkins (ARCH) is a shared computing facility at Johns Hopkins University dedicated to supporting research, discovery, and learning through the use and development of advanced computing technologies.
 
-.. _ARCH: https://www.arch.jhu.edu/about-rockfish/
-.. _Rockfish Citizen: https://www.arch.jhu.edu/access/jhu-user-accounts/rockfish-citizen/
-.. _Portal: https://coldfront.rockfish.jhu.edu/
-.. _Website: https://www.arch.jhu.edu/
-.. _User Guide: https://www.arch.jhu.edu/access/user-guide/
-.. _Terms of Use: https://www.arch.jhu.edu/access/jhu-user-accounts/terms-of-use/
+ARCH provides access to high-performance computing (HPC) resources, high-throughput data storage, advanced networking, and scientific support services to empower computational research across all disciplines.
+
+**Mission**
+
+ARCH's mission is to enable research, scholarship, and innovation by offering:
+
+- Access to high-performance computing and storage systems
+- Reliable infrastructure for data-intensive computing and simulation
+- Scientific consulting for research workflows, application optimization, and data strategy
+- Education and training in computational tools and methodologies
+- Secure environments for projects involving sensitive data (e.g., HIPAA, IRB)
+
+**Services and Support**
+
+ARCH offers a range of support services to enhance your computational research:
+
+- **Research planning and resource allocation strategy**
+- **Traditional HPC simulations** requiring large CPU, memory, and I/O
+- **Interactive**Parallel/scalable file systems** for improved data throughput
+- **Workflow design** and implementation for computational pipelines
+- **Scientific support** for emerging domains such as machine learning and AI
+- **Application support** including installation and tuning
+- **Short-term project data storage** with file system management
+- **Container and virtualization support** (e.g., Singularity)
+- **Advanced consulting** in Python, Go, and other research programming languages
+- **Fast data transfer** via Globus and JHU's HORNET network
+- **Educational and training resources** for students and faculty
+- **Colocation facilities** for PI-owned hardware
+
+**History and Governance**
+
+ARCH was previously known as the **Maryland Advanced Research Computing Center (MARCC)**.
+
+- MARCC was a collaborative HPC initiative between **Johns Hopkins University** and the **University of Maryland, College Park**
+- Located on JHU’s **Bayview Campus**, with offices at the **Bloomberg Center** on the Homewood Campus
+- Funded by the **State of Maryland** through a grant to JHU via the **Institute for Data Intensive Engineering and Science (IDIES)**
+
+**More Information**
+
+Visit the official ARCH website for more:
+
+📍 `ARCH Website <https://www.arch.jhu.edu/>`__  
+📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__  
+📍 `DSAI Portal <https://ai-coldfront.arch.jhu.edu/>`__  
+📍 `Request Help <mailto:help@arch.jhu.edu>`__  
+📍 :doc:`7_Support/Support`
+
 
 .. toctree::
-   :maxdepth: 2
-   :caption: About ARCH
+   :maxdepth: 3
+   :caption: ARCH Systems
 
-   1_About_ARCH/About_ARCH
-   1_About_ARCH/RF_Citizen
+   1_Clusters/Rockfish/index
+   1_Clusters/DSAI/index
+   1_Clusters/EDU_Cluster/index
 
 .. toctree::
    :maxdepth: 2
    :caption: Resources on Rockfish
 
    2_Resources/ARCH_Terminology
-   2_Resources/RF_Quickstart
-   2_Resources/Allocation
-   2_Resources/Compute_Resources
-   2_Resources/Filesystems
 
 .. toctree::
    :maxdepth: 2
-   :caption: Navigating Rockfish
+   :caption: Common Tasks
 
-   3_Navigating/Connecting_to_Rockfish
-   3_Navigating/File_Transfers
-   3_Navigating/Bash_Quickstart
-   3_Navigating/Managing_Group_Permissions
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Slurm
-
-   4_Slurm/Slurm
-   4_Slurm/Partitions
-   4_Slurm/Job_Submission
-   4_Slurm/Example_Sbatch
-   4_Slurm/Priority
-   4_Slurm/Usage
-   4_Slurm/Job_Status
-   4_Slurm/GPU_Jobs
+   3_Common_Tasks/Bash_Quickstart
+   3_Common_Tasks/Managing_Group_Permissions
 
 .. toctree::
    :maxdepth: 2
@@ -63,26 +86,9 @@ The Advanced Research Computing at Hopkins (  :guilabel:`ARCH` ) — formerly kn
 
 .. toctree::
    :maxdepth: 2
-   :caption: Tutorials
-
-   6_Tutorials/Tutorial_Conda_Envs
-   6_Tutorials/Tutorial_alphafold3
-   6_Tutorials/Tutorial_aspera_cli
-   6_Tutorials/Tutorial_JobDependencies
-   6_Tutorials/Tutorial_Jupyter
-   6_Tutorials/Tutorial_Matlab_ParallelServer
-   6_Tutorials/Tutorial_Nextflow
-   6_Tutorials/Tutorial_OpenOnDemand
-   6_Tutorials/Tutorial_Parallel
-   6_Tutorials/Tutorial_Python_Venv
-   6_Tutorials/Tutorial_R 
-   6_Tutorials/Tutorial_Software
-   6_Tutorials/Tutorial_vscode
-
-.. toctree::
-   :maxdepth: 2
    :caption: Support and Help
 
+   7_Support/Citizen
    7_Support/Citing_Arch
    7_Support/Support
    7_Support/FAQ

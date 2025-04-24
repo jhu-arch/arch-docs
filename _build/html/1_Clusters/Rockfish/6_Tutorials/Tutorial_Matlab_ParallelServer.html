@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matlab Parallel Server &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Nextflow" href="Tutorial_Nextflow.html" />
+    <link rel="prev" title="JupyterLab on Rockfish" href="Tutorial_Jupyter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Rockfish</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Quickstart.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Resources/index.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Navigating/index.html">Navigating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../3_Slurm/index.html">Slurm on Rockfish</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Rockfish Tutorials</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Conda_Envs.html">Conda &amp; Environment Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_alphafold3.html">AlphaFold3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_aspera_cli.html">Aspera CLI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_JobDependencies.html">Job Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Jupyter.html">JupyterLab on Rockfish</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Matlab Parallel Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-cluster-profile">Create a Cluster Profile</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#write-your-matlab-parallel-script">Write Your MATLAB Parallel Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#submit-your-job-to-slurm">Submit Your Job to SLURM</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Nextflow.html">Nextflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_OpenOnDemand.html">Open OnDemand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Parallel.html">Parallel-computing jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Python_Venv.html">Python Virtual Environments (venv)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_R.html">R &amp; RStudio</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_Software.html">Managing Software Using Lmod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Tutorial_vscode.html">Vscode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../DSAI/index.html">DSAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Resources on Rockfish</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../2_Resources/ARCH_Terminology.html">ARCH Terminology</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Rockfish</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Rockfish Tutorials</a></li>
+      <li class="breadcrumb-item active">Matlab Parallel Server</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/1_Clusters/Rockfish/6_Tutorials/Tutorial_Matlab_ParallelServer.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="matlab-parallel-server">
+<h1>Matlab Parallel Server<a class="headerlink" href="#matlab-parallel-server" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>MATLAB Parallel Server allows you to run parallel jobs efficiently on Rockfish by using a cluster profile that integrates with SLURM. This approach avoids requesting a separate MATLAB license for each <code class="docutils literal notranslate"><span class="pre">parpool</span></code> or <code class="docutils literal notranslate"><span class="pre">parfor</span></code> call and improves resource utilization.</p>
+</section>
+<section id="create-a-cluster-profile">
+<h2>Create a Cluster Profile<a class="headerlink" href="#create-a-cluster-profile" title="Permalink to this heading"></a></h2>
+<p>You only need to create the cluster profile once.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can create the cluster profile by launching MATLAB either through <strong>Open OnDemand</strong> or from the <strong>command line</strong>. This tutorial uses the command-line method (without GUI).</p>
+</div>
+<section id="option-create-profile-via-command-line">
+<h3>Option: Create Profile via Command Line<a class="headerlink" href="#option-create-profile-via-command-line" title="Permalink to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Start an interactive session on a compute node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>interact<span class="w"> </span>-p<span class="w"> </span>shared<span class="w"> </span>-n<span class="w"> </span><span class="m">4</span><span class="w"> </span>-t<span class="w"> </span><span class="m">01</span>:00:00
+</pre></div>
+</div>
+</li>
+<li><p>Load the MATLAB module:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>matlab/R2024a
+</pre></div>
+</div>
+</li>
+<li><p>Launch MATLAB in terminal mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash
+</pre></div>
+</div>
+</li>
+<li><p>Inside MATLAB, create the cluster profile:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">configCluster</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>This creates a cluster profile named <code class="docutils literal notranslate"><span class="pre">rockfish</span></code>.</p>
+</li>
+<li><p>Exit MATLAB:</p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
+</pre></div>
+</div>
+</li>
+<li><p>Exit the interactive session:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">exit</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+</section>
+<section id="write-your-matlab-parallel-script">
+<h2>Write Your MATLAB Parallel Script<a class="headerlink" href="#write-your-matlab-parallel-script" title="Permalink to this heading"></a></h2>
+<p>To run a parallel job, set up the cluster configuration and define the desired resources in your MATLAB script.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">test_matlab_parallel.m</span></code></p>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">% test_matlab_parallel.m</span>
+
+<span class="c">% Load the cluster profile</span>
+<span class="n">rf</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parcluster</span><span class="p">(</span><span class="s">&#39;rockfish&#39;</span><span class="p">);</span>
+
+<span class="c">% Set SLURM resource parameters</span>
+<span class="n">rf</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">Partition</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;parallel&#39;</span><span class="p">;</span><span class="w">  </span><span class="c">% Specify partition</span>
+<span class="n">rf</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">WallTime</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;02:00:00&#39;</span><span class="p">;</span><span class="w">   </span><span class="c">% Wall time must match SLURM script</span>
+<span class="n">rf</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">.</span><span class="n">AdditionalSubmitArgs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&#39;--nodes=2 --ntasks-per-node=32 --cpus-per-task=1&#39;</span><span class="p">;</span>
+
+<span class="c">% Display properties (optional)</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">rf</span><span class="p">.</span><span class="n">AdditionalProperties</span><span class="p">);</span>
+
+<span class="c">% Start parallel pool</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Starting a parallel pool...&#39;</span><span class="p">);</span>
+<span class="n">parpool</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span><span class="w">  </span><span class="c">% 2 nodes × 32 tasks</span>
+
+<span class="c">% Run a sample parallel computation</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Running parallel computation...&#39;</span><span class="p">);</span>
+<span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">);</span>
+<span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">64</span>
+<span class="w">    </span><span class="n">results</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">i</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
+<span class="k">end</span>
+<span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Results:&#39;</span><span class="p">);</span>
+<span class="nb">disp</span><span class="p">(</span><span class="n">results</span><span class="p">);</span>
+
+<span class="c">% Shut down the parallel pool</span>
+<span class="nb">delete</span><span class="p">(</span><span class="n">gcp</span><span class="p">(</span><span class="s">&#39;nocreate&#39;</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+<section id="submit-your-job-to-slurm">
+<h2>Submit Your Job to SLURM<a class="headerlink" href="#submit-your-job-to-slurm" title="Permalink to this heading"></a></h2>
+<p>While you can run MATLAB interactively, the recommended approach is to submit your job using a SLURM script.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--time</span></code> specified in your SLURM script <strong>must match</strong> the <code class="docutils literal notranslate"><span class="pre">WallTime</span></code> defined in your MATLAB cluster profile. Other SLURM parameters in the script (e.g., <code class="docutils literal notranslate"><span class="pre">--nodes</span></code>, <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code>) are not relevant because resource allocation is handled by MATLAB itself.</p>
+</div>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">run_matlab_test.sh</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --job-name=matlab_test</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --time=02:00:00      # Must match WallTime in MATLAB script</span>
+<span class="c1">#SBATCH --partition=shared</span>
+<span class="c1">#SBATCH --output=matlab_test.out</span>
+<span class="c1">#SBATCH --error=matlab_test.err</span>
+
+module<span class="w"> </span>load<span class="w"> </span>matlab/R2024a
+
+<span class="c1"># Run MATLAB in batch mode</span>
+matlab<span class="w"> </span>-nodisplay<span class="w"> </span>-nosplash<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;test_matlab_parallel; exit&quot;</span>
+</pre></div>
+</div>
+<p>Submit the SLURM Job:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>run_matlab_test.sh
+</pre></div>
+</div>
+</section>
+<section id="final-notes">
+<h2>Final Notes<a class="headerlink" href="#final-notes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Only set up the cluster profile once per user.</p></li>
+<li><p>Always ensure <code class="docutils literal notranslate"><span class="pre">WallTime</span></code> in the MATLAB script matches the SLURM <code class="docutils literal notranslate"><span class="pre">--time</span></code> value.</p></li>
+<li><p>MATLAB handles resource allocation via the SLURM backend — no need to manually manage <code class="docutils literal notranslate"><span class="pre">--nodes</span></code> or <code class="docutils literal notranslate"><span class="pre">--ntasks</span></code> in the SLURM script.</p></li>
+<li><p>You can view SLURM output and MATLAB results in the <code class="docutils literal notranslate"><span class="pre">.out</span></code> and <code class="docutils literal notranslate"><span class="pre">.err</span></code> files generated by SLURM.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tutorial_Jupyter.html" class="btn btn-neutral float-left" title="JupyterLab on Rockfish" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tutorial_Nextflow.html" class="btn btn-neutral float-right" title="Nextflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

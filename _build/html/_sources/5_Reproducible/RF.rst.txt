@@ -138,7 +138,7 @@ Let's fire up our text editor (vim/nano/emacs) and type in our `bedtools`_ scrip
   [userid@login01 bedtools]$ vi _h/run
   [userid@login01 bedtools]$ chmod +x _h/run
 
-If you return a level (repro directory) and check the execution status of this pipeline (``rf status``), you can see that level 1 (repro) is done, and level 2 (``bedtools``) is ready to run. It is important to mind will be run the ``bedtoots`` via container (singularity).
+If you return a level (repro directory) and check the execution status of this pipeline (``rf status``), you can see that level 1 (repro) is done, and level 2 (``bedtools``) is ready to run. It is important to mind will be run the ``bedtools`` via container (singularity).
 
 .. note::
   It is important to note our purpose here is to use a container to isolate programs and not develop or share scripts within the container images. Keep it as simple as possible, and all scripts will be performed via the ``rf`` command, as will be shown below.

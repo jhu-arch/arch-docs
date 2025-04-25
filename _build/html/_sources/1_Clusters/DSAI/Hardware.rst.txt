@@ -1,2 +1,0 @@
-DSAI Hardware Summary
-===========================

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priority Calculation &mdash; Rockfish Cluster Software Guide 2.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/sphinx-design.4cbf315f70debaebd550c87a6162cf0f.min.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="SLURM Overview" href="Slurm.html" />
+    <link rel="prev" title="Available Partitions" href="Partitions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/arch.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">ARCH Systems</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../Rockfish/index.html">Rockfish</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">DSAI</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Quickstart.html">DSAI Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../1_Resources/index.html">Resources</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../2_Navigating/index.html">Navigating</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Slurm on DSAI</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="Example_Sbatch.html">Example Batch Scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GPU_Jobs.html">GPU Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Job_Status.html">Viewing Job Status &amp; Efficiency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Job_Submission.html">Job Scheduling with Slurm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Partitions.html">Available Partitions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Priority Calculation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-job-priority-is-calculated">How Job Priority is Calculated</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Slurm.html">SLURM Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage.html">Checking Resource Usage &amp; Billing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage.html#viewing-historical-usage-and-efficiency">Viewing Historical Usage and Efficiency</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../EDU_Cluster/index.html">EDU Cluster</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Common Tasks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Bash_Quickstart.html">Bash Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../3_Common_Tasks/Managing_Group_Permissions.html">Manage Group Permissions</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">How to do Reproducible Research</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/RF.html">Reproducibility Framework (RF)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Snakemake.html">Snakemake Workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Singularity.html">Singularity container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Virtual.html">Virtual Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../5_Reproducible/Shorts.html">Short Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Support and Help</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/ARCH_Terminology.html">ARCH Terminology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citizen.html">Good Citizenship &amp; Terms of Use</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Citing_Arch.html">Citing ARCH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/FAQ.html">Frequently Asked Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../7_Support/Service_Level_Expectations.html">Service Level Expectations</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Rockfish Cluster Software Guide</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">DSAI</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Slurm on DSAI</a></li>
+      <li class="breadcrumb-item active">Priority Calculation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/1_Clusters/DSAI/3_Slurm/Priority.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="priority-calculation">
+<h1>Priority Calculation<a class="headerlink" href="#priority-calculation" title="Permalink to this heading"></a></h1>
+<p>Rockfish uses a multi-factor job priority system to determine which jobs run first. These factors work together to ensure equitable access while keeping the cluster as busy and efficient as possible. Understanding these can help users predict queue behavior and optimize job placement.</p>
+<section id="how-job-priority-is-calculated">
+<h2>How Job Priority is Calculated<a class="headerlink" href="#how-job-priority-is-calculated" title="Permalink to this heading"></a></h2>
+<p>Slurm evaluates each pending job with a weighted formula combining the following components:</p>
+<ul class="simple">
+<li><p><strong>Fairshare</strong>: Each PI or group is assigned a share based on their quarterly allocation (in core hours). Slurm tracks usage over time and adjusts each group’s priority relative to their share. Groups that have recently used less of their allocation get higher priority, and those that have consumed more see lower scores. This promotes equitable access.</p></li>
+<li><p><strong>Job Age</strong>: Jobs gain priority the longer they wait in the queue.</p></li>
+<li><p><strong>Job Size</strong>: Smaller jobs receive a small boost, particularly to improve backfilling opportunities — the ability for the scheduler to fit small jobs into idle gaps in hardware.</p></li>
+<li><p><strong>Partition and QOS Priority</strong>: Some partitions or QOS configurations may be assigned static priority tiers or usage caps.</p></li>
+</ul>
+<p>To inspect job priority components, use the <cite>sprio</cite> command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sprio<span class="w"> </span>-j<span class="w"> </span>&lt;jobid&gt;
+sprio<span class="w"> </span>-u<span class="w"> </span>&lt;user&gt;
+
+<span class="o">[</span>root@login01<span class="w"> </span>~<span class="o">]</span><span class="c1"># sprio -u user123</span>
+<span class="w">          </span>JOBID<span class="w"> </span>PARTITION<span class="w">     </span>USER<span class="w">   </span>PRIORITY<span class="w">       </span>SITE<span class="w">        </span>AGE<span class="w">  </span>FAIRSHARE<span class="w">    </span>JOBSIZE<span class="w">  </span>PARTITION<span class="w">        </span>QOS
+<span class="w">         </span><span class="m">111111</span><span class="w"> </span>parallel<span class="w">   </span>user123<span class="w">      </span><span class="m">21904</span><span class="w">          </span><span class="m">0</span><span class="w">       </span><span class="m">1423</span><span class="w">        </span><span class="m">489</span><span class="w">      </span><span class="m">19990</span><span class="w">          </span><span class="m">1</span><span class="w">          </span><span class="m">0</span>
+<span class="w">         </span><span class="m">111112</span><span class="w"> </span>parallel<span class="w">   </span>user123<span class="w">      </span><span class="m">21904</span><span class="w">          </span><span class="m">0</span><span class="w">       </span><span class="m">1423</span><span class="w">        </span><span class="m">489</span><span class="w">      </span><span class="m">19990</span><span class="w">          </span><span class="m">1</span><span class="w">          </span><span class="m">0</span>
+<span class="w">         </span><span class="m">111113</span><span class="w"> </span>parallel<span class="w">   </span>user123<span class="w">      </span><span class="m">21904</span><span class="w">          </span><span class="m">0</span><span class="w">       </span><span class="m">1423</span><span class="w">        </span><span class="m">489</span><span class="w">      </span><span class="m">19990</span><span class="w">          </span><span class="m">1</span><span class="w">          </span><span class="m">0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>PRIORITY</strong>: Final computed score — higher numbers mean higher placement in the queue.</p></li>
+<li><p><strong>AGE</strong>: Time in queue (in minutes). Increases continuously until the job starts.</p></li>
+<li><p><strong>FAIRSHARE</strong>: Normalized score based on your group’s recent usage. Higher = better.</p></li>
+<li><p><strong>JOBSIZE</strong>: Reflects node/core/memory request — used in backfilling calculations.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Partitions.html" class="btn btn-neutral float-left" title="Available Partitions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Slurm.html" class="btn btn-neutral float-right" title="SLURM Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, How-to on the Rockfish Cluster.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

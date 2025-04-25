@@ -54,9 +54,9 @@ User accounts can be requested at any time, and the portal also allows users to:
 
    **Unsubscribing from this mailing list will result in account deactivation**, as it is the primary channel for operational communication.
 
-******************
+********************
 Storage Allocations
-******************
+********************
 
 Rockfish provides multiple file systems, each with different purposes and default quotas:
 

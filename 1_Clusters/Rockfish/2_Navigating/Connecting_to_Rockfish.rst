@@ -1,5 +1,5 @@
 Logging in to Rockfish
-################################
+===========================
 
 This section covers how to log into Rockfish and transfer files to and from the system.
 

@@ -1,97 +1,104 @@
 GPU Jobs
 ########
 
-Rockfish provides several partitions equipped with NVIDIA GPUs for compute-intensive workloads. This page outlines available GPU partitions, submission requirements, usage policies, and tools for tracking GPU utilization.
+ARCH offers several GPU-equipped partitions for compute-intensive and
+AI/ML workloads.  This page lists each partition, the **CPU-per-GPU
+billing ratios**, access requirements, and submission examples.
 
-Available GPU Partitions
-*************************
+.. contents::
+   :local:
+   :depth: 1
 
-a100
-----
 
-A100 is designed for GPU-enabled workflows on 40 GB A100 cards.
+Available GPU partitions
+************************
 
-- **GPUs**: 4× NVIDIA A100 (40 GB each)
-- **Requirements**:
-  
-  - Slurm allocation: ``<PI_NAME>_gpu`` (e.g., ``jsmith123_gpu``)
-  - QoS: ``qos_gpu``
+.. list-table::
+   :header-rows: 1
+   :widths: 15 18 12 20 35
 
-- **Max Runtime**: 3 days
+   * - **Partition**
+     - **GPUs / node**
+     - **CPU cores billed per GPU**
+     - **Typical use-case**
+     - **Notes**
+   * - ``l40s``
+     - 8 × NVIDIA **L40 S** (48 GB)
+     - **16**
+     - Large-memory image /
+       data analytics
+     - *TRESBillingWeights* CPU =  5, GPU = 100  
+       → 100 ÷ 5 ≈ **20**  
+       (we cap at policy value 16)
+   * - ``a100``
+     - 8 × NVIDIA **A100-40 GB**
+     - **12**
+     - Mixed HPC + DL
+     - CPU = 13, GPU = 180 → 180 ÷ 13 ≈ 14  
+       Policy = 12
+   * - ``nvl``
+     - 4 × NVIDIA **H100 (80 GB)** 
+     - **32**
+     - Highest-end
+       training / inference
+     - CPU = 10, GPU = 380 → 38  
+       Policy = 32
+   * - ``h100``
+     - 4 × NVIDIA **H100 (80 GB)**
+     - **32**
+     - Same hardware as *nvl*; kept separate
+       for scheduling
+     - identical weights to *nvl*
 
-ica100
-------
 
-ICA100 is for GPU workflows on upgraded A100 hardware.
+**DefCpuPerGPU** from `scontrol show partition`; this is what Slurm
+charges **per elapsed hour per GPU**.
 
-- **GPUs**: 4× NVIDIA A100 (80 GB each)
-- **Requirements**:
+Access requirements
+*******************
 
-  - Slurm allocation: ``<PI_NAME>_gpu``
-  - QoS: ``qos_gpu``
+#. Your PI must request a **GPU allocation**.  
+   Support: `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__
+#. You will be added to a Slurm **account** ending in ``_gpu``  
+   (e.g. ``jsmith123_gpu``).
+#. Use the matching **QoS** at submission time:
 
-- **Max Runtime**: 3 days
+   .. list-table::
+      :widths: 20 80
+      :header-rows: 1
 
-mig_class
----------
+      * - **Partition(s)**
+        - **Required QoS**
+      * - ``a100``, ``nvl``, ``h100``, ``l40s``
+        - ``qos_gpu``   (or ``qos_l40s`` for L40S)
 
-MIG_CLASS provides GPUs for classroom use. It uses Multi-Instance GPU (MIG) mode to create isolated GPU slices for student jobs.
-
-- **GPUs**: 4× NVIDIA A100 (80 GB each), segmented into 12× 20 GB MIGs
-- **Requirements**:
-
-  - Slurm allocation: ``<class_name>-<PI_NAME>`` (e.g., ``cs601-jsmith123``)
-  - QoS: ``mig_class``
-
-- **Max Runtime**: 1 day
-
-l40s
-----
-
-L40s is intended for high-performance workflows that benefit from large GPU memory and performance.
-
-- **GPUs**: 8× NVIDIA L40s (48 GB each)
-- **Requirements**:
-
-  - Slurm allocation: ``<PI_NAME>_gpu``
-  - QoS: ``qos_gpu``
-
-- **Max Runtime**: 1 day
-
-Access Requirements
-********************
-
-By default, GPU partitions are **not accessible** to all users. To gain access, PIs must:
-
-1. **Request a GPU allocation** by contacting the Rockfish support team.
-2. Be assigned to a project-specific Slurm account ending in ``_gpu`` (e.g., ``jsmith123_gpu``).
-3. Submit jobs using that account and the corresponding QoS (e.g., ``qos_gpu``).
-
-GPU Usage Limits
+GPU usage limits
 ****************
 
-The ``qos_gpu`` configuration enforces a strict usage limit:
+*QoS* limits are enforced cluster-wide:
 
-.. code-block:: text
+* **Per-account GPU cap**
 
-   MaxTRESPA: gres/gpu=10
+  .. code-block:: bash
 
-This means that **no more than 10 GPUs can be in use at once per account**, regardless of partition or job size. If your job exceeds the limit, it will remain **pending** with the reason:
+     $ sacctmgr show qos format=Name,GrpTRES
+        Name      GrpTRES
+     ----------  ------------------
+        normal   gres/gpu=16
+       qos_gpu   –
+      qos_l40s   gres/gpu=8
 
-.. code-block:: text
+  • Most projects can have **up to 16 GPUs in use simultaneously**  
+    (8 in ``qos_l40s``).
 
-   (QOSMaxGRESPerAccount)
+* Memory & CPU billing weights are applied automatically; you do **not**
+  need to adjust your `--mem` request unless you need more than the node
+  default.
 
-To check the current GPU usage per account, administrators may use:
-
-.. code-block:: bash
-
-   squeue -o "%.18i %.9P %.8j %.8u %.2t %.10M %.6D %.6C %R" --qos=qos_gpu
-
-GPU Job Submission Example
+Submitting a GPU batch job
 **************************
 
-Submit a basic batch job requesting two GPUs:
+Example – 2 × A100 GPUs for 24 h:
 
 .. code-block:: bash
 
@@ -99,53 +106,39 @@ Submit a basic batch job requesting two GPUs:
    #SBATCH --qos=qos_gpu
    #SBATCH --account=jsmith123_gpu
    #SBATCH --gres=gpu:2
-   #SBATCH --ntasks=2
-   #SBATCH --cpus-per-task=6
+   #SBATCH --cpus-per-task=24     # 12  cores / GPU × 2
    #SBATCH --time=24:00:00
 
-Check assigned GPU devices:
+   module load cuda/12.3
+   srun python train.py --epochs 90
+
+Interactive session:
 
 .. code-block:: bash
 
-   echo $CUDA_VISIBLE_DEVICES
+   interact -p l40s --gres=gpu:4 -c 64 -t 2:00:00 -A jsmith123_gpu -q qos_gpu
 
-Monitoring GPU Usage with `jobstats`
-************************************
+Monitoring GPUs
+***************
 
-Rockfish provides the `jobstats` tool to evaluate GPU, CPU, and memory usage for completed and running jobs.
+List GPU nodes & load:
 
-Basic usage:
+.. code-block:: bash
+
+   sinfo -p l40s,a100,nvl,h100 -N -o "%N %G %T %m"
+
+Per-job utilisation:
 
 .. code-block:: bash
 
    jobstats <jobid>
 
-Output includes:
-
-- GPU utilization over job duration
-- Memory used per GPU
-- Node assignments
-- Efficiency metrics
-
-For more on viewing job status and resource usage, visit: :doc:`Job_Status`
-
-Helpful Commands
-****************
-
-- View available GPU partitions:
-
-  .. code-block:: bash
-
-     sinfo -p a100,ica100,l40s,mig_class
-
-
-Additional Tips
+Troubleshooting
 ***************
 
-- Avoid requesting more GPUs than necessary — this may increase wait time.
-- Always confirm that your Slurm account and QoS match the partition.
-- Use `interact` with `--gres=gpu:<N>` to start a live GPU session.
+* **QOSMaxGRESPerAccount** → you’ve hit the GPU cap; wait or cancel
+  other runs.
+* **AssocGrpGRES** → wrong account/QoS pair.
+* **Resources** → request fewer GPUs or shorter wall-time to back-fill.
 
-.. note::
-
-   If you're unsure whether your PI has GPU access, or you encounter errors submitting GPU jobs, please open a ticket on the Support page or contact the Rockfish administrators directly.
+Need help? Open a ticket or e-mail **help@arch.jhu.edu**.

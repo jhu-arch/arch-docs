@@ -17,7 +17,8 @@ Frequently Asked Questions
 
    .. code-block:: console
 
-      ssh -XY <your_jhed>@login.rockfish.jhu.edu
+      ssh -XY <your_jhed>@login.rockfish.jhu.edu (for Rockfish)
+      ssh -XY <your_jhed>@dsailogin.arch.jhu.edu (for DSAI)
 
 .. dropdown:: What default resources do I receive?
 
@@ -33,6 +34,8 @@ Frequently Asked Questions
    PIs must submit a short proposal through the Coldfront Portal.  
    Allocations are available for standard, GPU, and large-memory usage.  
    Startup allocations are also available for benchmarking.
+   For Rockfish, visit the `Allocations page for Rockfish <../1_Clusters/Rockfish/1_Resources/Allocation>`__.
+   For DSAI, visit the `Allocations page for DSAI <../1_Clusters/DSAI/1_Resources/Allocation>`__.
 
 .. dropdown:: How do I find my group or personal utilization?
 
@@ -73,12 +76,20 @@ Frequently Asked Questions
 
       seff <job_id>
       reportseff <job_id>
-      jobstats <job_id>
+      jobstats <job_id> 
+
+   .. note::
+      Jobstats is only available for GPU jobs.
 
 .. dropdown:: How do I transfer large datasets?
 
-   Use Globus with the **Rockfish User Data** endpoint.  
+   Use Globus to transfer data.  
    For large numbers of small files, compress them into tarballs first:
+
+   For more information on using Globus, visit the 
+   
+   - :doc:`File Transfers for Rockfish <../1_Clusters/Rockfish/2_Navigating/File_Transfers>`
+   - :doc:`File Transfers for DSAI <../1_Clusters/DSAI/2_Navigating/File_Transfers>`
 
    .. code-block:: console
 

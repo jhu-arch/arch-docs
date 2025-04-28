@@ -24,12 +24,17 @@ Example output:
 
 .. code-block:: none
 
-   JOBID            PARTITION  NAME      USER     ST  TIME      NODES  CPUS  REASON
-   500001           parallel   sim01     user01   PD  0:00         1     1    (MaxCpuPerAccount)
-   500002           parallel   sim02     user01   PD  0:00         1     1    (MaxCpuPerAccount)
-   500003           parallel   jobXYZ    user02   PD  0:00         1     1    (AssocGrpCPUMinutesLimit)
-   500004_[1-5]     parallel   arrayjob  user03   PD  0:00         1     1    (AssocGrpCPUMinutesLimit)
-   500009           parallel   depend    user05   PD  0:00         1     1    (Dependency)
+   JOBID    PARTITION  NAME                 USER     ST   TIME NODES REASON
+   -------- ---------- -------------------- -------- -- ------- ----- -----------------------
+   100001   a100       train                userA    PD   0:00     1 Dependency
+   100002   a100       batch_job            userB    PD   0:00     1 Priority
+   100003   a100       workflow_11          userC    PD   0:00     1 Resources
+   100004   a100       analysis_22          userC    PD   0:00     1 Priority
+   100005   l40s       preproc_01           userD    PD   0:00     1 Resources
+   100006   l40s       model_fit            userD    PD   0:00     1 Priority
+   100011   h100       training_run         userE    PD   0:00     1 QOSMaxGRESPerUser
+   100012   h100       inference            userE    PD   0:00     1 QOSMaxGRESPerUser
+   100015   h100       gpu_test             userF    PD   0:00     1 Dependency
 
 **Reason Codes:**
 
@@ -52,15 +57,34 @@ View detailed job info:
 
 .. code-block:: console
 
-   $ scontrol show job 1111111
-
-   JobId=1111111 JobName=job_script.sh
-      UserId=example_user GroupId=example_group
-      Priority=20688 QOS=qos_gpu State=RUNNING Reason=None
-      RunTime=03:55:39 TimeLimit=3-00:00:00
-      Partition=a100 NodeList=gpu14 NumCPUs=12
-      ReqTRES=cpu=1,mem=4000M,node=1,billing=12,gres/gpu=1
-      AllocTRES=cpu=12,mem=48000M,node=1,billing=12,gres/gpu=1
+   $ scontrol show job 100123
+   JobId=100123 JobName=my_job
+      UserId=userX(0000) GroupId=research(0000) MCS_label=N/A
+      Priority=4000000000 Nice=0 Account=pi_group QOS=normal
+      JobState=RUNNING Reason=None Dependency=(null)
+      Requeue=1 Restarts=0 BatchFlag=0 Reboot=0 ExitCode=0:0
+      RunTime=00:57:06 TimeLimit=3-00:00:00 TimeMin=N/A
+      SubmitTime=2025-04-28T10:00:00 EligibleTime=2025-04-28T10:00:00
+      AccrueTime=2025-04-28T10:00:00
+      StartTime=2025-04-28T10:00:15 EndTime=2025-05-01T10:00:15 Deadline=N/A
+      PreemptEligibleTime=2025-04-28T10:00:15 PreemptTime=None
+      SuspendTime=None SecsPreSuspend=0 LastSchedEval=2025-04-28T10:00:15 Scheduler=Backfill
+      Partition=gpuA100 AllocNode:Sid=login01:123456
+      ReqNodeList=(null) ExcNodeList=nodeX
+      NodeList=gpu001
+      BatchHost=gpu001
+      NumNodes=1 NumCPUs=12 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+      ReqTRES=cpu=1,mem=10G,node=1,billing=180,gres/gpu=1
+      AllocTRES=cpu=12,mem=120G,node=1,billing=180,gres/gpu=1,gres/gpu:a100=1
+      Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*
+      MinCPUsNode=1 MinMemoryCPU=10G MinTmpDiskNode=0
+      Features=(null) DelayBoot=00:00:00
+      OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null)
+      Command=bash
+      WorkDir=/scratch/pi_group/userX
+      Power=
+      CpusPerTres=gpu:12
+      TresPerNode=gres:gpu:1
 
 sacct
 *****

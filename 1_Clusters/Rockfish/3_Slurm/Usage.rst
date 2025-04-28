@@ -61,7 +61,7 @@ The ratio of "Billed Cores / GPU" comes from the number of available cores and G
 
    Core-hours = ( GPUs × billed-cores/GPU ) × Wall-time(h)
 
-**Example for a100 parttion:**
+**Example for a100 partition:**
 
 2xA100 GPUs for 3 hours → (2 × 12) × 3 = 72 core-hours
 

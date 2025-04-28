@@ -11,7 +11,7 @@ Basic Example
    #!/bin/bash
    #SBATCH --job-name=MyJob
    #SBATCH --time=24:00:00
-   #SBATCH --partition=shared
+   #SBATCH --partition=$PARTITION
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=24
    #SBATCH --mail-type=end
@@ -28,12 +28,12 @@ OpenMP Job Script
    #!/bin/bash -l
    #SBATCH --job-name=OpenMP-Job
    #SBATCH --output=myLog-file
-   #SBATCH --partition=shared
+   #SBATCH --partition=$PARTITION
    #SBATCH --time=00-01:30:15
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=8
    ###SBATCH --mem-per-cpu=4GB
-   #SBATCH --account=XYAWA
+   #SBATCH --account=$SLURM_ACCOUNT
    #SBATCH --export=ALL
 
    ml purge
@@ -49,12 +49,12 @@ Hybrid MPI + OpenMP Job Script
    #!/bin/bash -l
    #SBATCH --job-name=MyLMJob
    #SBATCH --output=myLog-file
-   #SBATCH --partition=parallel
+   #SBATCH --partition=$PARTITION
    #SBATCH --time=02-01:30:15
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=8
    #SBATCH --cpus-per-task=6
-   #SBATCH --account=XYAWA
+   #SBATCH --account=$SLURM_ACCOUNT
    #SBATCH --export=ALL
 
    ml gcc openmpi
@@ -65,25 +65,6 @@ Hybrid MPI + OpenMP Job Script
    export CUDA_AUTO_BOOST=1
    mpirun -np 8 bin/gmx_mpi mdrun -deffnm options
 
-Big Memory Job Script
-*********************
-
-.. code-block:: bash
-
-   #!/bin/bash -l
-   #SBATCH --job-name=MyLMJob
-   #SBATCH --output=myLog-file
-   #SBATCH --partition=bigmem
-   #SBATCH --time=02-01:30:15
-   #SBATCH --nodes=1
-   #SBATCH --ntasks-per-node=8
-   #SBATCH -A PI-userid_bigmem
-   #SBATCH --export=ALL
-
-   ml purge
-   ml intel
-   ./a.out > MyLog.out
-
 GPU Job Script (NAMD, 4 GPUs)
 *****************************
 
@@ -92,7 +73,7 @@ GPU Job Script (NAMD, 4 GPUs)
    #!/bin/bash -l
    #SBATCH --job-name=namd4gpu
    #SBATCH --time=48:00:00
-   #SBATCH --partition=a100
+   #SBATCH --partition=$PARTITION
    #SBATCH --qos=qos_gpu
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=48
@@ -182,7 +163,7 @@ Job arrays provide a simple and scalable way to run multiple jobs with minor dif
    #!/bin/bash -l
    #SBATCH --job-name=small-array
    #SBATCH --time=48:00:00
-   #SBATCH --partition=shared
+   #SBATCH --partition=$PARTITION
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=1
    ###SBATCH --mem-per-cpu=4G
@@ -245,7 +226,7 @@ Jupyter Notebook Job Script
 
       .. code-block:: bash
 
-         ssh -N -L ${port}:${node}:${port} ${user}@login.rockfish.jhu.edu
+         ssh -N -L ${port}:${node}:${port} ${user}@dsailogin.arch.jhu.edu
 
    2. Copy the link provided in the log file into your browser (it starts with ``http://127.0.0.1:<PORT>``).
 
@@ -273,7 +254,7 @@ Common sbatch Options
      - Total memory to allocate per node
    * - ``--mem-per-cpu=4GB``
      - Memory to allocate per CPU core
-   * - ``--account=myaccount``
+   * - ``--account=$SLURM_ACCOUNT``
      - Charge the job to the specified allocation account
    * - ``--qos=qos_gpu``
      - Assign a specific Quality of Service (QOS)

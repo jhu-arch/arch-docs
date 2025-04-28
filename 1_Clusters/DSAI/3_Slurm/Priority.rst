@@ -1,7 +1,7 @@
 Priority Calculation
 ##############################
 
-Rockfish uses a multi-factor job priority system to determine which jobs run first. These factors work together to ensure equitable access while keeping the cluster as busy and efficient as possible. Understanding these can help users predict queue behavior and optimize job placement.
+DSAI uses a multi-factor job priority system to determine which jobs run first. These factors work together to ensure equitable access while keeping the cluster as busy and efficient as possible. Understanding these can help users predict queue behavior and optimize job placement.
 
 How Job Priority is Calculated
 ==============================

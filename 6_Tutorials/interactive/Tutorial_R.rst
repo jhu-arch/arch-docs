@@ -105,7 +105,7 @@ Parameter reference
 Partition cheatsheet
 --------------------
 
-For available partitions, see: :doc:`../3_Slurm/Partitions`
+For available partitions, see: :doc:`../../1_Clusters/Rockfish/3_Slurm/Partitions`
 
 
 Helper-script output files

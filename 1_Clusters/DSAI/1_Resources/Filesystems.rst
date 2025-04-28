@@ -2,9 +2,9 @@
 Filesystems on DSAI
 ####################
 
-Rockfish uses a combination of high-performance and research-tier file systems to support a wide range of workloads. Most storage is backed by IBM Spectrum Scale (GPFS), with additional storage from Krieger IT (VAST) for eligible researchers.
+DSAI uses a combination of high-performance and research-tier file systems to support a wide range of workloads. Most storage is backed by IBM Spectrum Scale (GPFS), with additional storage from Krieger IT (VAST) for eligible researchers.
 
-Storage on Rockfish is intended solely for research and educational purposes. Users are expected to manage their data responsibly, and storage quotas are enforced per group.
+Storage on DSAI is intended solely for research and educational purposes. Users are expected to manage their data responsibly, and storage quotas are enforced per group.
 
 General Guidelines
 ******************
@@ -16,9 +16,9 @@ General Guidelines
 - Temporary storage for large projects is available — please contact ARCH staff.
 
 .. important::
-  Data subject to restrictions such as HIPAA or PHI is **not permitted** on Rockfish.  
+  Data subject to restrictions such as HIPAA or PHI is **not permitted** on DSAI.  
   If your research involves an IRB and the data is de-identified, please reach out to  
-  `help@rockfish.jhu.edu <mailto:help@rockfish.jhu.edu>`__ for further guidance.
+  `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for further guidance.
 
 
 Filesystems at a Glance
@@ -26,49 +26,22 @@ Filesystems at a Glance
 
 .. list-table:: 
    :header-rows: 1
-   :widths: 18 15 12 12 15 15 10
+   :widths: 18 15 12 12 15
 
    * - File System
      - System Type
      - Total Size
-     - Block Size
      - Default Quota
-     - Files per TB
      - Backed Up?
    * - /home/
-     - NVMe SSD (ZFS)
-     - 20 TB
-     - 128 KB
+     - WEKA
+     - 10 TB
      - 50 GB per user
-     - N/A
      - Limited
-   * - /scratch4/
-     - IBM GPFS
-     - 3.8 PB
-     - 4 MB
+   * - /scratch/
+     - WEKA
+     - 800 TB
      - 1 TB per group
-     - 2M
-     - No
-   * - /scratch16/
-     - IBM GPFS
-     - 3.6 PB
-     - 16 MB
-     - By request
-     - 1M
-     - No
-   * - /data/
-     - IBM GPFS
-     - 5.1 PB
-     - 16 MB
-     - 10 TB per group
-     - 400K
-     - No
-   * - /vast/
-     - VAST
-     - N/A
-     - 32 KB
-     - By request
-     - N/A
      - No
 
 
@@ -80,63 +53,21 @@ Each compute node has a local 1+ TB NVMe hard drive mounted as “/tmp”. The l
 /home/
 =======
 
-Each user receives 50 GB of storage in `/home/`, backed by high-speed NVMe SSDs and ZFS.  
+Each user receives 50 GB of storage in `/home/`, backed by WEKA.  
 This area is intended for frequently used code, scripts, and configuration files.
 
 .. warning::
-   `/home/` is **not intended for I/O** from jobs. Use `/scratch` instead.
+   `/home/` is **not intended for I/O** from jobs. Use `/scratch/` instead.
 
-Limited file recovery may be possible, but is **not guaranteed**.
+/scratch/
+=========
 
-/scratch4/
-==========
-
-This default scratch space is optimized for high file-count and smaller file sizes using a 4 MB block size.
-
-- 1 TB per group (default)
-- Suitable for: **genomics, bioinformatics, mechanical engineering**
-- Purged automatically after 30 days of inactivity (based on access time)
-- Not backed up or recoverable
-
-/scratch16/
-===========
-
-This scratch space is optimized for sequential I/O and streaming workloads.
-
-- Available **by request** with justification
-- 16 MB block size
-- Suitable for: **physics, large-scale simulations, chemistry**
-- Same 30-day purge policy applies
-- Not backed up or recoverable
-
-/data/
-======
-
-Groups are given 10 TB of allocation by default in `/data/`.
-
-This area is ideal for storing high-value data generated during or after computation, including:
-
-- Processed results
-- Intermediate analysis
-- Files you want to retain longer than 30 days
-
-/data/ is **not backed up**, so users must implement their own preservation strategy.
-
-/vast/
-======
-
-This all-flash storage is provided by **Krieger IT** for researchers who have purchased space.
-
-- Mounted at `/vast/` on Rockfish
-- Available to all JHU researchers
-- Request form and pricing info:  
-
-📄 `Request VAST Storage & View Pricing <https://jh.qualtrics.com/jfe/form/SV_4SJJTnPMp8dHKwm>`__
+Each group receives 1TB of storage in `/scratch/`, backed by WEKA.
 
 Quota Reporting with `quotas.py`
 ********************************
 
-ARCH provides a command-line tool called `quotas.py` to help users monitor their disk usage across the `/home`, `/data`, `/scratch4`, `/scratch16`, and `/vast` filesystems.
+ARCH provides a command-line tool called `quotas.py` to help users monitor their disk usage across the `/home` and `/scratch` filesystems.
 
 This tool runs automatically at login and displays the current usage for your home directory and your research group’s shared allocations. However, you can manually run it at any time to check your usage or monitor quotas for your research group.
 
@@ -162,13 +93,11 @@ Example Output:
   +---------------------+-------------------+-------------------+-------------------+
 
   +-----------------------------------------------------------------------------------------------+
-  |         GPFS Usage for Group <group_name> as of Tue Apr 15 15:00:17 2025                      |
+  |         WEKA Usage for Group <group_name> as of Tue Apr 15 15:00:17 2025                      |
   +-------------+------------+-------------+----------+--------------+----------------+-----------+
   |      FS     |    Used    |    Quota    |  Used %  |    Files     |  Files Quota   |  Files %  |
   +-------------+------------+-------------+----------+--------------+----------------+-----------+
-  |     data    |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   40,960,000   |   XX.XX%  |
-  |   scratch4  |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   20,480,000   |   XX.XX%  |
-  |  scratch16  |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   10,240,000   |   XX.XX%  |
+  |   scratch   |  XX.XX TB  |  10.00 TB   |  XX.XX%  |  X,XXX,XXX   |   40,960,000   |   XX.XX%  |
   +-------------+------------+-------------+----------+--------------+----------------+-----------+
 
 Fields:

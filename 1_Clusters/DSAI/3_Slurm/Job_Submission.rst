@@ -46,7 +46,7 @@ Here’s a simple example:
    #!/bin/bash
    #SBATCH --job-name=MyJob
    #SBATCH --time=24:00:00
-   #SBATCH --partition=shared
+   #SBATCH --partition=$PARTITION
    #SBATCH --nodes=1
    #SBATCH --ntasks-per-node=24
    #SBATCH --mail-type=end

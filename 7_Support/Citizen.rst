@@ -25,8 +25,10 @@ Additionally, if a user’s task consumes **excessive memory**, the system may f
 
 Use an interactive session (``interact``) or submit a batch job for anything resource-intensive.
 
-For large file transfers, always use **Globus** instead of ``rsync`` or ``cp``.  
-See the :doc:`file transfers page <../1_Clusters/Rockfish/2_Navigating/File_Transfers>` for guidance on how to use Globus for Rockfish.
+For large file transfers, always use **Globus** instead of ``rsync`` or ``cp``. You can find more information about using Globus by visiting:
+
+- See the :doc:`File Transfers for Rockfish <../1_Clusters/Rockfish/2_Navigating/File_Transfers>`
+- See the :doc:`File Transfers for DSAI <../1_Clusters/DSAI/2_Navigating/File_Transfers>`
 
 
 Allowed on Login Nodes
@@ -45,7 +47,9 @@ Accounts and Allocations
 *************************
 
 PIs create and manage projects via the **Coldfront Portal**. You can find more information about allocations by visiting: 
-:doc:`allocations page for Rockfish: <../1_Clusters/Rockfish/1_Resources/Allocation>`.
+
+- :doc:`Allocations page for Rockfish<../1_Clusters/Rockfish/1_Resources/Allocation>`
+- :doc:`Allocations page for DSAI<../1_Clusters/DSAI/1_Resources/Allocation>`
 
 
 Acceptance of Terms

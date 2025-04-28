@@ -1,41 +1,17 @@
 File Transfers
 ===========================
 
-Copy Files with SCP
-*********************
-
-Use the ``scp`` command to copy files or directories to Rockfish:
-
-.. code-block:: console
-
-  scp -r <DIR> <userid>@rfdtn1.rockfish.jhu.edu:/scratch16/<PI-id>/<userid>/
-
-Synchronize with Rsync
-************************
-
-Use ``rsync`` for efficient file syncing:
-
-.. code-block:: console
-
-  rsync -rav ~/data <userid>@rfdtn1.rockfish.jhu.edu:~/data/
-  rsync -rav --delete --exclude-from=~/exclude.txt ~/data <userid>@rfdtn1.rockfish.jhu.edu:~/data/
-
-.. note::
-   - ``--delete`` removes files not present in the source
-   - ``--exclude-from`` uses a file to skip listed files
-
 Data Transfer with Globus
 *************************
 
-
-The recommended method for transferring large data files to and from the Rockfish cluster is to use `Globus <https://www.globus.org>`_. Globus manages transfers reliably in the background, handling restarts if interruptions occur.
+The recommended method for transferring large data files to and from the DSAI cluster is to use `Globus <https://www.globus.org>`_. Globus manages transfers reliably in the background, handling restarts if interruptions occur.
 
 1. Connect to Globus
 **************************
 
 Use your browser to visit: https://www.globus.org
 
-.. image:: ../../../images/rf-globus-1.png
+.. image:: ../../../images/dsai-globus-01.png
    :width: 400
    :alt: Globus Login
 
@@ -44,7 +20,7 @@ Use your browser to visit: https://www.globus.org
 
 Search and select **“Johns Hopkins”** as your institution.
 
-.. image:: ../../../images/rf-globus-2.png
+.. image:: ../../../images/dsai-globus-02.png
    :width: 400
 
 3. Log in with JHED ID
@@ -52,25 +28,25 @@ Search and select **“Johns Hopkins”** as your institution.
 
 Use your JHED ID to log in through the Johns Hopkins SSO portal.
 
-.. image:: ../../../images/rf-globus-3.png
+.. image:: ../../../images/dsai-globus-03.png
    :width: 400
 
-4. Search for the Rockfish Collection
-**************************************
+4. Search for the **JHU DSAI Data** Collection
+***********************************************
 
-After logging in, search for the collection **“rockfish”** in the Collection Search screen. Click on **“Rockfish User Data”** when it appears.
+After logging in, search for the collection **"JHU DSAI Data”** in the Collection Search screen. Click on **“JHU DSAI Data”** when it appears.
 
-.. image:: ../../../images/rf-globus-4.png
+.. image:: ../../../images/dsai-globus-04.png
    :width: 400
 
 5. Authenticate Access
 **************************
 
-You'll be prompted to authenticate with the “Rockfish User Data” collection. This is required on first access or after removing the collection.
+You'll be prompted to authenticate with the **“JHU DSAI Data”** collection. This is required on first access or after removing the collection.
 
 Click **“Continue”**.
 
-.. image:: ../../../images/rf-globus-5.png
+.. image:: ../../../images/dsai-globus-05.png
    :width: 400
 
 6. Select Your JHED Identity
@@ -78,7 +54,7 @@ Click **“Continue”**.
 
 Choose your JHED ID from the list of available identities.
 
-.. image:: ../../../images/rf-globus-6.png
+.. image:: ../../../images/dsai-globus-06.png
    :width: 400
 
 7. Allow Access to the Globus Web App
@@ -86,15 +62,15 @@ Choose your JHED ID from the list of available identities.
 
 Scroll to the bottom and click **“Allow”** to authorize access.
 
-.. image:: ../../../images/rf-globus-7.png
+.. image:: ../../../images/dsai-globus-07.png
    :width: 400
 
-8. Rockfish Endpoint
+8. DSAI Endpoint
 **************************
 
-Once authorized, you will see the Rockfish endpoint connected (your HOME directory).
+Once authorized, you will see the DSAI endpoint connected (your HOME directory).
 
-.. image:: ../../../images/rf-globus-8.png
+.. image:: ../../../images/dsai-globus-08.png
    :width: 400
 
 9. Choose a Second Endpoint
@@ -104,7 +80,7 @@ On the other side of the interface, select a second endpoint. This could be:
 - A Globus Connect Personal instance (e.g., your laptop)
 - An HPC system like Bridges2
 
-.. image:: ../../../images/rf-globus-9.png
+.. image:: ../../../images/dsai-globus-09.png
    :width: 400
 
 10. Authentication for Second Endpoint (if needed)
@@ -116,19 +92,14 @@ You may be asked to authenticate to the second system. If using your own Globus 
 11. File Manager View
 **************************
 
-You’ll now see a **split-pane interface**. The left side shows your Rockfish files. The right side shows your selected endpoint.
+You’ll now see a **split-pane interface**. The left side shows your DSAI files. The right side shows your selected endpoint.
 
-.. image:: ../../../images/rf-globus-11.png
-   :width: 400
 
 12. Start File Transfer
 **************************
 
 To transfer files:
-- Select the folder or files (e.g., "OMP-src") on one side.
+- Select the folder or files on one side.
 - Click **“Start”** to begin the transfer.
 
 You can also open **“Transfer & Sync Options”** to configure behavior like sync mode or overwrite rules.
-
-.. image:: ../../../images/rf-globus-12.png
-   :width: 400

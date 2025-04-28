@@ -95,17 +95,6 @@ Default Group on Login
 
 Your default group (first in the `groups` output) is used each time you log in. If this group is outdated or not associated with your current work, contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ to request a change.
 
-Group Permissions and Quotas
-*****************************
-
-Group ownership determines not just access but also **quota tracking**. Storage usage in `/data/`, `/scratch4/`, and `/scratch16/` is accounted by group, and files owned by the wrong group may cause usage reports to be inaccurate.
-
-To avoid issues:
-
-- Always verify you're in the correct group before writing files
-- Use `newgrp` if needed to switch context
-- Use `quotas.py` to verify usage for the right group
-
 Summary of Useful Commands
 ***************************
 

@@ -4,11 +4,11 @@ Slurm on DSAI
 .. toctree::
    :maxdepth: 1
 
-   Example_Sbatch
-   GPU_Jobs
-   Job_Status
-   Job_Submission
+   Slurm
    Partitions
    Priority
-   Slurm
    Usage
+   Job_Status
+   Job_Submission
+   GPU_Jobs
+   Example_Sbatch

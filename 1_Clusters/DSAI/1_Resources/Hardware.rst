@@ -2,79 +2,65 @@
 DSAI Hardware Summary
 ######################
 
-The Rockfish cluster is a high-performance computing (HPC) system operated by ARCH at Johns Hopkins University. As of 2025, Rockfish consists of:
+The DSAI cluster is a high-performance computing (HPC) system operated by ARCH at Johns Hopkins University. As of 2025, the DSAI Cluster consists of:
 
-- **45,072 CPU cores** across **841 nodes**
-- **Theoretical peak performance:** 3.3 PFLOPs  
-- **Rmax:** 2.1 PFLOPs (measured)
-- **Parallel file systems:** 3 IBM GPFS systems totaling ~13 PB of usable space
-- **Network fabric:** Mellanox HDR100 (1:1.5 topology)
-- **Top500 Ranking:** #443 as of November 2023
+- **8,960 CPU cores** across **80 CPU nodes**
+- **15 8-way nodes** with **NVIDIA A100 (80GB)** GPUs
+- **32 4-way nodes** with **NVIDIA H100** GPUs
+- **8 8-way nodes** with **NVIDIA L40S** GPUs
+- **5 PB of WEKA storage** (backed by a parallel file system)
 
-The following table summarizes the current node types available in the Rockfish cluster:
+The following table summarizes the current node types available in the DSAI cluster:
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 12 25 12 20 20 12
+   :widths: 12 8 10 10 8 12 20
 
-   * - Type
-     - Count
-     - CPU
-     - GPU
-     - RAM
-     - Storage
-     - Total Cores
-   * - Compute
-     - 720
-     - Intel Xeon Gold 6248R (Cascade Lake)
+   * - Partition
+     - # Nodes
+     - CPU Cores / Node
+     - Memory Per Core (MB)
+     - GPUs Per Node
+     - Time Limit
+     - Features
+   * - CPU
+     - 80
+     - 108
+     - 4,000
      - N/A
-     - 192 GB DDR4 2933MHz
-     - 1 TB NVMe SSD
-     - 36,864
-   * - Compute (Next-Gen)
-     - 46
-     - Intel Xeon Gold 6448Y (Sapphire Rapids)
-     - N/A
-     - 256 GB DDR5 4800MHz
-     - 2 TB NVMe SSD
-     - 2,944
-   * - Large Memory
-     - 25
-     - Intel Xeon Gold 6248R (Cascade Lake)
-     - N/A
-     - 1.5 TB DDR4 2933MHz
-     - 1 TB NVMe SSD
-     - 1,200
-   * - GPU (A100 40GB)
-     - 18
-     - Intel Xeon Gold 6248R (Cascade Lake)
-     - 4 × NVIDIA A100 40GB
-     - 192 GB DDR4 2933MHz
-     - 1 TB NVMe SSD
-     - 864
-   * - GPU (A100 80GB)
-     - 10
-     - Intel Xeon Gold 6338 (Icy Lake)
-     - 4 × NVIDIA A100 80GB
-     - 256 GB DDR4 3200MHz
-     - 1.6 TB NVMe SSD
-     - 640
-   * - GPU (L40S)
+     - 72:00:00
+     - Intel Xeon Platinum 8480+ 56 Core
+   * - l40s
+     - 8
+     - 124
+     - 6,000
+     - 8
+     - 72:00:00
+     - Nvidia L40S 48GB GPUs, AMD EPYC 9534 64 Core
+   * - a100
+     - 15
+     - 92
+     - 10,000
+     - 8
+     - 72:00:00
+     - Nvidia A100 80GB GPUs, AMD EPYC 7443 24 Core
+   * - h100
+     - 16
+     - 120
+     - 12,000
      - 4
-     - Intel Xeon Gold 6338
-     - 8 × NVIDIA L40S 48GB
-     - 512 GB DDR4 3200MHz
-     - 3.5 TB NVMe SSD
-     - 256
-   * - Fast Compute (Emerald Rapids)
-     - 18
-     - Intel Xeon Gold / Platinum 8592+
-     - N/A
-     - 512 GB TruDDR5 5600MHz
-     - 1.8 TB NVMe SSD
-     - 2,304
+     - 72:00:00
+     - Nvidia H100 80GB GPUs, AMD EPYC 9534 64 Core
+   * - NVL
+     - 16
+     - 124
+     - 12,000
+     - 4
+     - 72:00:00
+     - Nvidia H100-NVL 96GB GPUs, AMD EPYC 9534 64 Core
+
+Total system core count: **20,676 cores across 135 nodes**
+Total system GPU count: **64 L40S, 120 A100, 64 H100, 64 H100-NVL GPUs**
 
 .. note::
    Node specifications may change as new hardware is integrated into the cluster.
-
-Total system core count: **45,072 cores across 841 nodes**

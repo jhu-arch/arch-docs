@@ -25,8 +25,7 @@ The Snakemake language extends the Python language, adding syntactic structures 
 
 A Snakemake workflow is defined by specifying rules in a Snakefile. The rules decompose the workflow into small steps by specifying how to create sets of output files from sets of input files. It will automatically determine the dependencies between the rules by matching file names.
 
-This tutorial presents a bioinformatics pipeline using ``Snakemake`` and :ref:`the Reproducibility Framework (RF)
-<Reproducibility-Framework>`.
+This tutorial presents a bioinformatics pipeline using ``Snakemake`` and :doc:`the Reproducibility Framework (RF)<Tutorial_Reproducibility_Framework>`.
 
 It will used the two classes of L1-associated somatic variants in the human brain from Salk Institute for Biological Studies dataset.
 
@@ -754,8 +753,7 @@ tabix snakemake.slurm.script
   [userid@login03 tabix]$ rf sbatch .
 
 
-Once you coded the pipeline, just run :ref:`the Reproducibility Framework (RF)
-<Reproducibility-Framework>`.
+Once you coded the pipeline, just run :doc:`the Reproducibility Framework (RF)<Tutorial_Reproducibility_Framework>`
 
 .. code-block:: console
 

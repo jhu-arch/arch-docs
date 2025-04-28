@@ -1,6 +1,7 @@
 Filesystems on Rockfish
 ########################
 
+
 Rockfish uses a combination of high-performance and research-tier file systems to support a wide range of workloads. Most storage is backed by IBM Spectrum Scale (GPFS), with additional storage from Krieger IT (VAST) for eligible researchers.
 
 Storage on Rockfish is intended solely for research and educational purposes. Users are expected to manage their data responsibly, and storage quotas are enforced per group.

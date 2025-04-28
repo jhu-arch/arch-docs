@@ -1,4 +1,4 @@
-ARCH Clusters Software Guide
+ARCH Clusters Guide
 ############################
 
 Welcome!  This site is the one-stop user guide for every high-performance cluster operated by `Advanced Research Computing at Hopkins (ARCH) <https://www.arch.jhu.edu/>`__
@@ -69,14 +69,15 @@ Visit the official ARCH website for more:
    3_Common_Tasks/Managing_Group_Permissions
 
 .. toctree::
-   :maxdepth: 2
-   :caption: How to do Reproducible Research
+   :maxdepth: 1
+   :caption: Tutorials
 
-   5_Reproducible/RF
-   5_Reproducible/Snakemake
-   5_Reproducible/Singularity
-   5_Reproducible/Virtual
-   5_Reproducible/Shorts
+   6_Tutorials/Tutorial_Software
+   6_Tutorials/containers/index
+   6_Tutorials/envs/index
+   6_Tutorials/interactive/index
+   6_Tutorials/specialized/index
+   6_Tutorials/workflows/index
 
 .. toctree::
    :maxdepth: 2

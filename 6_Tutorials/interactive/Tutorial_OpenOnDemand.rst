@@ -146,58 +146,58 @@ Bad Request
  **Solution** : Enter URL https://portal.rockfish.jhu.edu/
 
 
-.. |ood1| image:: ../../../images/ood1.png
+.. |ood1| image:: ../../images/ood1.png
   :alt: Login
   :width: 70 %
 
-.. |ood2| image:: ../../../images/ood2.png
+.. |ood2| image:: ../../images/ood2.png
   :alt: Authenticated
   :width: 100 %
 
-.. |ood3| image:: ../../../images/ood3.png
+.. |ood3| image:: ../../images/ood3.png
   :alt: Message
   :width: 100 %
 
-.. |ood4| image:: ../../../images/ood4.png
+.. |ood4| image:: ../../images/ood4.png
   :alt: File
   :width: 90 %
 
-.. |ood5| image:: ../../../images/ood5.png
+.. |ood5| image:: ../../images/ood5.png
   :alt: Interactive
   :width: 30 %
 
-.. |ood6| image:: ../../../images/ood6.png
+.. |ood6| image:: ../../images/ood6.png
   :alt: Remote
   :width: 100 %
 
-.. |ood7| image:: ../../../images/ood7.png
+.. |ood7| image:: ../../images/ood7.png
   :alt: Jupyter_Desktop
   :width: 60 %
 
-.. |ood8| image:: ../../../images/ood8.png
+.. |ood8| image:: ../../images/ood8.png
   :alt: Queue
   :width: 80 %
 
-.. |ood9| image:: ../../../images/ood9.png
+.. |ood9| image:: ../../images/ood9.png
   :alt: Starting
   :width: 80 %
 
-.. |ood10| image:: ../../../images/ood10.png
+.. |ood10| image:: ../../images/ood10.png
   :alt: Launch
   :width: 80 %
 
-.. |ood11| image:: ../../../images/ood11.png
+.. |ood11| image:: ../../images/ood11.png
   :alt: Desktop
   :width: 100 %
 
-.. |ood12| image:: ../../../images/ood12.png
+.. |ood12| image:: ../../images/ood12.png
   :alt: Jupyter_Form
   :width: 60 %
 
-.. |ood13| image:: ../../../images/ood13.png
+.. |ood13| image:: ../../images/ood13.png
   :alt: Node
   :width: 60 %
 
-.. |ood14| image:: ../../../images/ood14.png
+.. |ood14| image:: ../../images/ood14.png
   :alt: Jupyter
   :width: 100 %

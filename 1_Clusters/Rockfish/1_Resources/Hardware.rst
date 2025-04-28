@@ -1,5 +1,5 @@
-Compute Node Summary
-********************
+Rockfish Hardware Summary
+#########################
 
 The Rockfish cluster is a high-performance computing (HPC) system operated by ARCH at Johns Hopkins University. As of 2025, Rockfish consists of:
 

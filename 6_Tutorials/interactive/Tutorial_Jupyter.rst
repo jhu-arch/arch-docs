@@ -121,7 +121,7 @@ Parameter reference
 Partition cheatsheet
 --------------------
 
-For available Rockfish partitions, see: :doc:`../3_Slurm/Partitions`
+For available Rockfish partitions, see: :doc:`../../1_Clusters/Rockfish/3_Slurm/Partitions`
 
 
 Adding extra Python / Conda environments

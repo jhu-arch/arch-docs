@@ -1,9 +1,8 @@
 Checking Resource Usage & Billing
 =================================
 
-Rockfish charges jobs in **core-hours**.  A core-hour is one CPU-core used for
-one hour — or the equivalent, when GPUs or very large memory requests are
-involved.
+DSAI charges jobs in **core-hours**.  A core-hour is one CPU-core used for
+one hour — or the equivalent, when GPUs are involved.
 
 Core-only partitions
 --------------------
@@ -39,21 +38,18 @@ The ratio of "Billed Cores / GPU" comes from the number of available cores and G
    * - **Partition**
      - **GPUs / node**
      - **Billed cores / GPU**
-   * - ``v100``
-     - 4 × V100
-     - 12
-   * - ``a100``
-     - 4 × A100
-     - 12
    * - ``l40s``
-     - 8 × L40S
-     - 8
-   * - ``ica100``
-     - 4 × A100
+     - 8 × l40s 48GB
      - 16
-   * - ``mig_class``
-     - 12 × A100-MIG (2g.20gb)
-     - 5 (per slice)
+   * - ``a100``
+     - 8 × A100 80GB
+     - 12
+   * - ``h100``
+     - 4 x H100 80GB
+     - 32
+   * - ``nvl``
+     - 4 × H100-NVL 96GB
+     - 32
 
 **Billing formula**
 
@@ -61,28 +57,9 @@ The ratio of "Billed Cores / GPU" comes from the number of available cores and G
 
    Core-hours = ( GPUs × billed-cores/GPU ) × Wall-time(h)
 
-**Example for a100 parttion:**
+**Example for a100 partition:**
 
 2xA100 GPUs for 3 hours → (2 × 12) × 3 = 72 core-hours
-
-Bigmem partition
------------------
-
-On ``bigmem`` jobs are billed on the **largest of (CPU cores) or (memory/32 GiB)**,
-because each core is paired with 32 GiB of RAM:
-
-.. code-block:: text
-
-   Effective cores = max( requested CPUs ,
-                          requested memory (GiB) / 32 )
-
-   Core-hours      = Effective cores × Wall-time(h)
-
-**Example for bigmem partition:**  
-
-400 GiB Memory for 4 hours → (400/32) * 4 = 50 core-hours
-
-----------------------------------
 
 Viewing Historical Usage and Efficiency
 =======================================

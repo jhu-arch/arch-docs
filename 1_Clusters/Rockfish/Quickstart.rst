@@ -95,15 +95,15 @@ Managing Python, Jupyter, RStudio
    * - **JupyterLab**
      - Portal → *Jupyter Server* (GUI)\\
        ``jupyterlab.sh`` helper (CLI)
-     - :doc:`../../../6_Tutorials/interactive/Tutorial_Jupyter`
+     - :doc:`../../../3_Tutorials/interactive/Tutorial_Jupyter`
    * - **RStudio Server**
      - Portal → *RStudio Server* (GUI)\\
        ``r-studio-server.sh`` helper (CLI)
-     - :doc:`../../6_Tutorials/interactive/Tutorial_R`
+     - :doc:`../../3_Tutorials/interactive/Tutorial_R`
    * - **Conda environments**
      - ``module load anaconda``\\
        ``conda create -n myenv python=3.11``
-     - :doc:`../../6_Tutorials/envs/index`
+     - :doc:`../../3_Tutorials/envs/index`
 
 Storage locations
 *********************

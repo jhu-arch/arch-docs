@@ -50,7 +50,7 @@ Visit the official ARCH website for more:
 📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__  
 📍 `DSAI Portal <https://ai-coldfront.arch.jhu.edu/>`__  
 📍 `Request Help <mailto:help@arch.jhu.edu>`__  
-📍 :doc:`7_Support/Support`
+📍 :doc:`4_Support/Support`
 
 
 .. toctree::
@@ -65,30 +65,30 @@ Visit the official ARCH website for more:
    :maxdepth: 2
    :caption: Common Tasks
 
-   3_Common_Tasks/Bash_Quickstart
-   3_Common_Tasks/Managing_Group_Permissions
+   2_Common_Tasks/Bash_Quickstart
+   2_Common_Tasks/Managing_Group_Permissions
 
 .. toctree::
    :maxdepth: 1
    :caption: Tutorials
 
-   6_Tutorials/Tutorial_Software
-   6_Tutorials/containers/index
-   6_Tutorials/envs/index
-   6_Tutorials/interactive/index
-   6_Tutorials/specialized/index
-   6_Tutorials/workflows/index
+   3_Tutorials/Tutorial_Software
+   3_Tutorials/containers/index
+   3_Tutorials/envs/index
+   3_Tutorials/interactive/index
+   3_Tutorials/specialized/index
+   3_Tutorials/workflows/index
 
 .. toctree::
    :maxdepth: 2
    :caption: Support and Help
 
-   7_Support/ARCH_Terminology
-   7_Support/Citizen
-   7_Support/Citing_Arch
-   7_Support/Support
-   7_Support/FAQ
-   7_Support/Service_Level_Expectations
+   4_Support/ARCH_Terminology
+   4_Support/Citizen
+   4_Support/Citing_Arch
+   4_Support/Support
+   4_Support/FAQ
+   4_Support/Service_Level_Expectations
 
 .. |pic1| image:: images/NSF.png
    :alt: NSF

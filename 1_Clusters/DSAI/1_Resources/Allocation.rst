@@ -7,7 +7,7 @@ Rockfish is accessible only to users and research groups with an approved alloca
 Allocations and user accounts are managed through the `Coldfront Portal`_. All users—whether internal or external—must request access through this system.
 
 .. note::
-    All users should review the :doc:`Good Citizen guidelines <../../../7_Support/Citizen>` before requesting an allocation or account.
+    All users should review the :doc:`Good Citizen guidelines <../../../4_Support/Citizen>` before requesting an allocation or account.
 
 ******************
 Slurm Allocations

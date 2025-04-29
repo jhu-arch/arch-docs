@@ -1,7 +1,7 @@
 Logging in to DSAI
 ===========================
 
-This section covers how to log into Rockfish and transfer files to and from the system.
+This section covers how to log into the DSAI cluster and transfer files to and from the system.
 
 
 Use Secure Shell (SSH) to connect:

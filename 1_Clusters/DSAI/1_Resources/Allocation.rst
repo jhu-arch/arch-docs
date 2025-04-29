@@ -2,7 +2,7 @@
 Allocation and Account Management
 ##################################
 
-Rockfish is accessible only to users and research groups with an approved allocation or user account.
+DSAI is accessible only to users and research groups with an approved allocation or user account.
 
 Allocations and user accounts are managed through the `Coldfront Portal`_. All users—whether internal or external—must request access through this system.
 
@@ -34,7 +34,7 @@ Key features of the portal include:
 Requesting User Accounts
 #########################
 
-Non-PI users can request accounts through the DSAI `Coldfront Portal`_. However, user accounts will only be activated after the user has been added to an existing project by a PI with an approved allocation on the Rockfish Cluster.
+Non-PI users can request accounts through the DSAI `Coldfront Portal`_. However, user accounts will only be activated after the user has been added to an existing project by a PI with an approved allocation on the DSAI Cluster.
 
 - All Johns Hopkins users **must use their JHED ID** (e.g., `jsmith123`) when requesting an account.  
   Failure to use your JHED ID may delay account approval and **will prevent access to Globus**, which requires JHED-based authentication.

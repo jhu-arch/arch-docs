@@ -1,7 +1,7 @@
 Job Scheduling with Slurm
 #########################
 
-Rockfish uses **Slurm (Simple Linux Universal Resource Manager)** to manage job submission, scheduling, and resource allocation. It is a widely adopted, open-source workload manager used by many HPC centers.
+The DSAI Cluster uses **Slurm (Simple Linux Universal Resource Manager)** to manage job submission, scheduling, and resource allocation. It is a widely adopted, open-source workload manager used by many HPC centers.
 
 All jobs must be submitted through Slurm — running compute-heavy processes directly on login nodes is not permitted
 

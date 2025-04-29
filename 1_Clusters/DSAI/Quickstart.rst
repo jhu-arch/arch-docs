@@ -11,7 +11,7 @@ What you need
 ===============================  =======================================
 Item                             Notes
 ===============================  =======================================
-JHED *and* Rockfish account      Request one on `Coldfront <https://ai-coldfront.arch.jhu.edu/>`__
+JHED *and* DSAI account          Request one on `Coldfront <https://ai-coldfront.arch.jhu.edu/>`__
 Hopkins VPN (Pulse Secure)       Required from off-campus for some services
 SSH client                       macOS/Linux: built-in • Windows: *OpenSSH* or *PuTTY*
 ===============================  =======================================

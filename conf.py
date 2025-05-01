@@ -53,8 +53,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Rockfish Cluster Software Guide'
-copyright = u'2022, How-to on the Rockfish Cluster'
+project = u'ARCH Technical Documentation'
+copyright = u'2025, ARCH Systems'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

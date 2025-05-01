@@ -89,19 +89,18 @@ Example Output:
   +---------------------------+-------------+-------------+-------------+
   |             FS            |     Used    |    Quota    |    Used %   |
   +---------------------------+-------------+-------------+-------------+
-  |      /home/user/          |   64.33 MB  |   50.00 GB  |    0.13%    |
-  |     /scratch/PI/          |   83.27 GB  |   10.00 TB  |      0%     |
+  |      /home/$user/          |   64.33 MB  |   50.00 GB  |    0.13%    |
+  |     /scratch/$PI/          |   83.27 GB  |   10.00 TB  |      0%     |
   +---------------------------+-------------+-------------+-------------+
 
 Fields:
 =======
 
+- **FS**: Filesystem Path
 - **Used**: Current usage for the filesystem
 - **Quota**: Allocated quota for the user or group
-- **Percent**: Percentage of usage relative to quota
-- **Files**: Number of files currently stored
-- **Files Quota**: Maximum allowed number of files
-- **Files %**: Percent of file quota used
+- **Used %**: Percentage of usage relative to quota
+
 
 .. tip::
    File quotas are just as important as storage size. Exceeding your file quota may prevent new files from being written even if space remains.

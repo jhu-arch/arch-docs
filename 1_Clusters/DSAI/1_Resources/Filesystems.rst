@@ -100,7 +100,3 @@ Fields:
 - **Used**: Current usage for the filesystem
 - **Quota**: Allocated quota for the user or group
 - **Used %**: Percentage of usage relative to quota
-
-
-.. tip::
-   File quotas are just as important as storage size. Exceeding your file quota may prevent new files from being written even if space remains.

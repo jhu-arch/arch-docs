@@ -71,7 +71,7 @@ DSAI provides multiple file systems, each with different purposes and default qu
      - 50 GB
      - Personal files and small software packages
    * - /scratch/<PI-userid>
-     - 10 TB
+     - 20 TB
      - Short-term scratch space for active jobs
 
 ➡️ For more details on performance, usage policies, and file retention, see the `Filesystem Overview <Filesystems>`__.
@@ -96,7 +96,7 @@ If you forget your password or need to reset it, visit the `Coldfront Portal`_ a
 Password Requirements
 #####################
 
-Your DSIA password must:
+Your DSAI password must:
 
 - Be at least eight characters long
 - Contain characters from **at least three** of the following categories:

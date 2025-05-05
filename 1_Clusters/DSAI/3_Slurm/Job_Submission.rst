@@ -9,7 +9,6 @@ Overview of Job Types
 *********************
 
 - **Batch Jobs**: Standard non-interactive jobs submitted with `sbatch`.
-- **Interactive Jobs**: Allocate compute resources for a live terminal session using `interact`.
 - **Job Arrays**: Submit a group of related jobs with a single script using `--array`.
 
 
@@ -55,26 +54,6 @@ Here’s a simple example:
    module load intel/2020.2 intel-mpi/2020.2
    mpirun -n $SLURM_NTASKS ./my_program.x > output.log
 
-Interactive Jobs
-****************
-
-Use `interact` to request a live session on compute nodes:
-
-.. code-block:: console
-
-   interact -p parallel -n 4 -t 01:00:00
-
-GPU interactive job:
-
-.. code-block:: console
-
-   interact -p a100 -g 1 -n 6 -t 02:00:00
-
-See all interact options:
-
-.. code-block:: console
-
-   interact --usage
 
 Slurm Environment Variables
 ****************************

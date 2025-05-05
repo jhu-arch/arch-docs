@@ -11,7 +11,6 @@ Overview
 SLURM allows users to:
 
 - Submit batch jobs using `sbatch`
-- Run interactive sessions using `interact`
 - Monitor job status with `squeue`, `sacct`, or `scontrol`
 - Manage job arrays, resource requests, and job dependencies
 - Allocate compute, memory, and GPU resources efficiently
@@ -20,16 +19,6 @@ All compute-intensive jobs must be submitted through SLURM. Running jobs directl
 
 The DSAI cluster places limits on the number of jobs queued and running on a per group (allocation) and partition basis. Please note that submitting a large number of jobs (especially very short ones) can impact the overall  scheduler response for all users. If you are anticipating submitting a lot of jobs, please contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ before submission. We can work to check if there are bundling options (job arrays or gnu parallel) that make your workflow more efficient and reduce the impact on the scheduler.
 
-Interactive Sessions
-********************
-
-If your workflow requires interacting with a job as it runs (e.g., debugging, live monitoring, or launching GUI applications like RStudio or Jupyter), you must request an interactive session using the `interact` command:
-
-.. code-block:: bash
-
-   interact -p shared -n 4 -t 02:00:00
-
-This submits a job to the scheduler that, once scheduled, grants you interactive terminal access to a compute node.
 
 Learn More
 **********

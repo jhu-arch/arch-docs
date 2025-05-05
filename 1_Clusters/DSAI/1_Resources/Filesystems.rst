@@ -41,7 +41,7 @@ Filesystems at a Glance
    * - /scratch/
      - WEKA
      - 800 TB
-     - 10 TB per group
+     - 20 TB per group
      - No
 
 

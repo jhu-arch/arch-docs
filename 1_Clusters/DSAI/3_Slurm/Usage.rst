@@ -62,7 +62,7 @@ The ratio of "Billed Cores / GPU" comes from the number of available cores and G
 2xA100 GPUs for 3 hours → (2 × 12) × 3 = 72 core-hours
 
 Viewing Historical Usage and Efficiency
-=======================================
+----------------------------------------
 
 For more on viewing efficiency and job usage statistics, refer to the page:
 

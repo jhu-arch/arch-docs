@@ -181,7 +181,7 @@ Helpful Tips
 Partition Best Practices
 -------------------------
 
-- Use `--partition=` to explicitly request a partition in your batch script.
+- Use `\-\-partition=` to explicitly request a partition in your batch script.
 - Avoid defaulting to GPU partitions unless required — this helps ensure fair usage.
 - Read memory policies carefully (e.g., shared nodes have 4 GB/core).
 - Always pair GPU partitions with the appropriate QOS and allocation account.

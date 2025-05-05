@@ -37,7 +37,7 @@ Available GPU partitions
      - CPU = 13, GPU = 180 → 180 ÷ 13 ≈ 14  
        Policy = 12
    * - ``nvl``
-     - 4 × NVIDIA **H100 (80 GB)** 
+     - 4 × NVIDIA **H100 (96 GB)** 
      - **32**
      - Highest-end
        training / inference
@@ -111,12 +111,6 @@ Example – 2 × A100 GPUs for 24 h:
 
    module load cuda/12.3
    srun python train.py --epochs 90
-
-Interactive session:
-
-.. code-block:: bash
-
-   interact -p l40s --gres=gpu:4 -c 64 -t 2:00:00 -A jsmith123_gpu -q qos_gpu
 
 Monitoring GPUs
 ***************

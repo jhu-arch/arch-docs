@@ -88,7 +88,7 @@ House-keeping
 
 * **Fair-share scheduler** – large jobs may wait if your lab has used more
   CPU-hours than average recently.
-* **Login nodes** – *no heavy compute*.  Use ``interact`` or ``sbatch`` instead.
+* **Login nodes** – *no heavy compute*.  Use ``sbatch`` instead.
 
 Need help?
 **************

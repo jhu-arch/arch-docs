@@ -76,14 +76,6 @@ DSAI provides multiple file systems, each with different purposes and default qu
 
 ➡️ For more details on performance, usage policies, and file retention, see the `Filesystem Overview <Filesystems>`__.
 
-*****************
-Allocation Types
-*****************
-
-DSAI supports several types of allocations:
-
-- **???:** Available to ???
-
 *******************
 Password Management
 *******************

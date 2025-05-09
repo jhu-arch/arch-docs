@@ -24,6 +24,49 @@ To inspect the actual billing for a finished/active job:
 
    sacct -j <jobid> --format=JobID,User,Partition,State,Elapsed,CPUTime,NCPUS,AllocTRES
 
+Viewing Allocation Usage with ``sbalance``
+------------------------------------------
+
+To view usage for a Slurm Allocation over the course of a billing quarter, use the ``sbalance`` tool. For example:
+
+.. code-block:: bash
+
+   sbalance
+
+   The time of this report is: Fri May 09 11:42:39 2025
+
+   Start Date: 2025-04-01T00:00:00 End Date: 2025-06-30T00:00:00
+                                             Used          Account
+                  Account        User   (core-hours) /    Allocated )
+   ====================================================================
+                 pi               870000.0 /      900000.0
+   ....................................................................
+                                  user01            250000.0
+                                  user02             50000.0
+                                  user03            100000.0
+                                  user04             75000.0
+                                  user05             40000.0
+                                  user06             30000.0
+                                  user07             20000.0
+                                  user08             15000.0
+                                  user09             10000.0
+                                  user10             25000.0
+                                  user11             35000.0
+                                  user12             50000.0
+                                  user13             60000.0
+                                  user14             10000.0
+                                  user15             10000.0
+
+Use ``--usage`` to include a usage percentage column:
+
+.. code-block:: bash
+
+   sbalance --usage
+
+This will show the same table, but with each user's percent of the allocation.
+
+You can also use ``--hide-zero`` to omit users who have not yet used any core-hours.
+
 GPU partitions
 --------------
 

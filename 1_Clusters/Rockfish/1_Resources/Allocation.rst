@@ -74,7 +74,7 @@ Rockfish provides multiple file systems, each with different purposes and defaul
      - By request
      - Scratch space for large files
 
-➡️ For more details on performance, usage policies, and file retention, see the `Filesystem Overview <Filesystems>`__.
+➡️ For more details on performance, usage policies, and file retention, see the :doc:`Filesystem Overview <Filesystems>`
 
 Allocation Types
 ****************

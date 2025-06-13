@@ -95,7 +95,7 @@ This default scratch space is optimized for high file-count and smaller file siz
 
 - 1 TB per group (default)
 - Suitable for: **genomics, bioinformatics, mechanical engineering**
-- Purged automatically after 30 days of inactivity (based on access time)
+- Purged automatically after 90 days of inactivity (based on access time)
 - Not backed up or recoverable
 
 /scratch16/
@@ -106,7 +106,7 @@ This scratch space is optimized for sequential I/O and streaming workloads.
 - Available **by request** with justification
 - 16 MB block size
 - Suitable for: **physics, large-scale simulations, chemistry**
-- Same 30-day purge policy applies
+- Same 90-day purge policy applies
 - Not backed up or recoverable
 
 /data/

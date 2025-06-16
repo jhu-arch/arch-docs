@@ -18,6 +18,19 @@ Please include:
 - Screenshots or outputs if applicable
 - Any steps you’ve tried to resolve the issue
 
+User Survey
+***********
+
+To help us improve our services, please take a moment to complete our user survey:
+
+- `User Survey <https://jh.qualtrics.com/jfe/form/SV_bQOKO9M7xQFmwAu>`__
+
+Software and Feature Requests
+******************************
+For requests related to software installations or new features, please use the following form:
+
+- `Software Request Form <https://jh.qualtrics.com/jfe/form/SV_d5aGrhrF7ytYMQK>`__
+
 Training & Workshops
 ********************
 

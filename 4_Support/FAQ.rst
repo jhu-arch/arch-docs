@@ -37,6 +37,12 @@ Frequently Asked Questions
    For Rockfish, visit the `Allocations page for Rockfish <../1_Clusters/Rockfish/1_Resources/Allocation>`__.
    For DSAI, visit the `Allocations page for DSAI <../1_Clusters/DSAI/1_Resources/Allocation>`__.
 
+.. dropdown:: How can I request a piece of software or feature become available?
+
+   For requests related to software installations or new features, please use the following form:
+
+   - `Software Request Form <https://jh.qualtrics.com/jfe/form/SV_d5aGrhrF7ytYMQK>`__
+
 .. dropdown:: How do I find my group or personal utilization?
 
    .. code-block:: console

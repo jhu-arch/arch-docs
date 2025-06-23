@@ -45,7 +45,7 @@ Short, exploratory commands belong on an **interactive compute node**.
 
 .. code-block:: bash
 
-   interact -c 4 -t 2:00:00        # 4 cores, 2 h in the *express* partition
+   interact -n 4 -t 2:00:00        # 4 tasks, 2 h in the *express* partition
    hostname                        # now you're on compute-XYZ, not a login node
    python                          # fire up IPython, R, etc.
 

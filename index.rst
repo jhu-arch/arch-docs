@@ -67,6 +67,7 @@ Visit the official ARCH website for more:
 
    2_Common_Tasks/Bash_Quickstart
    2_Common_Tasks/Managing_Group_Permissions
+   2_Common_Tasks/JHU_VPN
 
 .. toctree::
    :maxdepth: 1

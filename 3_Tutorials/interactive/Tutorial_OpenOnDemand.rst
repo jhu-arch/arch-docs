@@ -8,7 +8,9 @@ Open OnDemand (`OOD`_) is an NSF-funded open-source HPC portal. It is a way for 
 Access Requirements
 ***********************
 - A valid **Rockfish account**
-- A connection to the **campus network or VPN**
+- A connection to the **campus network or VPN**  
+  For help connecting to the VPN, see :doc:`Connecting to the JHU VPN <../../2_Common_Tasks/JHU_VPN>`.
+
 
 When you first navigate to `OOD`_ you will be presented with a login screen. You can use your JHED ID and password to log in.
 

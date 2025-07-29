@@ -15,7 +15,6 @@ ARCH's mission is to enable research, scholarship, and innovation by offering:
 - Reliable infrastructure for data-intensive computing and simulation
 - Scientific consulting for research workflows, application optimization, and data strategy
 - Education and training in computational tools and methodologies
-- Secure environments for projects involving sensitive data (e.g., HIPAA, IRB)
 
 **Services and Support**
 

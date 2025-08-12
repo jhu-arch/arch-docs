@@ -84,7 +84,7 @@ Rockfish supports several types of allocations:
 - **Standard Allocations:** Available to all JHU PIs.
 - **MRI-Related Allocations:** Persist through Rockfish's lifespan (until end of 2026).
 - **Dean's Condo Allocations:** Startup allocations provided by Dean's Offices for new faculty.
-- **Condo Contributions:** PIs contributing hardware receive allocations proportional to contributed resources.
+- **Condo Contributions:** PIs contributing hardware receive allocations proportional to contributed resources. At this time, no additional condo contributions are being accepted.
 
 External and Collaborative Access
 *********************************

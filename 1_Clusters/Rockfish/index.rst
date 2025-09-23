@@ -21,6 +21,8 @@ If users have any questions about these policies, please send an email to `help@
    :maxdepth: 1
 
    Quickstart
+   4_Coldfront/index
    1_Resources/index
    2_Navigating/index
    3_Slurm/index
+   

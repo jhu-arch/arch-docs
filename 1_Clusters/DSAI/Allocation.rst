@@ -1,6 +1,6 @@
-##################################
-Allocation and Account Management
-##################################
+Creating and Managing Allocations and Accounts
+################################################
+
 
 DSAI is accessible only to users and research groups with an approved allocation or user account.
 
@@ -9,12 +9,8 @@ Allocations and user accounts are managed through the `Coldfront Portal`_. All u
 .. note::
     All users should review the :doc:`Good Citizen guidelines <../../../4_Support/Citizen>` before requesting an allocation or account.
 
-******************
-Slurm Allocations
-******************
-
 Requesting an Allocation
-#########################
+************************
 
 Johns Hopkins Principal Investigators (PIs) may request projects and resource allocations using the `Coldfront Portal`_. Once an allocation is approved, users may request accounts. PIs or their designated proxies are responsible for adding users to the appropriate allocations once it is created.
 
@@ -28,11 +24,8 @@ Key features of the portal include:
 - Assigning proxy account managers
 - Monitoring usage across groups and allocations
 
-.. warning::
-   Allocations are reset quarterly under a "use it or lose it" model. Unused core-hours do not carry over.
-
 Requesting User Accounts
-#########################
+*************************
 
 Non-PI users can request accounts through the DSAI `Coldfront Portal`_. However, user accounts will only be activated after the user has been added to an existing project by a PI with an approved allocation on the DSAI Cluster.
 
@@ -54,7 +47,6 @@ User accounts can be requested at any time, and the portal also allows users to:
 
    **Unsubscribing from this mailing list will result in account deactivation**, as it is the primary channel for operational communication.
 
-********************
 Storage Allocations
 ********************
 
@@ -76,17 +68,16 @@ DSAI provides multiple file systems, each with different purposes and default qu
 
 ➡️ For more details on performance, usage policies, and file retention, see the `Filesystem Overview <Filesystems>`__.
 
-*******************
 Password Management
 *******************
 
 Resetting Your DSAI Password
-#################################
+==============================
 
 If you forget your password or need to reset it, visit the `Coldfront Portal`_ and use the **Reset Password** option. You’ll need to enter the email address associated with your account. A secure link will be emailed to you to complete the reset process.
 
 Password Requirements
-#####################
+======================
 
 Your DSAI password must:
 

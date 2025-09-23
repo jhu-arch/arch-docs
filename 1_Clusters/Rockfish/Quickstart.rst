@@ -1,6 +1,8 @@
 Rockfish Quick Start
 ===========================
 
+.. _Coldfront Portal: https://coldfront.rockfish.jhu.edu
+
 .. contents::
    :local:
    :depth: 2
@@ -11,10 +13,16 @@ What you need
 ===============================  =======================================
 Item                             Notes
 ===============================  =======================================
-JHED *and* Rockfish account      Request one on `Coldfront <https://coldfront.rockfish.jhu.edu/>`
+JHED *and* Rockfish account      Request one on the `Coldfront Portal`_
 Hopkins VPN (Pulse Secure)       Required from off-campus for some services
 SSH client                       macOS/Linux: built-in • Windows: *OpenSSH* or *PuTTY*
 ===============================  =======================================
+
+Create an Account
+************************
+
+- For users, see :doc:`Creating a User Account <4_Coldfront/AccountCreate>` for instructions on creating an account.
+- For PIs, see :doc:`Creating a PI Account <4_Coldfront/AllocationCreate>` for instructions on creating an account, project, and allocation.
 
 Log in
 **************

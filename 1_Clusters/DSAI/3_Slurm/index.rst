@@ -7,7 +7,6 @@ Slurm on DSAI
    Slurm
    Partitions
    Priority
-   Usage
    Job_Status
    Job_Submission
    GPU_Jobs

@@ -60,7 +60,7 @@ Filesystems at a Glance
      - IBM GPFS
      - 5.1 PB
      - 16 MB
-     - 10 TB per group
+     - 1 TB per group
      - 400K
      - No
    * - /vast/
@@ -103,7 +103,7 @@ This default scratch space is optimized for high file-count and smaller file siz
 
 This scratch space is optimized for sequential I/O and streaming workloads.
 
-- Available **by request** with justification
+- No default allocation. Available **by request** with justification
 - 16 MB block size
 - Suitable for: **physics, large-scale simulations, chemistry**
 - Same 90-day purge policy applies
@@ -112,10 +112,9 @@ This scratch space is optimized for sequential I/O and streaming workloads.
 /data/
 ======
 
-Groups are given 10 TB of allocation by default in `/data/`.
-
 This area is ideal for storing high-value data generated during or after computation, including:
 
+- 1 TB per group (default)
 - Processed results
 - Intermediate analysis
 - Files you want to retain longer than 30 days

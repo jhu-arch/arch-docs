@@ -1,10 +1,7 @@
-Priority Calculation
+How Job Priority is Calculated
 ##############################
 
 Rockfish uses a multi-factor job priority system to determine which jobs run first. These factors work together to ensure equitable access while keeping the cluster as busy and efficient as possible. Understanding these can help users predict queue behavior and optimize job placement.
-
-How Job Priority is Calculated
-==============================
 
 Slurm evaluates each pending job with a weighted formula combining the following components:
 
@@ -27,6 +24,6 @@ To inspect job priority components, use the `sprio` command:
             111113 parallel   user123      21904          0       1423        489      19990          1          0
 
 - **PRIORITY**: Final computed score — higher numbers mean higher placement in the queue.
-- **AGE**: Time in queue (in minutes). Increases continuously until the job starts.
+- **AGE**: Normalized value that reflects time in queue. Increases continuously until the job starts.
 - **FAIRSHARE**: Normalized score based on your group's recent usage. Higher = better.
 - **JOBSIZE**: Reflects node/core/memory request — used in backfilling calculations.

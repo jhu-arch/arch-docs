@@ -21,6 +21,13 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - — (N/A)
      - 72:00:00
      - Intel Xeon Platinum 8480+ (56-core) dual-socket nodes
+   * - ``interactive``
+     - 4
+     - 88
+     - 10 000
+     - 8 × NVIDIA A100 80 GB
+     - 72:00:00
+     - AMD EPYC 7443 (24-core) + A100 GPUs
    * - ``l40s``
      - 8
      - 124
@@ -29,15 +36,15 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - 72:00:00
      - AMD EPYC 9534 (64-core) + high-mem L40S GPUs
    * - ``a100``
-     - 15
-     - 92
+     - 11
+     - 88
      - 10 000
      - 8 × NVIDIA A100 80 GB
      - 72:00:00
      - AMD EPYC 7443 (24-core) + A100 GPUs
    * - ``h100``
      - 16
-     - 120
+     - 124
      - 12 000
      - 4 × NVIDIA H100 80 GB
      - 72:00:00
@@ -58,31 +65,34 @@ cpu
 
 * **No GPUs** – ideal for CPU only jobs.
 
+interactive
+~~~~~~~~~~~
+
+* Interactive, short, hands-on debugging or exploratory runs (not for long production jobs).
+* Up to **1 node** per job; **MaxTime = 3 days (72:00:00)**.
+* Runs on A100 nodes (``c012–c015``), same chassis as the ``a100`` partition.
+
 l40s
 ~~~~
 
-* **8 × L40 S 48 GB** per node. 
-* 16 CPU cores charged **per GPU**.  
+* **8 × L40 S 48 GB** per node.   
 
 a100
 ~~~~
 
 * **8 × A100 80 GB** per node.
-* 12 CPU cores charged **per GPU**.  
 
 h100
 ~~~~
 
 * **4 × H100 80 GB** per node.
 * Connected via Mellanox NDR and may give good performance for parallel GPU jobs.
-* 32 CPU cores charged **per GPU**.  
 
 nvl
 ~~~
 
 * **4 × H100-NVL 96 GB** per node.
-* Connected via Mellanox NDR and may give good performance for parallel GPU jobs.
-* 32 CPU cores charged **per GPU**.  
+* Connected via Mellanox NDR and may give good performance for parallel GPU jobs. 
 
 GPU core-billing ratios
 -----------------------
@@ -94,11 +104,11 @@ GPU core-billing ratios
    * - **Partition**
      - **Billed CPU cores per GPU**
    * - ``l40s``
-     - 16
+     - 14
    * - ``a100``
-     - 12
+     - 10
    * - ``h100`` / ``nvl``
-     - 32
+     - 30
 
 Only request the GPUs you truly need—extra GPUs multiply your billed
 core-hours and may increase queue time.

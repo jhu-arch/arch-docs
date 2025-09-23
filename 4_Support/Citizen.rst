@@ -48,8 +48,8 @@ Accounts and Allocations
 
 PIs create and manage projects via the **Coldfront Portal**. You can find more information about allocations by visiting: 
 
-- :doc:`Allocations page for Rockfish<../1_Clusters/Rockfish/1_Resources/Allocation>`
-- :doc:`Allocations page for DSAI<../1_Clusters/DSAI/1_Resources/Allocation>`
+- :doc:`Allocations page for Rockfish<../1_Clusters/Rockfish/4_Coldfront/AllocationCreate>`
+- :doc:`Allocations page for DSAI<../1_Clusters/DSAI/Allocation>`
 
 
 Acceptance of Terms

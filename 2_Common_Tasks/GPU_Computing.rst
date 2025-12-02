@@ -13,7 +13,7 @@ Measure GPU Utilization in Real Time
 .. code-block:: bash
 
    sqme
-
+ 
      USER       ACCOUNT        JOBID PARTITION       NAME NODES  CPUS MIN_MEMORY TIME_LIMIT     TIME NODELIST ST REASON
      user1      research       501234 cpu       analysis.s     1     6      4000M 3-00:00:00 12:30:53   cpu001 R None
      user1      research       501235 cpu       tokenize.s     1     1      4000M 2-00:00:00  9:36:50   cpu002 R None
@@ -41,7 +41,7 @@ If your job is queued, there is no node yet.
 .. tip::
    ``nvidia-smi`` shows how often a GPU kernel is executing (duty cycle).
    It does *not* tell you kernel quality, SIMD occupancy, or how many CUDA cores
-   are active. For deeper analysis, use profilers (see :ref:`profiling`).
+   are active. For deeper analysis, use profilers.
 
 Reviewing GPU Job Statistics
 ----------------------------

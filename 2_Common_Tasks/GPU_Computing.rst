@@ -207,7 +207,7 @@ Getting Help
 * Open a support ticket to help@arch.jhu.edu including:
   * JobID(s), Slurm script, module list, and a short description.
   * A brief profiler report (``nsys`` or ``ncu``) if available.
-----
+
 
 *Adapted and expanded from community best practices. Portions inspired by Princeton
 Research Computing’s GPU documentation:

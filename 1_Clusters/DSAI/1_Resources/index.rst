@@ -6,3 +6,4 @@ Resources
 
    Hardware
    Filesystems
+   software_modules

@@ -34,8 +34,8 @@ Frequently Asked Questions
    PIs must submit a short proposal through the Coldfront Portal.  
    Allocations are available for standard, GPU, and large-memory usage.  
    Startup allocations are also available for benchmarking.
-   For Rockfish, visit the `Allocations page for Rockfish <../1_Clusters/Rockfish/4_Coldfront/AllocationCreate>`__.
-   For DSAI, visit the `Allocations page for DSAI <../1_Clusters/DSAI/Allocation>`__.
+   For Rockfish, visit the :doc:`Allocations page for Rockfish </1_Clusters/Rockfish/4_Coldfront/AllocationCreate>`.
+   For DSAI, visit the :doc:`Allocations page for DSAI </1_Clusters/DSAI/Allocation>`.
 
 .. dropdown:: How can I request a piece of software or feature become available?
 

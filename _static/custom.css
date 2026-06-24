@@ -1,0 +1,224 @@
+/* =========================================================
+ * JHU Brand styling for RTD theme
+ * Colors from https://brand.jhu.edu/visual-identity/colors/
+ * Typography from https://brand.jhu.edu/visual-identity/typography/
+ *
+ * Primary colors:  Heritage Blue #002D72, Spirit Blue #68ACE5
+ * Secondary cool:  Medium Blue #0077D8, Harbor Blue #4E97E0
+ *                  Mint Green #86C8BC, Homewood Green #008767
+ *                  Forest Green #275E3D
+ * Brand typefaces: Quadon (display), Gentona (body sans-serif)
+ * Web substitutes (by preference):
+ *   1. Roboto Slab    = display/headlines (Quadon sub)
+ *   2. Work Sans      = body text (Gentona sub)
+ *   3. Oswald         = accent headlines
+ *   4. Source Serif 4 = editorial/citations (Arnhem sub)
+ * ========================================================= */
+
+/* --- Google Fonts -- JHU-approved web font substitutions (by preference) --- */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Roboto+Slab:wght@400;500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* --- RTD theme CSS custom properties overrides --- */
+
+:root {
+  /* Primary brand -- Heritage Blue */
+  --color-brand-primary: #002D72;
+
+  /* Body links / content accents -- Medium Blue (better contrast on white) */
+  --color-brand-content: #0077D8;
+
+  /* Sidebar link colors */
+  --color-sidebar-link-text-toctp: #002D72;
+}
+
+/* Headlines use Roboto Slab (~Quadon) -- brand-preferred display font */
+.wy-nav-side,
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+  font-family: 'Roboto Slab', serif;
+  color: #68ACE5; /* Spirit Blue for captions -- light enough on dark bg */
+}
+
+/* Body text uses Work Sans (~Gentona) -- brand-preferred body font */
+body,
+.wy-nav-content p,
+.wy-nav-content li,
+.rst-content p,
+.rst-content li,
+.wy-side-nav-search input[type="text"],
+.wy-menu-vertical a {
+  font-family: 'Work Sans', sans-serif;
+}
+
+/* Headings use Roboto Slab (~Quadon) */
+.wy-nav-content h1,
+.wy-nav-content h2,
+.wy-nav-content h3,
+.wy-nav-content h4,
+.wy-nav-content h5,
+.wy-nav-content h6 {
+  font-family: 'Roboto Slab', serif;
+  color: #002D72; /* Heritage Blue headings */
+}
+
+/* Accent headlines and callouts use Oswald */
+.rst-content dl dt,
+.rst-content .section label {
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Citations and footnotes use Source Serif 4 (~Arnhem) */
+.rst-content cite,
+.footnote,
+.citation {
+  font-family: 'Source Serif 4', serif;
+}
+
+/* Page title top bar -- Heritage Blue background */
+.wy-breadcrumbs-wrapper a {
+  color: #0077D8;
+}
+
+/* Top-level section numbers / breadcrumb trail uses Heritage Blue */
+.wy-breadcrumbs-extra,
+.rst-version {
+  color: rgba(0, 45, 114, 0.6); /* Heritage Blue with transparency */
+}
+
+/* Links use JHU Medium Blue for accessible contrast */
+.rst-content a {
+  color: #0077D8;
+}
+
+.rst-content a:hover {
+  color: #4E97E0; /* Harbor Blue on hover */
+  text-decoration: underline;
+}
+
+/* Sidebar version badge -- Spirit Blue text on dark background */
+.version {
+  color: rgba(104, 172, 229, 0.6);
+}
+
+/* Code blocks and inline code accents -- subtle Heritage Blue border */
+.rst-content pre.literal-block,
+.rst-content div[class*='highlight'] {
+  border-left-color: #002D72;
+}
+
+/* Info/note admonition cards -- Spirit Blue accent */
+.rst-content .admonition.note {
+  border-color: #68ACE5;
+}
+
+.rst-content .admonition.note > .admonition-title {
+  background-color: rgba(104, 172, 229, 0.2);
+  color: #002D72;
+}
+
+/* Warning admonitions -- Homewood Green accent */
+.rst-content .admonition.warning > .admonition-title {
+  background-color: rgba(0, 135, 103, 0.15); /* Homewood Green tint */
+  color: #275E3D; /* Forest Green text */
+}
+
+/* Sidebar search input styling */
+.wy-side-nav-search input[type="text"] {
+  border-color: rgba(0, 45, 114, 0.3);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Sidebar search focus state -- Heritage Blue ring */
+.wy-side-nav-search input[type="text"]:focus {
+  border-color: #002D72;
+}
+
+/* ============================================
+ * Sidebar & Navigation -- JHU Heritage Blue theme
+ * Using !important to override sphinx_rtd_theme
+ * which loads AFTER custom.css and has equal specificity.
+ * ============================================ */
+
+.wy-nav-side {
+  background-color: #002D72 !important;
+  background-image: linear-gradient(180deg, #002D72 0%, #001f59 100%) !important;
+}
+
+/* Captions in sidebar use Spirit Blue with increased contrast */
+.wy-menu-vertical header,
+.wy-menu-vertical p.caption {
+  color: #68ACE5 !important;
+  font-family: 'Roboto Slab', serif !important;
+}
+
+/* Search box in sidebar matches Heritage Blue scheme */
+.wy-side-nav-search {
+  background-color: #001f59 !important;
+  color: #68ACE5 !important;
+}
+
+.wy-side-nav-search input[type="text"] {
+  border-color: rgba(208, 227, 245, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.wy-side-nav-search input[type="text"]:focus {
+  border-color: #68ACE5 !important;
+}
+
+.wy-side-nav-search img.logo {
+  background-color: transparent !important;
+}
+
+/* Sidebar menu links -- light blue tint for readability on dark bg */
+.wy-menu-vertical a,
+.wy-menu-vertical li.toctree-l1 > a {
+  color: #d0e3f5 !important;
+}
+
+.wy-menu-vertical a:hover {
+  background-color: rgba(104, 172, 229, 0.15) !important;
+  color: #fff !important;
+}
+
+/* Current/active sidebar entry -- Spirit Blue accent on left */
+.wy-menu-vertical li.current > a {
+  border-left: 3px solid #68ACE5 !important;
+  color: #68ACE5 !important;
+}
+
+.wy-menu-vertical a.current {
+  background-color: #001a4d !important;
+  color: #68ACE5 !important;
+  border-left: 3px solid #68ACE5 !important;
+}
+
+/* Expanded sidebar sections */
+/*  background-color: rgba(0, 45, 114, 0.2) !important; */
+.wy-menu-vertical li.on a,
+.wy-menu-vertical li.current > ul li a {
+  background-color: rgba(0, 24, 62) !important;
+}
+
+/* Dropdown overlay -- heritage blue instead of default dark */
+.wy-dropdown-menu {
+  background-color: #002D72 !important;
+}
+
+.wy-dropdown-menu a {
+  color: #d0e3f5 !important;
+}
+
+/* Top mobile navigation bar */
+.wy-nav-top {
+  background-color: #002D72 !important;
+}
+
+.wy-nav-top > a {
+  color: #68ACE5 !important;
+}
+
+/* Version badge in sidebar footer -- subtle Spirit Blue */
+.version {
+  color: rgba(104, 172, 229, 0.6) !important;
+}

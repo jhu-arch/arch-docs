@@ -1,0 +1,94 @@
+Creating and Managing Allocations and Accounts
+################################################
+
+SkipJack is accessible only to users and research groups with an approved allocation or user account.
+
+Allocations and user accounts are managed through the `Coldfront Portal`_. All users—whether internal or external—must request access through this system.
+
+.. note::
+    All users should review the :doc:`Good Citizen guidelines <../../../4_Support/Citizen>` before requesting an allocation or account.
+
+Requesting an Allocation
+************************
+
+Johns Hopkins Principal Investigators (PIs) may request projects and resource allocations using the `Coldfront Portal`_. Once an allocation is approved, users may request accounts. PIs or their designated proxies are responsible for adding users to the appropriate allocations once it is created.
+
+A video walkthrough is available here: **TODO**: Add video/walkthrough URL (or remove this line)
+
+Key features of the portal include:
+
+- Requesting new projects and allocations (PIs)
+- Managing users and adding them to allocations
+- Uploading publications, grants, and ROI reports
+- Assigning proxy account managers
+- Monitoring usage across groups and allocations
+
+Requesting User Accounts
+*************************
+
+Non-PI users can request accounts through the SkipJack `Coldfront Portal`_. However, user accounts will only be activated after the user has been added to an existing project by a PI with an approved allocation on the SkipJack Cluster.
+
+- All Johns Hopkins users **must use their JHED ID** (e.g., `jsmith123`) when requesting an account.  
+  Failure to use your JHED ID may delay account approval and **will prevent access to Globus**, which requires JHED-based authentication.
+
+User accounts can be requested at any time, and the portal also allows users to:
+
+- Submit requests for user accounts
+- Reset account passwords
+- Monitor utilization and core-hour usage
+- View current allocations and associated projects
+- Add users (if PI or proxy)
+
+.. note::
+   By requesting an account on SkipJack, you are automatically subscribed to the **SkipJack Users mailing list**:  
+   **TODO**: Add mailing list address.     This list is used to distribute **important cluster announcements, including scheduled maintenance, outages, and policy updates**.
+
+   **Unsubscribing from this mailing list will result in account deactivation**, as it is the primary channel for operational communication.
+
+Storage Allocations
+********************
+
+SkipJack provides multiple file systems, each with different purposes and default quotas:
+
+.. list-table:: Default Storage Quotas
+   :widths: 25 20 35
+   :header-rows: 1
+
+   * - File System
+     - Default Quota
+     - Description
+   * - /home/<userid>
+     - **TODO**: Add home default quota
+     - Personal files and small software packages
+   * - **TODO**: Add scratch/shared storage path
+     - **TODO**: Add scratch default quota
+     - Short-term scratch space for active jobs
+
+➡️ For more details on performance, usage policies, and file retention, see :doc:`1_Resources/Filesystems`.
+
+Password Management
+*******************
+
+Resetting Your SkipJack Password
+================================
+
+If you forget your password or need to reset it, visit the `Coldfront Portal`_ and use the **Reset Password** option. You'll need to enter the email address associated with your account. A secure link will be emailed to you to complete the reset process.
+
+Password Requirements
+======================
+
+Your SkipJack password must:
+
+- Be at least eight characters long
+- Contain characters from **at least three** of the following categories:
+  - Lower-case letters
+  - Upper-case letters
+  - Digits
+  - Special characters (excluding `'` and `"` )
+- Be different from your **last three passwords**
+- Remain private — your password must **never be shared**
+
+.. note::
+   Users are **strongly encouraged** to reset their password at least once per year.
+
+.. _Coldfront Portal: **TODO**: Add SkipJack Coldfront URL

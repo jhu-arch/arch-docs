@@ -1,15 +1,16 @@
-SkipJack Cluster
+Skipjack Cluster
 ================
 
-The Advanced Research Computing at Hopkins (ARCH) manages the High Performance Computing core facility at Johns Hopkins University. SkipJack consists of:
+The Skipjack cluster is a high-performance computing (HPC) system operated by ARCH at Johns
+Hopkins University.
 
-- **TODO**: Add number and description of CPU nodes (e.g., "N CPU nodes (X cores)")
-- **TODO**: Add number and description of GPU nodes with GPU type/count
-- **TODO**: Add storage details (e.g., "Y PBs of STORAGE_TYPE storage")
+These are "shared resources", therefore we expect all users to comply with policies on passwords,
+security guidelines, resource utilization and best practices, and privacy issues
 
-These are "shared resources", therefore we expect all users to comply with policies on passwords, security guidelines, resource utilization and best practices, and privacy issues
+If users have any questions about these policies, please send an email to
+`help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_
 
-If users have any questions about these policies, please send an email to `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__
+To begin see the quickstart for information regarding account creation and login.
 
 .. toctree::
    :maxdepth: 1

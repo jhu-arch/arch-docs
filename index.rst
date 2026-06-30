@@ -57,10 +57,10 @@ Visit the official ARCH website for more:
    :maxdepth: 3
    :caption: ARCH Systems
 
+   1_Clusters/SkipJack/index
    1_Clusters/Rockfish/index
    1_Clusters/DSAI/index
    1_Clusters/EDU_Cluster/index
-   1_Clusters/SkipJack/index
 
 .. toctree::
    :maxdepth: 2

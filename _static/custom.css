@@ -116,10 +116,14 @@ body,
   color: #002D72;
 }
 
-/* Warning admonitions -- Homewood Green accent */
+/* Warning admonitions */
+.rst-content .admonition.warning {
+  background-color: rgba(241, 196, 0, 0.15);
+}
+
 .rst-content .admonition.warning > .admonition-title {
-  background-color: rgba(0, 135, 103, 0.15); /* Homewood Green tint */
-  color: #275E3D; /* Forest Green text */
+  background-color: rgba(255, 158, 27, 0.55);
+  color: #4F2C1D;
 }
 
 /* Sidebar search input styling */

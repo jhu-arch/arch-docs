@@ -24,6 +24,8 @@ Requirements
 +============================+=======================================================+
 | JHED Login ID              | *or* Email (External collaborators only)              |
 +----------------------------+-------------------------------------------------------+
+| OTP Server App             | Required for Multi-Factor identification
++----------------------------+-------------------------------------------------------+
 | Hopkins VPN (Pulse Secure) | Required for off-campus access of some services       |
 +----------------------------+-------------------------------------------------------+
 | SSH client                 | macOS/Linux: built-in • Windows: *OpenSSH* or *PuTTY* |
@@ -95,29 +97,47 @@ a OTP server app for your account follow the steps:
 
     **Install one of the following:**
 
-    Microsoft Authenticator
+    **Microsoft Authenticator**
 
-    `Download it on the App Store <https://apps.apple.com/us/app/microsoft-authenticator/id983156458>`_
+    .. image:: images/appstore.svg
+       :width: 15%
+       :target: https://apps.apple.com/us/app/microsoft-authenticator/id983156458
+       :alt: Download it on the App Store
 
-    .. image:: images/google-play.png
+    .. image:: images/playstore.svg
+       :width: 15%
        :target: https://play.google.com/store/apps/details?id=com.azure.authenticator
        :alt: Get it on Google Play
 
-    FreeOTP
+    |
 
-    `Download it on the App Store <https://apps.apple.com/us/app/freeotp-authenticator/id872559395>`_
+    **FreeOTP**
 
-    .. image:: images/google-play.png
+    .. image:: images/appstore.svg
+       :width: 15%
+       :target: https://apps.apple.com/us/app/freeotp-authenticator/id872559395
+       :alt: Download it on the App Store
+
+    .. image:: images/playstore.svg
+       :width: 15%
        :target: https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp
        :alt: Get it on Google Play
 
-    Google Authenticator
+    |
 
-    `Download it on the App Store <https://apps.apple.com/us/app/google-authenticator/id388497605>`_
+    **Google Authenticator**
 
-    .. image:: images/google-play.png
+    .. image:: images/appstore.svg
+       :width: 15%
+       :target: https://apps.apple.com/us/app/google-authenticator/id388497605
+       :alt: Download it on the App Store
+
+    .. image:: images/playstore.svg
+       :width: 15%
        :target: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
        :alt: Get it on Google Play
+
+    |
 
     Using the installed app of your choice, scan the barcode. Enter the 6-digit code in the
     box to confirm synchronization.

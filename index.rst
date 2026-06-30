@@ -46,9 +46,9 @@ ARCH was previously known as the **Maryland Advanced Research Computing Center (
 Visit the official ARCH website for more:
 
 📍 `ARCH Website <https://www.arch.jhu.edu/>`__
+📍 `Skipjack Portal <TODO: Add SkipJack Coldfront URL>`__
 📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__
 📍 `DSAI Portal <https://ai-coldfront.arch.jhu.edu/>`__
-📍 `SkipJack Portal <TODO: Add SkipJack Coldfront URL>`__
 📍 `Request Help <mailto:help@arch.jhu.edu>`__
 📍 :doc:`4_Support/Support`
 
@@ -57,7 +57,7 @@ Visit the official ARCH website for more:
    :maxdepth: 3
    :caption: ARCH Systems
 
-   1_Clusters/SkipJack/index
+   1_Clusters/Skipjack/index
    1_Clusters/Rockfish/index
    1_Clusters/DSAI/index
    1_Clusters/EDU_Cluster/index

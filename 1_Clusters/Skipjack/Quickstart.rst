@@ -68,7 +68,7 @@ When complete, you will be returned to the login screen. Login with
 the credentials you just created.
 
 Setup Multifactor Identification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All users will need a One-Time Password (OTP) to connect to Skipjack. To set up
 an OTP server app for your account follow the steps:

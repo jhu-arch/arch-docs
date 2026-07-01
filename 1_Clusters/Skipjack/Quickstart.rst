@@ -1,7 +1,7 @@
 Skipjack User Guide
 ===================
 
-.. _Coldfront Portal: https://arch.skipjack.jhu.edu
+.. _Arch Portal: https://arch.skipjack.jhu.edu
 
 
 .. contents::
@@ -38,34 +38,61 @@ Requirements
 Create or Activate an Account
 -----------------------------
 
-Navigate to  ___ . Select **Johns Hopkins University (Skipjack)**
+Navigate to the Arch Portal at https://arch.skipjack.jhu.edu
 
-There are two login methods: **JHED Login ID** and **Local Account**
+.. image:: images/portal-landing.png
+
+Schmidt users should select the **Schmidt (SCCI)** button. All other users, select
+**Johns Hopkins University (Skipjack)**.
+
+There are two login methods: **JHED Login ID** and **Local Account**.
+
+
+
 
 Via JHED Login ID
 ^^^^^^^^^^^^^^^^^
 
 Click the **JHED Login ID** button and follow the prompts.
 
-.. image:: images/jhed-login.png
+.. image:: images/jhed-login2.png
 
-New users will first need to accept the Terms of Service.
+Users will be prompted with JHED login sequence.
+
+.. image:: images/jhed-login-msid.png
+
+Upon first login, users will be asked to accept the Terms of Service.
 
 Via Local Account
 ^^^^^^^^^^^^^^^^^
 
-External collaborators can create an account and login with their email. This option
+.. warning::
+
+   This method is for **external collaborators and Schmidt users only**. JHU faculty, staff and students
+   should sign in with the JHED Login ID described above.
+
+Schmidt users and external collaborators can create an account and login with their email. This option
 is not permitted for users with a JHED Login ID.
+
 
 First Time
 """"""""""
 
 Click the **Register** link, and fill out the information to create a new account.
 
-.. image:: images/register.png
+.. image:: images/register2.png
+
+.. note::
+
+   Schmidt users should prepend "scci-" to their username. External collaborators should prepend "ext-"
+
+.. image:: images/register-form.png
 
 When complete, you will be returned to the login screen. Login with
 the credentials you just created.
+
+Upon first login, users will be asked to accept the Terms of Service.
+
 
 Setup Multifactor Identification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

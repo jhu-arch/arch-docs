@@ -64,18 +64,18 @@ Click the **Register** link, and fill out the information to create a new accoun
 
 .. image:: images/register.png
 
-When complete, you will be returned to the login screen. Login with with
+When complete, you will be returned to the login screen. Login with
 the credentials you just created.
 
-Setup Multifactor Idenfication
+Setup Multifactor Identification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All users will need at One-Time Password (OTP) to connect to Skipjack. To set up
-a OTP server app for your account follow the steps:
+All users will need a One-Time Password (OTP) to connect to Skipjack. To set up
+an OTP server app for your account follow the steps:
 
 1. Navigate to My Profile.
 
-    Click on the down-down menu next to the user icon and select "My Profile."
+    Click on the drop-down menu next to the user icon and select "My Profile."
 
     .. image:: images/2fa-myprofile.png
 
@@ -190,13 +190,13 @@ OTP
 
 A One-Time Password (OTP) is required to login to Skipjack.
 
-After you successfully enter you password, you'll immediately be prompted to enter
+After you successfully enter your password, you'll immediately be prompted to enter
 your OTP code. Enter the code from the OTP app you used.
 
 .. note::
 
    If it is your first time connecting, you'll be asked to verify the host key.
-   When verified type **yes** at the primpt, then enter your skipjack password.
+   When verified type **yes** at the prompt, then enter your skipjack password.
 
 |
 |
@@ -231,7 +231,7 @@ To create a help ticket from the Arch Portal first navigate to the help desk.
 |
 |
 
-Awknowledgement
+Acknowledgement
 ---------------
 
 **TODO**:
@@ -248,7 +248,7 @@ Request Account Upgrade to PI
 
 .. note::
 
-   This section if for Principal Investigators actively conducting research
+   This section is for Principal Investigators actively conducting research
    with Skipjack.
 
 **TODO**: Fill this out
@@ -300,17 +300,17 @@ to first create a Cost Center (see [above](#pi-add-a-cost-center)).
 
     .. image:: images/new-proj-fill1.png
 
-3. Click **Save** to sbumit the project.
+3. Click **Save** to submit the project.
 
     .. image:: images/new-proj-fill2.png
 
 4. Once the new project is created. You will be prompted to review the project.
 
-    Click the link to initate the review.
+    Click the link to initiate the review.
 
     .. image:: images/review-proj.png
 
-    One your review is complete, check the acknowledgement box and click **Submit**.
+    Once your review is complete, check the acknowledgement box and click **Submit**.
 
     .. image:: images/review-proj-sub.png
 
@@ -376,7 +376,7 @@ Assign Proxy Account Managers
 
 .. note::
 
-   Only PIs can assign a user to manager a project they own.
+   Only PIs can assign a user to manage a project they own.
 
 1. From the project page locate the Users table.
 

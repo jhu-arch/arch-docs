@@ -33,6 +33,7 @@ Requirements
 
 |
 |
+
 ----
 
 Create or Activate an Account
@@ -176,6 +177,7 @@ an OTP authenticator app for your account, follow these steps:
 
 |
 |
+
 ----
 
 Reset Password
@@ -209,6 +211,7 @@ A confirmation screen will appear, indicating that a password reset email has be
 
 |
 |
+
 ----
 
 Connect to the Skipjack Cluster
@@ -233,6 +236,7 @@ your OTP code. Enter the code from the OTP app you used.
 
 |
 |
+
 ----
 
 Create a Help Ticket
@@ -309,6 +313,7 @@ will remain in the pending state until it is approved.
 
 |
 |
+
 ----
 
 
@@ -333,6 +338,7 @@ Add a Cost Center
 
 |
 |
+
 ----
 
 
@@ -379,6 +385,7 @@ an allocation can be requested.
 
 |
 |
+
 ----
 
 
@@ -413,6 +420,7 @@ A banner at the top of the page will confirm your request has been sent.
 
 |
 |
+
 ----
 
 
@@ -424,8 +432,6 @@ Add Users to a Project or Allocation
    Only PIs and managers of the same project can add users.
 
 1. Navigate to the project.
-
-   In the left navigation pane, navigate to Projects -> **My Projects**.
 
    Select the project you wish to add users to by clicking on the name hyperlink.
 
@@ -450,6 +456,7 @@ The banner at the top will confirm the user has been added.
 
 |
 |
+
 ----
 
 Assign Proxy Account Managers

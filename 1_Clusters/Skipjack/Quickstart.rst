@@ -51,8 +51,8 @@ There are two login methods: **JHED Login ID** and **Local Account**.
 
 
 
-Via JHED Login ID
-^^^^^^^^^^^^^^^^^
+Log in via JHED Login ID
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Click the **JHED Login ID** button and follow the prompts.
 
@@ -64,8 +64,8 @@ Users will be prompted with the JHED login sequence.
 
 Upon first login, users will be asked to accept the Terms of Service.
 
-Via Local Account
-^^^^^^^^^^^^^^^^^
+Log in via Local Account
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning::
 

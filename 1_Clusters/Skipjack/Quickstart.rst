@@ -24,9 +24,9 @@ Requirements
 +============================+=======================================================+
 | JHED Login ID              | *or* Email (External collaborators only)              |
 +----------------------------+-------------------------------------------------------+
-| OTP Server App             | Required for Multi-Factor identification              |
+| OTP Server App             | Required for Multi-Factor Authentication (MFA)        |
 +----------------------------+-------------------------------------------------------+
-| Hopkins VPN (Pulse Secure) | Required for off-campus access of some services       |
+| Hopkins VPN (Pulse Secure) | Required for off-campus access to some services       |
 +----------------------------+-------------------------------------------------------+
 | SSH client                 | macOS/Linux: built-in • Windows: *OpenSSH* or *PuTTY* |
 +----------------------------+-------------------------------------------------------+
@@ -255,13 +255,6 @@ To create a help ticket from the Arch Portal first navigate to the help desk.
 .. image:: images/htik-return.png
 
 
-|
-|
-
-Acknowledgement
----------------
-
-**TODO**:
 
 |
 |
@@ -278,7 +271,33 @@ Request Account Upgrade to PI
    This section is for Principal Investigators actively conducting research
    with Skipjack.
 
-**TODO**: Fill this out
+Principal Investigators (PI) on Skipjack can request to have their account upgraded to PI status.
+Requests are reviewed by staff.
+When an account is upgraded from User to PI, a default project is created and associated with
+the requesting PI.
+
+To request an account upgrade to PI:
+
+1. In the Arch Portal, click on the drop-down menu in the upper right next to the username and icon. Select
+   **My Profile**.
+
+.. image:: images/pi-upgrade-myprof.png
+
+2. Click on the grey **Upgrade Account** button.
+
+.. image:: images/pi-upgrade-upgrade-button.png
+
+3. Select a department from the drop-down menu and click **Submit Upgrade Request**.
+
+.. image:: images/pi-upgrade-department.png
+
+4. Once the request is submitted a confirmation banner will appear at the top of the page.
+
+.. image:: images/pi-upgrade-banner.png
+
+When a request is made, a notification is sent to staff to review your request. You request
+will remain in the pending state until it is approved.
+
 
 |
 |
@@ -355,9 +374,31 @@ an allocation can be requested.
 Create an Allocation
 --------------------
 
-*This section is for PIs*
+.. note::
 
-**TODO:** Verify this section is needed.
+   This section is for PIs with an approved project.
+
+Once a project is approved, a resource allocation for time on the cluster can be requested.
+
+1. From the portal home screen, navigate to the project for which to request an allocation.
+   You can follow Projects -> My Projects. Then select the project from the table by clicking
+   on the number hyperlink.
+
+   .. image:: images/allow-nav-to-proj.png
+
+2. Once on the Project page, scroll down and click **+ Request Resource Allocation**.
+
+   .. image:: images/allow-scrolldown.png
+
+   .. image:: images/allow-request-button.png
+
+3. Fill out the requested information and click **Submit**.
+
+   .. image:: images/allow-form.png
+
+A banner at the top of the page will confirm your request has been sent.
+
+.. image:: images/allow-successbanner.png
 
 |
 |
@@ -424,8 +465,4 @@ change.
 |
 |
 
-Upload Publications, Grants and ROI Reports
--------------------------------------------
-
-**TODO**: Add things here about reporting.
 

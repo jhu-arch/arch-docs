@@ -22,14 +22,6 @@ All Users
    guides below.
 
 
-.. admonition:: Schmidt Sciences Users
-
-   :class: warning
-
-   Schmidt Sciences users should reach out to Schmidt Sciences rather than refer to the
-   guides below.
-
-
 Requirements
 ------------
 

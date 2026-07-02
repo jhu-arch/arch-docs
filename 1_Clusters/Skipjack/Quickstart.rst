@@ -18,7 +18,7 @@ All Users
 .. admonition:: Schmidt Users
    :class: warning
 
-   Schmidt users should reach out to Schmidt Sciences rather than refer to the
+   Schmidt Sciences users should reach out to Schmidt Sciences rather than refer to the
    guides below.
 
 

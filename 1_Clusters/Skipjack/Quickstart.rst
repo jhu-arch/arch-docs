@@ -39,7 +39,7 @@ Requirements
 Create or Activate an Account
 -----------------------------
 
-Navigate to the Arch Portal at https://arch.skipjack.jhu.edu
+Navigate to the Arch Portal at https://portal.arch.jhu.edu
 
 .. image:: images/portal-landing.png
 

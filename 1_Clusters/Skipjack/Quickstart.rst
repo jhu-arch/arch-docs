@@ -15,6 +15,12 @@ All Users
 
 **Welcome to Skipjack!**
 
+.. admonition:: Schmidt Sciences Users
+   :class: warning
+
+   Schmidt Sciences users should reach out to Schmidt Sciences rather than refer to the
+   guides below.
+
 
 Requirements
 ------------
@@ -43,7 +49,7 @@ Navigate to the Arch Portal at https://portal.arch.jhu.edu
 
 .. image:: images/portal-landing.png
 
-Schmidt users should select the **Schmidt (SCCI)** button. All other users, select
+Schmidt Sciences users should select the **Schmidt (SCCI)** button. All other users, select
 **Johns Hopkins University (Skipjack)**.
 
 There are two login methods: **JHED Login ID** and **Local Account**.
@@ -69,10 +75,10 @@ Log in via Local Account
 
 .. warning::
 
-   This method is for **external collaborators and Schmidt users only**. JHU faculty, staff, and students
+   This method is for **external collaborators and Schmidt Sciences users only**. JHU faculty, staff, and students
    should sign in with the JHED Login ID described above.
 
-Schmidt users and external collaborators can create an account and log in with their email. This option
+Schmidt Sciences users and external collaborators can create an account and log in with their email. This option
 is not permitted for users with a JHED Login ID.
 
 
@@ -85,7 +91,7 @@ Click the **Register** link, and fill out the information to create a new accoun
 
 .. note::
 
-   Schmidt users should prepend "scci-" to their username. External collaborators should prepend "ext-"
+   Schmidt Sciences users should prepend "scci-" to their username. External collaborators should prepend "ext-"
 
 .. image:: images/register-form.png
 

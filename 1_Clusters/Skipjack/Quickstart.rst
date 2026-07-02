@@ -15,6 +15,12 @@ All Users
 
 **Welcome to Skipjack!**
 
+.. admonition:: Schmidt Users
+   :class: warning
+
+   Schmidt Sciences users should reach out to Schmidt Sciences rather than refer to the
+   guides below.
+
 
 Requirements
 ------------

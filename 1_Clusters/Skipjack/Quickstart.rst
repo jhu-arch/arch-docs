@@ -32,8 +32,6 @@ Requirements
 +----------------------------+-------------------------------------------------------+
 | OTP Authenticator App      | Required for Multi-Factor Authentication (MFA)        |
 +----------------------------+-------------------------------------------------------+
-| Hopkins VPN (Pulse Secure) | Required for off-campus access to some services       |
-+----------------------------+-------------------------------------------------------+
 | SSH client                 | macOS/Linux: built-in • Windows: *OpenSSH* or *PuTTY* |
 +----------------------------+-------------------------------------------------------+
 

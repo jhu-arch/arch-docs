@@ -99,11 +99,14 @@ the credentials you just created.
 Upon first login, users will be asked to accept the Terms of Service.
 
 
-Setup Multifactor Identification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Setup Multi-Factor Identification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-All users will need a One-Time Password (OTP) to connect to Skipjack. To set up
-an OTP authenticator app for your account, follow these steps:
+Users with a JHED ID do not need to set up a separate One-Time Password (OTP)
+authenticator app. Instead, they should use their JHED ID to log in after setting
+up their account in the portal (see `Create or Activate an Account`_). Conversely,
+users without a JHED ID must set up an OTP authenticator app to connect to Skipjack.
+To set up an OTP authenticator app for your account, follow these steps:
 
 1. Navigate to My Profile.
 

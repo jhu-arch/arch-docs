@@ -228,13 +228,27 @@ Connect to the Skipjack Cluster
 
    ssh <YourUserID>@login.skipjack.jhu.edu
 
-OTP
-^^^
 
-A One-Time Password (OTP) is required to log in to Skipjack.
 
-After you successfully enter your password, you'll immediately be prompted to enter
-your OTP code. Enter the code from the OTP app you used.
+
+
+Multi-Factor Authentication is required to log in to Skipjack.
+
+
+JHED ID Users
+^^^^^^^^^^^^^
+
+Users with JHED ID will be prompted to approve the login via web browser. Follow the
+provided hyperlink to review the request. After authenticating in the browser
+return to the terminal command line and press ``Enter`` to proceed.
+
+
+All Other Users
+^^^^^^^^^^^^^^^
+
+After entering your password, you will be prompted for
+your OTP code (see `Setup Multi-Factor Identification`_ for more information).
+Enter the code from your OTP app that corresponds to your Skipjack account.
 
 .. note::
 

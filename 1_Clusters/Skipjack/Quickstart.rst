@@ -260,33 +260,13 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 
 ----
 
-Create a Help Ticket
---------------------
+Support
+-------
 
-To create a support ticket from the Arch Portal, first navigate to the Helpdesk.
-
-1. Click the "Help" icon in the lower left corner.
-
-   .. image:: images/help-icon.png
-
-2. At the Helpdesk, click "New Ticket" in the left navigation pane.
-
-   .. image:: images/htik-lnav.png
-
-3. Fill in as much information as possible.
-
-   .. image:: images/htik-fill.png
-
-4. When complete, click "Submit Ticket".
-
-   .. image:: images/htik-submit.png
-
-5. The new ticket will appear at the top of the table when you return to the
-   help desk screen.
-
-   .. image:: images/htik-return.png
+For support, Schmidt Sciences users should email help@schmidtsciences.jhu.edu.
 
 
+All other users, please email help@arch.jhu.edu.
 
 |
 |

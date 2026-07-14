@@ -260,6 +260,98 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 
 ----
 
+Data Transfer with Globus
+-------------------------
+
+We recommend using Globus to transfer large amounts of data to and from the Skipjack
+cluster. Globus reliably manages transfers in the background, handling restarts
+if interruptions occur.
+
+
+1. Connect to Globus
+^^^^^^^^^^^^^^^^^^^^
+
+Using your web browser, navigate to `<https://www.globus.org>`_.
+
+.. image:: images/globus-nav.png
+
+2. Select Johns Hopkins
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Select **Johns Hopkins** from the drop-down menu.
+
+.. image:: images/globus-jhu-login.png
+
+3. Log in with JHED ID
+^^^^^^^^^^^^^^^^^^^^^^
+
+Authenticate via the Johns Hopkins SSO portal using your JHED ID.
+
+.. image:: images/globus-jhu-id.png
+
+4. Search for the Skipjack Collections
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After logging in, use the search bar to find **JHU Skipjack Scratch**. When found, click the
+name hyperlink to set Skipjack as an endpoint.
+
+.. image:: images/globus-sel-skipjack.png
+
+5. Allow Data Access
+^^^^^^^^^^^^^^^^^^^^
+
+On first access, Globus will ask for consent to access your data. At the prompt, click **Continue**.
+
+.. image:: images/globus-sel-skipjack.png
+
+**Select your JHED Identity**
+
+Select your JHED ID email from the list.
+
+.. image:: images/globus-sel-skipjack.png
+
+**Allow Access to the Globus Web App**
+
+Click **Allow** to grant Globus access.
+
+.. image:: images/globus-sel-skipjack.png
+
+6. Locate the Skipjack Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once authorized, the Skipjack endpoint appears. Notice the endpoint defaults to your scratch directory.
+
+.. image:: images/globus-sel-skipjack.png
+
+7. Choose a Second Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On the other side of the interface, select a second endpoint. If needed, authenticate the second endpoint.
+
+.. image:: images/globus-sel-skipjack.png
+
+End points can be other HPC systems registered on Globus, or personal computers/laptops set up
+with `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
+
+
+8. Start File Transfer
+^^^^^^^^^^^^^^^^^^^^^^
+
+In the split-pane interface verify that files on the left are the files that you want to
+transfer to the location on the right. Click the **Start** button to start the file transfer.
+
+.. image:: images/globus-sel-skipjack.png
+
+.. note::
+
+   For more file transfer behavior options, click **Transfer & Sync Options**.
+
+|
+|
+
+----
+
+
 Support
 -------
 
@@ -272,6 +364,10 @@ All other users, please email help@arch.jhu.edu.
 |
 
 ----
+
+
+
+
 
 Principal Investigators
 #######################

@@ -330,6 +330,148 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 
 ----
 
+Data Transfer with Globus
+-------------------------
+
+We recommend using Globus to transfer large amounts of data to and from the Skipjack
+cluster. Globus reliably manages transfers in the background, handling restarts
+if interruptions occur.
+
+The directions below explain how to transfer files from an external endpoint to
+the Skipjack cluster scratch storage. Transferring files from Skipjack to an external endpoint
+can be done by reversing the endpoints or changing the transfer direction.
+
+.. note::
+
+   **Endpoints** can be other HPC systems registered on Globus, or personal computers and laptops set up
+   with a `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
+
+1. Connect to Globus
+^^^^^^^^^^^^^^^^^^^^
+
+Using your web browser, navigate to `<https://www.globus.org>`_.
+
+.. image:: images/globus-nav.png
+
+2. Select Johns Hopkins
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Select **Johns Hopkins** from the dropdown menu.
+
+.. image:: images/globus-jhu-login.png
+
+3. Log in with JHED ID
+^^^^^^^^^^^^^^^^^^^^^^
+
+Authenticate via the Johns Hopkins SSO portal using your JHED ID.
+
+.. image:: images/globus-jhu-id.png
+
+
+4. Set the Source Endpoint Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After logging in, select **File Manager** on the left. Use the search bar to find your
+desired endpoint, then select the folders or files you wish to transfer.
+
+.. image:: images/globus-endpt-file-sel.png
+
+This example uses a publicly available test data set from ESNet.
+
+.. note::
+
+   You may need to authenticate the endpoint to grant Globus permission to access your files.
+
+
+5. Set the Skipjack Destination Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Click the two-panel icon in the top right of the **File Manager** to split the view.
+In the new search bar on the second panel, search for **Skipjack**.
+
+.. image:: images/globus-twopane.png
+
+There are several Skipjack endpoints available:
+
+   +---------------------------+
+   | **Skipjack JHU Homes**    |
+   +---------------------------+
+   | **Skipjack JHU Scratch**  |
+   +---------------------------+
+   | **Skipjack SCCI Scratch** |
+   +---------------------------+
+
+.. image:: images/globus-sj-endpts.png
+
+
+Click the name hyperlink of the desired Skipjack endpoint to set it as your transfer destination.
+
+|
+
+**Authenticate to Allow Access**
+
+On first access, Globus will ask for consent to access your data. At the prompt, click **Continue**.
+
+.. image:: images/globus-consent-cont.png
+
+Follow the link **JHU Skipjack OIDC Server**.
+
+.. image:: images/globus-consent-link.png
+
+At the prompt, enter your Skipjack username and password (the same SSH credentials used to `Connect to the Skipjack Cluster`_).
+
+.. image:: images/globus-consent-creds.png
+
+If prompted, log in to your primary identity, click **Continue** and follow the on-screen
+prompts to authenticate with your JHED ID.
+
+.. image:: images/globus-consent-primary.png
+
+**Allow Globus Web App**
+
+Click **Allow** to allow the Globus Web App to manage your data on Skipjack.
+
+.. image:: images/globus-consent-allow.png
+
+For subsequent file transfers, your permission will be stored.
+
+|
+
+After allowing access, you will return to the **File Manager** view. Confirm the endpoints,
+target directories, and selected files before proceeding.
+
+.. image:: images/globus-confirm.png
+
+6. Start File Transfer
+^^^^^^^^^^^^^^^^^^^^^^
+
+To transfer files from the endpoint on the left panel, to the endpoint on the right panel, click
+the **Start** button in the left panel with the right-pointing arrow.
+
+.. image:: images/globus-start-transfer.png
+
+.. note::
+
+   You can transfer files in the opposite direction by selecting files on the right
+   and clicking the **Start** button in the right panel with the left-pointing arrow.
+
+|
+
+You can monitor, manage and confirm transfer activity under the **Activity** tab.
+
+.. image:: images/globus-activity.png
+
+.. note::
+
+   For more file transfer behavior options, click **Transfer & Sync Options** located in the middle column
+   between the two **File Manager** panels.
+
+|
+|
+
+----
+
+
 Support
 -------
 
@@ -342,6 +484,10 @@ All other users, please email help@arch.jhu.edu.
 |
 
 ----
+
+
+
+
 
 Principal Investigators
 #######################

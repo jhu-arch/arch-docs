@@ -337,6 +337,14 @@ We recommend using Globus to transfer large amounts of data to and from the Skip
 cluster. Globus reliably manages transfers in the background, handling restarts
 if interruptions occur.
 
+The directions below explain how to transfer files from an external endpoint to
+the Skipjack cluster scratch storage. Transferring files from Skipjack to an external endpoint
+can be done by reversing the endpoints or changing the transfer direction.
+
+.. note::
+
+   **Endpoints** can be other HPC systems registered on Globus, or personal computers and laptops set up
+   with a `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
 
 1. Connect to Globus
 ^^^^^^^^^^^^^^^^^^^^
@@ -348,7 +356,7 @@ Using your web browser, navigate to `<https://www.globus.org>`_.
 2. Select Johns Hopkins
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Select **Johns Hopkins** from the drop-down menu.
+Select **Johns Hopkins** from the dropdown menu.
 
 .. image:: images/globus-jhu-login.png
 
@@ -359,62 +367,104 @@ Authenticate via the Johns Hopkins SSO portal using your JHED ID.
 
 .. image:: images/globus-jhu-id.png
 
-4. Search for the Skipjack Collections
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-After logging in, use the search bar to find **JHU Skipjack Scratch**. When found, click the
-name hyperlink to set Skipjack as an endpoint.
+4. Set the Source Endpoint Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: images/globus-sel-skipjack.png
+After logging in, select **File Manager** on the left. Use the search bar to find your
+desired endpoint, then select the folders or files you wish to transfer.
 
-5. Allow Data Access
-^^^^^^^^^^^^^^^^^^^^
+.. image:: images/globus-endpt-file-sel.png
 
-On first access, Globus will ask for consent to access your data. At the prompt, click **Continue**.
-
-.. image:: images/globus-sel-skipjack.png
-
-**Select your JHED Identity**
-
-Select your JHED ID email from the list.
-
-.. image:: images/globus-sel-skipjack.png
-
-**Allow Access to the Globus Web App**
-
-Click **Allow** to grant Globus access.
-
-.. image:: images/globus-sel-skipjack.png
-
-6. Locate the Skipjack Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Once authorized, the Skipjack endpoint appears. Notice the endpoint defaults to your scratch directory.
-
-.. image:: images/globus-sel-skipjack.png
-
-7. Choose a Second Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-On the other side of the interface, select a second endpoint. If needed, authenticate the second endpoint.
-
-.. image:: images/globus-sel-skipjack.png
-
-End points can be other HPC systems registered on Globus, or personal computers/laptops set up
-with `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
-
-
-8. Start File Transfer
-^^^^^^^^^^^^^^^^^^^^^^
-
-In the split-pane interface verify that files on the left are the files that you want to
-transfer to the location on the right. Click the **Start** button to start the file transfer.
-
-.. image:: images/globus-sel-skipjack.png
+This example uses a publicly available test data set from ESNet.
 
 .. note::
 
-   For more file transfer behavior options, click **Transfer & Sync Options**.
+   You may need to authenticate the endpoint to grant Globus permission to access your files.
+
+
+5. Set the Skipjack Destination Endpoint
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Click the two-panel icon in the top right of the **File Manager** to split the view.
+In the new search bar on the second panel, search for **Skipjack**.
+
+.. image:: images/globus-twopane.png
+
+There are several Skipjack endpoints available:
+
+   +---------------------------+
+   | **Skipjack JHU Homes**    |
+   +---------------------------+
+   | **Skipjack JHU Scratch**  |
+   +---------------------------+
+   | **Skipjack SCCI Scratch** |
+   +---------------------------+
+
+.. image:: images/globus-sj-endpts.png
+
+
+Click the name hyperlink of the desired Skipjack endpoint to set it as your transfer destination.
+
+|
+
+**Authenticate to Allow Access**
+
+On first access, Globus will ask for consent to access your data. At the prompt, click **Continue**.
+
+.. image:: images/globus-consent-cont.png
+
+Follow the link **JHU Skipjack OIDC Server**.
+
+.. image:: images/globus-consent-link.png
+
+At the prompt, enter your Skipjack username and password (the same SSH credentials used to `Connect to the Skipjack Cluster`_).
+
+.. image:: images/globus-consent-creds.png
+
+If prompted, log in to your primary identity, click **Continue** and follow the on-screen
+prompts to authenticate with your JHED ID.
+
+.. image:: images/globus-consent-primary.png
+
+**Allow Globus Web App**
+
+Click **Allow** to allow the Globus Web App to manage your data on Skipjack.
+
+.. image:: images/globus-consent-allow.png
+
+For subsequent file transfers, your permission will be stored.
+
+|
+
+After allowing access, you will return to the **File Manager** view. Confirm the endpoints,
+target directories, and selected files before proceeding.
+
+.. image:: images/globus-confirm.png
+
+6. Start File Transfer
+^^^^^^^^^^^^^^^^^^^^^^
+
+To transfer files from the endpoint on the left panel, to the endpoint on the right panel, click
+the **Start** button in the left panel with the right-pointing arrow.
+
+.. image:: images/globus-start-transfer.png
+
+.. note::
+
+   You can transfer files in the opposite direction by selecting files on the right
+   and clicking the **Start** button in the right panel with the left-pointing arrow.
+
+|
+
+You can monitor, manage and confirm transfer activity under the **Activity** tab.
+
+.. image:: images/globus-activity.png
+
+.. note::
+
+   For more file transfer behavior options, click **Transfer & Sync Options** located in the middle column
+   between the two **File Manager** panels.
 
 |
 |

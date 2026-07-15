@@ -57,7 +57,7 @@ their access method based on both their affiliation and their specific purpose. 
 correct procedure, please refer to the table below.
 
 +------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-| Affilition       | Class Use | Authentication Method | MFA         | Username Prefix                         | Email Domain          |
+| Affiliation      | Class Use | Authentication Method | MFA         | Username Prefix                         | Email Domain          |
 +==================+===========+=======================+=============+=========================================+=======================+
 | JHED ID          | No        | `JHU SSO`_            | Use JHU SSO | N/A                                     | jh.edu, jhu.edu, etc. |
 +------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
@@ -94,23 +94,25 @@ Log in via Local Account
 
 .. warning::
 
-   This method is for **external collaborators and Schmidt Sciences users only**. JHU faculty, staff, and students
+   This method is for **Schmidt Sciences, External and Class-Use users only**. JHU faculty, staff, and students
    should sign in with the JHED Login ID described above.
 
 Schmidt Sciences users and external collaborators can create an account and log in with their email. This option
 is not permitted for users with a JHED Login ID.
 
 
-First Time
-""""""""""
+First Time Account Activation
+"""""""""""""""""""""""""""""
 
 Click the **Register** link, and fill out the information to create a new account.
 
 .. image:: images/register2.png
 
-.. note::
+.. admonition:: Username Prefixes
 
-   Schmidt Sciences users should prepend "scci-" to their username. External collaborators should prepend "ext-"
+   | **Schmidt Sciences** users should prepend ``scci-`` to their username.
+   | **External** users should prepend ``ext-``
+   | **Class** users should prepend their class code ``class-code>-`` for example ``class123-``
 
 .. image:: images/register-form.png
 
@@ -211,6 +213,16 @@ To set up an OTP authenticator app for your account, follow these steps:
 Reset Password
 --------------
 
+JHED ID Users
+^^^^^^^^^^^^^
+
+JHED ID users should manage passwords through `<my.jh.edu>`_.
+You can reset your password by clicking the link in top right of the MyJHU webpage.
+
+
+Schmidt Sciences and External Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you forgot your password and cannot log in to the ARCH Portal, you can
 send yourself a password reset email.
 
@@ -237,6 +249,7 @@ A confirmation screen will appear, indicating that a password reset email has be
 
 .. image:: images/frgpw-sent.png
 
+
 |
 |
 
@@ -245,9 +258,22 @@ A confirmation screen will appear, indicating that a password reset email has be
 Connect to the Skipjack Cluster
 -------------------------------
 
+
+**Schmidt Sciences Users** can access Skipjack using any one of the three login nodes.
+
 .. code-block:: bash
 
-   ssh <YourUserID>@login.skipjack.jhu.edu
+   ssh <YourUserID>@login03.schmidtsciences.jhu.edu
+   ssh <YourUserID>@login04.schmidtsciences.jhu.edu
+   ssh <YourUserID>@login05.schmidtsciences.jhu.edu
+
+**JHED ID and External Users** can connect to any one of the three login nodes.
+
+.. code-block:: bash
+
+   ssh <YourUserID>@login03.arch.jhu.edu
+   ssh <YourUserID>@login04.arch.jhu.edu
+   ssh <YourUserID>@login05.arch.jhu.edu
 
 
 .. note::
@@ -259,7 +285,7 @@ Connect to the Skipjack Cluster
 Select the process for connecting to the system based on your affiliation and purpose.
 
 +------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-| Affilition       | Class Use | Authentication Method | MFA            | Username Prefix                         | Email Domain          |
+| Affiliation      | Class Use | Authentication Method | MFA            | Username Prefix                         | Email Domain          |
 +==================+===========+=======================+================+=========================================+=======================+
 | JHED ID          | No        | JHU SSO               | `Use JHU SSO`_ | N/A                                     | jh.edu, jhu.edu, etc. |
 +------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
@@ -287,8 +313,8 @@ return to the terminal command line and press ``Enter`` to proceed.
 
 .. _OTP Code:
 
-All Other Users
-^^^^^^^^^^^^^^^
+Schmidt Sciences, External and Class-Use Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After entering your password, you will be prompted for
 your OTP code (see `Setup Multi-Factor Identification`_ for more information).

@@ -224,9 +224,22 @@ A confirmation screen will appear, indicating that a password reset email has be
 Connect to the Skipjack Cluster
 -------------------------------
 
+
+**Schmidt Sciences Users** can access Skipjack using any one of the three login nodes.
+
 .. code-block:: bash
 
-   ssh <YourUserID>@login.skipjack.jhu.edu
+   ssh <YourUserID>@login03.schmidtsciences.jhu.edu
+   ssh <YourUserID>@login04.schmidtsciences.jhu.edu
+   ssh <YourUserID>@login05.schmidtsciences.jhu.edu
+
+**JHED ID and All Other Users** can connect to any one of the three login nodes.
+
+.. code-block:: bash
+
+   ssh <YourUserID>@login03.arch.jhu.edu
+   ssh <YourUserID>@login04.arch.jhu.edu
+   ssh <YourUserID>@login05.arch.jhu.edu
 
 
 

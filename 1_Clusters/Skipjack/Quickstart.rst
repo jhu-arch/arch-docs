@@ -15,6 +15,8 @@ All Users
 
 **Welcome to Skipjack!**
 
+.. _Schmidt (SSCI):
+
 .. admonition:: Schmidt Sciences Users
    :class: warning
 
@@ -47,13 +49,30 @@ Navigate to the Arch Portal at https://portal.arch.jhu.edu
 
 .. image:: images/portal-landing.png
 
-Schmidt Sciences users should select the **Schmidt (SCCI)** button. All other users, select
-**Johns Hopkins University (Skipjack)**.
+Select Affiliation and Use Case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There are two login methods: **JHED Login ID** and **Local Account**.
+As a multi-architecture system with a diverse user base, Skipjack requires users to determine
+their access method based on both their affiliation and their specific purpose. To find the
+correct procedure, please refer to the table below.
 
++------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
+| Affilition       | Class Use | Authentication Method | MFA         | Username Prefix                         | Email Domain          |
++==================+===========+=======================+=============+=========================================+=======================+
+| JHED ID          | No        | `JHU SSO`_            | Use JHU SSO | N/A                                     | jh.edu, jhu.edu, etc. |
++------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
+| Schmidt Sciences | No        | `Schmidt (SSCI)`_     | OTP Code    | ``ssci-``                               | A non-JHU email\*     |
++------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
+| External User    | No        | `Local Account`_      | OTP Code    | ``ext-``                                | A non-JHU email\*     |
++------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
+| JHED ID          | Yes       | `Local Account`_      | OTP Code    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
++------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
+| External User    | Yes       | `Local Account`_      | OTP Code    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
++------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
 
+\*A **non-JHU email** refers to an email address outside the JHU domain, such as ``univ.edu``, ``gmail.com``, ``hotmail.com`` etc.
 
+.. _JHU SSO:
 
 Log in via JHED Login ID
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -67,6 +86,8 @@ Users will be prompted with the JHED login sequence.
 .. image:: images/jhed-login-msid.png
 
 Upon first login, users will be asked to accept the Terms of Service.
+
+.. _Local Account:
 
 Log in via Local Account
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -242,19 +263,42 @@ Connect to the Skipjack Cluster
    ssh <YourUserID>@login05.arch.jhu.edu
 
 
+.. note::
+
+   Multi-Factor Authentication is required to log in to Skipjack.
 
 
 
-Multi-Factor Authentication is required to log in to Skipjack.
+Select the process for connecting to the system based on your affiliation and purpose.
 
++------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
+| Affilition       | Class Use | Authentication Method | MFA            | Username Prefix                         | Email Domain          |
++==================+===========+=======================+================+=========================================+=======================+
+| JHED ID          | No        | JHU SSO               | `Use JHU SSO`_ | N/A                                     | jh.edu, jhu.edu, etc. |
++------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
+| Schmidt Sciences | No        | Schmidt (SSCI)        | `OTP Code`_    | ``ssci-``                               | A non-JHU email\*     |
++------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
+| External User    | No        | Local Account         | `OTP Code`_    | ``ext-``                                | A non-JHU email\*     |
++------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
+| JHED ID          | Yes       | Local Account         | `OTP Code`_    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
++------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
+| External User    | Yes       | Local Account         | `OTP Code`_    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
++------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
+
+\*A **non-JHU email** refers to an email address outside the JHU domain, such as ``univ.edu``, ``gmail.com``, ``hotmail.com`` etc.
+
+
+.. _Use JHU SSO:
 
 JHED ID Users
 ^^^^^^^^^^^^^
 
-Users with JHED ID will be prompted to approve the login via web browser. Follow the
+Users with JHED ID will be prompted to approve the login via web browser with JHU SSO. Follow the
 provided hyperlink to review the request. After authenticating in the browser
 return to the terminal command line and press ``Enter`` to proceed.
 
+
+.. _OTP Code:
 
 All Other Users
 ^^^^^^^^^^^^^^^

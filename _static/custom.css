@@ -226,3 +226,10 @@ body,
 .version {
   color: rgba(104, 172, 229, 0.6) !important;
 }
+
+
+/* Remove the 800px limit and allow the content container to expand */
+.wy-nav-content {
+    max-width: 1200px !important; /* Change to 100% for full screen width */
+}
+

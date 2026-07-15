@@ -398,7 +398,7 @@ There are several Skipjack endpoints available:
    +---------------------------+
    | **Skipjack JHU Scratch**  |
    +---------------------------+
-   | **Skipjack SCCI Scratch** |
+   | **Skipjack SSCI Scratch** |
    +---------------------------+
 
 .. image:: images/globus-sj-endpts.png

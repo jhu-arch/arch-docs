@@ -15,6 +15,14 @@ All Users
 
 **Welcome to Skipjack!**
 
+.. admonition:: Skipjack Beta Phase and Access Notice
+   :class: warning
+
+   We are currently beta testing Skipjack in preparation for full migration!
+   During this testing phase, access is temporarily limited to a select group of
+   early users. Stay tuned for wider availability soon.
+
+
 .. _Schmidt (SSCI):
 
 .. admonition:: Schmidt Sciences Users

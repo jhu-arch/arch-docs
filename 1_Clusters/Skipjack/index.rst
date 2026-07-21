@@ -13,6 +13,16 @@ If users have any questions about these policies, please send an email to
 
 To begin, see the user guide for information regarding account creation and login.
 
+
+.. admonition:: Skipjack Beta Phase and Access Notice
+   :class: warning
+
+   We are currently beta testing Skipjack in preparation for full migration!
+   During this testing phase, access is temporarily limited to a select group of
+   early users. Stay tuned for wider availability soon.
+
+
+
 .. toctree::
    :maxdepth: 1
 

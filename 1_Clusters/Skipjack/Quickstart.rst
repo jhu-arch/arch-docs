@@ -484,29 +484,17 @@ Running VSCode on Skipjack
 --------------------------
 
 For details on responsibility running VSCode on the Skipjack cluster, please see
-:doc: `vscode.rst`.
-
+:doc:`vscode`.
 
 |
 |
 
 ----
 
-
-
-
-
-
-
-
-
-
-
 Support
 -------
 
 For support, Schmidt Sciences users should email help@schmidtsciences.jhu.edu.
-
 
 All other users, please email help@arch.jhu.edu.
 

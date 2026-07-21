@@ -525,6 +525,8 @@ To request an account upgrade to PI:
    .. image:: images/pi-upgrade-upgrade-button.png
 
 3. Select a department from the dropdown menu and click **Submit Upgrade Request**.
+   If your department is not listed, please contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_
+   to have it added.
 
    .. image:: images/pi-upgrade-department.png
 
@@ -545,9 +547,20 @@ will remain in the pending state until it is approved.
 Add a Cost Center
 -----------------
 
+.. admonition:: Regarding Cost
+   :class: note
+
+   Moving to Skipjack does not trigger any immediate billing changes. Free
+   compute access will remain available for now. Please be assured that there
+   will be no billing without substantial prior communication, and there will
+   never be any form of retroactive billing to users.
+
+
 .. note::
 
    Only PIs can add a cost center.
+
+
 
 1. In the left navigation pane, select **Cost Centers**.
 
@@ -569,6 +582,12 @@ Add a Cost Center
 
 Create a Project
 ----------------
+
+.. note::
+
+   PIs are automatically assigned a default project and allocation when their account status is
+   upgraded from user to PI. Use the steps below to create additional projects.
+
 
 .. note::
 

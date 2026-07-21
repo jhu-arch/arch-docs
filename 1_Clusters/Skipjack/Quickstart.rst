@@ -480,6 +480,28 @@ You can monitor, manage and confirm transfer activity under the **Activity** tab
 ----
 
 
+Running VSCode on Skipjack
+--------------------------
+
+For details on responsibility running VSCode on the Skipjack cluster, please see
+:doc: `vscode.rst`.
+
+
+|
+|
+
+----
+
+
+
+
+
+
+
+
+
+
+
 Support
 -------
 

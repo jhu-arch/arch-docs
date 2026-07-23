@@ -1,3 +1,5 @@
+.. _skipjack user guide:
+
 Skipjack User Guide
 ===================
 
@@ -337,6 +339,8 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 |
 
 ----
+
+.. _data transfer with globus:
 
 Data Transfer with Globus
 -------------------------
@@ -713,6 +717,8 @@ The banner at the top will confirm the user has been added.
 
 ----
 
+.. _assign proxy account managers:
+
 Assign Proxy Account Managers
 -----------------------------
 
@@ -736,4 +742,8 @@ change.
    .. image:: images/proj-user-role-confirm.png
 
 
+Frequently Asked Questions
+##########################
 
+Please see :doc:`migration-to-skipjack` for frequently asked questions regarding the migration
+to Skipjack

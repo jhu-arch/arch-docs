@@ -93,6 +93,19 @@ Click the **JHED Login ID** button and follow the prompts.
 
 Users will be prompted with the JHED login sequence.
 
+.. note::
+
+   Your Skipjack username is automatically generated from your default email address
+   as configured via `emailtools.tic.jh.edu/tools/alias <https://emailtools.tic.jh.edu/tools/alias>`_. For
+   example:
+
+   * ``user.name@jhu.edu`` becomes ``user.name``
+
+   * ``uname@jhu.edu``` becomes ``uname``
+
+   Please ensure your default email is set correctly on the portal
+   *before* proceeding with your account setup.
+
 .. image:: images/jhed-login-msid.png
 
 Upon first login, users will be asked to accept the Terms of Service.

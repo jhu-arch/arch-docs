@@ -93,6 +93,21 @@ Click the **JHED Login ID** button and follow the prompts.
 
 Users will be prompted with the JHED login sequence.
 
+.. admonition:: Note for Faculty and Staff
+   :class: note
+
+   Your Skipjack username is automatically generated from your default email address
+   as configured via `emailtools.tic.jh.edu/tools/alias <https://emailtools.tic.jh.edu/tools/alias>`_. For
+   example:
+
+   * ``user.name@jhu.edu`` becomes ``user.name``
+
+   * ``uname@jhu.edu``` becomes ``uname``
+
+   Please ensure your default email is set correctly using the link above, and
+   review the `Email Alias Policy Details <https://emailtools.tic.jh.edu/tools/alias/details>`_
+   *before* processing your account setup in the Arch Portal.
+
 .. image:: images/jhed-login-msid.png
 
 Upon first login, users will be asked to accept the Terms of Service.
@@ -137,7 +152,7 @@ Setup Multi-Factor Identification
 
 Users with a JHED ID do not need to set up a separate One-Time Password (OTP)
 authenticator app. Instead, they should use their JHED ID to log in after setting
-up their account in the portal (see `Create or Activate an Account`_). Conversely,
+up their account in the Arch Portal (see `Create or Activate an Account`_). Conversely,
 users without a JHED ID must set up an OTP authenticator app to connect to Skipjack.
 To set up an OTP authenticator app for your account, follow these steps:
 
@@ -375,7 +390,7 @@ Select **Johns Hopkins** from the dropdown menu.
 3. Log in with JHED ID
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Authenticate via the Johns Hopkins SSO portal using your JHED ID.
+Authenticate via the Johns Hopkins SSO using your JHED ID.
 
 .. image:: images/globus-jhu-id.png
 
@@ -656,7 +671,7 @@ Create an Allocation
 
 Once a project is approved, a resource allocation for time on the cluster can be requested.
 
-1. From the portal home screen, navigate to the project for which to request an allocation.
+1. From the Arch Portal home screen, navigate to the desired project.
    You can follow Projects -> My Projects. Then select the project from the table by clicking
    on the number hyperlink.
 

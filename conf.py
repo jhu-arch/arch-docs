@@ -33,7 +33,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx_design',
     'sphinx_copybutton',
-    'sphinxcontrib.mermaid'
+    'sphinxcontrib.mermaid',
+    'sphinx_new_tab_link'
 ]
 
 # List of patterns, relative to source directory, that match files and
@@ -118,7 +119,6 @@ html_theme = 'sphinx_rtd_theme'
 
 html_theme_options = {
     'logo_only': True,
-    'display_version': False,
 }
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []

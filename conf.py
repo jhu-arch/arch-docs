@@ -33,7 +33,8 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx_design',
     'sphinx_copybutton',
-    'sphinxcontrib.mermaid'
+    'sphinxcontrib.mermaid',
+    'sphinx_new_tab_link'
 ]
 
 # List of patterns, relative to source directory, that match files and

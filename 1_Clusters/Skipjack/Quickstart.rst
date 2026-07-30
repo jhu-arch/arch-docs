@@ -755,9 +755,8 @@ change.
 Non-PI Users
 ############
 
-Once a non-PI user activates an account, they will need to be added to a project by a PI or a
-proxy account manager to gain access to the system. To run jobs, the non-PI user must be added to
-an allocation.
+After account activation, non-PI users must be added to a project *and* an allocation
+by a PI or proxy account manager to gain system access.
 
 .. image:: images/user-flowchart.png
 

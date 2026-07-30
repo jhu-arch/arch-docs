@@ -527,6 +527,8 @@ Requests are reviewed by staff.
 When an account is upgraded from User to PI, a default project is created and associated with
 the requesting PI.
 
+.. image:: images/pi-flowchart.png
+
 To request an account upgrade to PI:
 
 1. In the Arch Portal, click on the dropdown menu in the upper right next to the username and icon. Select
@@ -556,6 +558,10 @@ will remain in the pending state until it is approved.
 |
 
 ----
+
+PIs who want to add additional projects and allocations can do so by following the steps below.
+
+.. image:: images/pi-add-project-flowchart.png
 
 
 Add a Cost Center
@@ -740,6 +746,24 @@ Assign Proxy Account Managers
 change.
 
    .. image:: images/proj-user-role-confirm.png
+
+|
+|
+
+----
+
+Non-PI Users
+############
+
+After account activation, non-PI users must be added to a project *and* an allocation
+by a PI or proxy account manager to gain system access.
+
+.. image:: images/user-flowchart.png
+
+|
+|
+
+----
 
 
 Frequently Asked Questions

@@ -17,12 +17,13 @@ All Users
 
 **Welcome to Skipjack!**
 
-.. admonition:: Skipjack Beta Phase and Access Notice
+.. admonition:: Skipjack Rollout Phase and Access Notice
    :class: warning
 
-   We are currently beta testing Skipjack in preparation for full migration!
-   During this testing phase, access is temporarily limited to a select group of
-   early users. Stay tuned for wider availability soon.
+   All DSAI members are now invited to migrate their work to Skipjack!
+
+   At this time we ask for patience from our non-DSAI users as we onboard teams
+   in phases to ensure system stability.
 
 
 .. _Schmidt (SSCI):
@@ -239,7 +240,7 @@ send yourself a password reset email.
 .. warning::
 
    Users added as part of a class cannot reset their password using this method. Instead,
-   please reach out to `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_.
+   please reach out to `arch@jh.edu <mailto:arch@jh.edu>`_.
 
 
 1. From the login screen, click the "Forgot Password" link.
@@ -273,18 +274,13 @@ Connect to the Skipjack Cluster
 
 .. code-block:: bash
 
-   ssh <YourUserID>@login03.schmidtsciences.jhu.edu
-   ssh <YourUserID>@login04.schmidtsciences.jhu.edu
-   ssh <YourUserID>@login05.schmidtsciences.jhu.edu
+   ssh <YourUserID>@login.schmidtsciences.jhu.edu
 
 **JHED ID and External Users** can connect to any one of the three login nodes.
 
 .. code-block:: bash
 
-   ssh <YourUserID>@login03.arch.jhu.edu
-   ssh <YourUserID>@login04.arch.jhu.edu
-   ssh <YourUserID>@login05.arch.jhu.edu
-
+   ssh <YourUserID>@login.arch.jhu.edu
 
 .. note::
 
@@ -498,9 +494,9 @@ For details on responsibility running VSCode on the Skipjack cluster, please see
 Support
 -------
 
-For support, Schmidt Sciences users should email help@schmidtsciences.jhu.edu.
+For support, Schmidt Sciences users should email ssci@jh.edu.
 
-All other users, please email help@arch.jhu.edu.
+All other users, please email arch@jh.edu.
 
 |
 |
@@ -513,6 +509,14 @@ All other users, please email help@arch.jhu.edu.
 
 Principal Investigators
 #######################
+
+In the Skipjack Portal a Principal Investigator (PI) manages the
+access they and their group have to the system. They can add or remove users, request new allocations,
+renew expiring allocations, and report publication and grant data.
+Because an active project and allocation assignment is required to access Skipjack,
+users cannot log into the system until a PI or `Proxy Account Manager`_ adds them.
+
+
 
 Request Account Upgrade to PI
 -----------------------------
@@ -723,10 +727,15 @@ The banner at the top will confirm the user has been added.
 
 ----
 
+.. _proxy account manager:
+
 .. _assign proxy account managers:
 
 Assign Proxy Account Managers
 -----------------------------
+
+A Proxy Account Manager is an individual appointed by the project Principal Investigator (PI).
+Users with this role can add or remove users from projects and resource allocations.
 
 .. note::
 

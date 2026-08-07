@@ -36,6 +36,11 @@ Answers to Frequently Asked Questions
    Yes. Many tasks can be delegated to a Proxy Account Manager (see :ref:`Assign Proxy Account Managers` for the steps
    to designate a manager).
 
+#. **What does it cost to move to Skipjack?**
+
+   Moving to Skipjack does not trigger any immediate billing changes. Free compute access will
+   remain available for now. Please be assured that there will be no billing without substantial
+   prior communication, and there will never be any form of retroactive billing to users.
 
 If you have additional questions not covered here, please contact us at `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_.
 

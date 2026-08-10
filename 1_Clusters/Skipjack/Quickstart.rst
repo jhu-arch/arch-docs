@@ -341,6 +341,13 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 Data Transfer with Globus
 -------------------------
 
+.. admonition:: JHED ID users unable to access Skipjack Globus endpoint
+   :class: warning
+
+   We're experiencing an issue preventing JHED ID users from accessing
+   the Skipjack endpoint on Globus. We're working to resolve the issue. Thank you
+   for your patience! Questions? Please contact us at arch@jh.edu.
+
 We recommend using Globus to transfer large amounts of data to and from the Skipjack
 cluster. Globus reliably manages transfers in the background, handling restarts
 if interruptions occur.

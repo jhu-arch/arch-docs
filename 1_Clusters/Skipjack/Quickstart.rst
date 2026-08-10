@@ -341,12 +341,14 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 Data Transfer with Globus
 -------------------------
 
-.. admonition:: JHED ID users unable to access Skipjack Globus endpoint
+.. admonition:: JHED ID users should use *Skipjack JHU JHED Home* and *Skipjack JHU JHED Scratch*
    :class: warning
 
-   We're experiencing an issue preventing JHED ID users from accessing
-   the Skipjack endpoint on Globus. We're working to resolve the issue. Thank you
-   for your patience! Questions? Please contact us at arch@jh.edu.
+   For JHED ID users, please follow the directions below but use **Skipjack JHU JHED Home** in place
+   of **Skipjack JHU Home** and **Skipjack JHU JHED Scratch** in place of **Skipjack JHU Scratch**
+   endpoints. Updated docs coming soon!
+
+   Questions? Please contact us at `arch@jh.edu <mailto:arch@jh.edu>`_
 
 We recommend using Globus to transfer large amounts of data to and from the Skipjack
 cluster. Globus reliably manages transfers in the background, handling restarts
@@ -503,7 +505,7 @@ Support
 
 For support, Schmidt Sciences users should email ssci@jh.edu.
 
-All other users, please email arch@jh.edu.
+All other users, please email `arch@jh.edu <mailto:arch@jh.edu>`_.
 
 |
 |
@@ -552,7 +554,7 @@ To request an account upgrade to PI:
    .. image:: images/pi-upgrade-upgrade-button.png
 
 3. Select a department from the dropdown menu and click **Submit Upgrade Request**.
-   If your department is not listed, please contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_
+   If your department is not listed, please contact `arch@jh.edu <mailto:arch@jh.edu>`_
    to have it added.
 
    .. image:: images/pi-upgrade-department.png

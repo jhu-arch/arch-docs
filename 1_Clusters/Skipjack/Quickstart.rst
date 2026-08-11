@@ -63,6 +63,8 @@ Navigate to the Arch Portal at https://portal.arch.jhu.edu
 Select Affiliation and Use Case
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _affiliation:
+
 As a multi-architecture system with a diverse user base, Skipjack requires users to determine
 their access method based on both their affiliation and their specific purpose. To find the
 correct procedure, please refer to the table below.
@@ -341,15 +343,6 @@ Enter the code from your OTP app that corresponds to your Skipjack account.
 Data Transfer with Globus
 -------------------------
 
-.. admonition:: JHED ID users should use *Skipjack JHU JHED Home* and *Skipjack JHU JHED Scratch*
-   :class: warning
-
-   For JHED ID users, please follow the directions below but use **Skipjack JHU JHED Home** in place
-   of **Skipjack JHU Home** and **Skipjack JHU JHED Scratch** in place of **Skipjack JHU Scratch**
-   endpoints. Updated docs coming soon!
-
-   Questions? Please contact us at `arch@jh.edu <mailto:arch@jh.edu>`_
-
 We recommend using Globus to transfer large amounts of data to and from the Skipjack
 cluster. Globus reliably manages transfers in the background, handling restarts
 if interruptions occur.
@@ -366,21 +359,22 @@ can be done by reversing the endpoints or changing the transfer direction.
 1. Connect to Globus
 ^^^^^^^^^^^^^^^^^^^^
 
-Using your web browser, navigate to `<https://www.globus.org>`_.
+Using your web browser, navigate to `<https://www.globus.org>`_ and click **Log in**.
 
 .. image:: images/globus-nav.png
 
-2. Select Johns Hopkins
-^^^^^^^^^^^^^^^^^^^^^^^
+2. Select an Organizational Login
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Select **Johns Hopkins** from the dropdown menu.
+Select **Johns Hopkins** from the dropdown menu to log in as a JHED ID user.
+Other users may want to select another organizational login.
 
 .. image:: images/globus-jhu-login.png
 
-3. Log in with JHED ID
-^^^^^^^^^^^^^^^^^^^^^^
+3. Log in to Globus
+^^^^^^^^^^^^^^^^^^^
 
-Authenticate via the Johns Hopkins SSO using your JHED ID.
+Authenticate via the Johns Hopkins SSO using your JHED ID or other appropriate login.
 
 .. image:: images/globus-jhu-id.png
 
@@ -408,15 +402,17 @@ In the new search bar on the second panel, search for **Skipjack**.
 
 .. image:: images/globus-twopane.png
 
-There are several Skipjack endpoints available:
+There are several Skipjack endpoints available. Select the endpoint that matches your `affiliation`_.
 
-   +---------------------------+
-   | **Skipjack JHU Homes**    |
-   +---------------------------+
-   | **Skipjack JHU Scratch**  |
-   +---------------------------+
-   | **Skipjack SSCI Scratch** |
-   +---------------------------+
+   +------------------+------------------------------------------------------------+
+   | Affiliation      | Globus Endpoints                                           |
+   +==================+============================================================+
+   | JHED ID          | **Skipjack JHU JHED Homes**, **Skipjack JHU JHED Scratch** |
+   +------------------+------------------------------------------------------------+
+   | Schmidt Sciences | **Skipjack JHU Homes**, **Skipjack SSCI Scratch**          |
+   +------------------+------------------------------------------------------------+
+   | External User    | **Skipjack JHU Homes**, **Skipjack JHU Scratch**           |
+   +------------------+------------------------------------------------------------+
 
 .. image:: images/globus-sj-endpts.png
 
@@ -427,22 +423,20 @@ Click the name hyperlink of the desired Skipjack endpoint to set it as your tran
 
 **Authenticate to Allow Access**
 
-On first access, Globus will ask for consent to access your data. At the prompt, click **Continue**.
+Globus will ask for consent to access data on the Skipjack endpoint. At the prompt, click **Continue**.
 
 .. image:: images/globus-consent-cont.png
 
-Follow the link **JHU Skipjack OIDC Server**.
+
+Click the link to continue the authentication process. JHED ID users should not need to reauthenticate.
 
 .. image:: images/globus-consent-link.png
 
-At the prompt, enter your Skipjack username and password (the same SSH credentials used to `Connect to the Skipjack Cluster`_).
+
+**Schmidt Sciences** and **External Users** will be prompted to enter their Skipjack username and password
+(the same SSH credentials used to `Connect to the Skipjack Cluster`_).
 
 .. image:: images/globus-consent-creds.png
-
-If prompted, log in to your primary identity, click **Continue** and follow the on-screen
-prompts to authenticate with your JHED ID.
-
-.. image:: images/globus-consent-primary.png
 
 **Allow Globus Web App**
 
@@ -492,7 +486,7 @@ You can monitor, manage and confirm transfer activity under the **Activity** tab
 Running VSCode on Skipjack
 --------------------------
 
-For details on responsibility running VSCode on the Skipjack cluster, please see
+For details on responsibly running VSCode on the Skipjack cluster, please see
 :doc:`vscode`.
 
 |

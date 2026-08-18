@@ -12,7 +12,7 @@ This section provides tutorials for launching and managing the most popular tool
 
 Whether you prefer graphical dashboards or command-line-driven scripts, these guides walk you through setting up secure, efficient interactive sessions tailored to your research and development needs.
 
-Questions? Contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for assistance.
+Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
 .. toctree::
    :maxdepth: 1

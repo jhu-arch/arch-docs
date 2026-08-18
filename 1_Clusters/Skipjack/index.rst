@@ -9,7 +9,7 @@ security guidelines, resource utilization and best practices, and privacy issues
 for more information.
 
 If users have any questions about these policies, please send an email to
-`help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_
+`arch@jhu.edu <mailto:arch@jhu.edu>`_
 
 To begin, see the user guide for information regarding account creation and login.
 

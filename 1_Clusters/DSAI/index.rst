@@ -12,7 +12,7 @@ The Advanced Research Computing at Hopkins (ARCH) manages the High Performance C
 
 These are “shared resources”, therefore we expect all users to comply with policies on passwords, security guidelines, resource utilization and best practices, and privacy issues
 
-If users have any questions about these policies, please send an email to `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__
+If users have any questions about these policies, please send an email to `arch@jhu.edu <mailto:arch@jhu.edu>`__
 
 .. toctree::
    :maxdepth: 1

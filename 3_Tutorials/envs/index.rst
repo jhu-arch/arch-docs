@@ -12,7 +12,7 @@ This section covers multiple environment types and how to connect them to common
 
 Whether you're developing pure Python code, working with machine learning frameworks, managing R packages, or preparing complex HPC workflows, these guides will help you get set up correctly.
 
-Questions? Contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for assistance.
+Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
 .. toctree::
    :maxdepth: 1

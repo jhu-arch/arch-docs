@@ -12,7 +12,7 @@ This section provides targeted guides for installing, configuring, and running a
 
 Whether you're running large-scale inference, transferring datasets from external servers, building reproducible workflows, or parallelizing MATLAB jobs, these tutorials walk you through the complete process for success on ARCH systems.
 
-Questions? Contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for assistance.
+Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
 .. toctree::
    :maxdepth: 1

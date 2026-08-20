@@ -531,8 +531,12 @@ Request Account Upgrade to PI
 
 Principal Investigators (PI) on Skipjack can request to have their account upgraded to PI status.
 Requests are reviewed by staff.
-When an account is upgraded from User to PI, a default project is created and associated with
-the requesting PI.
+When an account is upgraded from **User** to **PI**, a default project is created and associated with
+the requesting PI. The default project is allocated 60,000 Service Units (SU) of compute for use with
+CPUs and/or GPUs, and 1TB of scratch storage.
+
+If more than 1TB of scratch storage is needed, please reach out to `arch@jh.edu <mailto:arch@jh.edu>`_ with
+your request and a brief justification.
 
 .. image:: images/pi-flowchart.png
 
@@ -566,7 +570,8 @@ will remain in the pending state until it is approved.
 
 ----
 
-PIs who want to add additional projects and allocations can do so by following the steps below.
+PIs who want to request access to additional compute and storage resources should
+create additional projects by following the steps below.
 
 .. image:: images/pi-add-project-flowchart.png
 
@@ -612,9 +617,13 @@ Create a Project
 
 .. note::
 
-   PIs are automatically assigned a default project and allocation when their account status is
-   upgraded from user to PI. Use the steps below to create additional projects.
+   PIs are automatically assigned a default project and allocation with 60,000 Service
+   Units (SU) and 1TB scratch storage when their account status is
+   upgraded from user to PI. Use the steps below to create additional projects to
+   request access to more resources.
 
+    If more than 1TB of scratch storage is needed, please reach out to `arch@jh.edu <mailto:arch@jh.edu>`_ with
+    your request and a brief justification.
 
 .. note::
 

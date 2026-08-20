@@ -59,7 +59,7 @@ Prerequisites
 +============================+===========================================================================+
 | **A Skipjack account**     | Username, password, and **OTP** (6-digit code) already set up and working.|
 +----------------------------+---------------------------------------------------------------------------+
-| **Working login**          | You can run ``ssh YOUR_USER@login05.schmidtsciences.jhu.edu`` and get in  |
+| **Working login**          | You can run ``ssh YOUR_USER@login.arch.jhu.edu`` and get in               |
 |                            | with password + OTP.                                                      |
 +----------------------------+---------------------------------------------------------------------------+
 | **VS Code installed**      | On your computer — https://code.visualstudio.com                          |
@@ -72,9 +72,7 @@ Prerequisites
 .. admonition:: Throughout this guide
    :class: hint
 
-   Replace **YOUR_USER** with your cluster username
-   (e.g. ``arochab1``), and pick one of the login nodes: ``login04`` or ``login05``
-   (``.schmidtsciences.jhu.edu``). Use whichever you normally use.
+   Replace **YOUR_USER** with your cluster username (e.g. ``arochab1``).
 
 
 |
@@ -114,13 +112,13 @@ In the **terminal on your computer** (not on the cluster):
    ssh-keygen -t ed25519 -f ~/.ssh/id_skipjack -C "vscode-skipjack"
 
    # 2) Send the public key to the cluster (asks for password + OTP ONCE).
-   ssh-copy-id -i ~/.ssh/id_skipjack.pub YOUR_USER@login05.schmidtsciences.jhu.edu
+   ssh-copy-id -i ~/.ssh/id_skipjack.pub YOUR_USER@login.arch.jhu.edu
 
 If ``ssh-copy-id`` is not available on your system, do it manually:
 
 .. code-block:: bash
 
-   cat ~/.ssh/id_skipjack.pub | ssh YOUR_USER@login05.schmidtsciences.jhu.edu \
+   cat ~/.ssh/id_skipjack.pub | ssh YOUR_USER@login.arch.jhu.edu \
      'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys'
 
 .. admonition:: Note
@@ -140,7 +138,7 @@ already on your ``PATH``). You run it **once**, with the Slurm resources you wan
 a personal launcher — ``~/vscode-jump.sh`` — that VS Code uses to allocate the job and tunnel
 in. To change resources later, just run it again.
 
-1. Connect to the cluster: ``ssh YOUR_USER@login05.schmidtsciences.jhu.edu``
+1. Connect to the cluster: ``ssh YOUR_USER@login.arch.jhu.edu``
 2. Run ``vscode_job.sh`` with any ``salloc`` flags you like. Examples:
 
 .. code-block:: bash
@@ -186,13 +184,13 @@ Step 4 — Configure ``~/.ssh/config`` on your computer
 
 On **your computer**, open the SSH config file at ``~/.ssh/config``.
 
-Add the two blocks below (replace **YOUR_USER** with your username, and the ``login05`` host if you prefer):
+Add the two blocks below (replace **YOUR_USER** with your username):
 
 .. code-block:: none
 
    # ==== Skipjack: base connection (the OTP is entered HERE, once) ====
    Host skipjack
-       HostName login05.schmidtsciences.jhu.edu
+       HostName login.arch.jhu.edu
        User YOUR_USER
        IdentityFile ~/.ssh/id_skipjack
        ControlMaster auto

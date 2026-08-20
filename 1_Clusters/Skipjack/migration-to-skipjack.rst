@@ -42,5 +42,5 @@ Answers to Frequently Asked Questions
    remain available for now. Please be assured that there will be no billing without substantial
    prior communication, and there will never be any form of retroactive billing to users.
 
-If you have additional questions not covered here, please contact us at `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_.
+If you have additional questions not covered here, please contact us at `arch@jhu.edu <mailto:arch@jhu.edu>`_.
 

@@ -91,4 +91,4 @@ Troubleshooting
 * **AssocGrpGRES** → wrong account/QoS pair.
 * **Resources** → request fewer GPUs or shorter wall-time to back-fill.
 
-Need help? Open a ticket or e-mail **help@arch.jhu.edu**.
+Need help? Open a ticket or e-mail **arch@jhu.edu**.

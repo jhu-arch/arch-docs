@@ -204,7 +204,7 @@ Helpful starting points:
 Getting Help
 ------------
 
-* Open a support ticket to help@arch.jhu.edu including:
+* Open a support ticket to arch@jhu.edu including:
   * JobID(s), Slurm script, module list, and a short description.
   * A brief profiler report (``nsys`` or ``ncu``) if available.
 

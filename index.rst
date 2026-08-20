@@ -49,7 +49,7 @@ Visit the official ARCH website for more:
 📍 `Skipjack Portal <TODO: Add SkipJack Coldfront URL>`__
 📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__
 📍 `DSAI Portal <https://ai-coldfront.arch.jhu.edu/>`__
-📍 `Request Help <mailto:help@arch.jhu.edu>`__
+📍 `Request Help <mailto:arch@jhu.edu>`__
 📍 :doc:`4_Support/Support`
 
 

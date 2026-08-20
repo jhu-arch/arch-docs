@@ -73,7 +73,7 @@ Usage Policy
 - Run compute-heavy applications only on compute nodes, via Slurm
 - Never bypass the Slurm resource manager to access compute nodes directly
 - Comply with U.S. export control regulations and license obligations as required
-- Data subject to restrictions such as HIPAA or PHI is not permitted on ARCH Systems. If your research involves an IRB and the data is de-identified, please reach out to `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__  for further guidance.
+- Data subject to restrictions such as HIPAA or PHI is not permitted on ARCH Systems. If your research involves an IRB and the data is de-identified, please reach out to `arch@jhu.edu <mailto:arch@jhu.edu>`__  for further guidance.
 
 
 

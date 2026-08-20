@@ -9,7 +9,7 @@ Frequently Asked Questions
 
    Data subject to restrictions - including but not limited to, HIPAA, PHI, or CUI is **not permitted** on DSAI.  
    If your research involves an IRB and the data is de-identified, please reach out to  
-   `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for further guidance, prior to storing or processing any data.
+   `arch@jhu.edu <mailto:arch@jhu.edu>`__ for further guidance, prior to storing or processing any data.
 
 .. dropdown:: How do I connect to a cluster?
 

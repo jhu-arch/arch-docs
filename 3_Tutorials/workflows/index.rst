@@ -12,7 +12,7 @@ This section provides structured guides for:
 
 Whether you need to manage hundreds of independent jobs, build structured pipelines, or ensure the reproducibility of your computational work, these tutorials walk you through the full lifecycle on ARCH Systems.
 
-Questions? Contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for assistance.
+Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
 .. toctree::
    :maxdepth: 1

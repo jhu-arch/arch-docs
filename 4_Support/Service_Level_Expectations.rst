@@ -14,7 +14,7 @@ Where to Get Help
 *****************
 
 - For Rockfish-specific issues: `help@rockfish.jhu.edu <mailto:help@rockfish.jhu.edu>`__
-- For general ARCH support: `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__
+- For general ARCH support: `arch@jhu.edu <mailto:arch@jhu.edu>`__
 - Live system status: https://status.arch.jhu.edu
 
 What We Expect from Users

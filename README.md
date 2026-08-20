@@ -19,7 +19,7 @@ This repository contains the Sphinx documentation for all ARCH-managed clusters,
 
 ## Quick Links
 
-* **HELP**: mail to [help@arch.jhu.edu](mailto:help@arch.jhu.edu) (ticketing system)
+* **HELP**: mail to [arch@jhu.edu](mailto:arch@jhu.edu) (ticketing system)
 * ARCH Website: https://www.arch.jhu.edu/
 * Terms of Use: https://www.arch.jhu.edu/access/jhu-user-accounts/terms-of-use/
 * Citizen Guidelines: https://www.arch.jhu.edu/access/jhu-user-accounts/rockfish-citizen/

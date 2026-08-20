@@ -93,7 +93,7 @@ Example:
 Default Group on Login
 **********************
 
-Your default group (first in the `groups` output) is used each time you log in. If this group is outdated or not associated with your current work, contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ to request a change.
+Your default group (first in the `groups` output) is used each time you log in. If this group is outdated or not associated with your current work, contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ to request a change.
 
 Summary of Useful Commands
 ***************************

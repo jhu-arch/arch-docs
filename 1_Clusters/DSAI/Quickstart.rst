@@ -94,4 +94,4 @@ Need help?
 **************
 
 * `Knowledge base <https://arch-docs.readthedocs.io>`__  
-* Email: `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`_  
+* Email: `arch@jhu.edu <mailto:arch@jhu.edu>`_  

@@ -11,7 +11,7 @@ This section introduces **Singularity**, the container platform used on ARCH Sys
 
 Whether you need to package a complex bioinformatics tool or ensure reproducibility across HPC jobs, containers offer a flexible and powerful solution.
 
-Questions? Contact `help@arch.jhu.edu <mailto:help@arch.jhu.edu>`__ for assistance.
+Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
 .. toctree::
    :maxdepth: 1

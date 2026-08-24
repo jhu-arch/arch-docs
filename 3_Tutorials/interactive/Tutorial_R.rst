@@ -245,4 +245,4 @@ when your Slurm job starts.
 * **Need GPU-accelerated R** – load ``cuda``/``a100`` modules and see
   the Rockfish *GPU guide* for Slurm flags.
 
-Questions?  E-mail **help@rockfish.jhu.edu**.
+Questions?  E-mail **arch@jhu.edu**.

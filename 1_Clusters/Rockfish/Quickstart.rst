@@ -151,4 +151,4 @@ Need help?
 **************
 
 * `Knowledge base <https://rockfish-docs.readthedocs.io>`__  
-* Email: `arch@jhu.edu <mailto:help@rockfish.jhu.edu>`_  
+* Email: `arch@jhu.edu <mailto:help@arch.jhu.edu>`_  

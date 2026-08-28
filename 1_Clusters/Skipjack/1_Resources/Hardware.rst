@@ -2,7 +2,7 @@
 SkipJack Hardware Summary
 #########################
 
-The DSAI cluster is a high-performance computing (HPC) system operated by ARCH at Johns Hopkins University. As of 2025, the DSAI Cluster consists of:
+The Skipjack cluster is a high-performance computing (HPC) system operated by ARCH at Johns Hopkins University. As of 2026, the Skipjack Cluster consists of:
 
 - **8,960 CPU cores** across **80 CPU nodes**
 - **15 8-way nodes** with **NVIDIA A100 (80GB)** GPUs

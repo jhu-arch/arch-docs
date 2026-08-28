@@ -16,14 +16,14 @@ all run on the hardware Slurm allocates to you.
 What you get
 ############
 
-You open VS Code, click a host (e.g. ``skipjack-compute``), and VS Code **automatically**:
+You open VS Code, select a host such as ``skipjack-compute``, and VS Code automatically:
 
-- requests a job from Slurm (allocates a compute node for you);
-- opens the connection directly to that node;
-- runs the VS Code server there.
+- requests a job from Slurm;
+- opens an SSH connection to the allocated compute node through a Skipjack login node;
+- runs the VS Code Server on the compute node.
 
-When you close VS Code, **the job is released automatically**. You never have to type
-``salloc``, look up the node name, or deal with port forwarding by hand.
+When you close VS Code, **the job is released automatically**. You do not have to run
+``salloc`` manually, look up the allocated node, or configure port forwarding.
 
 
 |
@@ -34,19 +34,25 @@ How it works
 .. mermaid::
 
    flowchart LR
-       A["Your computer<br/>(VS Code)"] -->|"1. SSH + OTP<br/>(once)"| B["Login node<br/>login0X.schmidtsciences.jhu.edu"]
+       A["Your computer<br/>(VS Code)"] -->|"1. Password + OTP<br/>(once)"| B["Login node<br/>login.arch.jhu.edu"]
        B -->|"2. salloc<br/>(allocate a node)"| C["Slurm"]
        C --> D["Compute node<br/>e.g. csr048"]
-       B -.->|"3. tunnel via /dev/tcp<br/>to the node's port 22"| D
-       A ==>|"4. VS Code Server runs HERE"| D
+       B -.->|"3. TCP tunnel<br/>to port 22"| D
+       A ==>|"4. Separate SSH key authentication"| D
+       A ==>|"5. VS Code Server runs HERE"| D
 
-Key points:
+There are **two separate SSH authentication steps**:
 
-- **The OTP is only requested once**, when you open a "master session" in a terminal.
-  VS Code reuses that session (SSH ``ControlMaster``), so it does **not** ask for the OTP.
-- Authentication **to the compute node** uses your **SSH key** (no OTP is needed once you
-  have a job allocated there) — that is why `Step 2 — Create an SSH key and register it on the cluster`_
-  is required.
+1. **Your computer to the login node.** You enter your password and OTP once when you
+   open the SSH master session. Later connections reuse it through SSH ``ControlMaster``.
+2. **Your computer to the compute node.** The outer SSH connection authenticates directly
+   to the allocated node using ``~/.ssh/id_skipjack``. The master session does **not**
+   authenticate this second connection.
+
+Consequently, an open master session prevents another login-node password/OTP prompt, but
+it cannot compensate for a missing or mismatched compute-node public key. The exact public
+key corresponding to ``~/.ssh/id_skipjack`` must be present in the cluster's
+``~/.ssh/authorized_keys`` file.
 
 
 |
@@ -54,25 +60,27 @@ Key points:
 Prerequisites
 #############
 
-+----------------------------+---------------------------------------------------------------------------+
-| Item                       | Detail                                                                    |
-+============================+===========================================================================+
-| **A Skipjack account**     | Username, password, and **OTP** (6-digit code) already set up and working.|
-+----------------------------+---------------------------------------------------------------------------+
-| **Working login**          | You can run ``ssh YOUR_USER@login.arch.jhu.edu`` and get in               |
-|                            | with password + OTP.                                                      |
-+----------------------------+---------------------------------------------------------------------------+
-| **VS Code installed**      | On your computer — https://code.visualstudio.com                          |
-+----------------------------+---------------------------------------------------------------------------+
-| **A terminal**             | Native on macOS or Linux. **Windows** users: see the                      |
-|                            | `Windows`_ section.                                                       |
-+----------------------------+---------------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 72
+
+   * - Item
+     - Detail
+   * - **A Skipjack account**
+     - Username, password, and **OTP** (6-digit code) already set up and working.
+   * - **Working login**
+     - You can run ``ssh YOUR_USER@login.arch.jhu.edu`` and sign in with password + OTP.
+   * - **VS Code installed**
+     - On your computer — https://code.visualstudio.com
+   * - **A terminal**
+     - Native on macOS or Linux. **Windows** users should see the `Windows`_ section.
 
 
 .. admonition:: Throughout this guide
    :class: hint
 
-   Replace **YOUR_USER** with your cluster username (e.g. ``arochab1``).
+   Replace **YOUR_USER** with your Skipjack username (for example, ``arochab1``).
+   Run commands marked "on your computer" on your own computer, not in a Skipjack shell.
 
 
 |
@@ -87,59 +95,79 @@ Step 1 — Install the Remote-SSH extension
 
 In VS Code:
 
-1. Open the **Extensions** panel (the blocks icon in the sidebar, or ``Cmd/Ctrl + Shift + X``).
+1. Open the **Extensions** panel (the blocks icon, or ``Cmd/Ctrl + Shift + X``).
 2. Search for **Remote - SSH** (published by Microsoft).
 3. Click **Install**.
 
-This installs **Remote - SSH** and **Remote Explorer** (the monitor icon in the sidebar,
-which you will use to connect).
+This also installs **Remote Explorer**, which you will use to select the SSH host.
 
 
 |
 
-Step 2 — Create an SSH key and register it on the cluster
----------------------------------------------------------
+Step 2 — Create and register the SSH key
+----------------------------------------
 
-**Why:** inside the tunnel, VS Code authenticates directly to the compute node. That step
-uses an **SSH key**, not password + OTP. Without a registered key, the connection fails
-with ``Permission denied``.
+Inside the tunnel, VS Code authenticates directly to the compute node using a dedicated
+SSH key. The public key installed on Skipjack must match the private key selected by the
+``IdentityFile`` setting exactly.
 
-In the **terminal on your computer** (not on the cluster):
+In a terminal **on your computer**, create the key if it does not already exist. Press Enter
+at the passphrase prompts to create a passwordless key for non-interactive VS Code
+connections:
 
 .. code-block:: bash
 
-   # 1) Create a dedicated key (if you don't have one). Press Enter at the prompts.
    ssh-keygen -t ed25519 -f ~/.ssh/id_skipjack -C "vscode-skipjack"
 
-   # 2) Send the public key to the cluster (asks for password + OTP ONCE).
-   ssh-copy-id -i ~/.ssh/id_skipjack.pub YOUR_USER@login.arch.jhu.edu
+.. admonition:: Do not overwrite an existing private key
+   :class: warning
 
-If ``ssh-copy-id`` is not available on your system, do it manually:
+   If ``~/.ssh/id_skipjack`` already exists, do not run ``ssh-keygen`` over it unless you
+   intentionally want to replace it. Replacing the private key changes its fingerprint and
+   invalidates any previously installed public key.
+
+Rebuild the ``.pub`` file from the **actual private key**. This prevents a stale
+``id_skipjack.pub`` file from being copied to the cluster:
 
 .. code-block:: bash
 
-   cat ~/.ssh/id_skipjack.pub | ssh YOUR_USER@login.arch.jhu.edu \
-     'mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys'
+   ssh-keygen -y -f ~/.ssh/id_skipjack > ~/.ssh/id_skipjack.pub
 
-.. admonition:: Note
+Copy the public key to Skipjack:
+
+.. code-block:: bash
+
+   ssh-copy-id -f -i ~/.ssh/id_skipjack.pub YOUR_USER@login.arch.jhu.edu
+
+The ``-f`` option ensures that the exact key is copied even if ``ssh-copy-id`` cannot reliably
+test the key against the login service. The command asks for your password and OTP. If
+``ssh-copy-id`` is unavailable, install the key manually using the public key derived from
+the private key:
+
+.. code-block:: bash
+
+   ssh-keygen -y -f ~/.ssh/id_skipjack | \
+     ssh YOUR_USER@login.arch.jhu.edu \
+     'umask 077; mkdir -p ~/.ssh; cat >> ~/.ssh/authorized_keys; chmod 700 ~/.ssh; chmod 600 ~/.ssh/authorized_keys'
+
+.. admonition:: Why this works on compute nodes
    :class: hint
 
-   Your ``$HOME`` is the **same** on the login and compute nodes (shared filesystem), so the
-   registered key automatically works on the compute nodes too.
-
+   Your ``$HOME`` is shared by the login and compute nodes. A correctly installed key in
+   ``~/.ssh/authorized_keys`` is therefore available to the compute-node SSH server too.
 
 |
 
 Step 3 — Generate your launcher script on the cluster
 -----------------------------------------------------
 
-A helper called ``vscode_job.sh`` is available on every node (installed in ``/apps/helpers``,
-already on your ``PATH``). You run it **once**, with the Slurm resources you want, and it writes
-a personal launcher — ``~/vscode-jump.sh`` — that VS Code uses to allocate the job and tunnel
-in. To change resources later, just run it again.
+A helper called ``vscode_job.sh`` is available on every node. It is installed in
+``/apps/helpers`` and is normally already on your ``PATH``. Run it once with the Slurm
+resources you want. It writes ``~/vscode-jump.sh``, which VS Code uses to allocate a job
+and open the tunnel. To change resources later, run the helper again.
 
 1. Connect to the cluster: ``ssh YOUR_USER@login.arch.jhu.edu``
-2. Run ``vscode_job.sh`` with any ``salloc`` flags you like. Examples:
+2. Run ``vscode_job.sh`` with any ``salloc`` flags you need. Examples:
 
 .. code-block:: bash
 
@@ -149,8 +177,8 @@ in. To change resources later, just run it again.
    # GPU session (partition "a100"): 2 hours, 12 cores, 1 GPU
    vscode_job.sh -p a100 -t 02:00:00 --cpus-per-gpu=12 --gres=gpu:1
 
-The helper prints where it wrote the launcher and the exact ``ProxyCommand`` line to use in the
-next step:
+The helper reports where it wrote the launcher and prints the exact ``ProxyCommand`` line
+for the next step:
 
 .. code-block:: text
 
@@ -161,14 +189,14 @@ next step:
 
        ProxyCommand ssh skipjack "~/vscode-jump.sh"
 
-You do **not** pass ``--account`` or ``--comment`` — the helper fills in your default account and
-the required billing comment automatically. To use a different account, pass ``-A <account>``.
+You do **not** need to pass ``--account`` or ``--comment``. The helper supplies your default
+account and the required billing comment. To use another account, pass ``-A <account>``.
 
 .. admonition:: Want more than one profile?
    :class: hint
 
-   For example, a CPU one and a GPU one. Use ``--out`` to write to a
-   different filename and point a separate SSH host at it:
+   For example, create separate CPU and GPU launchers. Use ``--out`` to select a different
+   filename, then configure another SSH host for that launcher:
 
    .. code-block:: bash
 
@@ -182,13 +210,12 @@ Run ``vscode_job.sh --help`` to see all options.
 Step 4 — Configure ``~/.ssh/config`` on your computer
 -----------------------------------------------------
 
-On **your computer**, open the SSH config file at ``~/.ssh/config``.
-
-Add the two blocks below (replace **YOUR_USER** with your username):
+On **your computer**, open ``~/.ssh/config`` and add these blocks. Replace **YOUR_USER**
+with your username:
 
 .. code-block:: none
 
-   # ==== Skipjack: base connection (the OTP is entered HERE, once) ====
+   # ==== Skipjack: base connection (password + OTP are entered HERE, once) ====
    Host skipjack
        HostName login.arch.jhu.edu
        User YOUR_USER
@@ -197,33 +224,36 @@ Add the two blocks below (replace **YOUR_USER** with your username):
        ControlPersist 8h
        ControlPath ~/.ssh/cm-%r@%h:%p
 
-   # ==== Skipjack: compute node via VS Code ====
+   # ==== Skipjack: allocated compute node via VS Code ====
    Host skipjack-compute
        User YOUR_USER
        IdentityFile ~/.ssh/id_skipjack
-       ForwardAgent yes
        StrictHostKeyChecking no
        UserKnownHostsFile /dev/null
        ProxyCommand ssh skipjack "~/vscode-jump.sh"
 
+``ForwardAgent`` is intentionally omitted. The outer SSH client uses ``IdentityFile``
+directly, so agent forwarding is not required for this workflow.
+
 .. admonition:: Note
    :class: hint
 
-   The resources (partition, cores, GPU, time) live in ``~/vscode-jump.sh``, which you generated
-   in `Step 3 — Generate your launcher script on the cluster`_. The ``ProxyCommand`` just
-   runs it — no arguments here.
+   The partition, CPU, GPU, memory, and time settings live in ``~/vscode-jump.sh``, generated
+   in `Step 3 — Generate your launcher script on the cluster`_. The ``ProxyCommand`` runs
+   that script without additional arguments.
 
-The 3 most common mistakes
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+The 4 most common configuration mistakes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. **User must match** across both blocks and the ``ProxyCommand``. If ``Host skipjack``
-   uses ``User jdoe``, then ``skipjack-compute`` must also use ``jdoe``. The
-   ``ProxyCommand ssh skipjack "..."`` **must** point at the base alias (``skipjack``). If it
-   points at someone else's alias, VS Code logs in as the wrong user.
-2. The name in ``ProxyCommand`` (``ssh skipjack``) **must exactly match** the base block's ``Host``.
-   If you rename the base block to ``skj``, the ProxyCommand must become ``ssh skj "..."``.
-3. **IdentityFile** must point at the key you created in
-   `Step 2 — Create an SSH key and register it on the cluster`_.
+1. **The username must match.** ``User`` must be the same in both blocks. If the
+   ``skipjack`` block uses ``User jdoe``, ``skipjack-compute`` must also use ``jdoe``.
+2. **The base alias must match.** The name used by ``ProxyCommand`` must exactly match the
+   base block's ``Host``. If you rename ``Host skipjack`` to ``Host skj``, use
+   ``ProxyCommand ssh skj "~/vscode-jump.sh"``.
+3. **IdentityFile must identify the correct private key.** It must point to the key created
+   and registered in Step 2.
+4. **A master session does not authenticate the compute node.** It only covers the login
+   hop. The compute-node public key must still be installed and accepted independently.
 
 
 |
@@ -231,18 +261,19 @@ The 3 most common mistakes
 Step 5 — Increase the VS Code connection timeout
 ------------------------------------------------
 
-Allocating a job can take from a few seconds up to several minutes depending on the queue. The
-VS Code default (15 s) can expire before the node is ready, causing the error
-*"Connection timed out during banner exchange"*. Raise it to 5 minutes:
+Allocating a job may take from a few seconds to several minutes. The VS Code default timeout
+can expire before the node is ready, causing ``Connection timed out during banner exchange``.
+Raise the timeout to 5 minutes:
 
-1. In VS Code: ``Cmd/Ctrl + Shift + P`` — **Preferences: Open User Settings (JSON)**.
-2. Add (inside the ``{ }`` braces):
+1. In VS Code, open ``Cmd/Ctrl + Shift + P`` and select
+   **Preferences: Open User Settings (JSON)**.
+2. Add this setting inside the ``{ }`` braces:
 
 .. code-block:: json
 
    "remote.SSH.connectTimeout": 300
 
-3. Save.
+3. Save the file.
 
 
 |
@@ -252,62 +283,54 @@ VS Code default (15 s) can expire before the node is ready, causing the error
 Step 6 — Open the master session (enter the OTP once)
 -----------------------------------------------------
 
-This is the step that makes the OTP be requested **only once** (in 8 hours).
-
-In the **terminal on your computer**:
+In a terminal **on your computer**, run:
 
 .. code-block:: bash
 
    ssh skipjack
 
-Enter your **password** and then the **OTP code**. Once you reach the cluster prompt,
-**leave this terminal open** (it keeps the "master session" alive for 8 hours — the
-``ControlPersist`` value).
+Enter your password and OTP. Once you reach the cluster prompt, leave the session open while
+you start VS Code.
 
-.. admonition:: Note
-   :class: hint
+.. admonition:: Important distinction
+   :class: warning
 
-   While this session is active, VS Code reuses it and does **not** ask for the OTP.
-
+   This master session authenticates only the connection to ``login.arch.jhu.edu``. The
+   subsequent connection to ``skipjack-compute`` is a separate end-to-end SSH connection
+   authenticated by ``~/.ssh/id_skipjack``. If the compute-node key is rejected, opening or
+   reopening the master session will not fix it.
 
 |
-|
-
-----
-
 
 Step 7 — Connect from VS Code
 -----------------------------
 
-1. Click the **Remote Explorer** icon in the sidebar (a monitor), or use
-   ``Cmd/Ctrl + Shift + P`` — **Remote-SSH: Connect to Host...**
+1. Open the **Remote Explorer** icon, or use ``Cmd/Ctrl + Shift + P`` and select
+   **Remote-SSH: Connect to Host...**
 2. Choose **skipjack-compute**.
-3. If it asks for the remote platform, choose **Linux**.
-4. Wait. You will see VS Code server install messages at the bottom. The first time takes a
-   little longer (it downloads and installs the server into your home directory).
+3. If prompted for the remote platform, choose **Linux**.
+4. Wait for the VS Code Server to install and start. The initial connection takes longer.
 
-When it finishes, the bottom-left corner shows something like **SSH: skipjack-compute** —
-you are connected to the compute node.
+When the connection is ready, the bottom-left corner displays something similar to
+**SSH: skipjack-compute**.
 
 .. admonition:: Warning
    :class: warning
 
-   **Do not** connect to the ``skipjack`` host directly in Remote-SSH — that would leave you
-   on the login node. Always use ``skipjack-compute`` (or another compute host you create).
+   Do not select ``skipjack`` in Remote-SSH. That host is the login node. Always select
+   ``skipjack-compute`` or another compute profile created from it.
 
 
-|
 |
 
 ----
 
-
 Common adjustments
 ##################
 
-To change resources, **re-run** ``vscode_job.sh`` **on the cluster** with different flags. It
-overwrites ``~/vscode-jump.sh`` and the change takes effect on your next VS Code connection —
-your ``~/.ssh/config`` does not change.
+To change resources, re-run ``vscode_job.sh`` **on the cluster** with different flags. It
+overwrites the selected launcher, and the change applies to the next connection. Your local
+``~/.ssh/config`` does not need to change.
 
 
 More CPUs
@@ -321,28 +344,27 @@ More CPUs
 Session length
 --------------
 
-``-t HH:MM:SS`` is the time limit. E.g. ``-t 04:00:00`` = 4 hours. When the time runs out, Slurm
-ends the job and VS Code disconnects (just reconnect).
+``-t HH:MM:SS`` is the time limit. For example, ``-t 04:00:00`` requests four hours. When
+the time limit expires, Slurm ends the job and VS Code disconnects.
 
 
 GPU
 ---
 
-GPU partitions on Skipjack: ``a100``, ``b200``, ``b300`` (8 GPUs per node) and ``h200`` (4 per node).
-Generate a launcher with a GPU request:
+GPU partitions on Skipjack include ``a100``, ``b200``, ``b300`` (8 GPUs per node), and
+``h200`` (4 GPUs per node). Generate a GPU launcher:
 
 .. code-block:: bash
 
    vscode_job.sh --out ~/vscode-gpu.sh -p a100 -t 02:00:00 --cpus-per-task=12 --gres=gpu:1
 
-Then add a matching host to your ``~/.ssh/config``:
+Then add a matching host on your computer:
 
 .. code-block:: none
 
    Host skipjack-gpu
        User YOUR_USER
        IdentityFile ~/.ssh/id_skipjack
-       ForwardAgent yes
        StrictHostKeyChecking no
        UserKnownHostsFile /dev/null
        ProxyCommand ssh skipjack "~/vscode-gpu.sh"
@@ -350,22 +372,21 @@ Then add a matching host to your ``~/.ssh/config``:
 .. admonition:: Warning
    :class: warning
 
-   **Your account must be allowed to use GPUs.** If the job is rejected or gets stuck with
-   a reason mentioning ``gres/gpu`` (e.g. ``AssocGrpGRES``), the account has GPUs disabled
-   (``gres/gpu=0``).
+   Your account must be allowed to use GPUs. If a job is rejected or remains pending with a
+   reason mentioning ``gres/gpu`` (for example, ``AssocGrpGRES``), the selected Slurm account
+   may have GPUs disabled (``gres/gpu=0``).
 
 
 Choosing the Slurm account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default the helper uses your default account. To use another, pass ``-A <account>`` when
-generating:
+The helper uses your default Slurm account unless you provide another one:
 
 .. code-block:: bash
 
    vscode_job.sh -A myaccount -p med -t 08:00:00
 
-To list the accounts you can use:
+List the accounts available to your user with:
 
 .. code-block:: bash
 
@@ -373,142 +394,146 @@ To list the accounts you can use:
 
 
 |
-|
 
 ----
-
 
 Ending the session
 ##################
 
-- **Closing the VS Code window** (or ``Cmd/Ctrl + Shift + P`` —
-  **Remote: Close Remote Connection**) ends the connection and the **job is released
-  automatically**.
-- To confirm nothing is left running, in the cluster terminal:
+- Closing the VS Code window, or selecting ``Cmd/Ctrl + Shift + P`` —
+  **Remote: Close Remote Connection**, ends the SSH connection and releases the job.
+- To check for remaining jobs, run this on the cluster:
 
   .. code-block:: bash
 
      sqme
 
-  If the "vscode" job is somehow still there, cancel it with ``scancel -f <JOBID>``.
+  If a ``vscode`` job remains, cancel it with ``scancel -f <JOBID>``.
+- The master connection can remain open and expires after the configured idle period. To
+  close it immediately from your computer, run:
 
-- The master session (the terminal from
-  `Step 6 — Open the master session (enter the OTP once)`_) can stay open; it expires
-  on its own after 8 hours of inactivity.
+  .. code-block:: bash
+
+     ssh -O exit skipjack
 
 
-|
 |
 
 ----
-
 
 Troubleshooting
 ###############
 
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| Symptom                                            | Likely cause                                    | Fix                                                                                                                   |
-+====================================================+=================================================+=======================================================================================================================+
-| VS Code asks for **(user@login…) Password:**       | The master session was not open, **or** the     | Open ``ssh skipjack`` in a terminal first (`Step 6 — Open the master session`_); check that the ``User`` fields match |
-| and never connects                                 | ``User`` in the ``ProxyCommand``/base block is  | (`Step 4 — Configure ``~/.ssh/config`` on your computer`_)                                                            |
-|                                                    | wrong                                           |                                                                                                                       |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| Asks for the **wrong user's** password             | The ``ProxyCommand`` points at someone else's   | Fix it to ``ProxyCommand ssh <YOUR_BASE_ALIAS> "..."``                                                                |
-|                                                    | base alias                                      |                                                                                                                       |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| **Connection timed out during banner exchange**    | Allocation took longer than the VS Code timeout | Do `Step 5 — Increase the VS Code connection timeout`_ (increase ``connectTimeout: 300``)                             |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| **Permission denied (publickey,…)**                | Your key is not in the cluster's                | Redo `Step 2 — Create an SSH key and register it on the cluster`_; check the ``IdentityFile`` in the config           |
-| on the compute node                                | ``authorized_keys``                             |                                                                                                                       |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| **could not determine your default Slurm account** | No detectable default account                   | Pass the account when generating: ``vscode_job.sh -A <account> ...``                                                  |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| Connects but drops after X hours                   | The job's time limit ended                      | Regenerate with a longer time: ``vscode_job.sh -t HH:MM:SS ...``                                                      |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
-| ``vscode_job.sh: command not found``               | ``/apps/helpers`` not on your ``PATH``          | Run it by full path: ``/apps/helpers/vscode_job.sh ...``                                                              |
-|                                                    | in this shell                                   |                                                                                                                       |
-+----------------------------------------------------+-------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 31 41
 
-|
-|
+   * - Symptom
+     - Likely cause
+     - Fix
+   * - Password or OTP prompt for ``YOUR_USER@login.arch.jhu.edu``
+     - The master connection is not open, or the base alias/username is wrong.
+     - Open ``ssh skipjack`` and leave it running; verify the ``Host skipjack`` and ``User``
+       settings.
+   * - Password prompt for ``YOUR_USER@skipjack-compute``
+     - The public key used by VS Code is not correctly registered on Skipjack.
+     - On your computer, rerun the two ``ssh-keygen -y`` and ``ssh-copy-id -f`` commands
+       from Step 2, then reconnect.
+   * - ``Permission denied (publickey,...)`` on the compute node
+     - The compute-node public key is missing or does not match ``IdentityFile``.
+     - Repeat Step 2 and confirm that ``IdentityFile`` is ``~/.ssh/id_skipjack``.
+   * - Password prompt for the wrong username
+     - ``User`` differs between blocks, or ``ProxyCommand`` points to another base alias.
+     - Make the usernames match and use ``ProxyCommand ssh skipjack ...``.
+   * - ``Connection timed out during banner exchange``
+     - Allocation took longer than the VS Code timeout.
+     - Set ``remote.SSH.connectTimeout`` to ``300``.
+   * - ``could not determine your default Slurm account``
+     - The helper could not detect a default account.
+     - Regenerate with ``vscode_job.sh -A <account> ...``.
+   * - Connection drops after a fixed number of hours
+     - The Slurm time limit expired.
+     - Regenerate the launcher with a longer ``-t HH:MM:SS`` value.
+   * - ``vscode_job.sh: command not found``
+     - ``/apps/helpers`` is absent from ``PATH`` in that shell.
+     - Run ``/apps/helpers/vscode_job.sh ...``.
 
-**Quick diagnosis:** run the same thing VS Code does, but with full output, in your
-computer's terminal:
-
-.. code-block:: bash
-
-   ssh -v skipjack-compute echo OK
-
-The output shows exactly where it fails (tunnel? authentication? allocation?).
+If these fixes do not resolve the problem, contact ARCH support with a screenshot or the
+exact error message. Never send the contents of ``~/.ssh/id_skipjack``.
 
 
-|
 |
 
 ----
-
 
 Windows
 #######
 
-The "enter the OTP once" trick relies on the OpenSSH ``ControlMaster`` feature, which is
-**not supported by native Windows OpenSSH**. Two options:
+The "enter the OTP once" method relies on OpenSSH ``ControlMaster``, which is not supported
+by native Windows OpenSSH.
 
-- **Recommended:** use **WSL** (Windows Subsystem for Linux) and follow this guide exactly
-  as on Linux, from the WSL terminal. Install the **WSL** extension in VS Code.
-- **Without WSL:** it works, but the OTP will be requested on every new SSH connection
-  (including the one VS Code opens). In that case, remove the
-  ``ControlMaster``/``ControlPersist``/``ControlPath`` lines from the base block and be ready to
-  type password + OTP when VS Code prompts (enable ``Remote.SSH: Show Login Terminal`` in
-  settings so you can type it).
+- **Recommended:** use **WSL** (Windows Subsystem for Linux), run all terminal commands from
+  WSL, and install the VS Code **WSL** extension.
+- **Without WSL:** remove ``ControlMaster``, ``ControlPersist``, and ``ControlPath`` from the
+  base block. The proxy connection may request password + OTP each time. Enable
+  **Remote.SSH: Show Login Terminal** so VS Code can display those prompts. Compute-node
+  authentication still requires the registered ``id_skipjack`` public key.
+
+If ``ssh-copy-id`` is unavailable, use the manual installation command from Step 2.
 
 
-|
 |
 
 ----
 
-
 Appendix — How it works under the hood
 ######################################
 
-The ``ProxyCommand`` for a compute host does three things when VS Code connects:
+The ``ProxyCommand`` for a compute host performs three transport steps:
 
-1. **ssh skipjack** — reuses the already-authenticated master session, so no OTP is
-   needed. It lands on the login node.
-2. **salloc ...** — asks Slurm for a compute node. The allocation stays alive as long as
-   the connection is open.
-3. **exec 3<>/dev/tcp/<node>/22** — opens a raw TCP socket from the login node
-   to the allocated node's SSH port. Skipjack has no ``netcat``, so this uses the bash-native
-   ``/dev/tcp`` device. VS Code's outer SSH then completes an end-to-end handshake to the
-   compute node over that stream, authenticating with your key.
+1. **ssh skipjack** reuses the authenticated master connection to
+   ``login.arch.jhu.edu``. This avoids another login-node password and OTP prompt.
+2. **salloc ...** requests a compute node. The allocation stays alive while the proxied
+   connection remains open.
+3. **exec 3<>/dev/tcp/<node>/22** opens a raw TCP stream from the login node to the allocated
+   node's SSH port. Skipjack does not provide ``netcat`` for this workflow, so the generated
+   launcher uses Bash ``/dev/tcp``.
 
-A few environment details the script/config handles for you:
+The local outer SSH client then performs a separate end-to-end handshake with the compute
+node through that stream. It authenticates using ``~/.ssh/id_skipjack`` and starts the VS
+Code Server there.
 
-- A non-interactive SSH does not load the Slurm environment, so the script prepends the
-  Slurm ``bin`` directory to ``PATH``.
-- The login node requires an OTP on every connection, so ``ControlMaster`` keeps a single
-  authenticated session that every later connection reuses.
-- The VS Code default connect timeout (15 s) is too short to wait for the Slurm queue, so
-  it is raised to 180 s.
+Additional details:
+
+- A non-interactive SSH command does not load the usual Slurm environment, so the generated
+  launcher prepends the Slurm ``bin`` directory to ``PATH``.
+- ``ControlMaster`` shares the already-authenticated login-node connection. It does not
+  forward or reuse authentication for the compute-node SSH server.
+- The VS Code connection timeout is raised to **300 seconds** so the client can wait for the
+  Slurm allocation.
+- Agent forwarding is not required because the configured local ``IdentityFile`` signs the
+  compute-node authentication directly.
 
 Full sequence of one connection:
 
 .. mermaid::
 
    sequenceDiagram
-       participant VS as VS Code (your PC)
-       participant M as Master session (SSH)
-       participant L as Login node
+       participant VS as VS Code / local SSH client
+       participant M as Master session
+       participant L as login.arch.jhu.edu
        participant S as Slurm
        participant C as Compute node
 
-       Note over M,L: you ran "ssh skipjack" (password+OTP) and left it open
-       VS->>L: ProxyCommand: ssh skipjack (reuses the master, no OTP)
+       Note over M,L: User opens ssh skipjack and enters password + OTP
+       VS->>M: ProxyCommand starts ssh skipjack
+       M->>L: Reuse authenticated ControlMaster connection
        L->>S: salloc --account=... --partition=med ...
-       S-->>L: job allocated on a node (e.g. csr048)
-       L->>C: opens /dev/tcp to the node's port 22
-       VS->>C: end-to-end SSH handshake (authenticates with your key)
-       VS->>C: installs and starts the VS Code Server
-       Note over VS,C: you work on the compute node
-       VS-->>S: on disconnect, salloc exits and the job is released
+       S-->>L: Allocate a node (for example, csr048)
+       L->>C: Open /dev/tcp/<node>/22
+       VS->>C: End-to-end SSH handshake through the TCP stream
+       VS->>C: Offer local id_skipjack public key
+       C-->>VS: Accept matching authorized_keys entry
+       VS->>C: Install and start VS Code Server
+       Note over VS,C: User works on the allocated compute node
+       VS-->>S: On disconnect, the launcher exits and Slurm releases the job

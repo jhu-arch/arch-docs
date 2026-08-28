@@ -45,7 +45,8 @@ Requirements
 +----------------------------+-------------------------------------------------------+
 | OTP Authenticator App      | Required for Multi-Factor Authentication (MFA)        |
 +----------------------------+-------------------------------------------------------+
-| SSH client                 | macOS/Linux: built-in • Windows: *OpenSSH* or *PuTTY* |
+| SSH client                 | **macOS/Linux**: built-in                                 |
+|                            | **Windows**: *OpenSSH* or *PuTTY*                         |
 +----------------------------+-------------------------------------------------------+
 
 |

@@ -159,4 +159,4 @@ Troubleshooting
 * **Need GPU** – specify ``-g <n> -p a100 -a <PI-account>_gpu`` in the helper.  
 * **First-time password prompts twice** – the script validates credentials before generating the batch file; just enter the same Rockfish password.
 
-Questions?  E-mail **help@rockfish.jhu.edu**.
+Questions?  E-mail **arch@jhu.edu**.

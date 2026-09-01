@@ -11,6 +11,7 @@ The Skipjack cluster is a high-performance computing (HPC) system operated by AR
 - **8 8-way nodes** with **NVIDIA L40** GPUs
 - **16 8-way nodes** with **NVIDIA B200** GPUs
 - **1 8-way nodes** with **NVIDIA B300** GPU
+
 .. - **5 PB of WEKA storage** (backed by a parallel file system)
 
 The following table summarizes the current node types available in the DSAI cluster:

@@ -28,3 +28,4 @@ To begin, see the user guide for information regarding account creation and logi
    :maxdepth: 1
 
    Quickstart
+   1_Resources/Hardware

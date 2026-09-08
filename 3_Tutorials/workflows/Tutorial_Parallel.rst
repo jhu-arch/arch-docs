@@ -44,8 +44,7 @@ MPI example::
    #SBATCH --nodes=2
    #SBATCH --ntasks-per-node=16     # 32 ranks total
    #SBATCH --cpus-per-task=1
-   module load OpenMPI
-   srun --mpi=pmix_v3 ./my_mpi.exe
+   srun ./my_mpi.exe
 
 Hybrid model (MPI + OpenMP)
 ***************************

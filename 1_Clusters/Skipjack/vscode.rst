@@ -210,7 +210,15 @@ Run ``vscode_job.sh --help`` to see all options.
 Step 4 — Configure ``~/.ssh/config`` on your computer
 -----------------------------------------------------
 
-On **your computer**, open ``~/.ssh/config`` and add these blocks. Replace **YOUR_USER**
+First, in a terminal **on your computer**, create the directory where SSH will store the
+``ControlPath`` multiplexing socket. SSH does not create this directory automatically, and
+the master session cannot be established without it:
+
+.. code-block:: bash
+
+   mkdir -p ~/.ssh/cm
+
+Then open ``~/.ssh/config`` and add these blocks. Replace **YOUR_USER**
 with your username:
 
 .. code-block:: none
@@ -222,7 +230,8 @@ with your username:
        IdentityFile ~/.ssh/id_skipjack
        ControlMaster auto
        ControlPersist 8h
-       ControlPath ~/.ssh/cm-%r@%h:%p
+       ControlPath ~/.ssh/cm/%C
+       ServerAliveInterval 60
 
    # ==== Skipjack: allocated compute node via VS Code ====
    Host skipjack-compute
@@ -283,6 +292,14 @@ Raise the timeout to 5 minutes:
 Step 6 — Open the master session (enter the OTP once)
 -----------------------------------------------------
 
+.. admonition:: Required before every VS Code connection
+   :class: warning
+
+   You **must** open this master session **before** launching VS Code and connecting to
+   ``skipjack-compute``. Without an open master session, the ``ProxyCommand`` cannot reuse
+   an authenticated connection to the login node, and the VS Code connection will fail or
+   hang at a hidden password/OTP prompt.
+
 In a terminal **on your computer**, run:
 
 .. code-block:: bash
@@ -304,6 +321,9 @@ you start VS Code.
 
 Step 7 — Connect from VS Code
 -----------------------------
+
+With the master session from `Step 6 — Open the master session (enter the OTP once)`_
+still open:
 
 1. Open the **Remote Explorer** icon, or use ``Cmd/Ctrl + Shift + P`` and select
    **Remote-SSH: Connect to Host...**
@@ -448,6 +468,9 @@ Troubleshooting
    * - ``Connection timed out during banner exchange``
      - Allocation took longer than the VS Code timeout.
      - Set ``remote.SSH.connectTimeout`` to ``300``.
+   * - ``unix_listener: cannot bind to path`` mentioning ``~/.ssh/cm``
+     - The ``ControlPath`` socket directory does not exist.
+     - Run ``mkdir -p ~/.ssh/cm`` on your computer (Step 4).
    * - ``could not determine your default Slurm account``
      - The helper could not detect a default account.
      - Regenerate with ``vscode_job.sh -A <account> ...``.
@@ -537,3 +560,4 @@ Full sequence of one connection:
        VS->>C: Install and start VS Code Server
        Note over VS,C: User works on the allocated compute node
        VS-->>S: On disconnect, the launcher exits and Slurm releases the job
+

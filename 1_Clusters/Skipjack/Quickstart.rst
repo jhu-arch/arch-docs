@@ -532,12 +532,19 @@ Request Account Upgrade to PI
 
 Principal Investigators (PI) on Skipjack can request to have their account upgraded to PI status.
 Requests are reviewed by staff.
-When an account is upgraded from User to PI, a default project is created and associated with
-the requesting PI.
+
+When an account is upgraded from **User** to **PI**:
+
+  - A default project is automatically created with a small compute allocation for testing purposes.
+  - 1 TB of scratch storage is provisioned to the PI [#f1]_. This directory is for use across all the
+    PI's current and future projects.
 
 .. image:: images/pi-flowchart.png
 
-To request an account upgrade to PI:
+.. [#f1] If more than 1TB of scratch is needed, please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_ with a brief justification.
+
+To request an account upgrade to PI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. In the Arch Portal, click on the dropdown menu in the upper right next to the username and icon. Select
    **My Profile**.
@@ -714,9 +721,11 @@ projects they have.
 
 Given this understanding, if a PI requires more the 10TB of storage across their projects
 please request a **Project Storage** allocation following the directions below. If 10TB
-or less is required, then please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_.
+or less is required, then please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_
+with a brief justification for the requested storage amount.
 
-Steps to Request Additional Storage:
+Steps to Request Additional Storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From the Arch Portal home screen, navigate to the desired project.
    You can follow Projects -> My Projects. Then select the project from the table by clicking

@@ -532,12 +532,19 @@ Request Account Upgrade to PI
 
 Principal Investigators (PI) on Skipjack can request to have their account upgraded to PI status.
 Requests are reviewed by staff.
-When an account is upgraded from User to PI, a default project is created and associated with
-the requesting PI.
+
+When an account is upgraded from **User** to **PI**:
+
+  - A default project is automatically created with a small compute allocation for testing purposes.
+  - 1 TB of scratch storage is provisioned to the PI [#f1]_. This directory is for use across all the
+    PI's current and future projects.
 
 .. image:: images/pi-flowchart.png
 
-To request an account upgrade to PI:
+.. [#f1] If more than 1TB of scratch is needed, please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_ with a brief justification.
+
+To request an account upgrade to PI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. In the Arch Portal, click on the dropdown menu in the upper right next to the username and icon. Select
    **My Profile**.
@@ -661,14 +668,14 @@ an allocation can be requested.
 ----
 
 
-Create an Allocation
---------------------
+Request a Project Compute Allocation
+------------------------------------
 
 .. note::
 
    This section is for PIs with an approved project.
 
-Once a project is approved, a resource allocation for time on the cluster can be requested.
+Once a project is approved, a compute allocation for time on the cluster can be requested.
 
 1. From the Arch Portal home screen, navigate to the desired project.
    You can follow Projects -> My Projects. Then select the project from the table by clicking
@@ -689,6 +696,76 @@ Once a project is approved, a resource allocation for time on the cluster can be
 A banner at the top of the page will confirm your request has been sent.
 
 .. image:: images/allow-successbanner.png
+
+|
+|
+
+----
+
+Request Project Storage
+-----------------------
+
+.. note::
+
+   This section is for PIs with an approved project.
+
+Once a project is approved, if additional storage quota is needed, it can be requested
+from the project page.
+
+When a user is upgraded to PI they are given a default 1TB quota of scratch storage. This
+storage is associated with the PI regardless of how many projects they create.
+
+**Project Storage** is similarly associated with the PI and not the project. Our policy
+is to provide a single **Project Storage** directory for a PI regardless of how many
+projects they have.
+
+Given this understanding, if a PI requires more the 10TB of storage across their projects
+please request a **Project Storage** allocation following the directions below. If 10TB
+or less is required, then please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_
+with a brief justification for the requested storage amount.
+
+Steps to Request Additional Storage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. From the Arch Portal home screen, navigate to the desired project.
+   You can follow Projects -> My Projects. Then select the project from the table by clicking
+   on the number hyperlink.
+
+   .. image:: images/stor-nav-to-proj.png
+
+2. Once on the Project page, scroll down and click **+ Request Storage Change**.
+
+   .. image:: images/stor-scrolldown.png
+
+   .. image:: images/stor-request-button.png
+
+3. Select the desired amount of **Project Storage** and **Cache** in TB, and click **Submit Request**.
+
+   .. image:: images/stor-form.png
+
+   **Project Storage** refers to the **total** capacity being requested. As noted above, the cumulative
+   amount across all projects for a single Principal Investigator (PI) must exceed 10 TB and be
+   specified in whole-terabyte increments.
+
+   **Cache** refers to the SSD capacity that serves as a high-speed cache for the **Project Storage** directory.
+   **Cache** allocations must be greater than 1 TB, capped at a maximum of 10 TB, and requested in
+   whole-terabyte increments.
+
+   **Project Storage** is provisioned as a Weka file system. Put simply, it functions like a hybrid
+   drive: frequently accessed data is written to and read from the **Cache**, while less frequently
+   accessed data resides in object storage. Because all data is routed through the **Cache**,
+   choosing a cache size large enough to hold active working data for your jobs is recommended.
+   However, many workflows can still maintain high performance with smaller **Cache** allocations. If you
+   have questions or wish to discuss your specific requirements, please contact us at
+   `arch@jh.edu <mailto:arch@jh.edu>`_.
+
+
+A banner at the top of the page will confirm your request has been sent.
+
+.. image:: images/stor-successbanner.png
+
+Please note, **Project storage** requests are fulfilled by an external team and typically take 1–3
+business days to provision.
 
 |
 |

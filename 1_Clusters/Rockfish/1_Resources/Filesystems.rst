@@ -95,7 +95,6 @@ This default scratch space is optimized for high file-count and smaller file siz
 
 - 1 TB per group (default)
 - Suitable for: **genomics, bioinformatics, mechanical engineering**
-- Purged automatically after 90 days of inactivity (based on access time)
 - Not backed up or recoverable
 
 /scratch16/
@@ -106,7 +105,6 @@ This scratch space is optimized for sequential I/O and streaming workloads.
 - No default allocation. Available **by request** with justification
 - 16 MB block size
 - Suitable for: **physics, large-scale simulations, chemistry**
-- Same 90-day purge policy applies
 - Not backed up or recoverable
 
 /data/
@@ -117,7 +115,6 @@ This area is ideal for storing high-value data generated during or after computa
 - 1 TB per group (default)
 - Processed results
 - Intermediate analysis
-- Files you want to retain longer than 30 days
 
 /data/ is **not backed up**, so users must implement their own preservation strategy.
 

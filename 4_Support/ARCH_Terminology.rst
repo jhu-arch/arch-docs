@@ -91,7 +91,7 @@ Data and Storage
 The organizational structure for storing and accessing data on a cluster. Common file systems include `/home`, `/data`, `/scratch`.`
 
 **Scratch Space:**  
-Temporary high-performance storage intended for intermediate data. Files not accessed for 30 days are automatically purged. Not backed up.
+High-performance storage intended for intermediate data. Not backed up.
 
 **Data Space:**  
 Longer-term shared group storage for high-value research outputs. Files stored in `/data` are not automatically deleted but also not backed up.

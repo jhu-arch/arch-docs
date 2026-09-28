@@ -141,8 +141,6 @@ For more information on available filesystems, see here: :doc:`1_Resources/Files
 House-keeping
 **************
 
-* **Purge policy** – anything in *scratch* > 30 days old **is deleted**.  
-  Move results you wish to keep to `/data` or download them.
 * **Fair-share scheduler** – large jobs may wait if your lab has used more
   CPU-hours than average recently.
 * **Login nodes** – *no heavy compute*.  Use ``interact`` or ``sbatch`` instead.
@@ -151,4 +149,4 @@ Need help?
 **************
 
 * `Knowledge base <https://rockfish-docs.readthedocs.io>`__  
-* Email: `arch@jhu.edu <mailto:arch@jhu.edu>`_  
+* Email: `arch@jhu.edu <mailto:arch@jhu.edu>`_

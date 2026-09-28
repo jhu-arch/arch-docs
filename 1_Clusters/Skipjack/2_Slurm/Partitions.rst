@@ -28,7 +28,7 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - 8 × NVIDIA A100 80 GB 
      - 4:00:00
      - AMD EPYC 7443 (24-core) + A100 GPUs in 24 shard MIGs
-    * - ``agentic``
+   * - ``agentic``
      - 2
      - 108
      - 4 000

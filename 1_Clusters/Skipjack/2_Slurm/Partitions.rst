@@ -33,7 +33,7 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - 108
      - 4 000
      - (N/A)
-     - 4:00:00
+     - 7-00:00:00
      - Intel Xeon Platinum 8480+ (56-core) dual-socket nodes
    * - ``med``
      - 80

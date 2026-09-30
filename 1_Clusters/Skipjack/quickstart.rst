@@ -35,11 +35,11 @@ Your onboarding path depends on whether you have a **Johns Hopkins Enterprise Di
 ----------------------
 
    - Creating/logging into an account registers you in the ARCH system, but active cluster access
-     requires being added to a project allocation by your Principal Investigator (PI) or course
-     instructor.
+     requires that your Principal Investigator (PI), Manager, or Course Instructor add you to a
+     project allocation.
 
-   - PIs: If you are a Principal Investigator needing project management and allocation privileges,
-     submit an account elevation request (My Profile --> Upgrade Account --> select your department and school).
+   - PIs: After you have created your account, log in to Portal and submit an account elevation request
+     (My Profile --> PI Status -> Select Upgrade Account).
 
 
 4. How to SSH into Skipjack
@@ -108,19 +108,19 @@ Before funding allocations or billable cluster services, register your billing a
 
   #. Submit the request for provisioning.
 
-3. Add Members & Assign PI Proxies
------------------------------------
+3. Add Users & Assign PI Proxy Managers
+---------------------------------------
 
 Collaborators and students cannot run jobs or access shared project data until added:
 
-  #. Open your project dashboard and select the **Members** tab.
+  #. Open your project dashboard and scroll down to the **Users** field.
 
-  #. Click **Add Member** and search by **JHED ID** or **username**.
+  #. Click **Add User** and search by **JHED ID** or **username**.
 
   #. **Assign Roles:**
 
-     - **Member:** Standard user access; can run Slurm jobs charged to the project account and access shared directories.
-     - **PI Proxy (Manager / Delegate):** Grants elevated administrative authority to a trusted lab member to approve
+     - **User:** Standard user access; can run Slurm jobs charged to the project account and access shared directories.
+     - **Manager (PI Proxy):** Grants elevated administrative authority to a trusted lab member to approve
        member additions, and manage project resources on your behalf.
 
 4 Request Resource Allocations (Compute)

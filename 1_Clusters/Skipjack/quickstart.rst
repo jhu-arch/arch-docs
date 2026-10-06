@@ -101,7 +101,8 @@ Before funding allocations or billable cluster services, register your billing a
 
   #. Complete the project metadata fields:
 
-     - **Title / Abbreviation :** A descriptive label and unique short name (used for Slurm account tags and filesystem groups).
+     - **Title / Abbreviation:** A descriptive label and unique short name (used for Slurm account tags and filesystem groups).
+     - **Primary IO Number / Cost Center:** Select a Cost Center entered in step #1 above.
      - **Affiliation / Department:** Research classification category.
      - **Description:** Summary of research scope and computational objectives (150+ words).
 

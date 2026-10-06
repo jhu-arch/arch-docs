@@ -27,6 +27,7 @@ To begin, see the user guide for information regarding account creation and logi
 .. toctree::
    :maxdepth: 1
 
-   Quickstart
+   quickstart.rst
+   user-guide.rst
    1_Resources/Hardware
    2_Slurm/index

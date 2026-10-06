@@ -433,12 +433,6 @@ Click the link to continue the authentication process. JHED ID users should not 
 
 .. image:: images/globus-consent-link.png
 
-
-**Schmidt Sciences** and **External Users** will be prompted to enter their Skipjack username and password
-(the same SSH credentials used to `Connect to the Skipjack Cluster`_).
-
-.. image:: images/globus-consent-creds.png
-
 **Allow Globus Web App**
 
 Click **Allow** to allow the Globus Web App to manage your data on Skipjack.
@@ -446,6 +440,13 @@ Click **Allow** to allow the Globus Web App to manage your data on Skipjack.
 .. image:: images/globus-consent-allow.png
 
 For subsequent file transfers, your permission will be stored.
+
+.. note::
+
+   **Schmidt Sciences** and **External Users** will be prompted to enter their Skipjack username and password
+   (the same SSH credentials used to `Connect to the Skipjack Cluster`_).
+
+   .. image:: images/globus-consent-creds.png
 
 |
 

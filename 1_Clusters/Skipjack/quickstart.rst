@@ -34,9 +34,9 @@ Your onboarding path depends on whether you have a **Johns Hopkins Enterprise Di
 3. Gain Cluster Access
 ----------------------
 
-   - Creating/logging into an account registers you in the ARCH system, but active cluster access
-     requires that your Principal Investigator (PI), Manager, or Course Instructor add you to a
-     project allocation.
+   - Creating/logging into an account registers you in the ARCH system, but cluster access
+     requires that your Principal Investigator (PI), Manager, or Course Instructor add you to an
+     active project allocation.
 
    - PIs: After you have created your account, log in to Portal and submit an account elevation request
      (My Profile --> PI Status -> Select Upgrade Account).
@@ -101,10 +101,9 @@ Before funding allocations or billable cluster services, register your billing a
 
   #. Complete the project metadata fields:
 
-     - **Title & Project Name/Code:** A descriptive label and unique short name (used for Slurm account tags and filesystem groups).
-     - **Field of Science / Discipline:** Research classification category.
-     - **Project Abstract:** Summary of research scope and computational objectives (150+ words).
-     - **Associated Cost Center:** Select the Cost Center created in Step 1.
+     - **Title / Abbreviation :** A descriptive label and unique short name (used for Slurm account tags and filesystem groups).
+     - **Affiliation / Department:** Research classification category.
+     - **Description:** Summary of research scope and computational objectives (150+ words).
 
   #. Submit the request for provisioning.
 
@@ -128,8 +127,8 @@ Collaborators and students cannot run jobs or access shared project data until a
 
 Active allocations are required for members to submit Slurm batch jobs:
 
-  #. Inside your project, navigate to the **Allocations** tab -> click **Request Allocation**.
-  #. Specify the requested quantity, and funding source.
+  #. Inside your project dashboard, scroll down to the **Allocations** section -> click **Request Resource Allocation**.
+  #. Specify the requested quantity, brief justification, users and funding source.
   #. Submit the request for ARCH review and provisioning.
 
 5. Request Storage
@@ -137,9 +136,9 @@ Active allocations are required for members to submit Slurm batch jobs:
 
 Provision dedicated high-performance project storage for shared datasets:
 
-  #. Within your project dashboard, navigate to the **Storage** tab.
+  #. Within your project dashboard, scroll down to the **Project Storage** section.
   #. Click **Request Storage Allocation**.
-  #. Specify the target capacity in whole Terabytes (TB) for Project Storage (Total capacity) and Cache (Flash memory for frequently accessed data).
+  #. Specify the target capacity in whole Terabytes (TB) for Project Storage (Total capacity) and Cache (Flash storage portion for frequently accessed data).
   #. Once approved, the dedicated group directory will be mounted and permissions linked to your project user group.
 
 

@@ -48,30 +48,30 @@ Visit the official ARCH website for more:
 📍 `ARCH Website <https://www.arch.jhu.edu/>`__
 📍 `Skipjack Portal <TODO: Add SkipJack Coldfront URL>`__
 📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__
-📍 `DSAI Portal <https://ai-coldfront.arch.jhu.edu/>`__
 📍 `Request Help <mailto:arch@jhu.edu>`__
 📍 :doc:`4_Support/Support`
 
 
 .. toctree::
+   :hidden:
    :maxdepth: 3
    :caption: ARCH Systems
 
    1_Clusters/Skipjack/index
    1_Clusters/Rockfish/index
-   1_Clusters/DSAI/index
-   1_Clusters/EDU_Cluster/index
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
    :caption: Common Tasks
 
    2_Common_Tasks/Bash_Quickstart
    2_Common_Tasks/Managing_Group_Permissions
    2_Common_Tasks/JHU_VPN
-   2_Common_Tasks/GPU_Computing
+   2_Common_Tasks/Job_Efficiency/index
 
 .. toctree::
+   :hidden:
    :maxdepth: 1
    :caption: Tutorials
 
@@ -83,6 +83,7 @@ Visit the official ARCH website for more:
    3_Tutorials/workflows/index
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
    :caption: Support and Help
 

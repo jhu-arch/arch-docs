@@ -13,8 +13,6 @@ This repository contains the Sphinx documentation for all ARCH-managed clusters,
 | Cluster   | Status       | Portal                                           |
 |-----------|--------------|--------------------------------------------------|
 | Rockfish  | Live         | https://coldfront.rockfish.jhu.edu/               |
-| DSAI      | Live         | https://ai-coldfront.arch.jhu.edu/                |
-| EDU Cluster | Live       | —                                                |
 | SkipJack  | **Draft**    | URL TBD                                          |
 
 ## Quick Links
@@ -29,8 +27,6 @@ This repository contains the Sphinx documentation for all ARCH-managed clusters,
 Each cluster has its own documentation directory under `1_Clusters/`:
 
 * **Rockfish** (`1_Clusters/Rockfish/`) — CPU and GPU resources for general HPC workloads
-* **DSAI** (`1_Clusters/DSAI/`) — AI/ML-focused system with NVIDIA A100, H100, L40S GPUs
-* **EDU Cluster** (`1_Clusters/EDU_Cluster/`) — Teaching and educational computing resources
 * **SkipJack** (`1_Clusters/SkipJack/`) — **New cluster documentation (TODOs need filling)**
 
 Shared content lives in:

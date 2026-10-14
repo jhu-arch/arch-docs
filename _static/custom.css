@@ -233,3 +233,11 @@ body,
     max-width: 1200px !important; /* Change to 100% for full screen width */
 }
 
+
+/* Small grey source credit at the bottom of adapted pages (e.g. Job Efficiency, adapted from Princeton RC) */
+.rst-content .source-credit,
+.rst-content .source-credit p {
+    font-size: 0.8em;
+    color: #8a8a8a;
+    margin-top: 2.5em;
+}

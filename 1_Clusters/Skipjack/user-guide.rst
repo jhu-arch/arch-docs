@@ -484,6 +484,20 @@ You can monitor, manage and confirm transfer activity under the **Activity** tab
 
 ----
 
+Rockfish Migration and Globus Endpoints
+---------------------------------------
+
+For Rockfish users migrating their data to Skipjack, search **Rockfish dtn** in the collection search bar.
+
+.. image:: images/rockfish_dtns.png
+
+Use either dtn endpoint to begin data transfer.
+
+|
+|
+
+----
+
 
 Running VSCode on Skipjack
 --------------------------

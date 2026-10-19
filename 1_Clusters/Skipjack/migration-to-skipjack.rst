@@ -4,14 +4,6 @@
 Skipjack Frequently Asked Questions
 ===================================
 
-
-Answers to Frequently Asked Questions
-=====================================
-
-#. **Can I be a beta tester?**
-
-   At this time, access is restricted to previously selected beta testers.
-
 #. **Will my project be migrated/mapped to Skipjack?**
 
    No. You will need to create a new project following the steps outlined in the :ref:`Skipjack User Guide`.

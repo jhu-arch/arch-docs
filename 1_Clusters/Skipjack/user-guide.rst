@@ -352,10 +352,28 @@ The directions below explain how to transfer files from an external endpoint to
 the Skipjack cluster scratch storage. Transferring files from Skipjack to an external endpoint
 can be done by reversing the endpoints or changing the transfer direction.
 
+.. admonition:: Transferring Data from Rockfish?
+   :class: warning
+
+   To access your Rockfish files through the Globus portal, **your Rockfish user name must exactly match
+   your JHED ID**.
+
+   If they do not match, please take the following steps:
+
+   1. Create a new Rockfish account that matches your JHED ID.
+
+   2. Ask your PI to add your new username to the project.
+
+   3. Contact us at arch@jhu.edu.
+
+   We will make your files accessible so that you can copy them to your new user and complete the transfer.
+
 .. note::
 
    **Endpoints** can be other HPC systems registered on Globus, or personal computers and laptops set up
    with a `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
+
+
 
 1. Connect to Globus
 ^^^^^^^^^^^^^^^^^^^^
@@ -389,6 +407,19 @@ desired endpoint, then select the folders or files you wish to transfer.
 .. image:: images/globus-endpt-file-sel.png
 
 This example uses a publicly available test data set from ESNet.
+
+Rockfish users migrating their data to Skipjack
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+For Rockfish users migrating their data to Skipjack, search **Rockfish dtn** in the
+collection search bar.
+
+.. image:: images/globus-search-rf.png
+
+Use either data transfer node (DTN) endpoint for the data transfer from Rockfish.
+
+.. image:: images/globus-select-rf-end.png
+
 
 .. note::
 
@@ -483,21 +514,6 @@ You can monitor, manage and confirm transfer activity under the **Activity** tab
 |
 
 ----
-
-Rockfish Migration and Globus Endpoints
----------------------------------------
-
-For Rockfish users migrating their data to Skipjack, search **Rockfish dtn** in the collection search bar.
-
-.. image:: images/rockfish_dtns.png
-
-Use either dtn endpoint to begin data transfer.
-
-|
-|
-
-----
-
 
 Running VSCode on Skipjack
 --------------------------

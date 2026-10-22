@@ -526,6 +526,17 @@ For details on responsibly running VSCode on the Skipjack cluster, please see
 
 ----
 
+Interactive Desktop with Open OnDemand
+--------------------------------------
+
+For details on launching interactive desktop apps and features with Open OnDemand, please see
+:doc:`ood`.
+
+|
+|
+
+----
+
 Support
 -------
 

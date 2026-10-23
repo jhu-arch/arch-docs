@@ -797,7 +797,15 @@ Steps to Request Additional Storage
    drive: frequently accessed data is written to and read from the **Cache**, while less frequently
    accessed data resides in object storage. Because all data is routed through the **Cache**,
    choosing a cache size large enough to hold active working data for your jobs is recommended.
-   However, many workflows can still maintain high performance with smaller **Cache** allocations. If you
+   However, many workflows can still maintain high performance with smaller **Cache** allocations.
+
+   The diagram below provides a visual representation of how the **Cache** and object store work
+   together to provide a single **Project Storage** filesystem accessible from the Skipjack nodes.
+
+   .. image:: images/proj-storage-diag.png
+
+
+   If you
    have questions or wish to discuss your specific requirements, please contact us at
    `arch@jh.edu <mailto:arch@jh.edu>`_.
 

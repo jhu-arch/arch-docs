@@ -11,8 +11,8 @@ Skipjack Frequently Asked Questions
 #. **Will users, groups, and file permissions carry over?**
 
    No. Users will need to create new accounts on the system following the steps outlined in :ref:`Skipjack User Guide`.
-   Our recommended method, :ref:`Data Transfer with Globus`, can transfer files with permissions intact if all
-   the same users are present on Skipjack before the file transfer.
+   Our recommended method, :ref:`Data Transfer with Globus <data_transfer_with_globus>`, can transfer files with 
+   permissions intact if all the same users are present on Skipjack before the file transfer.
 
 #. **How can I prepare for migrating to Skipjack?**
 
@@ -25,7 +25,8 @@ Skipjack Frequently Asked Questions
 
 #. **Can I, as a PI, designate a student or program manager to handle the transition on my behalf?**
 
-   Yes. Many tasks can be delegated to a Proxy Account Manager (see :ref:`Assign Proxy Account Managers` for the steps
+   Yes. Many tasks can be delegated to a Proxy Account Manager (see :ref:`Assign Proxy Account Managers <assign_proxy_account_managers>` for the steps
+   
    to designate a manager).
 
 #. **What does it cost to move to Skipjack?**

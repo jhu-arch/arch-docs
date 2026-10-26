@@ -1,154 +1,177 @@
+
 Skipjack Quick Start
 ====================
+
+.. contents::
+   :local:
+   :depth: 2
+
+
+----
 
 Account Setup & SSH Connection
 ##############################
 
-Your onboarding path depends on whether you have a **Johns Hopkins Enterprise Directory** (**JHED**) **ID**.
 
-1. Identify Your User Category
-------------------------------
+.. dropdown:: 1. Identify Your User Category
 
-   - JHU Users (with **JHED ID**): Log in to the `ARCH Portal <https://portal.arch.jhu.edu>`_ directly using your JHED Login ID
+   Your onboarding path depends on whether you have a **Johns Hopkins Enterprise Directory (JHED) ID**.
+
+   - **JHU users (with JHED ID):** Log in to the
+     `ARCH Portal <https://portal.arch.jhu.edu>`_ using your JHED
      credentials and Hopkins Single Sign-On (SSO).
-
-   - External & Class-Use Users (without JHED ID): Log in via a Local Account on the `ARCH Portal <https://portal.arch.jhu.edu>`_
-     using the credentials assigned to your user tier.
-
-   - Note: Schmidt Sciences users do not use standard self-service and should contact Schmidt Sciences directly.
-
-
-2. Set Up 2-Factor Authentication (2FA) [non-JHED users only]
--------------------------------------------------------------
-
-   - Users logging in with local credentials (non-JHED) must configure an OTP authenticator before
-     connecting over SSH:
-
-     #. Go to the ARCH Portal --> click your user icon --> My Profile.
-
-     #. Under Two-Factor Auth (2FA), click Set up 2FA, then Set up Authenticator application.
-
-     #. Scan the QR barcode with Google Authenticator, Microsoft Authenticator, or FreeOTP, then enter the 6-digit confirmation code.
+    
+   - **External and class-use users (without JHED ID):** Log in to the
+     `ARCH Portal <https://portal.arch.jhu.edu>`_ using the credentials
+     assigned to your user tier.
+    
+   - **Schmidt Sciences users:** Contact Schmidt Sciences directly
+     rather than using the standard self-service process.
 
 
-3. Gain Cluster Access
-----------------------
+.. dropdown:: 2. Set Up Two-Factor Authentication (2FA) [non-JHED users only]
 
-   - Creating/logging into an account registers you in the ARCH system, but cluster access
-     requires that your Principal Investigator (PI), Manager, or Course Instructor add you to an
-     active project allocation.
+   Users logging in with local credentials (non-JHED) must configure an OTP authenticator before connecting over SSH:
 
-   - PIs: After you have created your account, log in to Portal and submit an account elevation request
-     (My Profile --> PI Status -> Select Upgrade Account).
+     #. Go to the ARCH Portal and select your user icon, then **My Profile**.
+  
+     #. Under **Two-Factor Auth (2FA)**, click **Set up 2FA**, then
+        **Set up Authenticator application**.
+  
+     #. Scan the QR code using Google Authenticator, Microsoft
+        Authenticator, or FreeOTP.
+  
+     #. Enter the six-digit confirmation code to complete setup.
 
+ 
 
-4. How to SSH into Skipjack
----------------------------
+.. dropdown:: 3. Gain Cluster Access
 
-  #. Open your terminal (macOS/Linux have built-in terminals; Windows users can use OpenSSH or PuTTY).
+   Creating or logging into an account registers you in the ARCH system,
+   but does not automatically grant cluster access.
 
-  #. Connect to the login node matching your user group:
+   - **Users:** Your PI, manager, or course instructor must add you to
+     an active project allocation.
 
-     - **JHED ID** & External Users:
-
-       .. code-block:: sh
-
-          ssh <your-username>@login.arch.jhu.edu
-
-     - Schmidt Sciences Users:
-
-       .. code-block:: sh
-
-          ssh <your-username>@login.schmidtsciences.jhu.edu
-
-  #. First-time connection
-
-     - Type ``yes`` at the host-ley prompt to trust the server.
-
-  #. Authentication
-
-     - Enter your **JHED ID**/Skipjack cluster password.
-
-     - Enter the 6-digit code from your OTP authenticator app when prompted.
-
-|
-|
-
-----
+   - **PIs:** After creating your account, log in to the ARCH Portal
+     and submit an account elevation request under
+     **My Profile → PI Status → Upgrade Account**.
 
 
-PI Quickstart  — Project & Resource Setup on Skipjack
-#####################################################
 
-All the actions below are initiated by first logging into  the `Skipjack Portal <https://portal.arch.jhu.edu/>`_ with your PI credentials.
+.. dropdown:: 4. Connect to Skipjack via SSH
 
-1. Create a Cost Center
------------------------
+   #. Open a terminal. macOS and Linux include terminal applications;
+      Windows users can use OpenSSH or PuTTY.
 
-Before funding allocations or billable cluster services, register your billing account:
+   #. Connect using the appropriate login host.
 
-  #. In the navigation sidebar, go to **Billing** -> **Cost Centers**.
+      - **JHED ID and external users:**
 
-  #. Click **Add Cost Center** (or **New Cost Center**).
+        .. code-block:: bash
 
-  #. Enter the required JHU billing details (Internal Order / Cost Center number, approver, and departmental contact)
-     and submit.
+           ssh <your-username>@login.arch.jhu.edu
 
-2. Create a New Project
------------------------
+      - **Schmidt Sciences users:**
 
-  #. In the sidebar, navigate to **Projects** -> click **Create Project**.
+        .. code-block:: bash
 
-  #. Complete the project metadata fields:
+           ssh <your-username>@login.schmidtsciences.jhu.edu
 
-     - **Title / Abbreviation:** A descriptive label and unique short name (used for Slurm account tags and filesystem groups).
-     - **Primary IO Number / Cost Center:** Select a Cost Center entered in step #1 above.
-     - **Affiliation / Department:** Research classification category.
-     - **Description:** Summary of research scope and computational objectives (150+ words).
+   #. On the first connection, type ``yes`` if prompted to trust the host.
 
-  #. Submit the request for provisioning.
-
-3. Add Users & Assign PI Proxy Managers
----------------------------------------
-
-Collaborators and students cannot run jobs or access shared project data until added:
-
-  #. Open your project dashboard and scroll down to the **Users** field.
-
-  #. Click **Add User** and search by **JHED ID** or **username**.
-
-  #. **Assign Roles:**
-
-     - **User:** Standard user access; can run Slurm jobs charged to the project account and access shared directories.
-     - **Manager (PI Proxy):** Grants elevated administrative authority to a trusted lab member to approve
-       member additions, and manage project resources on your behalf.
-
-4 Request Resource Allocations (Compute)
------------------------------------------
-
-Active allocations are required for members to submit Slurm batch jobs:
-
-  #. Inside your project dashboard, scroll down to the **Allocations** section -> click **Request Resource Allocation**.
-  #. Specify the requested quantity, brief justification, users and funding source.
-  #. Submit the request for ARCH review and provisioning.
-
-5. Request Storage
-------------------
-
-Provision dedicated high-performance project storage for shared datasets:
-
-  #. Within your project dashboard, scroll down to the **Project Storage** section.
-  #. Click **Request Storage Allocation**.
-  #. Specify the target capacity in whole Terabytes (TB) for Project Storage (Total capacity) and Cache (Flash storage portion for frequently accessed data).
-  #. Once approved, the dedicated group directory will be mounted and permissions linked to your project user group.
-
+   #. Enter your cluster password and, when prompted, the six-digit
+      OTP code if required.
 
 |
 |
 
 ----
 
+PI Quickstart — Project & Resource Setup on Skipjack
+####################################################
+
+All PI setup tasks below begin by logging in to the
+`Skipjack Portal <https://portal.arch.jhu.edu/>`_ using your PI credentials.
+
+
+
+.. dropdown:: 1. Create a Cost Center
+
+   Before requesting funding allocations or billable cluster services,
+   register your billing account.
+
+     **1.** In the navigation sidebar, go to **Billing → Cost Centers**.
+  
+     **2.** Click **Add Cost Center** or **New Cost Center**.
+  
+     **3.** Enter the required JHU billing details, including the Internal Order or Cost Center number, approver, and departmental contact.
+  
+     **4.** Submit the request.
+
+
+.. dropdown:: 2. Create a New Project
+              
+     **1.** In the sidebar, navigate to **Projects** -> click **Create Project**.
+ 
+     **2.** Complete the project metadata fields:
+ 
+       - **Title / Abbreviation:** A descriptive label and unique short name (used for Slurm account tags and filesystem groups).
+
+       - **Primary IO Number / Cost Center:** Select a Cost Center entered in step #1 above.
+
+       - **Affiliation / Department:** Research classification category.
+
+       - **Description:** Summary of research scope and computational objectives (150+ words).
+ 
+     **3.** Submit the request for provisioning.
+
+
+
+.. dropdown:: 3. Add Users & Assign PI Proxy Managers
+
+   Collaborators and students cannot run jobs or access shared project data until added:
+   
+     **1.** Open your project dashboard and scroll down to the **Users** field.
+   
+     **2.** Click **Add User** and search by **JHED ID** or **username**.
+   
+     **3.** **Assign Roles:**
+   
+       - **User:** Standard user access; can run Slurm jobs charged to the project account and access shared directories.
+       - **Manager (PI Proxy):** Grants elevated administrative authority to a trusted lab member to approve
+          member additions, and manage project resources on your behalf.
+
+
+.. dropdown:: 4. Request Resource Allocations (Compute)
+
+   Active allocations are required for members to submit Slurm batch jobs:
+   
+     **1.** Inside your project dashboard, scroll down to the **Allocations** section -> click **Request Resource Allocation**.
+
+     **2.** Specify the requested quantity, brief justification, users and funding source.
+
+     **3.** Submit the request for ARCH review and provisioning.
+
+
+.. dropdown:: 5. Request Storage
+
+   Provision dedicated high-performance project storage for shared datasets:
+   
+     **1.** Within your project dashboard, scroll down to the **Project Storage** section.
+
+     **2.** Click **Request Storage Allocation**.
+
+     **3.** Specify the target capacity in whole Terabytes (TB) for Project Storage (Total capacity) and Cache (Flash storage portion for frequently accessed data).
+
+     **4.** Once approved, the dedicated group directory will be mounted and permissions linked to your project user group.
+
+|
+|
+
+----
 
 For detailed instructions, please see the :ref:`skipjack user guide`.
 
 For help, please contact `arch@jh.edu <mailto:arch@jh.edu>`_.
+

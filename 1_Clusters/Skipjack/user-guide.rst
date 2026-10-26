@@ -10,7 +10,7 @@ Skipjack User Guide
    :local:
    :depth: 2
 
-
+----
 
 All Users
 #########
@@ -35,849 +35,803 @@ All Users
    guides below.
 
 
-Requirements
-------------
+.. _requirements:
 
-+----------------------------+-------------------------------------------------------+
-| Item                       | Notes                                                 |
-+============================+=======================================================+
-| JHED Login ID              | *or* Email (External collaborators only)              |
-+----------------------------+-------------------------------------------------------+
-| OTP Authenticator App      | Required for Multi-Factor Authentication (MFA)        |
-+----------------------------+-------------------------------------------------------+
-| SSH client                 | **macOS/Linux**: built-in                             |
-|                            | **Windows**: *OpenSSH* or *PuTTY*                     |
-+----------------------------+-------------------------------------------------------+
+.. dropdown:: Requirements
 
-|
-|
-
-----
-
-Create or Activate an Account
------------------------------
-
-Navigate to the Arch Portal at https://portal.arch.jhu.edu
-
-.. image:: images/portal-landing.png
-
-Select Affiliation and Use Case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. _affiliation:
-
-As a multi-architecture system with a diverse user base, Skipjack requires users to determine
-their access method based on both their affiliation and their specific purpose. To find the
-correct procedure, please refer to the table below.
-
-+------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-| Affiliation      | Class Use | Authentication Method | MFA         | Username Prefix                         | Email Domain          |
-+==================+===========+=======================+=============+=========================================+=======================+
-| JHED ID          | No        | `JHU SSO`_            | Use JHU SSO | N/A                                     | jh.edu, jhu.edu, etc. |
-+------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-| Schmidt Sciences | No        | `Schmidt (SSCI)`_     | OTP Code    | ``ssci-``                               | A non-JHU email\*     |
-+------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-| External User    | No        | `Local Account`_      | OTP Code    | ``ext-``                                | A non-JHU email\*     |
-+------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-| JHED ID          | Yes       | `Local Account`_      | OTP Code    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
-+------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-| External User    | Yes       | `Local Account`_      | OTP Code    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
-+------------------+-----------+-----------------------+-------------+-----------------------------------------+-----------------------+
-
-\*A **non-JHU email** refers to an email address outside the JHU domain, such as ``univ.edu``, ``gmail.com``, ``hotmail.com`` etc.
-
-.. _JHU SSO:
-
-Log in via JHED Login ID
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Click the **JHED Login ID** button and follow the prompts.
-
-.. image:: images/jhed-login2.png
-
-Users will be prompted with the JHED login sequence.
-
-.. image:: images/jhed-login-msid.png
-
-Upon first login, users will be asked to accept the Terms of Service.
-
-.. _Local Account:
-
-Log in via Local Account
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. warning::
-
-   This method is for **Schmidt Sciences, External and Class-Use users only**. JHU faculty, staff, and students
-   should sign in with the JHED Login ID described above.
-
-Schmidt Sciences users and external collaborators can create an account and log in with their email. This option
-is not permitted for users with a JHED Login ID.
+   +----------------------------+-------------------------------------------------------+
+   | Item                       | Notes                                                 |
+   +============================+=======================================================+
+   | JHED Login ID              | *or* Email (External collaborators only)              |
+   +----------------------------+-------------------------------------------------------+
+   | OTP Authenticator App      | Required for Multi-Factor Authentication (MFA)        |
+   +----------------------------+-------------------------------------------------------+
+   | SSH client                 | **macOS/Linux**: built-in                             |
+   |                            | **Windows**: *OpenSSH* or *PuTTY*                     |
+   +----------------------------+-------------------------------------------------------+
 
 
-First Time Account Activation
-"""""""""""""""""""""""""""""
+.. _create_or_activate_an_account:
 
-Click the **Register** link, and fill out the information to create a new account.
-
-.. image:: images/register2.png
-
-.. admonition:: Username Prefixes
-
-   | **Schmidt Sciences** users should prepend ``scci-`` to their username.
-   | **External** users should prepend ``ext-``
-   | **Class** users should prepend their class code ``class-code>-`` for example ``class123-``
-
-.. image:: images/register-form.png
-
-When complete, you will be returned to the login screen. Log in with
-the credentials you just created.
-
-Upon first login, users will be asked to accept the Terms of Service.
+.. dropdown:: Create or Activate an Account
 
 
-Setup Multi-Factor Identification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   Navigate to the Arch Portal at https://portal.arch.jhu.edu
 
-Users with a JHED ID do not need to set up a separate One-Time Password (OTP)
-authenticator app. Instead, they should use their JHED ID to log in after setting
-up their account in the Arch Portal (see `Create or Activate an Account`_). Conversely,
-users without a JHED ID must set up an OTP authenticator app to connect to Skipjack.
-To set up an OTP authenticator app for your account, follow these steps:
-
-1. Navigate to My Profile.
-
-   Click the dropdown menu next to the user icon and select "My Profile."
-
-   .. image:: images/2fa-myprofile.png
-
-2. Under **Two-Factor Auth (2FA)**, click the "Set up 2FA" button.
-
-   .. image:: images/2fa-setup.png
-
-3. On the next screen, find the "Set up Authenticator application" link in
-   the bottom right.
-
-   Click the **Set up Authenticator application** link.
-
-   .. image:: images/2fa-setup-link.png
-
-4. On the Mobile Authenticator Setup page, follow the steps to set up a
-   One-Time Password (OTP) device.
-
-   .. image:: images/2fa-mobileauth.png
-
-   **Install one of the following:**
-
-   **Microsoft Authenticator**
-
-   .. image:: images/appstore.svg
-      :width: 15%
-      :target: https://apps.apple.com/us/app/microsoft-authenticator/id983156458
-      :alt: Download it on the App Store
-
-   .. image:: images/playstore.svg
-      :width: 15%
-      :target: https://play.google.com/store/apps/details?id=com.azure.authenticator
-      :alt: Get it on Google Play
+   .. image:: images/portal-landing.png
 
    |
 
-   **FreeOTP**
+   .. _affiliation:
 
-   .. image:: images/appstore.svg
-      :width: 15%
-      :target: https://apps.apple.com/us/app/freeotp-authenticator/id872559395
-      :alt: Download it on the App Store
+   .. raw:: html
 
-   .. image:: images/playstore.svg
-      :width: 15%
-      :target: https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp
-      :alt: Get it on Google Play
+      <p style="color: #002D72; font-weight: bold; font-size: 18px;">
+         Select Affiliation and Use Case
+      </p>
+
+   As a multi-architecture system with a diverse user base, Skipjack requires users to determine
+   their access method based on both their affiliation and their specific purpose. To find the
+   correct procedure, please refer to the table below.
+
+   +------------------+-----------+------------------------------------+-------------+-----------------------------------------+-----------------------+
+   | Affiliation      | Class Use | Authentication Method              | MFA         | Username Prefix                         | Email Domain          |
+   +==================+===========+====================================+=============+=========================================+=======================+
+   | JHED ID          | No        | `JHU SSO <#jhu-sso>`_              | Use JHU SSO | N/A                                     | jh.edu, jhu.edu, etc. |
+   +------------------+-----------+------------------------------------+-------------+-----------------------------------------+-----------------------+
+   | Schmidt Sciences | No        | `Schmidt (SSCI)`_                  | OTP Code    | ``ssci-``                               | A non-JHU email\*     |
+   +------------------+-----------+------------------------------------+-------------+-----------------------------------------+-----------------------+
+   | External User    | No        | `Local Account <#local-account>`_  | OTP Code    | ``ext-``                                | A non-JHU email\*     |
+   +------------------+-----------+------------------------------------+-------------+-----------------------------------------+-----------------------+
+   | JHED ID          | Yes       | `Local Account <#local-account>`_  | OTP Code    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
+   +------------------+-----------+------------------------------------+-------------+-----------------------------------------+-----------------------+
+   | External User    | Yes       | `Local Account <#local-account>`_  | OTP Code    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
+   +------------------+-----------+------------------------------------+-------------+-----------------------------------------+-----------------------+
+
+   \*A **non-JHU email** refers to an email address outside the JHU domain, such as ``univ.edu``, ``gmail.com``, ``hotmail.com`` etc.
+
+   .. raw:: html
+
+      <p id="jhu-sso" style="color: #002D72; font-weight: bold; font-size: 18px;">
+         Log in via JHED Login ID
+      </p>
+
+   Click the **JHED Login ID** button and follow the prompts.
+
+   .. image:: images/jhed-login2.png
+
+   Users will be prompted with the JHED login sequence.
+
+   .. image:: images/jhed-login-msid.png
+
+   Upon first login, users will be asked to accept the Terms of Service.
+
+   .. raw:: html
+
+      <p id="local-account" style="color: #002D72; font-weight: bold; font-size: 18px;">
+         Log in via Local Account
+      </p>
+
+   .. warning::
+
+      This method is for **Schmidt Sciences, External and Class-Use users only**. JHU faculty, staff, and students
+      should sign in with the JHED Login ID described above.
+
+   Schmidt Sciences users and external collaborators can create an account and log in with their email. This option
+   is not permitted for users with a JHED Login ID.
+
+   .. raw:: html
+
+      <p style="color: #002D72; font-weight: bold; font-size: 18px;">
+         First Time Account Activation
+      </p>
+   
+
+   Click the **Register** link, and fill out the information to create a new account.
+
+   .. image:: images/register2.png
+
+   .. admonition:: Username Prefixes
+
+      | **Schmidt Sciences** users should prepend ``scci-`` to their username.
+      | **External** users should prepend ``ext-``
+      | **Class** users should prepend their class code ``class-code>-`` for example ``class123-``
+
+   .. image:: images/register-form.png
+
+   When complete, you will be returned to the login screen. Log in with
+   the credentials you just created.
+
+   Upon first login, users will be asked to accept the Terms of Service.
+
+   .. _setup-multi-factor-identification:
+
+   .. raw:: html
+
+      <p style="color: #002D72; font-weight: bold; font-size: 18px;">
+         Setup Multi-Factor Identification
+      </p>
+
+   Users with a JHED ID do not need to set up a separate One-Time Password (OTP)
+   authenticator app. Instead, they should use their JHED ID to log in after setting
+   up their account in the Arch Portal (see :ref:`Create or Activate an Account <create_or_activate_an_account>`). Conversely,
+   users without a JHED ID must set up an OTP authenticator app to connect to Skipjack.
+   To set up an OTP authenticator app for your account, follow these steps:
+
+   1. Navigate to My Profile.
+
+      Click the dropdown menu next to the user icon and select "My Profile."
+
+      .. image:: images/2fa-myprofile.png
+
+   2. Under **Two-Factor Auth (2FA)**, click the "Set up 2FA" button.
+
+      .. image:: images/2fa-setup.png
+
+   3. On the next screen, find the "Set up Authenticator application" link in
+      the bottom right.
+
+      Click the **Set up Authenticator application** link.
+
+      .. image:: images/2fa-setup-link.png
+
+   4. On the Mobile Authenticator Setup page, follow the steps to set up a
+      One-Time Password (OTP) device.
+
+      .. image:: images/2fa-mobileauth.png
+
+      **Install one of the following:**
+
+      **Microsoft Authenticator**
+
+      .. image:: images/appstore.svg
+         :width: 15%
+         :target: https://apps.apple.com/us/app/microsoft-authenticator/id983156458
+         :alt: Download it on the App Store
+
+      .. image:: images/playstore.svg
+         :width: 15%
+         :target: https://play.google.com/store/apps/details?id=com.azure.authenticator
+         :alt: Get it on Google Play
+
+
+      **FreeOTP**
+
+      .. image:: images/appstore.svg
+         :width: 15%
+         :target: https://apps.apple.com/us/app/freeotp-authenticator/id872559395
+         :alt: Download it on the App Store
+
+      .. image:: images/playstore.svg
+         :width: 15%
+         :target: https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp
+         :alt: Get it on Google Play
+
+
+      **Google Authenticator**
+
+      .. image:: images/appstore.svg
+         :width: 15%
+         :target: https://apps.apple.com/us/app/google-authenticator/id388497605
+         :alt: Download it on the App Store
+
+      .. image:: images/playstore.svg
+         :width: 15%
+         :target: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
+         :alt: Get it on Google Play
+
+
+      Using your chosen authenticator app, scan the barcode. Enter the 6-digit code in the
+      box to confirm synchronization.
+
+      Optionally, you can give the device a name for easier record-keeping.
+
+      Click **Submit** before the 6-digit code expires to validate the setup.
+
+
+.. _reset_password:
+
+.. dropdown:: Reset Password
+
+   .. raw:: html
+
+      <p style="color: #002D72; font-weight: bold; font-size: 18px;">
+         JHED ID Users
+      </p>
+
+   JHED ID users should manage passwords through `<my.jh.edu>`_.
+   You can reset your password by clicking the link in top right of the MyJHU webpage.
+
+
+   .. raw:: html
+
+      <p style="color: #002D72; font-weight: bold; font-size: 18px;">
+         Schmidt Sciences and External Users
+      </p>
+
+   If you forgot your password and cannot log in to the ARCH Portal, you can
+   send yourself a password reset email.
+
+   .. warning::
+
+      Users added as part of a class cannot reset their password using this method. Instead,
+      please reach out to `arch@jh.edu <mailto:arch@jh.edu>`_.
+
+
+   1. From the login screen, click the "Forgot Password" link.
+
+      .. image:: images/frgpw-link.png
+
+   2. Enter your email address.
+
+      JHU users should enter their JHU email address. External users can
+      enter the email address used to set up their external account.
+
+      Click **Send Reset Email**.
+
+      .. image:: images/frgpw-email.png
+
+   A confirmation screen will appear, indicating that a password reset email has been sent.
+
+   .. image:: images/frgpw-sent.png
+
+
+.. _connect_to_the_skipjack_cluster:
+
+.. dropdown:: Connect to the Skipjack Cluster
+
+   **Schmidt Sciences Users** can access Skipjack using any one of the three login nodes.
+
+   .. code-block:: bash
+
+      ssh <YourUserID>@login.schmidtsciences.jhu.edu
+
+   **JHED ID and External Users** can connect to any one of the three login nodes.
+
+   .. code-block:: bash
+
+      ssh <YourUserID>@login.arch.jhu.edu
+
+   .. note::
+
+      Multi-Factor Authentication is required to log in to Skipjack.
+
+
+   Select the process for connecting to the system based on your affiliation and purpose.
+
+   +------------------+-----------+-----------------------+-------------------------------+-----------------------------------------+-----------------------+
+   | Affiliation      | Class Use | Authentication Method | MFA                           | Username Prefix                         | Email Domain          |
+   +==================+===========+=======================+===============================+=========================================+=======================+
+   | JHED ID          | No        | JHU SSO               | `Use JHU SSO <#use-jhu-sso>`_ | N/A                                     | jh.edu, jhu.edu, etc. |
+   +------------------+-----------+-----------------------+-------------------------------+-----------------------------------------+-----------------------+
+   | Schmidt Sciences | No        | Schmidt (SSCI)        | `OTP Code <#otp-code>`_       | ``ssci-``                               | A non-JHU email\*     |
+   +------------------+-----------+-----------------------+-------------------------------+-----------------------------------------+-----------------------+
+   | External User    | No        | Local Account         | `OTP Code <#otp-code>`_       | ``ext-``                                | A non-JHU email\*     |
+   +------------------+-----------+-----------------------+-------------------------------+-----------------------------------------+-----------------------+
+   | JHED ID          | Yes       | Local Account         | `OTP Code <#otp-code>`_       | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
+   +------------------+-----------+-----------------------+-------------------------------+-----------------------------------------+-----------------------+
+   | External User    | Yes       | Local Account         | `OTP Code <#otp-code>`_       | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
+   +------------------+-----------+-----------------------+-------------------------------+-----------------------------------------+-----------------------+
+
+   \*A **non-JHU email** refers to an email address outside the JHU domain, such as ``univ.edu``, ``gmail.com``, ``hotmail.com`` etc.
+
+
+   .. raw:: html
+
+      <p id="use-jhu-sso" style="color: #002D72; font-weight: bold; font-size: 18px;">
+         JHED ID Users
+      </p>
+
+   Users with JHED ID will be prompted to approve the login via web browser with JHU SSO. Follow the
+   provided hyperlink to review the request. After authenticating in the browser
+   return to the terminal command line and press ``Enter`` to proceed.
+
+
+   .. raw:: html
+
+      <p id="otp-code" style="color: #002D72; font-weight: bold; font-size: 18px;">
+         Schmidt Sciences, External and Class-Use Users
+      </p>
+
+   After entering your password, you will be prompted for
+   your OTP code (see :ref:`Setup Multi-Factor Identification<setup-multi-factor-identification>` for more information).
+   Enter the code from your OTP app that corresponds to your Skipjack account.
+
+   .. note::
+
+      If it is your first time connecting, you'll be asked to verify the host key.
+      Once verified, type **yes** at the prompt, then enter your Skipjack password.
+
+
+.. _data_transfer_with_globus:
+
+.. dropdown:: Data Transfer with Globus
+
+   We recommend using Globus to transfer large amounts of data to and from the Skipjack
+   cluster. Globus reliably manages transfers in the background, handling restarts
+   if interruptions occur.
+
+   The directions below explain how to transfer files from an external endpoint to
+   the Skipjack cluster scratch storage. Transferring files from Skipjack to an external endpoint
+   can be done by reversing the endpoints or changing the transfer direction.
+
+   .. admonition:: Transferring Data from Rockfish?
+      :class: warning
+
+      To access your Rockfish files through the Globus portal, **your Rockfish user name must exactly match
+      your JHED ID**.
+
+      If they do not match, please take the following steps:
+
+      1. Create a new Rockfish account that matches your JHED ID.
+
+      2. Ask your PI to add your new username to the project.
+
+      3. Contact us at arch@jhu.edu.
+
+      We will make your files accessible so that you can copy them to your new user and complete the transfer.
+
+   .. note::
+
+      **Endpoints** can be other HPC systems registered on Globus, or personal computers and laptops set up
+      with a `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
+
+
+   **1. Connect to Globus**
+
+   Using your web browser, navigate to `<https://www.globus.org>`_ and click **Log in**.
+
+   .. image:: images/globus-nav.png
 
    |
 
-   **Google Authenticator**
+   **2. Select an Organizational Login**
 
-   .. image:: images/appstore.svg
-      :width: 15%
-      :target: https://apps.apple.com/us/app/google-authenticator/id388497605
-      :alt: Download it on the App Store
+   Select **Johns Hopkins** from the dropdown menu to log in as a JHED ID user.
+   Other users may want to select another organizational login.
 
-   .. image:: images/playstore.svg
-      :width: 15%
-      :target: https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2
-      :alt: Get it on Google Play
-
+   .. image:: images/globus-jhu-login.png
+    
    |
 
-   Using your chosen authenticator app, scan the barcode. Enter the 6-digit code in the
-   box to confirm synchronization.
+   **3. Log in to Globus**
 
-   Optionally, you can give the device a name for easier record-keeping.
+   Authenticate via the Johns Hopkins SSO using your JHED ID or other appropriate login.
 
-   Click **Submit** before the 6-digit code expires to validate the setup.
+   .. image:: images/globus-jhu-id.png
 
+
+   **4. Set the Source Endpoint Files**
+
+   After logging in, select **File Manager** on the left. Use the search bar to find your
+   desired endpoint, then select the folders or files you wish to transfer.
+
+   .. image:: images/globus-endpt-file-sel.png
+
+   This example uses a publicly available test data set from ESNet.
+
+   **Rockfish users migrating their data to Skipjack**
+
+   For Rockfish users migrating their data to Skipjack, search **Rockfish dtn** in the
+   collection search bar.
+
+   .. image:: images/globus-search-rf.png
+
+   Use either data transfer node (DTN) endpoint for the data transfer from Rockfish.
+
+   .. image:: images/globus-select-rf-end.png
+
+
+   .. note::
+
+      You may need to authenticate the endpoint to grant Globus permission to access your files.
+
+
+   **5. Set the Skipjack Destination Endpoint**
+
+   Click the two-panel icon in the top right of the **File Manager** to split the view.
+   In the new search bar on the second panel, search for **Skipjack**.
+
+   .. image:: images/globus-twopane.png
+
+   There are several Skipjack endpoints available. Select the endpoint that matches your `affiliation`_.
+
+      +------------------+------------------------------------------------------------+
+      | Affiliation      | Globus Endpoints                                           |
+      +==================+============================================================+
+      | JHED ID          | **Skipjack JHU JHED Homes**, **Skipjack JHU JHED Scratch** |
+      +------------------+------------------------------------------------------------+
+      | Schmidt Sciences | **Skipjack JHU Homes**, **Skipjack SSCI Scratch**          |
+      +------------------+------------------------------------------------------------+
+      | External User    | **Skipjack JHU Homes**, **Skipjack JHU Scratch**           |
+      +------------------+------------------------------------------------------------+
+
+   .. image:: images/globus-sj-endpts.png
+
+
+   Click the name hyperlink of the desired Skipjack endpoint to set it as your transfer destination.
+
+
+   **Authenticate to Allow Access**
+
+   Globus will ask for consent to access data on the Skipjack endpoint. At the prompt, click **Continue**.
+
+   .. image:: images/globus-consent-cont.png
+
+
+   Click the link to continue the authentication process. JHED ID users should not need to reauthenticate.
+
+   .. image:: images/globus-consent-link.png
+
+   **Allow Globus Web App**
+
+   Click **Allow** to allow the Globus Web App to manage your data on Skipjack.
+
+   .. image:: images/globus-consent-allow.png
+
+   For subsequent file transfers, your permission will be stored.
+
+   .. note::
+
+      **Schmidt Sciences** and **External Users** will be prompted to enter their Skipjack username and password
+      (the same SSH credentials used to :ref:`Connect to the Skipjack Cluster<connect_to_the_skipjack_cluster>`).
+
+      .. image:: images/globus-consent-creds.png
+
+
+   After allowing access, you will return to the **File Manager** view. Confirm the endpoints,
+   target directories, and selected files before proceeding.
+
+   .. image:: images/globus-confirm.png
+
+   **6. Start File Transfer**
+
+   To transfer files from the endpoint on the left panel, to the endpoint on the right panel, click
+   the **Start** button in the left panel with the right-pointing arrow.
+
+   .. image:: images/globus-start-transfer.png
+
+   .. note::
+
+      You can transfer files in the opposite direction by selecting files on the right
+      and clicking the **Start** button in the right panel with the left-pointing arrow.
+
+
+   You can monitor, manage and confirm transfer activity under the **Activity** tab.
+
+   .. image:: images/globus-activity.png
+
+   .. note::
+
+      For more file transfer behavior options, click **Transfer & Sync Options** located in the middle column
+      between the two **File Manager** panels.
+
+
+.. _running_vscode_on_skipjack:
+
+.. dropdown:: Running VSCode on Skipjack
+
+   For details on responsibly running VSCode on the Skipjack cluster, please see
+   :doc:`vscode`.
+
+
+.. _interactive_desktop_with_open_ondemand:
+
+.. dropdown:: Interactive Desktop with Open OnDemand
+
+   For details on launching interactive desktop apps and features with Open OnDemand, please see
+   :doc:`ood`.
+
+
+.. _support:
+
+.. dropdown:: Support
+
+   For support, Schmidt Sciences users should email ssci@jh.edu.
+
+   All other users, please email `arch@jh.edu <mailto:arch@jh.edu>`_.
 
 |
 |
 
 ----
-
-Reset Password
---------------
-
-JHED ID Users
-^^^^^^^^^^^^^
-
-JHED ID users should manage passwords through `<my.jh.edu>`_.
-You can reset your password by clicking the link in top right of the MyJHU webpage.
-
-
-Schmidt Sciences and External Users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you forgot your password and cannot log in to the ARCH Portal, you can
-send yourself a password reset email.
-
-.. warning::
-
-   Users added as part of a class cannot reset their password using this method. Instead,
-   please reach out to `arch@jh.edu <mailto:arch@jh.edu>`_.
-
-
-1. From the login screen, click the "Forgot Password" link.
-
-   .. image:: images/frgpw-link.png
-
-2. Enter your email address.
-
-   JHU users should enter their JHU email address. External users can
-   enter the email address used to set up their external account.
-
-   Click **Send Reset Email**.
-
-   .. image:: images/frgpw-email.png
-
-A confirmation screen will appear, indicating that a password reset email has been sent.
-
-.. image:: images/frgpw-sent.png
-
-
-|
-|
-
-----
-
-Connect to the Skipjack Cluster
--------------------------------
-
-
-**Schmidt Sciences Users** can access Skipjack using any one of the three login nodes.
-
-.. code-block:: bash
-
-   ssh <YourUserID>@login.schmidtsciences.jhu.edu
-
-**JHED ID and External Users** can connect to any one of the three login nodes.
-
-.. code-block:: bash
-
-   ssh <YourUserID>@login.arch.jhu.edu
-
-.. note::
-
-   Multi-Factor Authentication is required to log in to Skipjack.
-
-
-
-Select the process for connecting to the system based on your affiliation and purpose.
-
-+------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-| Affiliation      | Class Use | Authentication Method | MFA            | Username Prefix                         | Email Domain          |
-+==================+===========+=======================+================+=========================================+=======================+
-| JHED ID          | No        | JHU SSO               | `Use JHU SSO`_ | N/A                                     | jh.edu, jhu.edu, etc. |
-+------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-| Schmidt Sciences | No        | Schmidt (SSCI)        | `OTP Code`_    | ``ssci-``                               | A non-JHU email\*     |
-+------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-| External User    | No        | Local Account         | `OTP Code`_    | ``ext-``                                | A non-JHU email\*     |
-+------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-| JHED ID          | Yes       | Local Account         | `OTP Code`_    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
-+------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-| External User    | Yes       | Local Account         | `OTP Code`_    | ``<class-prefix>-``, e.g. ``class123-`` | A non-JHU email\*     |
-+------------------+-----------+-----------------------+----------------+-----------------------------------------+-----------------------+
-
-\*A **non-JHU email** refers to an email address outside the JHU domain, such as ``univ.edu``, ``gmail.com``, ``hotmail.com`` etc.
-
-
-.. _Use JHU SSO:
-
-JHED ID Users
-^^^^^^^^^^^^^
-
-Users with JHED ID will be prompted to approve the login via web browser with JHU SSO. Follow the
-provided hyperlink to review the request. After authenticating in the browser
-return to the terminal command line and press ``Enter`` to proceed.
-
-
-.. _OTP Code:
-
-Schmidt Sciences, External and Class-Use Users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-After entering your password, you will be prompted for
-your OTP code (see `Setup Multi-Factor Identification`_ for more information).
-Enter the code from your OTP app that corresponds to your Skipjack account.
-
-.. note::
-
-   If it is your first time connecting, you'll be asked to verify the host key.
-   Once verified, type **yes** at the prompt, then enter your Skipjack password.
-
-|
-|
-
-----
-
-.. _data transfer with globus:
-
-Data Transfer with Globus
--------------------------
-
-We recommend using Globus to transfer large amounts of data to and from the Skipjack
-cluster. Globus reliably manages transfers in the background, handling restarts
-if interruptions occur.
-
-The directions below explain how to transfer files from an external endpoint to
-the Skipjack cluster scratch storage. Transferring files from Skipjack to an external endpoint
-can be done by reversing the endpoints or changing the transfer direction.
-
-.. admonition:: Transferring Data from Rockfish?
-   :class: warning
-
-   To access your Rockfish files through the Globus portal, **your Rockfish user name must exactly match
-   your JHED ID**.
-
-   If they do not match, please take the following steps:
-
-   1. Create a new Rockfish account that matches your JHED ID.
-
-   2. Ask your PI to add your new username to the project.
-
-   3. Contact us at arch@jhu.edu.
-
-   We will make your files accessible so that you can copy them to your new user and complete the transfer.
-
-.. note::
-
-   **Endpoints** can be other HPC systems registered on Globus, or personal computers and laptops set up
-   with a `Globus Connect Personal Instance <https://www.globus.org/globus-connect-personal>`_.
-
-
-
-1. Connect to Globus
-^^^^^^^^^^^^^^^^^^^^
-
-Using your web browser, navigate to `<https://www.globus.org>`_ and click **Log in**.
-
-.. image:: images/globus-nav.png
-
-2. Select an Organizational Login
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Select **Johns Hopkins** from the dropdown menu to log in as a JHED ID user.
-Other users may want to select another organizational login.
-
-.. image:: images/globus-jhu-login.png
-
-3. Log in to Globus
-^^^^^^^^^^^^^^^^^^^
-
-Authenticate via the Johns Hopkins SSO using your JHED ID or other appropriate login.
-
-.. image:: images/globus-jhu-id.png
-
-
-4. Set the Source Endpoint Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-After logging in, select **File Manager** on the left. Use the search bar to find your
-desired endpoint, then select the folders or files you wish to transfer.
-
-.. image:: images/globus-endpt-file-sel.png
-
-This example uses a publicly available test data set from ESNet.
-
-Rockfish users migrating their data to Skipjack
-"""""""""""""""""""""""""""""""""""""""""""""""
-
-For Rockfish users migrating their data to Skipjack, search **Rockfish dtn** in the
-collection search bar.
-
-.. image:: images/globus-search-rf.png
-
-Use either data transfer node (DTN) endpoint for the data transfer from Rockfish.
-
-.. image:: images/globus-select-rf-end.png
-
-
-.. note::
-
-   You may need to authenticate the endpoint to grant Globus permission to access your files.
-
-
-5. Set the Skipjack Destination Endpoint
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Click the two-panel icon in the top right of the **File Manager** to split the view.
-In the new search bar on the second panel, search for **Skipjack**.
-
-.. image:: images/globus-twopane.png
-
-There are several Skipjack endpoints available. Select the endpoint that matches your `affiliation`_.
-
-   +------------------+------------------------------------------------------------+
-   | Affiliation      | Globus Endpoints                                           |
-   +==================+============================================================+
-   | JHED ID          | **Skipjack JHU JHED Homes**, **Skipjack JHU JHED Scratch** |
-   +------------------+------------------------------------------------------------+
-   | Schmidt Sciences | **Skipjack JHU Homes**, **Skipjack SSCI Scratch**          |
-   +------------------+------------------------------------------------------------+
-   | External User    | **Skipjack JHU Homes**, **Skipjack JHU Scratch**           |
-   +------------------+------------------------------------------------------------+
-
-.. image:: images/globus-sj-endpts.png
-
-
-Click the name hyperlink of the desired Skipjack endpoint to set it as your transfer destination.
-
-|
-
-**Authenticate to Allow Access**
-
-Globus will ask for consent to access data on the Skipjack endpoint. At the prompt, click **Continue**.
-
-.. image:: images/globus-consent-cont.png
-
-
-Click the link to continue the authentication process. JHED ID users should not need to reauthenticate.
-
-.. image:: images/globus-consent-link.png
-
-**Allow Globus Web App**
-
-Click **Allow** to allow the Globus Web App to manage your data on Skipjack.
-
-.. image:: images/globus-consent-allow.png
-
-For subsequent file transfers, your permission will be stored.
-
-.. note::
-
-   **Schmidt Sciences** and **External Users** will be prompted to enter their Skipjack username and password
-   (the same SSH credentials used to `Connect to the Skipjack Cluster`_).
-
-   .. image:: images/globus-consent-creds.png
-
-|
-
-After allowing access, you will return to the **File Manager** view. Confirm the endpoints,
-target directories, and selected files before proceeding.
-
-.. image:: images/globus-confirm.png
-
-6. Start File Transfer
-^^^^^^^^^^^^^^^^^^^^^^
-
-To transfer files from the endpoint on the left panel, to the endpoint on the right panel, click
-the **Start** button in the left panel with the right-pointing arrow.
-
-.. image:: images/globus-start-transfer.png
-
-.. note::
-
-   You can transfer files in the opposite direction by selecting files on the right
-   and clicking the **Start** button in the right panel with the left-pointing arrow.
-
-|
-
-You can monitor, manage and confirm transfer activity under the **Activity** tab.
-
-.. image:: images/globus-activity.png
-
-.. note::
-
-   For more file transfer behavior options, click **Transfer & Sync Options** located in the middle column
-   between the two **File Manager** panels.
-
-|
-|
-
-----
-
-Running VSCode on Skipjack
---------------------------
-
-For details on responsibly running VSCode on the Skipjack cluster, please see
-:doc:`vscode`.
-
-|
-|
-
-----
-
-Interactive Desktop with Open OnDemand
---------------------------------------
-
-For details on launching interactive desktop apps and features with Open OnDemand, please see
-:doc:`ood`.
-
-|
-|
-
-----
-
-Support
--------
-
-For support, Schmidt Sciences users should email ssci@jh.edu.
-
-All other users, please email `arch@jh.edu <mailto:arch@jh.edu>`_.
-
-|
-|
-
-----
-
-
 
 
 
 Principal Investigators
 #######################
 
-In the Skipjack Portal a Principal Investigator (PI) manages the
-access they and their group have to the system. They can add or remove users, request new allocations,
-renew expiring allocations, and report publication and grant data.
+In the Skipjack Portal a Principal Investigator (PI) manages the access they and their group have to the system. They can add or remove users, request new allocations, renew expiring allocations, and report publication and grant data.
 Because an active project and allocation assignment is required to access Skipjack,
-users cannot log into the system until a PI or `Proxy Account Manager`_ adds them.
+users cannot log into the system until a PI or :ref:`Proxy Account Manager <assign_proxy_account_managers>` adds them.
 
 
 
-Request Account Upgrade to PI
------------------------------
+.. _request_account_upgrade_to_pi:
 
-.. note::
+.. dropdown:: Request Account Upgrade to PI
 
-   This section is for Principal Investigators actively conducting research
-   with Skipjack.
+   .. note::
 
-Principal Investigators (PI) on Skipjack can request to have their account upgraded to PI status.
-Requests are reviewed by staff.
+      This section is for Principal Investigators actively conducting research
+      with Skipjack.
 
-When an account is upgraded from **User** to **PI**:
+   Principal Investigators (PI) on Skipjack can request to have their account upgraded to PI status.
+   Requests are reviewed by staff.
 
-  - A default project is automatically created with a small compute allocation for testing purposes.
-  - 1 TB of scratch storage is provisioned to the PI [#f1]_. This directory is for use across all the
-    PI's current and future projects.
+   When an account is upgraded from **User** to **PI**:
 
-.. image:: images/pi-flowchart.png
+     - A default project is automatically created with a small compute allocation for testing purposes.
+     - 1 TB of scratch storage is provisioned to the PI [#f1]_. This directory is for use across all the
+       PI's current and future projects.
 
-.. [#f1] If more than 1TB of scratch is needed, please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_ with a brief justification.
+   .. image:: images/pi-flowchart.png
 
-To request an account upgrade to PI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   .. [#f1] If more than 1TB of scratch is needed, please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_ with a brief justification.
 
-1. In the Arch Portal, click on the dropdown menu in the upper right next to the username and icon. Select
-   **My Profile**.
+   **To request an account upgrade to PI**
 
-   .. image:: images/pi-upgrade-myprof.png
+   1. In the Arch Portal, click on the dropdown menu in the upper right next to the username and icon. Select
+      **My Profile**.
 
-2. Click on the grey **Upgrade Account** button.
+      .. image:: images/pi-upgrade-myprof.png
 
-   .. image:: images/pi-upgrade-upgrade-button.png
+   2. Click on the grey **Upgrade Account** button.
 
-3. Select a department from the dropdown menu and click **Submit Upgrade Request**.
-   If your department is not listed, please contact `arch@jh.edu <mailto:arch@jh.edu>`_
-   to have it added.
+      .. image:: images/pi-upgrade-upgrade-button.png
 
-   .. image:: images/pi-upgrade-department.png
+   3. Select a department from the dropdown menu and click **Submit Upgrade Request**.
+      If your department is not listed, please contact `arch@jh.edu <mailto:arch@jh.edu>`_
+      to have it added.
 
-4. Once the request is submitted, a confirmation banner will appear at the top of the page.
+      .. image:: images/pi-upgrade-department.png
 
-   .. image:: images/pi-upgrade-banner.png
+   4. Once the request is submitted, a confirmation banner will appear at the top of the page.
 
-When a request is made, a notification is sent to staff to review. Your request
-will remain in the pending state until it is approved.
+      .. image:: images/pi-upgrade-banner.png
 
+   When a request is made, a notification is sent to staff to review. Your request
+   will remain in the pending state until it is approved.
 
-|
-|
 
-----
+   PIs who want to add additional projects and allocations can do so by following the steps below.
 
-PIs who want to add additional projects and allocations can do so by following the steps below.
+   .. image:: images/pi-add-project-flowchart.png
 
-.. image:: images/pi-add-project-flowchart.png
 
+.. _add_a_cost_center:
 
-Add a Cost Center
------------------
+.. dropdown:: Add a Cost Center
 
-.. admonition:: Regarding Cost
-   :class: note
+   .. admonition:: Regarding Cost
+      :class: note
 
-   Moving to Skipjack does not trigger any immediate billing changes. Free
-   compute access will remain available for now. Please be assured that there
-   will be no billing without substantial prior communication, and there will
-   never be any form of retroactive billing to users.
+      Moving to Skipjack does not trigger any immediate billing changes. Free
+      compute access will remain available for now. Please be assured that there
+      will be no billing without substantial prior communication, and there will
+      never be any form of retroactive billing to users.
 
 
-.. note::
+   .. note::
 
-   Only PIs can add a cost center.
+      Only PIs can add a cost center.
 
 
+   1. In the left navigation pane, select **Cost Centers**.
 
-1. In the left navigation pane, select **Cost Centers**.
+      .. image:: images/cost-center-nav.png
 
-   .. image:: images/cost-center-nav.png
+   2. Fill out the required information and click "+ Add."
 
-2. Fill out the required information and click "+ Add."
+      .. image:: images/cost-center-info.png
 
-   .. image:: images/cost-center-info.png
+      A confirmation banner will appear.
 
-   A confirmation banner will appear.
+      .. image:: images/cost-center-conf.png
 
-   .. image:: images/cost-center-conf.png
 
-|
-|
+.. _create_a_project:
 
-----
+.. dropdown:: Create a Project
 
+   .. note::
 
-Create a Project
-----------------
+      PIs are automatically assigned a default project and allocation when their account status is
+      upgraded from user to PI. Use the steps below to create additional projects.
 
-.. note::
 
-   PIs are automatically assigned a default project and allocation when their account status is
-   upgraded from user to PI. Use the steps below to create additional projects.
+   .. note::
 
+      Only PIs can create a project.
 
-.. note::
+   Before starting, if you are creating a JHU-affiliated project, you need
+   to first create a Cost Center (see :ref:`Add a Cost Center<add_a_cost_center>` above).
 
-   Only PIs can create a project.
+   1. In the left navigation pane, select Projects -> My Projects
 
-Before starting, if you are creating a JHU-affiliated project, you need
-to first create a Cost Center (see `Add a Cost Center`_ above).
+      .. image:: images/sel-add-proj.png
 
-1. In the left navigation pane, select Projects -> My Projects
+      To start the process, click **+ Add a project**.
 
-   .. image:: images/sel-add-proj.png
+   2. Fill in the required information.
 
-   To start the process, click **+ Add a project**.
+      .. image:: images/new-proj-fill1.png
 
-2. Fill in the required information.
+   3. Click **Save** to submit the project.
 
-   .. image:: images/new-proj-fill1.png
+      .. image:: images/new-proj-fill2.png
 
-3. Click **Save** to submit the project.
+   4. Once the new project is created, you will be prompted to review the project.
 
-   .. image:: images/new-proj-fill2.png
+      Click the link to initiate the review.
 
-4. Once the new project is created, you will be prompted to review the project.
+      .. image:: images/review-proj.png
 
-   Click the link to initiate the review.
+      Once your review is complete, check the acknowledgement box and click **Submit**.
 
-   .. image:: images/review-proj.png
+      .. image:: images/review-proj-sub.png
 
-   Once your review is complete, check the acknowledgement box and click **Submit**.
+   Once complete, a "Project reviewed successfully" banner will appear.
 
-   .. image:: images/review-proj-sub.png
+   .. image:: images/review-proj-success.png
 
-Once complete, a "Project reviewed successfully" banner will appear.
+   At this point, the project needs to be reviewed and approved by a staff user before
+   an allocation can be requested.
 
-.. image:: images/review-proj-success.png
 
-At this point, the project needs to be reviewed and approved by a staff user before
-an allocation can be requested.
+.. _request_a_project_compute_allocation:
 
-|
-|
+.. dropdown:: Request a Project Compute Allocation
 
-----
+   .. note::
 
+      This section is for PIs with an approved project.
 
-Request a Project Compute Allocation
-------------------------------------
+   Once a project is approved, a compute allocation for time on the cluster can be requested.
 
-.. note::
+   1. From the Arch Portal home screen, navigate to the desired project.
+      You can follow Projects -> My Projects. Then select the project from the table by clicking
+      on the number hyperlink.
 
-   This section is for PIs with an approved project.
+      .. image:: images/allow-nav-to-proj.png
 
-Once a project is approved, a compute allocation for time on the cluster can be requested.
+   2. Once on the Project page, scroll down and click **+ Request Resource Allocation**.
 
-1. From the Arch Portal home screen, navigate to the desired project.
-   You can follow Projects -> My Projects. Then select the project from the table by clicking
-   on the number hyperlink.
+      .. image:: images/allow-scrolldown.png
 
-   .. image:: images/allow-nav-to-proj.png
+      .. image:: images/allow-request-button.png
 
-2. Once on the Project page, scroll down and click **+ Request Resource Allocation**.
+   3. Fill out the required information and click **Submit**.
 
-   .. image:: images/allow-scrolldown.png
+      .. image:: images/allow-form.png
 
-   .. image:: images/allow-request-button.png
+   A banner at the top of the page will confirm your request has been sent.
 
-3. Fill out the required information and click **Submit**.
+   .. image:: images/allow-successbanner.png
 
-   .. image:: images/allow-form.png
 
-A banner at the top of the page will confirm your request has been sent.
+.. _request_project_storage:
 
-.. image:: images/allow-successbanner.png
+.. dropdown:: Request Project Storage
 
-|
-|
+   .. note::
 
-----
+      This section is for PIs with an approved project.
 
-Request Project Storage
------------------------
+   Once a project is approved, if additional storage quota is needed, it can be requested
+   from the project page.
 
-.. note::
+   When a user is upgraded to PI they are given a default 1TB quota of scratch storage. This
+   storage is associated with the PI regardless of how many projects they create.
 
-   This section is for PIs with an approved project.
+   **Project Storage** is similarly associated with the PI and not the project. Our policy
+   is to provide a single **Project Storage** directory for a PI regardless of how many
+   projects they have.
 
-Once a project is approved, if additional storage quota is needed, it can be requested
-from the project page.
+   Given this understanding, if a PI requires more the 10TB of storage across their projects
+   please request a **Project Storage** allocation following the directions below. If 10TB
+   or less is required, then please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_
+   with a brief justification for the requested storage amount.
 
-When a user is upgraded to PI they are given a default 1TB quota of scratch storage. This
-storage is associated with the PI regardless of how many projects they create.
+   **Steps to Request Additional Storage**
 
-**Project Storage** is similarly associated with the PI and not the project. Our policy
-is to provide a single **Project Storage** directory for a PI regardless of how many
-projects they have.
+   1. From the Arch Portal home screen, navigate to the desired project.
+      You can follow Projects -> My Projects. Then select the project from the table by clicking
+      on the number hyperlink.
 
-Given this understanding, if a PI requires more the 10TB of storage across their projects
-please request a **Project Storage** allocation following the directions below. If 10TB
-or less is required, then please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_
-with a brief justification for the requested storage amount.
+      .. image:: images/stor-nav-to-proj.png
 
-Steps to Request Additional Storage
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   2. Once on the Project page, scroll down and click **+ Request Storage Change**.
 
-1. From the Arch Portal home screen, navigate to the desired project.
-   You can follow Projects -> My Projects. Then select the project from the table by clicking
-   on the number hyperlink.
+      .. image:: images/stor-scrolldown.png
 
-   .. image:: images/stor-nav-to-proj.png
+      .. image:: images/stor-request-button.png
 
-2. Once on the Project page, scroll down and click **+ Request Storage Change**.
+   3. Select the desired amount of **Project Storage** and **Cache** in TB, and click **Submit Request**.
 
-   .. image:: images/stor-scrolldown.png
+      .. image:: images/stor-form.png
 
-   .. image:: images/stor-request-button.png
+      **Project Storage** refers to the **total** capacity being requested. As noted above, the cumulative
+      amount across all projects for a single Principal Investigator (PI) must exceed 10 TB and be
+      specified in whole-terabyte increments.
 
-3. Select the desired amount of **Project Storage** and **Cache** in TB, and click **Submit Request**.
+      **Cache** refers to the SSD capacity that serves as a high-speed cache for the **Project Storage** directory.
+      **Cache** allocations must be greater than 1 TB, capped at a maximum of 10 TB, and requested in
+      whole-terabyte increments.
 
-   .. image:: images/stor-form.png
+      **Project Storage** is provisioned as a Weka file system. Put simply, it functions like a hybrid
+      drive: frequently accessed data is written to and read from the **Cache**, while less frequently
+      accessed data resides in object storage. Because all data is routed through the **Cache**,
+      choosing a cache size large enough to hold active working data for your jobs is recommended.
+      However, many workflows can still maintain high performance with smaller **Cache** allocations. If you
+      have questions or wish to discuss your specific requirements, please contact us at
+      `arch@jh.edu <mailto:arch@jh.edu>`_.
 
-   **Project Storage** refers to the **total** capacity being requested. As noted above, the cumulative
-   amount across all projects for a single Principal Investigator (PI) must exceed 10 TB and be
-   specified in whole-terabyte increments.
 
-   **Cache** refers to the SSD capacity that serves as a high-speed cache for the **Project Storage** directory.
-   **Cache** allocations must be greater than 1 TB, capped at a maximum of 10 TB, and requested in
-   whole-terabyte increments.
+   A banner at the top of the page will confirm your request has been sent.
 
-   **Project Storage** is provisioned as a Weka file system. Put simply, it functions like a hybrid
-   drive: frequently accessed data is written to and read from the **Cache**, while less frequently
-   accessed data resides in object storage. Because all data is routed through the **Cache**,
-   choosing a cache size large enough to hold active working data for your jobs is recommended.
-   However, many workflows can still maintain high performance with smaller **Cache** allocations. If you
-   have questions or wish to discuss your specific requirements, please contact us at
-   `arch@jh.edu <mailto:arch@jh.edu>`_.
+   .. image:: images/stor-successbanner.png
 
+   Please note, **Project storage** requests are fulfilled by an external team and typically take 1–3
+   business days to provision.
 
-A banner at the top of the page will confirm your request has been sent.
 
-.. image:: images/stor-successbanner.png
+.. _add_users_to_a_project_or_allocation:
 
-Please note, **Project storage** requests are fulfilled by an external team and typically take 1–3
-business days to provision.
+.. dropdown:: Add Users to a Project or Allocation
 
-|
-|
+   .. note::
 
-----
+      Only PIs and managers of the same project can add users.
 
+   1. Navigate to the project.
 
-Add Users to a Project or Allocation
-------------------------------------
+      Select the project you wish to add users to by clicking on the name hyperlink.
 
-.. note::
+      .. image:: images/add-user-sel-proj.png
 
-   Only PIs and managers of the same project can add users.
+   2. Press the green **Add Users** button under Manage Project.
 
-1. Navigate to the project.
+      .. image:: images/add-user-button.png
 
-   Select the project you wish to add users to by clicking on the name hyperlink.
+   3. Enter the username in the Search String field.
 
-   .. image:: images/add-user-sel-proj.png
+      .. image:: images/add-user-search-add.png
 
-2. Press the green **Add Users** button under Manage Project.
+      Click the green *Search* button to populate the found matches list.
+      When the user is found, click the checkbox next to their username.
+      Then click **Add Selected Users to Project** to add the user to the project.
 
-   .. image:: images/add-user-button.png
+   The banner at the top will confirm the user has been added.
 
-3. Enter the username in the Search String field.
+   .. image:: images/add-user-conf.png
 
-   .. image:: images/add-user-search-add.png
 
-   Click the green *Search* button to populate the found matches list.
-   When the user is found, click the checkbox next to their username.
-   Then click **Add Selected Users to Project** to add the user to the project.
+.. _assign_proxy_account_managers:
 
-The banner at the top will confirm the user has been added.
+.. dropdown:: Assign Proxy Account Managers
 
-.. image:: images/add-user-conf.png
+   A Proxy Account Manager is an individual appointed by the project Principal Investigator (PI).
+   Users with this role can add or remove users from projects and resource allocations.
 
+   .. note::
 
-|
-|
+      Only PIs can assign a user to manage a project they own.
 
-----
+   1. From the project page locate the Users table.
 
-.. _proxy account manager:
+   2. Select the user whose role you want to change and click the person icon under **Actions**.
 
-.. _assign proxy account managers:
+      .. image:: images/proj-user-role-action.png
 
-Assign Proxy Account Managers
------------------------------
+   3. On the Project User Detail page, select the Manager role from the dropdown menu.
 
-A Proxy Account Manager is an individual appointed by the project Principal Investigator (PI).
-Users with this role can add or remove users from projects and resource allocations.
+      .. image:: images/proj-user-role-dropdown.png
 
-.. note::
+   4. Click the **Update** button and note the green banner at the top of the screen confirming the
+   change.
 
-   Only PIs can assign a user to manage a project they own.
-
-1. From the project page locate the Users table.
-
-2. Select the user whose role you want to change and click the person icon under **Actions**.
-
-   .. image:: images/proj-user-role-action.png
-
-3. On the Project User Detail page, select the Manager role from the dropdown menu.
-
-   .. image:: images/proj-user-role-dropdown.png
-
-4. Click the **Update** button and note the green banner at the top of the screen confirming the
-change.
-
-   .. image:: images/proj-user-role-confirm.png
+      .. image:: images/proj-user-role-confirm.png
 
 |
 |

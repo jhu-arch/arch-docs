@@ -9,8 +9,9 @@ This section provides targeted guides for installing, configuring, and running a
 - **Aspera CLI** — High-speed data transfer tool for downloading genomic data
 - **MATLAB Parallel Server** — Scalable parallel computing for MATLAB users on the cluster
 - **Nextflow** — Workflow manager for scalable and reproducible scientific pipelines
+- **CryoSPARC** — Single-particle cryo-electron microscopy processing on the cluster
 
-Whether you're running large-scale inference, transferring datasets from external servers, building reproducible workflows, or parallelizing MATLAB jobs, these tutorials walk you through the complete process for success on ARCH systems.
+Whether you're running large-scale inference, transferring datasets from external servers, building reproducible workflows, parallelizing MATLAB jobs, or processing cryo-EM data, these tutorials walk you through the complete process for success on ARCH systems.
 
 Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
@@ -19,5 +20,6 @@ Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
    Tutorial_alphafold3
    Tutorial_aspera_cli
+   CryoSPARC <Tutorial_CryoSPARC>
    Tutorial_Matlab_ParallelServer
    Tutorial_Nextflow

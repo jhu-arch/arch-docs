@@ -1,7 +1,7 @@
 .. _cryosparc tutorial:
 
-CryoSPARC on the cluster: lab guide
-====================================
+CryoSPARC on the Cluster
+========================
 
 .. contents::
    :local:

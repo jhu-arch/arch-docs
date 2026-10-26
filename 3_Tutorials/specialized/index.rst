@@ -20,6 +20,6 @@ Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
 
    Tutorial_alphafold3
    Tutorial_aspera_cli
-   Tutorial_CryoSPARC
+   CryoSPARC <Tutorial_CryoSPARC>
    Tutorial_Matlab_ParallelServer
    Tutorial_Nextflow

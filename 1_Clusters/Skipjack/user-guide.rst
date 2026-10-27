@@ -454,7 +454,7 @@ Click the name hyperlink of the desired Skipjack endpoint to set it as your tran
 .. note::
 
    **Project Storage** does not have its own endpoint. Select the **Homes** endpoint for your affiliation and
-   open the ``projects`` folder in your home directory; it links to your group's Project Storage directory.
+   open the ``projects_<PI>`` folder in your home directory; it links to your group's Project Storage directory.
 
 |
 
@@ -588,8 +588,8 @@ When an account is upgraded from **User** to **PI**:
 
 .. image:: images/pi-flowchart.png
 
-.. [#f1] Scratch can be increased to up to 10 TB at no cost. Email `arch@jhu.edu <mailto:arch@jhu.edu>`_ with a brief
-   justification. For more space, or for long-term storage, request `Project Storage <Request Project Storage_>`_.
+.. [#f1] If your group needs more scratch space, email `arch@jhu.edu <mailto:arch@jhu.edu>`_ with a justification.
+   For large amounts of data, request `Project Storage <Request Project Storage_>`_.
 
 To request an account upgrade to PI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -761,15 +761,15 @@ Request Project Storage
 
 Skipjack has two kinds of group storage for a PI:
 
-- **Scratch (free):** when a user is upgraded to PI they get a scratch directory with a **1 TB** quota. Scratch
-  can be increased to up to **10 TB at no cost**; email `arch@jhu.edu <mailto:arch@jhu.edu>`_ with a brief
-  justification.
-- **Project Storage (paid):** long-term group storage, requested from the project page as a storage allocation
-  (steps below). We recommend Project Storage for data your group needs to keep.
+- **Scratch (free):** when a user is upgraded to PI they get a scratch directory with a **1 TB** quota. If your
+  group needs more scratch space, email `arch@jhu.edu <mailto:arch@jhu.edu>`_ with a justification.
+- **Project Storage (paid):** space for when the group needs more than its scratch allocation, requested from the
+  project page as a storage allocation (steps below). A valid IO is required. *It is not intended to be archival
+  or backup storage.*
 
 Both are associated with the PI, not with a project: a PI has one scratch directory and one **Project Storage**
 directory, however many projects they have. Project members reach the Project Storage directory through the
-``~/projects`` link in their home directory.
+``~/projects_<PI>`` link in their home directory, or directly at ``/projects/<PI>``.
 
 Steps to Request Additional Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -794,11 +794,13 @@ Steps to Request Additional Storage
    directory shared across all of the PI's projects.
 
    **Cache** refers to the SSD capacity that serves as a high-speed cache for the **Project Storage** directory.
-   **Cache** allocations must be at least 1 TB and at most 10 TB, in whole-terabyte increments.
+   **Cache** allocations must be at least 1 TB, in whole-terabyte increments, and can't be larger than the
+   **Project Storage** total. A PI's cache across all of their projects is limited to 10 TB; a request above that
+   needs a justification and staff approval.
 
    **Project Storage** is provisioned as a Weka file system. Put simply, it functions like a hybrid
    drive: frequently accessed data is written to and read from the **Cache**, while less frequently
-   accessed data resides in object storage. Because all data is routed through the **Cache**,
+   accessed data resides on Dell ECS object storage. Because all data is routed through the **Cache**,
    choosing a cache size large enough to hold active working data for your jobs is recommended.
    However, many workflows can still maintain high performance with smaller **Cache** allocations.
 

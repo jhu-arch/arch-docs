@@ -8,7 +8,6 @@ priority is a weighted sum of these factors:
   get higher priority.
 - **Job age**: jobs gain priority the longer they wait in the queue.
 - **Job size**: a factor based on the size of the request.
-- **QoS**: some allocations carry a priority boost through their QoS.
 
 Slurm also **backfills**: a lower-priority job can start early if it fits into a gap without delaying
 higher-priority jobs. Accurate ``--time`` requests make backfill work better for everyone.
@@ -22,6 +21,6 @@ Checking Priority
    sprio -u $USER
 
 - **PRIORITY**: the final score. Higher runs sooner.
-- **AGE**, **FAIRSHARE**, **JOBSIZE**, **QOS**: each factor's weighted contribution.
+- **AGE**, **FAIRSHARE**, **JOBSIZE**: each factor's weighted contribution.
 
 ``squeue --me --start`` shows Slurm's estimate of when your pending jobs will start.

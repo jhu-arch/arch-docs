@@ -1,7 +1,7 @@
 SLURM Overview
 ###############
 
-The Skipjack Cluster uses **SLURM** (Simple Linux Universal Resource Manager) to manage resource scheduling, job submission, and execution across the cluster.
+The Skipjack Cluster uses **Slurm** (originally the Simple Linux Utility for Resource Management) to manage resource scheduling, job submission, and execution across the cluster.
 
 SLURM is a widely adopted, open-source workload manager developed by `SchedMD <https://slurm.schedmd.com/>`__. It supports large-scale high-performance computing environments and is used by national labs, supercomputing centers, and universities worldwide.
 

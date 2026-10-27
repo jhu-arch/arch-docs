@@ -30,6 +30,7 @@ To begin, see the user guide for information regarding account creation and logi
    quickstart.rst
    user-guide.rst
    1_Resources/Hardware
+   1_Resources/Storage
    2_Slurm/index
    FAQ <migration-to-skipjack.rst>
 

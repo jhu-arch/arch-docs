@@ -13,8 +13,7 @@ Hours & Response Times
 Where to Get Help
 *****************
 
-- For Rockfish-specific issues: `arch@jhu.edu <mailto:arch@jhu.edu>`__
-- For general ARCH support: `arch@jhu.edu <mailto:arch@jhu.edu>`__
+- Help with any ARCH cluster: `arch@jhu.edu <mailto:arch@jhu.edu>`__
 - Live system status: https://status.arch.jhu.edu
 
 What We Expect from Users

@@ -6,10 +6,7 @@ Skipjack and ARCH Portal FAQ
 ============================
 
 Answers to the questions people ask the ARCH helpdesk most often about the
-Skipjack cluster and the ARCH portal. Sections and questions are ordered by
-how often each topic comes up in helpdesk tickets (July to October 2026).
-
-Full documentation: `docs.arch.jhu.edu <https://docs.arch.jhu.edu/en/latest/>`_.
+Skipjack cluster and the ARCH portal.
 
 **Coming from Rockfish?** Accounts, projects and data do not move by
 themselves. See the relevant dropdowns below:
@@ -59,15 +56,15 @@ Accounts, login and access
 
 .. dropdown:: How do I log in with SSH?
 
-   +------------------------+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | Account                | Command                                     | Second factor                                                                                                          |
-   +========================+=============================================+========================================================================================================================+
-   | JHED                   | ``ssh <username>@login.arch.jhu.edu``       | The terminal prints a link: approve the login in your browser with JHU SSO, then press Enter in the terminal            |
-   +------------------------+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | External or class      | ``ssh <username>@login.arch.jhu.edu``       | Your password, then the 6-digit code from your authenticator app                                                       |
-   +------------------------+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
-   | Schmidt Sciences       | ``ssh <username>@login.schmidtsciences.jhu.edu`` | Your password, then the 6-digit code from your authenticator app                                                   |
-   +------------------------+---------------------------------------------+------------------------------------------------------------------------------------------------------------------------+
+   +-------------------+--------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | Account           | Command                                          | Second factor                                                                                                |
+   +===================+==================================================+==============================================================================================================+
+   | JHED              | ``ssh <username>@login.arch.jhu.edu``            | The terminal prints a link, approve the login in your browser with JHU SSO, then press Enter in the terminal |
+   +-------------------+--------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | External or class | ``ssh <username>@login.arch.jhu.edu``            | Your password, then the 6-digit code from your authenticator app                                             |
+   +-------------------+--------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
+   | Schmidt Sciences  | ``ssh <username>@login.schmidtsciences.jhu.edu`` | Your password, then the 6-digit code from your authenticator app                                             |
+   +-------------------+--------------------------------------------------+--------------------------------------------------------------------------------------------------------------+
 
    The first time you connect, type ``yes`` to accept the host key.
 
@@ -154,7 +151,11 @@ Accounts, login and access
    Members create their own accounts too, and the PI adds them. All DSAI members
    can move now; other groups are being onboarded in phases.
 
-   Source: `Skipjack frequently asked questions <https://docs.arch.jhu.edu/en/latest/1_Clusters/Skipjack/migration-to-skipjack.html>`_
+.. dropdown:: Will users, groups, and file permissions carry over?
+
+   No. Users will need to create new accounts on the system following the steps outlined in :ref:`Skipjack User Guide`.
+   Our recommended method, :ref:`Data Transfer with Globus`, can transfer files with permissions intact if all
+   the same users are present on Skipjack before the file transfer.
 
 
 Storage and data
@@ -165,10 +166,10 @@ Storage and data
    +--------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
    | Location           | Path                                                                                                     | Use it for                                                                   |
    +====================+==========================================================================================================+==============================================================================+
-   | Home               | ``~``                                                                                                    | Code, scripts and settings. It is the same on login and compute nodes.        |
+   | Home               | ``~``                                                                                                    | Code, scripts and settings. It is the same on login and compute nodes.       |
    |                    |                                                                                                          | Avoid it for training data and large output.                                 |
    +--------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | Scratch            | ``/scratch/jhu/<PI>`` (JHU) or ``/scratch/schmidt/<PI>`` (Schmidt Sciences);                             | Job input and output, training data. 1 TB per PI, shared by                  |
+   | Scratch            | ``/scratch/jhu/<PI>`` (JHU) or ``/scratch/schmidt/<PI>`` (Schmidt Sciences);                             | Job input and output, training data. 1 TB per PI*, shared by                 |
    |                    | members reach it through the link ``~/scratch_<PI>``                                                     | all of the PI's projects.                                                    |
    +--------------------+----------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------+
    | Project Storage    | ``/projects/<PI>``; members reach it through the link ``~/projects_<PI>``                                | Longer-lived project data, on storage the PI requests (one directory per PI).|
@@ -314,24 +315,24 @@ Troubleshooting
 
 .. dropdown:: VS Code does not connect. What do I check?
 
-   +----------------------------------------------------+------------------------------------------------------------------------+
-   | Symptom                                            | Fix                                                                    |
-   +====================================================+========================================================================+
-   | Asked for your password and code for the login node| The master session is not open: run ``ssh skipjack`` in a terminal     |
-   |                                                    | first                                                                  |
-   +----------------------------------------------------+------------------------------------------------------------------------+
-   | Asked for a password for ``skipjack-compute``       | The key is not registered; reopening the master session does not fix   |
-   |                                                    | it. Redo step 2 of the guide                                           |
-   +----------------------------------------------------+------------------------------------------------------------------------+
-   | ``Permission denied (publickey,...)``               | The compute-node key is missing or does not match: redo step 2 of the  |
-   |                                                    | guide                                                                  |
-   +----------------------------------------------------+------------------------------------------------------------------------+
-   | ``Connection timed out during banner exchange``     | Set ``"remote.SSH.connectTimeout": 300`` in VS Code                    |
-   +----------------------------------------------------+------------------------------------------------------------------------+
-   | ``unix_listener: cannot bind to path``              | Run ``mkdir -p ~/.ssh/cm`` on your computer                            |
-   +----------------------------------------------------+------------------------------------------------------------------------+
-   | ``vscode_job.sh: command not found``                | Use the full path ``/apps/helpers/vscode_job.sh``                       |
-   +----------------------------------------------------+------------------------------------------------------------------------+
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
+   | Symptom                                             | Fix                                                                   |
+   +=====================================================+=======================================================================+
+   | Asked for your password and code for the login node | The master session is not open: run ``ssh skipjack`` in a terminal    |
+   |                                                     | first                                                                 |
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
+   | Asked for a password for ``skipjack-compute``       | The key is not registered; reopening the master session does not fix  |
+   |                                                     | it. Redo step 2 of the guide                                          |
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
+   | ``Permission denied (publickey,...)``               | The compute-node key is missing or does not match: redo step 2 of the |
+   |                                                     | guide                                                                 |
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
+   | ``Connection timed out during banner exchange``     | Set ``"remote.SSH.connectTimeout": 300`` in VS Code                   |
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
+   | ``unix_listener: cannot bind to path``              | Run ``mkdir -p ~/.ssh/cm`` on your computer                           |
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
+   | ``vscode_job.sh: command not found``                | Use the full path ``/apps/helpers/vscode_job.sh``                     |
+   +-----------------------------------------------------+-----------------------------------------------------------------------+
 
    Source: `VS Code troubleshooting <https://docs.arch.jhu.edu/en/latest/1_Clusters/Skipjack/vscode.html#troubleshooting>`_
 
@@ -406,7 +407,7 @@ Compute and jobs
    +==============================+====================================================================+==============================================================================+
    | ``Priority`` or ``Resources``| Waiting its turn for free nodes                                    | Nothing; a shorter ``--time`` can start sooner                               |
    +------------------------------+--------------------------------------------------------------------+------------------------------------------------------------------------------+
-   | Starts with ``AssocGrp`` and | The allocation used its budget or spending limit for this period    | It starts after the reset, or once the PI raises the spending limit (staff   |
+   | Starts with ``AssocGrp`` and | The allocation used its budget or spending limit for this period    | It starts after the reset, or once the PI raises the spending limit (staff  |
    | ends in ``Minutes``          |                                                                    | raise a default allowance)                                                   |
    +------------------------------+--------------------------------------------------------------------+------------------------------------------------------------------------------+
    | ``AssocGrpGRES``             | The account's GPU limit is 0, or all its GPUs are in use           | Wait for its other jobs, or ask your PI                                      |
@@ -467,22 +468,18 @@ Allocations and billing
    retroactively. The portal already uses the paid workflow below (projects, IO
    numbers, spending limits), so it is in place before billing starts.
 
-   Source: `Skipjack frequently asked questions <https://docs.arch.jhu.edu/en/latest/1_Clusters/Skipjack/migration-to-skipjack.html>`_
-
 .. dropdown:: What is the difference between a default allocation and a paid project?
 
-   +---------------------------+---------------------------------------------------+-----------------------------------------------------+
-   |                           | Default allocation                                | Paid project                                        |
-   +===========================+===================================================+=====================================================+
-   | Who gets it               | Every PI, automatically                           | A PI who creates a project and requests an allocation|
-   +---------------------------+---------------------------------------------------+-----------------------------------------------------+
-   | Budget                    | A fixed allowance, the same for every PI          | No fixed ceiling; the PI sets a spending limit      |
-   +---------------------------+---------------------------------------------------+-----------------------------------------------------+
-   | Who raises it             | ARCH staff, on request                            | The PI, at any time                                 |
-   +---------------------------+---------------------------------------------------+-----------------------------------------------------+
-   | Ready to run              | Immediately                                       | After the PI sets a spending limit or chooses       |
-   |                           |                                                   | **No cap**                                          |
-   +---------------------------+---------------------------------------------------+-----------------------------------------------------+
+   +---------------+------------------------------------------+-------------------------------------------------------+
+   |               | Default allocation                       | Paid project                                          |
+   +===============+==========================================+=======================================================+
+   | Who gets it   | Every PI, automatically                  | A PI who creates a project and requests an allocation |
+   +---------------+------------------------------------------+-------------------------------------------------------+
+   | Budget        | A fixed allowance, the same for every PI | No fixed ceiling; the PI sets a spending limit        |
+   +---------------+------------------------------------------+-------------------------------------------------------+
+   | Ready to run  | Immediately                              | After the PI sets a spending limit or chooses         |
+   |               |                                          | **No cap**                                            |
+   +---------------+------------------------------------------+-------------------------------------------------------+
 
    Your allocation page in the portal shows the allowance and what is left.
 
@@ -509,14 +506,6 @@ Allocations and billing
    sets a spending limit or chooses **No cap** on the allocation page. Only the
    PI can change it; project members ask the PI.
 
-.. dropdown:: How does the spending limit work?
-
-   It caps what the allocation may spend in each usage period of the cluster; the
-   allocation page shows the period and the next reset date. When the limit is
-   reached, new jobs are accepted but wait, and they start on their own after the
-   reset, so you do not need to resubmit. To start them sooner, the PI raises the
-   limit.
-
 .. dropdown:: What is an IO number (cost center)?
 
    The JHU internal order number that pays for a paid allocation. PIs add theirs
@@ -526,18 +515,12 @@ Allocations and billing
 
 .. dropdown:: How will I know what a job costs?
 
-   Usage is counted in service units (SU), where 1 SU = $0.001, and each
+   Usage is counted in service units (SU) and each
    partition has its own SU rate per hour. Once billing starts, ``sbatch`` and
    ``srun`` print an estimate and ask you to confirm; a script that cannot answer
    can accept it up front with
    ``sbatch --export=ALL,ACCEPT_COST=1 job.sh``. ``sbalance`` shows what each of
    your accounts used this period and what is still available.
-
-.. dropdown:: Why is "Available" larger than my limit minus what I used?
-
-   The scheduler gives older usage less weight as the period goes on, so it may
-   accept more than the plain difference. ``sbalance --detail`` shows the limit,
-   the scheduler's count and the SU held by running jobs.
 
 .. dropdown:: What is never billed?
 
@@ -561,39 +544,22 @@ Allocations and billing
    jobs run on the partition of those nodes (for example ``rtx6000``). Open a
    ticket describing the hardware you have in mind.
 
+Miscellaneous
+#############
 
-Getting help
-############
+.. dropdown:: How can I prepare for migrating to Skipjack?
 
-.. dropdown:: How do I contact ARCH?
+   **Data Review** -- Please review your current data use. Remove redundant, obsolete or trivial data.
+   Identify data not used for active research and move it to an appropriate storage location. Reducing your current
+   data usage profile as much as possible will make migration smoother.
 
-   - **JHU, external and class accounts:** `arch@jh.edu <mailto:arch@jh.edu>`_
-   - **Schmidt Sciences:** `ssci@jh.edu <mailto:ssci@jh.edu>`_
-   - **Web form:** `helpdesk.arch.jhu.edu/tickets/submit/ <https://helpdesk.arch.jhu.edu/tickets/submit/>`_
-     (Schmidt Sciences:
-     `helpdesk.schmidtsciences.jhu.edu/tickets/submit/ <https://helpdesk.schmidtsciences.jhu.edu/tickets/submit/>`_)
+   **Software Review** -- Please review procedures for compiling code or building software. When switching systems,
+   it is often necessary to recompile code or rebuild environments.
 
-.. dropdown:: What should I put in a ticket?
 
-   Your username, the account or allocation, the job IDs, the exact command you
-   ran, the full error message or a screenshot, and what you already tried.
+|
 
-.. dropdown:: When will I get an answer?
+----
 
-   Support hours are Monday to Friday, 8:00 AM to 4:30 PM Eastern. A typical
-   response comes within one business day, and critical cluster issues may be
-   handled after hours. ARCH cannot fully support personal SSH, VPN or network
-   problems, unsupported software, or debugging of your own code unrelated to the
-   cluster.
+If you have additional questions not covered here, please contact us at `arch@jhu.edu <mailto:arch@jhu.edu>`_.
 
-   Source: `Service level expectations <https://docs.arch.jhu.edu/en/latest/4_Support/Service_Level_Expectations.html>`_
-
-.. dropdown:: Is the cluster down?
-
-   Check the `status page <https://status.arch.jhu.edu>`_ for outages and
-   maintenance.
-
-.. dropdown:: Is there training?
-
-   Yes, mostly over Zoom: see
-   `ARCH training and education <https://www.arch.jhu.edu/support/training-education/>`_.

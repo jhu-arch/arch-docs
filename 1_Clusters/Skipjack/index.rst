@@ -31,4 +31,5 @@ To begin, see the user guide for information regarding account creation and logi
    user-guide.rst
    1_Resources/Hardware
    2_Slurm/index
-   faq.rst
+   FAQ <migration-to-skipjack.rst>
+

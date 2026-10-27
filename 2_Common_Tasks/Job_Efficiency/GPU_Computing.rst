@@ -58,7 +58,7 @@ and CPU memory; ask for more only if your data loading needs it.
      - 4
      - 30 cores / 360 GB
    * - ``h200``
-     - NVIDIA H200 141 GB
+     - NVIDIA H200 NVL 141 GB
      - 4
      - 30 cores / 360 GB
    * - ``b200``
@@ -66,7 +66,7 @@ and CPU memory; ask for more only if your data loading needs it.
      - 8
      - 15 cores / 180 GB
    * - ``b300``
-     - NVIDIA B300 ~280 GB
+     - NVIDIA B300 288 GB
      - 8
      - 15 cores / 180 GB
 

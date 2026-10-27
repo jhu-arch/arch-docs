@@ -1,15 +1,14 @@
 Support
 #######
 
-This page explains how to get help with Rockfish, where to find training, and how to open a ticket.
+This page explains how to get help with ARCH clusters, where to find training, and how to open a ticket.
 
 Open a Ticket
 *************
 
 For support, email:
 
-- For Rockfish-specific issues: `arch@jhu.edu <mailto:arch@jhu.edu>`__
-- For general ARCH support: `arch@jhu.edu <mailto:arch@jhu.edu>`__
+- `arch@jhu.edu <mailto:arch@jhu.edu>`__ for help with any ARCH cluster (Skipjack or Rockfish)
 
 Please include:
 

@@ -6,8 +6,7 @@ Slurm on Skipjack
 
    Slurm
    Partitions
-..   Priority
-..   Job_Status
-..   Job_Submission
-..   GPU_Jobs
-..   Example_Sbatch
+   Job_Submission
+   GPU_Jobs
+   Job_Status
+   Priority

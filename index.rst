@@ -22,7 +22,7 @@ ARCH offers a range of support services to enhance your computational research:
 
 - **Research planning and resource allocation strategy**
 - **Traditional HPC simulations** requiring large CPU, memory, and I/O
-- **Interactive**Parallel/scalable file systems** for improved data throughput
+- **Parallel/scalable file systems** for improved data throughput
 - **Workflow design** and implementation for computational pipelines
 - **Scientific support** for emerging domains such as machine learning and AI
 - **Application support** including installation and tuning
@@ -46,7 +46,7 @@ ARCH was previously known as the **Maryland Advanced Research Computing Center (
 Visit the official ARCH website for more:
 
 📍 `ARCH Website <https://www.arch.jhu.edu/>`__
-📍 `Skipjack Portal <TODO: Add SkipJack Coldfront URL>`__
+📍 `Skipjack Portal <https://portal.arch.jhu.edu/>`__
 📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__
 📍 `Request Help <mailto:arch@jhu.edu>`__
 📍 :doc:`4_Support/Support`

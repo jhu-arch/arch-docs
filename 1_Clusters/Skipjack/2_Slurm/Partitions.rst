@@ -16,27 +16,27 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - **Key features**
    * - ``interactive_cpu``
      - 3
-     - 108
-     - 4 000
+     - 216 (hyperthreads)
+     - 2 000
      - (N/A)
      - 4:00:00
      - Intel Xeon Platinum 8480+ (56-core) dual-socket nodes
    * - ``interactive_gpu``
      - 2
      - 88
-     - 6 000
-     - 8 × NVIDIA A100 80 GB 
+     - 2 000
+     - 24 × A100 MIG ``2g.20gb`` slices (20 GB each)
      - 4:00:00
-     - AMD EPYC 7443 (24-core) + A100 GPUs in 24 shard MIGs
+     - AMD EPYC 7443 (24-core); 8 × A100 80 GB per node, each split into 3 MIG slices
    * - ``agentic``
-     - 2
-     - 108
-     - 4 000
+     - 3
+     - 216 (hyperthreads)
+     - 2 000
      - (N/A)
      - 7-00:00:00
      - Intel Xeon Platinum 8480+ (56-core) dual-socket nodes
    * - ``med``
-     - 80
+     - 74
      - 108
      - 4 000
      - (N/A)
@@ -50,7 +50,7 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - 72:00:00
      - AMD EPYC 9534 (64-core) + high-mem L40S GPUs
    * - ``a100``
-     - 9
+     - 13
      - 88
      - 6 000
      - 8 × NVIDIA A100 80 GB
@@ -60,28 +60,28 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - 32
      - 124
      - 12 000
-     - 4 × NVIDIA H100-SXM 80 GB or 4 x NVIDIA H100-NVL 96GB
+     - 4 × NVIDIA H100 SXM 80 GB or 4 × NVIDIA H100 NVL 94 GB
      - 72:00:00
-     - AMD EPYC 9534 (64-core) with half H100-SXM GPUs and other half H100-NVL GPUs
+     - AMD EPYC 9534 (64-core) with half H100 SXM GPUs and other half H100 NVL GPUs
    * - ``h200``
      - 6
      - 124
      - 12 000
-     - 4 × NVIDIA H200 150 GB
+     - 4 × NVIDIA H200 NVL 141 GB
      - 72:00:00
      - AMD EPYC 9555 (64-core) with H200 GPUs
    * - ``b200``
      - 16
      - 124
      - 12 000
-     - 8 × NVIDIA B200 190GB
+     - 8 × NVIDIA B200 180 GB
      - 72:00:00
      - Intel Xeon Platinum 8592+ (64-core) with B200 GPUs
    * - ``b300``
-     - 1
+     - 17
      - 124
      - 12 000
-     - 8 × NVIDIA B300 280GB
+     - 8 × NVIDIA B300 288 GB
      - 72:00:00
      - Intel Xeon 6767P (64-core) with B300 GPUs
    * - ``rtx6000``
@@ -94,6 +94,85 @@ Slurm divides resources into **partitions**, sometimes called **queues**. Each p
      - Intel(R) Xeon(R) 6767P (64-core) with NVIDIA RTX PRO 6000 Blackwell GPUs
 
 
+Planned Partitions (Rockfish Migration)
+---------------------------------------
+
+.. admonition:: Not available yet
+   :class: warning
+
+   The partitions below will be added as Rockfish hardware moves into Skipjack. They cannot be used yet.
+   Names, node counts and limits may change before they go live; this page will be updated as each one opens.
+
+.. list-table:: **Planned partitions from Rockfish hardware**
+   :header-rows: 1
+   :widths: 14 10 12 14 18 32
+
+   * - **Partition (planned)**
+     - **# Nodes**
+     - **CPU cores / node**
+     - **Memory / core (MB)**
+     - **GPUs / node**
+     - **Rockfish equivalent**
+   * - ``low``
+     - 672
+     - 44
+     - 4 000
+     - (N/A)
+     - ``parallel`` (Intel Xeon Gold 6248R, 192 GB)
+   * - ``med`` (added nodes)
+     - 47
+     - 60
+     - 4 000
+     - (N/A)
+     - Rockfish Sapphire Rapids nodes (Intel Xeon Gold 6448Y, 256 GB); join the existing ``med`` partition
+   * - ``high``
+     - 25
+     - 124
+     - 4 000
+     - (N/A)
+     - Rockfish Emerald Rapids nodes (Intel Xeon Platinum 8592+, 512 GB)
+   * - ``midmem``
+     - 23
+     - 44
+     - 8 000
+     - (N/A)
+     - 384 GB memory nodes
+   * - ``highmem``
+     - 44
+     - 44
+     - 16 000
+     - (N/A)
+     - 768 GB memory nodes
+   * - ``bigmem``
+     - 7
+     - 44
+     - 34 000
+     - (N/A)
+     - ``bigmem`` (1.5 TB memory nodes)
+   * - ``a100_40``
+     - 18
+     - 44
+     - 4 000
+     - 4 × NVIDIA A100 40 GB
+     - ``a100``
+   * - ``a100_80``
+     - 10
+     - 60
+     - 4 000
+     - 4 × NVIDIA A100 80 GB
+     - ``ica100``
+   * - L40S (name TBD)
+     - 4
+     - 60
+     - 16 000
+     - 8 × NVIDIA L40S 48 GB
+     - ``l40s``
+
+.. note::
+   The Rockfish A100 and L40S nodes get their own partitions rather than joining Skipjack's ``a100`` and ``l40s``
+   partitions, because they have fewer CPU cores and less memory per GPU. Default CPU and memory per GPU on these
+   partitions will differ from what you had on Rockfish; check your job scripts when they open.
+
 Partition Descriptions
 ------------------------
 
@@ -105,17 +184,23 @@ interactive_cpu
 interactive_gpu
 ~~~~~~~~~~~~~~~
 
-* **8 × NVIDIA A100 80 GB** in 24 shard MIGs configuration - ideal for short term GPU jobs.
+* **8 × NVIDIA A100 80 GB** per node, split into 24 MIG slices of 20 GB each - ideal for short GPU jobs and development.
+* Request one slice with ``--partition=interactive_gpu --gres=gpu:2g.20gb:1``.
 
 agentic
 ~~~~~~~
 
-* *No GPUs** – ideal for development while using agentic AI tools.
+* **No GPUs** – ideal for development while using agentic AI tools.
+
+med
+~~~
+
+* **No GPUs** – general CPU partition for batch jobs.
 
 l40s
 ~~~~
 
-* **8 × L40 S 48 GB** per node.   
+* **8 × L40S 48 GB** per node.   
 
 a100
 ~~~~
@@ -125,27 +210,27 @@ a100
 h100
 ~~~~
 
-* **4 × H100-SXM 80 GB** per node for gh101-gh116.
-* **4 × H100-NVL 96 GB** per node for gh117-gh132.
+* **4 × H100 SXM 80 GB** per node for gh101-gh116.
+* **4 × H100 NVL 94 GB** per node for gh117-gh132.
 
 For jobs where there is a preference for SXM or NVL, use the following slurm option: ``--prefer=h100_sxm`` or ``--prefer=h100_nvl`` respectively.
 
-For jobs where there is a requirement for SXM or NVL, use the following slurm option: ``--constrain=h100_sxm`` or ``--prefer=h100_nvl`` respectively.
+For jobs where there is a requirement for SXM or NVL, use the following slurm option: ``--constraint=h100_sxm`` or ``--constraint=h100_nvl`` respectively.
 
 h200
 ~~~~
 
-* **4 × NVIDIA H200 150 GB** per node.
+* **4 × NVIDIA H200 NVL 141 GB** per node.
 
 b200
 ~~~~
 
-* **8 × NVIDIA B200 190GB** per node.
+* **8 × NVIDIA B200 180 GB** per node.
 
 b300
 ~~~~
 
-* **8 × NVIDIA B300 280GB** per node.
+* **8 × NVIDIA B300 288 GB** per node.
 
 rtx6000
 ~~~~~~~
@@ -209,6 +294,8 @@ Helpful Tips
 - You can view the current load on each partition with:
 
   .. code-block:: console
+
+    $ sinfo -s
 
     PARTITION       AVAIL  TIMELIMIT   NODES(A/I/O/T) NODELIST
     interactive_cpu    up    4:00:00          1/2/0/3 csr[048-050]

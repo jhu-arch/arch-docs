@@ -3,7 +3,7 @@
 Skipjack User Guide
 ===================
 
-.. _Arch Portal: https://arch.skipjack.jhu.edu
+.. _Arch Portal: https://portal.arch.jhu.edu
 
 
 .. contents::
@@ -124,9 +124,9 @@ Click the **Register** link, and fill out the information to create a new accoun
 
 .. admonition:: Username Prefixes
 
-   | **Schmidt Sciences** users should prepend ``scci-`` to their username.
+   | **Schmidt Sciences** users should prepend ``ssci-`` to their username.
    | **External** users should prepend ``ext-``
-   | **Class** users should prepend their class code ``class-code>-`` for example ``class123-``
+   | **Class** users should prepend their class code ``<class-code>-`` for example ``class123-``
 
 .. image:: images/register-form.png
 
@@ -136,8 +136,8 @@ the credentials you just created.
 Upon first login, users will be asked to accept the Terms of Service.
 
 
-Setup Multi-Factor Identification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Set Up Multi-Factor Authentication
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Users with a JHED ID do not need to set up a separate One-Time Password (OTP)
 authenticator app. Instead, they should use their JHED ID to log in after setting
@@ -230,7 +230,7 @@ Reset Password
 JHED ID Users
 ^^^^^^^^^^^^^
 
-JHED ID users should manage passwords through `<my.jh.edu>`_.
+JHED ID users should manage passwords through `my.jh.edu <https://my.jh.edu>`_.
 You can reset your password by clicking the link in top right of the MyJHU webpage.
 
 
@@ -243,17 +243,14 @@ send yourself a password reset email.
 .. warning::
 
    Users added as part of a class cannot reset their password using this method. Instead,
-   please reach out to `arch@jh.edu <mailto:arch@jh.edu>`_.
+   please reach out to `arch@jhu.edu <mailto:arch@jhu.edu>`_.
 
 
 1. From the login screen, click the "Forgot Password" link.
 
    .. image:: images/frgpw-link.png
 
-2. Enter your email address.
-
-   JHU users should enter their JHU email address. External users can
-   enter the email address used to set up their external account.
+2. Enter the email address you used to register your account.
 
    Click **Send Reset Email**.
 
@@ -273,13 +270,14 @@ Connect to the Skipjack Cluster
 -------------------------------
 
 
-**Schmidt Sciences Users** can access Skipjack using any one of the three login nodes.
+**Schmidt Sciences Users** connect through ``login.schmidtsciences.jhu.edu``:
 
 .. code-block:: bash
 
    ssh <YourUserID>@login.schmidtsciences.jhu.edu
 
-**JHED ID and External Users** can connect to any one of the three login nodes.
+**JHED ID and External Users** connect through ``login.arch.jhu.edu``, which places you on one of
+Skipjack's three login nodes:
 
 .. code-block:: bash
 
@@ -326,7 +324,7 @@ Schmidt Sciences, External and Class-Use Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 After entering your password, you will be prompted for
-your OTP code (see `Setup Multi-Factor Identification`_ for more information).
+your OTP code (see `Set Up Multi-Factor Authentication`_ for more information).
 Enter the code from your OTP app that corresponds to your Skipjack account.
 
 .. note::
@@ -434,22 +432,29 @@ In the new search bar on the second panel, search for **Skipjack**.
 
 .. image:: images/globus-twopane.png
 
-There are several Skipjack endpoints available. Select the endpoint that matches your `affiliation`_.
+There are several Skipjack endpoints available. Select the endpoint that matches how you log in
+(see `affiliation`_): the **JHED** endpoints are for users who log in with a JHED ID; the others are for local
+(non-JHED) accounts.
 
-   +------------------+------------------------------------------------------------+
-   | Affiliation      | Globus Endpoints                                           |
-   +==================+============================================================+
-   | JHED ID          | **Skipjack JHU JHED Homes**, **Skipjack JHU JHED Scratch** |
-   +------------------+------------------------------------------------------------+
-   | Schmidt Sciences | **Skipjack JHU Homes**, **Skipjack SSCI Scratch**          |
-   +------------------+------------------------------------------------------------+
-   | External User    | **Skipjack JHU Homes**, **Skipjack JHU Scratch**           |
-   +------------------+------------------------------------------------------------+
+   +----------------------------------+------------------------------------------------------------+
+   | How you log in                   | Globus Endpoints                                           |
+   +==================================+============================================================+
+   | JHED ID                          | **Skipjack JHU JHED Homes**, **Skipjack JHU JHED Scratch** |
+   +----------------------------------+------------------------------------------------------------+
+   | Local account (external, class)  | **Skipjack JHU Homes**, **Skipjack JHU Scratch**           |
+   +----------------------------------+------------------------------------------------------------+
+   | Schmidt Sciences                 | **Skipjack JHU Homes**, **Skipjack SSCI Scratch**          |
+   +----------------------------------+------------------------------------------------------------+
 
 .. image:: images/globus-sj-endpts.png
 
 
 Click the name hyperlink of the desired Skipjack endpoint to set it as your transfer destination.
+
+.. note::
+
+   **Project Storage** does not have its own endpoint. Select the **Homes** endpoint for your affiliation and
+   open the ``projects`` folder in your home directory; it links to your group's Project Storage directory.
 
 |
 
@@ -542,7 +547,7 @@ Support
 
 For support, Schmidt Sciences users should email ssci@jh.edu.
 
-All other users, please email `arch@jh.edu <mailto:arch@jh.edu>`_.
+All other users, please email `arch@jhu.edu <mailto:arch@jhu.edu>`_.
 
 |
 |
@@ -583,7 +588,8 @@ When an account is upgraded from **User** to **PI**:
 
 .. image:: images/pi-flowchart.png
 
-.. [#f1] If more than 1TB of scratch is needed, please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_ with a brief justification.
+.. [#f1] Scratch can be increased to up to 10 TB at no cost. Email `arch@jhu.edu <mailto:arch@jhu.edu>`_ with a brief
+   justification. For more space, or for long-term storage, request `Project Storage <Request Project Storage_>`_.
 
 To request an account upgrade to PI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -598,7 +604,7 @@ To request an account upgrade to PI
    .. image:: images/pi-upgrade-upgrade-button.png
 
 3. Select a department from the dropdown menu and click **Submit Upgrade Request**.
-   If your department is not listed, please contact `arch@jh.edu <mailto:arch@jh.edu>`_
+   If your department is not listed, please contact `arch@jhu.edu <mailto:arch@jhu.edu>`_
    to have it added.
 
    .. image:: images/pi-upgrade-department.png
@@ -744,6 +750,8 @@ A banner at the top of the page will confirm your request has been sent.
 
 ----
 
+.. _request project storage:
+
 Request Project Storage
 -----------------------
 
@@ -751,20 +759,17 @@ Request Project Storage
 
    This section is for PIs with an approved project.
 
-Once a project is approved, if additional storage quota is needed, it can be requested
-from the project page.
+Skipjack has two kinds of group storage for a PI:
 
-When a user is upgraded to PI they are given a default 1TB quota of scratch storage. This
-storage is associated with the PI regardless of how many projects they create.
+- **Scratch (free):** when a user is upgraded to PI they get a scratch directory with a **1 TB** quota. Scratch
+  can be increased to up to **10 TB at no cost**; email `arch@jhu.edu <mailto:arch@jhu.edu>`_ with a brief
+  justification.
+- **Project Storage (paid):** long-term group storage, requested from the project page as a storage allocation
+  (steps below). We recommend Project Storage for data your group needs to keep.
 
-**Project Storage** is similarly associated with the PI and not the project. Our policy
-is to provide a single **Project Storage** directory for a PI regardless of how many
-projects they have.
-
-Given this understanding, if a PI requires more the 10TB of storage across their projects
-please request a **Project Storage** allocation following the directions below. If 10TB
-or less is required, then please reach out to us at `arch@jh.edu <mailto:arch@jh.edu>`_
-with a brief justification for the requested storage amount.
+Both are associated with the PI, not with a project: a PI has one scratch directory and one **Project Storage**
+directory, however many projects they have. Project members reach the Project Storage directory through the
+``~/projects`` link in their home directory.
 
 Steps to Request Additional Storage
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -785,13 +790,11 @@ Steps to Request Additional Storage
 
    .. image:: images/stor-form.png
 
-   **Project Storage** refers to the **total** capacity being requested. As noted above, the cumulative
-   amount across all projects for a single Principal Investigator (PI) must exceed 10 TB and be
-   specified in whole-terabyte increments.
+   **Project Storage** refers to the **total** capacity being requested, in whole terabytes. It is one
+   directory shared across all of the PI's projects.
 
    **Cache** refers to the SSD capacity that serves as a high-speed cache for the **Project Storage** directory.
-   **Cache** allocations must be greater than 1 TB, capped at a maximum of 10 TB, and requested in
-   whole-terabyte increments.
+   **Cache** allocations must be at least 1 TB and at most 10 TB, in whole-terabyte increments.
 
    **Project Storage** is provisioned as a Weka file system. Put simply, it functions like a hybrid
    drive: frequently accessed data is written to and read from the **Cache**, while less frequently
@@ -807,7 +810,7 @@ Steps to Request Additional Storage
 
    If you
    have questions or wish to discuss your specific requirements, please contact us at
-   `arch@jh.edu <mailto:arch@jh.edu>`_.
+   `arch@jhu.edu <mailto:arch@jhu.edu>`_.
 
 
 A banner at the top of the page will confirm your request has been sent.

@@ -151,4 +151,4 @@ Provision dedicated high-performance project storage for shared datasets:
 
 For detailed instructions, please see the :ref:`skipjack user guide`.
 
-For help, please contact `arch@jh.edu <mailto:arch@jh.edu>`_.
+For help, please contact `arch@jhu.edu <mailto:arch@jhu.edu>`_.

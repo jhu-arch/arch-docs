@@ -901,5 +901,5 @@ by a PI or proxy account manager to gain system access.
 Frequently Asked Questions
 ##########################
 
-Please see :doc:`faq` for frequently asked questions regarding the migration
+Please see :doc:`migration-to-skipjack` for frequently asked questions regarding the migration
 to Skipjack

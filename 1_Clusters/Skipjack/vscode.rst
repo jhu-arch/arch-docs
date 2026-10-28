@@ -7,6 +7,12 @@ This guide shows how to run **VS Code** directly on a **Skipjack compute node** 
 of the login node. The editor, integrated terminal, package installs, and code execution
 all run on the hardware Slurm allocates to you.
 
+.. warning::
+
+   Do not run the VS Code Remote server on a login node. ARCH stops it, and similar tools such as Cursor,
+   Windsurf, Claude Code and Codex, without notice, and repeated violations may result in the suspension of
+   your account. See :ref:`login-node-agents`.
+
 
 .. contents::
    :local:

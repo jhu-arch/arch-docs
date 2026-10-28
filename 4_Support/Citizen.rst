@@ -30,6 +30,30 @@ For large file transfers, always use **Globus** instead of ``rsync`` or ``cp``. 
 - See the :doc:`File Transfers for Rockfish <../1_Clusters/Rockfish/2_Navigating/File_Transfers>`
 
 
+.. _login-node-agents:
+
+AI Agents and IDE Servers on the Login Nodes
+**********************************************
+
+.. warning::
+
+   Agentic and IDE tools such as Claude Code, Codex, Cursor, Windsurf, Antigravity, and the VS Code Remote
+   server must not run on the login nodes. ARCH monitors the login nodes for these programs and **stops them
+   without notice**; unsaved work in them may be lost. **Repeated violations may result in the suspension of
+   your account.**
+
+Run these tools in a job instead:
+
+- ``agentic``: agents and long-running assistant sessions (12-hour default, 7-day maximum, 3 cores)
+- ``interactive_cpu``: 2-hour default, 4-hour maximum, 3 cores
+- ``interactive_gpu``: 2-hour default, 4-hour maximum, one 20 GB A100 MIG slice
+
+Each of these partitions allows one running and one pending job per user. For VS Code, follow
+:doc:`../1_Clusters/Skipjack/vscode` to run the editor on a compute node. Batch jobs and Slurm commands
+(``sbatch``, ``salloc``, ``srun``) are fine, as is editing files in a plain SSH session (``vim``, ``nano``,
+``emacs``). If your work doesn't fit these partitions, contact arch@jhu.edu.
+
+
 Allowed on Login Nodes
 ************************
 

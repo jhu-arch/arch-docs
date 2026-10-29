@@ -191,6 +191,7 @@ agentic
 ~~~~~~~
 
 * **No GPUs** – ideal for development while using agentic AI tools.
+* Agentic and IDE tools are not allowed on the login nodes; run them here instead. See :ref:`login-node-agents`.
 
 med
 ~~~

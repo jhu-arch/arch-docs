@@ -1,3 +1,5 @@
+.. _creating-a-user-account:
+
 Creating a User Account
 ************************
 
@@ -5,9 +7,9 @@ Creating a User Account
 
 Non-PI users can request accounts through the Rockfish `Coldfront Portal`_. However, user accounts will only be activated after the user has been added to an existing project by a PI with an approved allocation on the Rockfish Cluster.
 
-- All Johns Hopkins users **must use their JHED ID** (e.g., `jsmith123`) when requesting an account.  
+- All Johns Hopkins users **must use their JHED ID** (e.g., `jsmith123`) when requesting an account.
   Failure to use your JHED ID may delay account approval and **will prevent access to Globus**, which requires JHED-based authentication.
-- External 
+- External
 
 User accounts can be requested at any time, and the portal also allows users to:
 
@@ -19,8 +21,8 @@ User accounts can be requested at any time, and the portal also allows users to:
 
 
 .. note::
-   By requesting an account on Rockfish, you are automatically subscribed to the **Rockfish Users mailing list**:  
-   `rockfishusers@lists.jh.edu`.  
+   By requesting an account on Rockfish, you are automatically subscribed to the **Rockfish Users mailing list**:
+   `rockfishusers@lists.jh.edu`.
    This list is used to distribute **important cluster announcements, including scheduled maintenance, outages, and policy updates**.
 
    **Unsubscribing from this mailing list will result in account deactivation**, as it is the primary channel for operational communication.
@@ -32,14 +34,14 @@ User accounts can be requested at any time, and the portal also allows users to:
 
 ARCH supports interdisciplinary collaboration and allows Principal Investigators (PIs) to sponsor external users by issuing “ext-userid” accounts. These accounts are used to manage and identify non-JHU collaborators within the system.
 
-- **External Collaborators:**  
-  External users should submit account requests through the `Coldfront Portal`_, using a username **prepended with `ext-`** (e.g., `ext-jdoe`).  
+- **External Collaborators:**
+  External users should submit account requests through the `Coldfront Portal`_, using a username **prepended with `ext-`** (e.g., `ext-jdoe`).
   Please note that **external users will not have access to Globus** under any circumstances due to authentication restrictions.
 
 
 **Getting Started**
 
-When you first navigate to the `Coldfront Portal`_, you’ll be prompted to log in or create an account.  
+When you first navigate to the `Coldfront Portal`_, you’ll be prompted to log in or create an account.
 Users should click **Request User Account**.
 
 .. centered::

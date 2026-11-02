@@ -358,13 +358,12 @@ can be done by reversing the endpoints or changing the transfer direction.
 
    If they do not match, please take the following steps:
 
-   1. Create a new Rockfish account that matches your JHED ID.
+   1. Create a new Rockfish account that matches your JHED ID. (See, :ref:`Creating a User Account <creating-a-user-account>`.)
 
-   2. Ask your PI to add your new username to the project.
+   2. Ask your PI to add your new username to the project. (See, :ref:`Adding Users <adding-users>`.)
 
    3. Contact us at arch@jhu.edu.
-
-   We will make your files accessible so that you can copy them to your new user and complete the transfer.
+      We will make your files accessible so that you can copy them to your new user and complete the transfer.
 
 .. note::
 
@@ -423,6 +422,25 @@ Use either data transfer node (DTN) endpoint for the data transfer from Rockfish
 
    You may need to authenticate the endpoint to grant Globus permission to access your files.
 
+.. note::
+
+   Access to Rockfish directories such as **scratch4**, **scratch16**, and **data** can be gained by
+   following the symbolic links in your home directory:
+
+   .. table::
+      :align: center
+
+      +---------------+---------------------+
+      | Location      | Symlink Name        |
+      +===============+=====================+
+      | ``data``      | ``data-<PI Name>``  |
+      +---------------+---------------------+
+      | ``scratch4``  | ``scr4-<PI Name>``  |
+      +---------------+---------------------+
+      | ``scratch16`` | ``scr16-<PI Name>`` |
+      +---------------+---------------------+
+
+   where ``<PI Name>`` is the PI/Project name.
 
 5. Set the Skipjack Destination Endpoint
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

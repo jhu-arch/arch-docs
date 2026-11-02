@@ -17,8 +17,8 @@ Key features of the portal include:
    Allocations are reset quarterly under a "use it or lose it" model. Unused core-hours do not carry over.
 
 .. note::
-   By requesting an account on Rockfish, you are automatically subscribed to the **Rockfish Users mailing list**:  
-   `rockfishusers@lists.jh.edu`.  
+   By requesting an account on Rockfish, you are automatically subscribed to the **Rockfish Users mailing list**:
+   `rockfishusers@lists.jh.edu`.
    This list is used to distribute **important cluster announcements, including scheduled maintenance, outages, and policy updates**.
 
    **Unsubscribing from this mailing list will result in account deactivation**, as it is the primary channel for operational communication.
@@ -28,13 +28,13 @@ Key features of the portal include:
 
 **Getting Started**
 
-When you first navigate to the `Coldfront Portal`_, you’ll be prompted to log in or create an account.  
+When you first navigate to the `Coldfront Portal`_, you’ll be prompted to log in or create an account.
 PIs should click **Request Allocation (only for PIs)**.
 
 .. centered::
     |coldfront1|
 
-You will then be asked to enter your JHED ID (as your username), email address, and a password.  
+You will then be asked to enter your JHED ID (as your username), email address, and a password.
 **Important:** You must use your JHED ID. Using anything else will delay access and break services such as Globus.
 
 .. centered::
@@ -49,12 +49,12 @@ After submitting your request, you should see a confirmation message. You can th
 
 After logging in, you’ll land on your dashboard. To enable project and allocation creation, upgrade your account to PI:
 
-1. Click your username in the top-right corner.  
-2. Select **User Profile**.  
+1. Click your username in the top-right corner.
+2. Select **User Profile**.
 3. Click **Upgrade Account**.
 
 .. centered::
-    |coldfront4|  
+    |coldfront4|
     |coldfront5|
 
 Once administrators approve your request, your **PI Status** will change from a red X to a green check mark.
@@ -67,7 +67,7 @@ Once administrators approve your request, your **PI Status** will change from a 
 
 Once PI status is approved, you can create a project:
 
-1. From the top menu, select **Project → Add a Project**.  
+1. From the top menu, select **Project → Add a Project**.
 2. Fill out the project form with a clear title and detailed description.
 
 .. centered::
@@ -75,10 +75,10 @@ Once PI status is approved, you can create a project:
 
 In the description, include:
 
-- Scientific or academic goals  
-- The type of computations or analyses you expect to run  
-- Resource requirements (cores, GPUs, storage)  
-- Anticipated outcomes (e.g., publications, presentations, deliverables)  
+- Scientific or academic goals
+- The type of computations or analyses you expect to run
+- Resource requirements (cores, GPUs, storage)
+- Anticipated outcomes (e.g., publications, presentations, deliverables)
 
 This information helps administrators allocate resources appropriately.
 
@@ -98,18 +98,19 @@ Provide a justification for your allocation request, explaining how the resource
 .. centered::
     |coldfront9|
 
+.. _adding-users:
 
 **Adding Users**
 
 With a project and allocation in place, you can add users:
 
-1. Click **Add Users** on the project page.  
-2. Search by JHED ID. Users must have already created an account in the `Coldfront Portal`_ to appear.  
+1. Click **Add Users** on the project page.
+2. Search by JHED ID. Users must have already created an account in the `Coldfront Portal`_ to appear.
 
 .. centered::
     |coldfront10|
 
-Select the users to add. Accounts are not active on the cluster until this step is completed.  
+Select the users to add. Accounts are not active on the cluster until this step is completed.
 You may also assign certain users as **Managers**, giving them rights to manage other users within the project.
 
 .. centered::

@@ -43,22 +43,20 @@ may get longer. The hardware becomes available on Skipjack once it has been rebu
      - **What moves**
    * - Phase 2
      - November 3, 2026
-     - Skipjack account creation opens. The first group of standard CPU nodes (Rockfish ``parallel``)
-       moves, along with some nodes that are coming out for memory upgrades.
+     - Skipjack account creation opens. The first group of 25% of nodes will move.
    * - Phase 3
      - November 17, 2026
-     - The second group of standard CPU nodes.
+     - The second group of 25% of nodes will move.
    * - Phase 4
      - December 1, 2026
-     - The last group of standard CPU nodes.
+     - The third group of 25% of nodes will move.
    * - Phase 5
      - December 15, 2026
-     - Specialty hardware: the GPU nodes (Rockfish ``a100``, ``ica100`` and ``l40s``), the large-memory
-       nodes (including Rockfish ``bigmem``) and the newer Sapphire Rapids and Emerald Rapids CPU nodes.
+     - The last group 25% of nodes will move.
 
 Dates may shift; this page will be updated if they do. Rockfish hardware joins Skipjack as new
 partitions, and their names and limits are not final yet. See
-:doc:`Planned Partitions (Rockfish Migration) <2_Slurm/Partitions>` for the current plan.
+:doc:`Skipjack Partitions <2_Slurm/Partitions>` for the current plan.
 
 What You Need to Do
 -------------------
@@ -100,7 +98,7 @@ For tips on preparing your data, see the :doc:`Skipjack FAQ <migration-to-skipja
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As a best practice, rebuild your software environment whenever the underlying hardware or core software
-libraries change. Expect to make small changes to your scripts, rebuild code from source and recreate your
+libraries change. Expect to make small changes to your scripts, rebuild code from source, and recreate your
 workflows (conda environments, npm packages, local ``.rc`` configurations and so on).
 
 ARCH is moving the software stack over during the migration, starting with the most widely used software.

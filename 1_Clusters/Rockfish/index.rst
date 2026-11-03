@@ -17,6 +17,13 @@ These are “shared resources”, therefore we expect all users to comply with p
 
 If users have any questions about these policies, please send an email to `arch@jhu.edu <mailto:arch@jhu.edu>`__
 
+.. admonition:: Rockfish is migrating to Skipjack
+   :class: warning
+
+   Rockfish hardware is moving into Skipjack in phases through December 2026. All Rockfish users need a
+   Skipjack account and need to move their data. See :doc:`/1_Clusters/Skipjack/rockfish-migration` for the
+   steps and the schedule.
+
 .. toctree::
    :maxdepth: 1
 

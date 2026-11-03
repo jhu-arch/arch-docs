@@ -48,6 +48,7 @@ Visit the official ARCH website for more:
 📍 `ARCH Website <https://www.arch.jhu.edu/>`__
 📍 `Skipjack Portal <https://portal.arch.jhu.edu/>`__
 📍 `Rockfish Portal <https://coldfront.rockfish.jhu.edu/>`__
+📍 :doc:`Migrating from Rockfish <1_Clusters/Skipjack/rockfish-migration>`
 📍 `Request Help <mailto:arch@jhu.edu>`__
 📍 :doc:`4_Support/Support`
 

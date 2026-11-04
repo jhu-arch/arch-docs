@@ -1,6 +1,13 @@
 Rockfish Cluster
 =================
 
+.. admonition:: Rockfish is migrating to Skipjack
+   :class: warning
+
+   Rockfish hardware is moving into Skipjack in phases through December 2026. All Rockfish users need a
+   Skipjack account and need to move their data. See :doc:`/1_Clusters/Skipjack/rockfish-migration` for the
+   steps and the schedule.
+
 The Rockfish cluster is a high-performance computing (HPC) system operated by ARCH at Johns Hopkins University. As of 2025, Rockfish consists of:
 
 - 45,072 CPU cores across 841 nodes

@@ -17,7 +17,7 @@ To begin, see the user guide for information regarding account creation and logi
 .. admonition:: Skipjack Rollout Phase and Access Notice
    :class: warning
 
-   All DSAI members are now invited to migrate their work to Skipjack!
+   At this time, all members of the Johns Hopkins academic community are invited to migrate or create an account on Skipjack!
 
    At this time we ask for patience from our non-DSAI users as we onboard teams
    in phases to ensure system stability.

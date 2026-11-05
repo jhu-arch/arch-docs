@@ -88,7 +88,7 @@ Guide walks through the transfer step by step.
 .. important::
 
    - **Your Rockfish username must be your JHED ID** for Globus to work. If your Rockfish account was created
-     without your JHED ID, email `arch@jhu.edu <mailto:arch@jhu.edu>`_ for next steps.
+     without your JHED ID, see :ref:`Transferring Data from Rockfish? <id-not-match>` for next steps.
    - **File permissions only carry over if everyone who needs access already has a Skipjack account** when you
      transfer. Make sure everyone in your group has created their Skipjack account first.
 

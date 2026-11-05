@@ -350,10 +350,12 @@ The directions below explain how to transfer files from an external endpoint to
 the Skipjack cluster scratch storage. Transferring files from Skipjack to an external endpoint
 can be done by reversing the endpoints or changing the transfer direction.
 
+.. _id-not-match:
+
 .. admonition:: Transferring Data from Rockfish?
    :class: warning
 
-   To access your Rockfish files through the Globus portal, **your Rockfish user name must exactly match
+   To access your Rockfish files through the Globus portal, **your Rockfish username must exactly match
    your JHED ID**.
 
    If they do not match, please take the following steps:

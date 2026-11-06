@@ -9,6 +9,7 @@ This section covers multiple environment types and how to connect them to common
 - **Conda R** — Creating and managing R environments with Conda
 - **Link Conda to Jupyter** — Making your Conda environments available as Jupyter kernels
 - **Link Conda to RStudio** — Running RStudio Server sessions using a Conda-managed R
+- **SpackOn** — Installing and using software in your own Spack, without admin rights
 
 Whether you're developing pure Python code, working with machine learning frameworks, managing R packages, or preparing complex HPC workflows, these guides will help you get set up correctly.
 
@@ -21,3 +22,4 @@ Questions? Contact `arch@jhu.edu <mailto:arch@jhu.edu>`__ for assistance.
    Tutorial_Conda_R
    Tutorial_Conda_Jupyter
    Tutorial_Conda_Rstudio
+   Tutorial_SpackOn

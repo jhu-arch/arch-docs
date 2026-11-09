@@ -367,6 +367,9 @@ can be done by reversing the endpoints or changing the transfer direction.
    3. Contact us at arch@jhu.edu.
       We will make your files accessible so that you can copy them to your new user and complete the transfer.
 
+   Please note: External users on Rockfish cannot access the Globus endpoint.
+
+
 .. note::
 
    **Endpoints** can be other HPC systems registered on Globus, or personal computers and laptops set up

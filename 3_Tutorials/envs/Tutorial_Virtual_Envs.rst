@@ -281,48 +281,6 @@ Activate it:
 
    conda activate machine-learning-env
 
-
-Spack
-=====
-
-Overview
---------
-
-.. image:: https://readthedocs.org/projects/spack/badge/?version=latest
-   :alt: Spack Documentation
-   :target: https://spack.readthedocs.io/
-
-Use **Spack** for advanced users who need:
-
-- Compiler-aware builds (GCC, Intel, etc.)
-- Fine control over build options and dependencies
-- Massive HPC environments where multiple versions coexist
-
-Installing and Using Spack
---------------------------
-
-Clone Spack:
-
-.. code-block:: bash
-
-   git clone -c feature.manyFiles=true https://github.com/spack/spack.git
-   cd spack
-
-Install a package (example: zlib):
-
-.. code-block:: bash
-
-   ./bin/spack install zlib
-
-Helpful Commands:
-
-- `spack help`
-- `spack help --all`
-- `spack help --spec`
-
-Spack documentation: https://spack.readthedocs.io/
-
-
 Questions?
 ==========
 

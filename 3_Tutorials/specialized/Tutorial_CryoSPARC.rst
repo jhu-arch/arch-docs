@@ -13,6 +13,65 @@ Each lab runs its own CryoSPARC: its own account, your database, your license, y
 directories. What is shared is the software: one image per CryoSPARC version in
 ``/apps/software/cryosparc/``. Everything below is done with one command, ``/apps/helpers/cryosparc.sh``.
 
+.. _cryosparc-quick-start:
+
+Quick start
+###########
+
+``<pi>`` is your PI's JHED. The PI and the lab manager run the commands as the lab's CryoSPARC account
+(``sudo -Hu ext-<pi>-cryosparc``); a lab installed under your own account runs them without that prefix.
+
+**Getting your lab's master (once):**
+
+1. **ColdFront:** Projects → Create Project, abbreviation ``cryosparc``, with an IO Number; then **Request
+   Resource Allocation** on it. Wait for ARCH to approve it.
+
+2. **The lab manager** registers ``ext-<pi>-cryosparc`` at https://portal.arch.jhu.edu/user/jhu/register/,
+   with a new e-mail outside the JHU domains, then adds it to the ``cryosparc`` project and its allocation
+   (Project Detail → Add Users).
+
+3. **Ticket** on the `helpdesk <https://helpdesk.arch.jhu.edu/tickets/submit/>`__: "I need software installed,
+   or a module is missing or broken", asking for a CryoSPARC master (details in
+   :ref:`Before you start <cryosparc-before-you-start>`). Never put the license ID in it.
+
+4. **License ID:** when ARCH gives you ``sudo``, type it at ``LICENSE_ID`` and say so in the ticket:
+
+   .. code-block:: bash
+
+      sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh config
+
+5. ARCH installs the master and sends you the port, the host and the admin password (once).
+
+**Every day**, on a login node:
+
+.. code-block:: bash
+
+   sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh start    # starts the master (a Slurm job)
+   sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh status
+   sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh stop
+
+**Open it** (everyone in the lab):
+
+- **OnDemand:** Interactive Apps → CryoSPARC, pick your lab, Launch, then **Launch CryoSPARC**.
+
+- **Or an SSH tunnel**, from your workstation: ``ssh -N -L <port>:<host>:<port> <you>@login01.arch.jhu.edu``
+  (Schmidt Sciences labs: ``login01.schmidtsciences.jhu.edu``), then open ``http://localhost:<port>``.
+
+Log in with your CryoSPARC account (the lab's CryoSPARC admin creates them; see
+:ref:`Lab members' accounts <cryosparc-lab-members-accounts>`). Run jobs on the lane ``slurm-<partition>``.
+
+Moving from Rockfish: :ref:`Moving a lab from Rockfish <cryosparc-moving-a-lab-from-rockfish>`. Something fails:
+:ref:`When something fails <cryosparc-when-something-fails>`.
+
+
+
+|
+
+|
+
+----
+
+
 .. _cryosparc-before-you-start:
 
 Before you start

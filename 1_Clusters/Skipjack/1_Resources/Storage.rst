@@ -122,6 +122,47 @@ The PI requests both amounts, in whole TB, from the project page in the portal; 
   is limited to 10 TB; a request above that needs a justification and staff approval.
 - Requests take effect after staff approval, and typically take 1–3 business days to provision.
 
+Finding your project directory
+==============================
+
+Skipjack has a separate filesystem for each PI's Project Storage. A node mounts one only when something uses its
+path, and unmounts it again after about 10 minutes without use. Home and scratch are always mounted; only
+``/projects`` works this way.
+
+What you will see:
+
+- ``ls /projects`` shows only the projects that are in use on that node right now. Your project not being listed
+  does **not** mean it is missing.
+- Using any path inside a project mounts it, so ``cd /projects/<PI>``, ``ls /projects/<PI>`` or writing to
+  ``/projects/<PI>/results/out.txt`` all work even if the project was not listed a moment before.
+- Tab completion does not work for a project until it is mounted. Type the full name (for example
+  ``ls /projects/<PI>``), then tab completion works inside it.
+- ``/projects/<PI>`` and ``/weka/projects/<PI>`` are the same directory.
+
+Best practices
+--------------
+
+- **Use full paths.** Refer to ``/projects/<PI>/...`` (or your ``projects_<PI>`` link) by its full name in scripts,
+  ``--output``, ``--error`` and ``--chdir``. Jobs mount the project automatically; you don't need to "touch" it
+  first.
+- **Don't check for a project by listing** ``/projects``. Test the path itself, for example
+  ``ls -d /projects/<PI>``.
+- **If Slurm can't create the job's output file, the job fails at once and writes no log.** Check that
+  ``--output`` and ``--error`` point inside a directory you can write to.
+- **Tools that browse or search** ``/projects`` (``find /projects``, file browsers) see only mounted projects.
+  Start them inside your own project instead.
+
+If your project is missing
+--------------------------
+
+If ``ls /projects/<PI>`` says ``No such file or directory`` for a project you know exists, the node could not
+mount it. Jobs on that node will fail within seconds without writing any output. Email
+`arch@jhu.edu <mailto:arch@jhu.edu>`__ with:
+
+- the node name (run ``hostname``, or the ``NodeList`` of the failed job),
+- the full path, and
+- the job IDs that failed.
+
 VAST (Rockfish users)
 *********************
 

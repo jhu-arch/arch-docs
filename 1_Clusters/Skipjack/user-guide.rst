@@ -920,6 +920,26 @@ change.
 
 ----
 
+
+.. _set gpu cap per user:
+
+Set GPU Cap For A User  
+----------------------
+
+PIs now have the ability to set a GPU number limit per user and per allocation.
+
+   .. image:: images/gpu-cap-ex1.png
+
+If the student tries to submit more GPUs than the limit number being set, the job will be held in queue with **AssocGrpGRES**.
+
+   .. image:: images/gpu-cap-ex2.png
+
+
+|
+|
+
+----
+
 Non-PI Users
 ############
 

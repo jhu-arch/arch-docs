@@ -73,7 +73,7 @@ use the cluster. Rockfish accounts, projects and allocations do not carry over t
 2. Storage
 ^^^^^^^^^^
 
-Every user gets a default scratch allocation on Skipjack. Large storage allocations (more than 10 TB)
+Every PI gets a default scratch allocation on Skipjack. Large storage allocations (more than 10 TB)
 need a valid Internal Order (IO) or Cost Center (CC); PIs can follow
 `Request Project Storage <user-guide.html#request-project-storage>`_ in the User Guide. See
 :doc:`1_Resources/Storage` for the storage areas and their paths.

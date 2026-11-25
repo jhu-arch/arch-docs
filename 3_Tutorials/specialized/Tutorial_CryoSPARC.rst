@@ -51,7 +51,8 @@ Quick start
    option the same way once it is available on Skipjack.
 
 4. **License ID**, as yourself (no ``sudo``) on a login node: run ``config``, type your license ID at
-   ``LICENSE_ID`` and your lab's host at ``MASTER_HOST`` (``csr091`` for now), press Enter at every other
+   ``LICENSE_ID`` and ``cryo01`` at ``MASTER_HOST`` (``config`` needs a compute node there; ARCH sets your
+   lab's own host at install), press Enter at every other
    line, and say in the ticket that you did:
 
    .. code-block:: bash
@@ -158,6 +159,10 @@ Before you start
    |                       | acts as the account: only ARCH does                                              |
    +-----------------------+----------------------------------------------------------------------------------+
 
+   The account is the lab's, not a person's: keep ``CryoSPARC`` and the PI's last name as its name, and
+   never the manager's own name or personal e-mail (the portal and Keycloak tie that address to this
+   account only, and it stays with the lab when people leave).
+
    Then the PI or the manager adds it to the ``cryosparc`` project and its allocation (Project Detail →
    Add Users), like any member: until then the account stays inactive. In the ticket (still **"I need
    software installed, or a module is missing or broken"**), say that the account exists.
@@ -188,8 +193,8 @@ You need:
 - Your **port**, assigned by ARCH: CryoSPARC uses ``PORT`` to ``PORT+10``, one range per lab, below the
   kernel's ephemeral range (32768-60999, which CryoSPARC refuses). Ask ARCH if you do not have yours.
 
-- The host ARCH gives your lab for the master, a node set aside for masters (through the ``cryosparc``
-  reservation or partition). The master always runs there, as a Slurm job of the lab's CryoSPARC account (see :ref:`Every day <cryosparc-every-day>`), never on a
+- The host ARCH gives your lab for the master, one of the nodes of the ``cryosparc`` partition
+  (``cryo01`` to ``cryo04``), set aside for masters. The master always runs there, as a Slurm job of the lab's CryoSPARC account (see :ref:`Every day <cryosparc-every-day>`), never on a
   login node.
 
 .. _cryosparc-the-labs-cryosparc-account:
@@ -352,8 +357,8 @@ Every day
 
 The master runs as a Slurm job of the lab's account, on your lab's host, charged to ``ACCOUNT``, until it
 is stopped. It needs no daily start: it has no time limit of its own (``MASTER_TIME`` blank), comes back
-by itself on the same host after a node failure, and ARCH brings it back after a maintenance or when
-it reaches the time limit of the partition it runs on. ARCH starts and stops it, as the lab's account;
+by itself on the same host after a node failure, and ARCH brings it back after a maintenance (the
+``cryosparc`` partition has no time limit). ARCH starts and stops it, as the lab's account;
 ask on a ticket when you need it stopped, restarted or brought back. Everyone in the lab only opens it. To see
 whether it runs, and since when:
 
@@ -361,7 +366,24 @@ whether it runs, and since when:
 
    squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>   # state R: running, on <host>; nothing: stopped
 
-What ARCH runs for you, as the lab's account, on a login node (for reference):
+**Note: run** ``status``, ``passwd``, ``backup`` **and** ``lane`` **on the master's node.** They talk to CryoSPARC
+through a socket on the node the master runs on. Log in to that node first, then run the command there:
+
+.. code-block:: bash
+
+   squeue -u <account> -n cryosparc-<pi> -h -o %N     # the master's node: <host>
+   ssh <host>
+
+``<account>`` is the account the master runs as (``ext-<pi>-cryosparc``, or a person's own account for an
+older lab). Typed on a login node, they try to reach the master through Slurm and can stop with
+``srun: error: ... DNS SRV lookup failed`` and ``srun: fatal: Could not establish a configuration source``.
+
+The node lets you in only because the master's job runs there, and your session becomes part of that
+job: it shares the job's CPUs and memory (run nothing heavy there), and it closes when the job ends.
+So ``start`` and ``stop`` go on a login node, never from that session.
+
+What ARCH runs for you, as the lab's account (for reference; ``start``, ``stop``, ``restart`` and ``open`` on a
+login node, ``status`` on the master's node):
 
 .. code-block:: bash
 
@@ -644,8 +666,9 @@ The steps
 5. **Last sync:** Globus again (only what changed) and the ``rsync`` pass above.
 
 6. ARCH restores the final backup here; you unarchive (or attach, see
-   :ref:`Moving one project <cryosparc-moving-one-project-detach-and-attach>`) each project with its new path and
-   check one job again.
+   :ref:`Moving one project <cryosparc-moving-one-project-detach-and-attach>`) each project with its new path, then
+   re-point its links to the raw data (``project-relink``, see :ref:`What to expect <cryosparc-what-to-expect>`; after
+   the unarchive, not before), and check one job again.
 
 7. **Stop using Rockfish** for CryoSPARC; keep the Rockfish copy until you are happy with this one.
 
@@ -684,17 +707,17 @@ The route we have tested, one project at a time. The project gets a new number h
 
       chmod -R g+rwX $DEST/projects/rockfish/<project> $DEST/rawdata
 
-6. **Re-point the links to the raw data**, as yourself. Read what the first command reports, then run it
-   again with ``--yes``; at the end ``find`` prints nothing:
+6. **Attach here:** in the web interface, **Projects → Attach Project**, with the folder that holds
+   ``project.json``. Note the new project number.
+
+7. **Re-point the links to the raw data**, as yourself, after the attach. Read what the first command
+   reports, then run it again with ``--yes``; at the end ``find`` prints nothing:
 
    .. code-block:: bash
 
       /apps/helpers/cryosparc.sh project-relink $DEST/projects/rockfish/<project> <rockfish raw path> $DEST/rawdata
       /apps/helpers/cryosparc.sh project-relink $DEST/projects/rockfish/<project> <rockfish raw path> $DEST/rawdata --yes
       find $DEST/projects/rockfish/<project> -xtype l
-
-7. **Attach here:** in the web interface, **Projects → Attach Project**, with the folder that holds
-   ``project.json``. Note the new project number.
 
 8. **Check it:** open a finished job and its inputs, then run one small CPU job and one GPU job.
 
@@ -761,27 +784,35 @@ and `data management <https://guide.cryosparc.com/setup-configuration-and-manage
 When something fails
 ####################
 
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Symptom                                                          | Cause, fix                                                                       |
-+==================================================================+==================================================================================+
-| ``Account 'X' is not available for user ...`` at submit          | ``ACCOUNT`` is not a Slurm account the lab's account belongs to: open a ticket   |
-|                                                                  | (ARCH fixes it with ``config``, then ``lane``)                                   |
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| The master's job stays pending                                   | ``squeue -u ext-<pi>-cryosparc`` (or ``--me``, for a lab under your own account) |
-|                                                                  | shows the reason; its host is busy or down: open a ticket                        |
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| OnDemand session shows "nothing answers" or a connection error   | the master is stopped (``squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>`` prints |
-|                                                                  | nothing): open a ticket for ARCH to start it, then reload the page in Firefox    |
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Your lab is not in the OnDemand list                             | ARCH adds it: open a ticket                                                      |
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| SSH tunnel: ``channel open failed: administratively prohibited`` | the login node refused the forward: use OnDemand, and tell ARCH the login host   |
-|                                                                  | and port you used                                                                |
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Logs                                                             | the master job's log ``$DEST/state/run/master-<job>.log`` and CryoSPARC's        |
-|                                                                  | service logs under ``$DEST/state/run/`` are readable only by the lab's account:  |
-|                                                                  | ARCH reads them, open a ticket                                                   |
-+------------------------------------------------------------------+----------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| Symptom                                                                                                                                                         | Cause, fix                                                                       |
++=================================================================================================================================================================+==================================================================================+
+| ``srun: error: ... DNS SRV lookup failed`` and ``srun: fatal: Could not establish a configuration source`` after ``status``, ``passwd``, ``backup`` or ``lane`` | the command ran on a login node: run it on the master's node (:ref:`Every day    |
+|                                                                                                                                                                 | <cryosparc-every-day>`, the note)                                                |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| ``'<command>' is not yours to run``                                                                                                                             | your lab runs as ``ext-<pi>-cryosparc``, so ``cryosparc.sh`` runs only           |
+|                                                                                                                                                                 | ``config``, ``show``, ``versions`` and ``project-relink`` for you: ask ARCH on a |
+|                                                                                                                                                                 | ticket; passwords change in the web interface (:ref:`Lab members' accounts       |
+|                                                                                                                                                                 | <cryosparc-lab-members-accounts>`)                                               |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| ``Account 'X' is not available for user ...`` at submit                                                                                                         | ``ACCOUNT`` is not a Slurm account the lab's account belongs to: open a ticket   |
+|                                                                                                                                                                 | (ARCH fixes it with ``config``, then ``lane``)                                   |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| The master's job stays pending                                                                                                                                  | ``squeue -u ext-<pi>-cryosparc`` (or ``--me``, for a lab under your own account) |
+|                                                                                                                                                                 | shows the reason; its host is busy or down: open a ticket                        |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| OnDemand session shows "nothing answers" or a connection error                                                                                                  | the master is stopped (``squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>`` prints |
+|                                                                                                                                                                 | nothing): open a ticket for ARCH to start it, then reload the page in Firefox    |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| Your lab is not in the OnDemand list                                                                                                                            | ARCH adds it: open a ticket                                                      |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| SSH tunnel: ``channel open failed: administratively prohibited``                                                                                                | the login node refused the forward: use OnDemand, and tell ARCH the login host   |
+|                                                                                                                                                                 | and port you used                                                                |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| Logs                                                                                                                                                            | the master job's log ``$DEST/state/run/master-<job>.log`` and CryoSPARC's        |
+|                                                                                                                                                                 | service logs under ``$DEST/state/run/`` are readable only by the lab's account:  |
+|                                                                                                                                                                 | ARCH reads them, open a ticket                                                   |
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
 What ARCH sees when it runs ``cryosparc.sh`` as the lab's account (``Invalid qos specification``,
 ``ports in use``, ``SLURM_MODE=bind needs the host Slurm client``) is ARCH's to fix. Anything else: open a ticket

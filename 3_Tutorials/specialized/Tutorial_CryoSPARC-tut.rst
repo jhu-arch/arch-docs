@@ -63,7 +63,8 @@ Before any tutorial
 +------------------------+--------------------------------------------------------------------------------+
 | ``<pi>_cryosparc``     | the lab's Slurm account, which pays for CryoSPARC's jobs                       |
 +------------------------+--------------------------------------------------------------------------------+
-| ``<host>``             | the node your lab's CryoSPARC master runs on: ``csr091`` for now               |
+| ``<host>``             | the node your lab's CryoSPARC master runs on: one of ``cryo01`` to ``cryo04``  |
+|                        | (the ``cryosparc`` partition), assigned by ARCH                                |
 +------------------------+--------------------------------------------------------------------------------+
 | ``<port>``             | the port your lab's CryoSPARC answers on. ARCH assigns it                      |
 +------------------------+--------------------------------------------------------------------------------+
@@ -147,6 +148,10 @@ Step 3: Register the lab's CryoSPARC account
    | Password              | a strong one, kept by the manager. Nobody logs in with it                   |
    +-----------------------+-----------------------------------------------------------------------------+
 
+   The account is the lab's, not a person's: keep ``CryoSPARC`` and the PI's last name, and never the
+   manager's own name or personal e-mail. That address belongs to this account only, and stays with the
+   lab when people leave.
+
 2. Add the account to the ``cryosparc`` project and its allocation, like any member:
    **Project Detail → Add Users**. Until then the account stays inactive.
 
@@ -216,14 +221,15 @@ The license ID reaches ARCH through a settings file in your own home, never thro
 ``config`` asks 37 settings, one per line, with the value it offers in brackets. Type the two below and
 press **Enter** at every other line; ARCH types the rest of your lab's settings at install (step 6):
 
-+-----------------+--------------------------------------------------------------------------------+
-| Prompt          | Type                                                                           |
-+=================+================================================================================+
-| ``LICENSE_ID``  | your license ID (for a lab coming from Rockfish: the second one)               |
-+-----------------+--------------------------------------------------------------------------------+
-| ``MASTER_HOST`` | ``csr091``. The brackets show the login node you are on, which ``config`` does |
-|                 | not accept: after three more tries it exits without saving                     |
-+-----------------+--------------------------------------------------------------------------------+
++-----------------+---------------------------------------------------------------------------------+
+| Prompt          | Type                                                                            |
++=================+=================================================================================+
+| ``LICENSE_ID``  | your license ID (for a lab coming from Rockfish: the second one)                |
++-----------------+---------------------------------------------------------------------------------+
+| ``MASTER_HOST`` | ``cryo01``. ``config`` needs a compute node here; ARCH sets your lab's own host |
+|                 | at install. The brackets show the login node you are on, which ``config`` does  |
+|                 | not accept: after three more tries it exits without saving                      |
++-----------------+---------------------------------------------------------------------------------+
 
 This is the whole session. What you type is after the colon; a line that ends at the colon is Enter:
 
@@ -239,7 +245,7 @@ This is the whole session. What you type is after the colon; a line that ends at
    SSDPATH [/scratch/<affiliation>/<pi>/cryosparc/cache]:
    PROJECT_DIRS [/scratch/<affiliation>/<pi>/cryosparc/projects]:
    PORT [25000]:
-   MASTER_HOST [<the login node you are on>]: csr091
+   MASTER_HOST [<the login node you are on>]: cryo01
    MASTER_PARTITION [cryosparc]:
    MASTER_RESERVATION []:
    MASTER_QOS [cryosparc]:
@@ -426,7 +432,7 @@ Start, stop, check
 
 CryoSPARC's master runs as a Slurm job of the lab's account, on your lab's ``<host>``. It has no time
 limit of its own and keeps running: after a node failure it comes back on the same host by itself, and
-ARCH brings it back after a maintenance or when it reaches the time limit of the partition it runs on.
+ARCH brings it back after a maintenance (the ``cryosparc`` partition has no time limit).
 
 Check it, as yourself:
 
@@ -498,20 +504,20 @@ The lab's settings are ARCH's to change (``config``, as the lab's account). Open
 and its new value, never the license ID. Every setting is described in :ref:`Settings <cryosparc-tut-settings>`. ARCH then
 applies the change:
 
-+--------------------------------------------------+---------------------------------------------------------------------+
-| A change of                                      | ARCH runs                                                           |
-+==================================================+=====================================================================+
-| ``PROJECT_DIRS`` (a new project directory)       | ``restart``, then ``lane``                                          |
-+--------------------------------------------------+---------------------------------------------------------------------+
-| ``PARTITION``, ``CPU_PARTITION``, ``ACCOUNT``,   | ``lane``                                                            |
-| ``ACCEPT_COST``, ``RESERVATION``, ``WALLTIME``   |                                                                     |
-+--------------------------------------------------+---------------------------------------------------------------------+
-| ``MASTER_CPUS``, ``MASTER_MEM``, ``MASTER_TIME`` | ``restart``                                                         |
-+--------------------------------------------------+---------------------------------------------------------------------+
-| ``LICENSE_ID`` (a new license)                   | you type it with ``config`` as yourself (:ref:`Tutorial 1, step 5   |
-|                                                  | <cryosparc-tut-step-5-type-your-license-id>`); ARCH copies it, then |
-|                                                  | ``restart``                                                         |
-+--------------------------------------------------+---------------------------------------------------------------------+
++--------------------------------------------------+--------------------------------------------------------------------------+
+| A change of                                      | ARCH runs                                                                |
++==================================================+==========================================================================+
+| ``PROJECT_DIRS`` (a new project directory)       | ``restart``, then ``lane``                                               |
++--------------------------------------------------+--------------------------------------------------------------------------+
+| ``PARTITION``, ``CPU_PARTITION``, ``ACCOUNT``,   | ``lane``                                                                 |
+| ``ACCEPT_COST``, ``RESERVATION``, ``WALLTIME``   |                                                                          |
++--------------------------------------------------+--------------------------------------------------------------------------+
+| ``MASTER_CPUS``, ``MASTER_MEM``, ``MASTER_TIME`` | ``restart``                                                              |
++--------------------------------------------------+--------------------------------------------------------------------------+
+| ``LICENSE_ID`` (a new license)                   | you type it with ``config`` as yourself                                  |
+|                                                  | (:ref:`Tutorial 1, step 5 <cryosparc-tut-step-5-type-your-license-id>`); |
+|                                                  | ARCH copies it, then ``restart``                                         |
++--------------------------------------------------+--------------------------------------------------------------------------+
 
 
 
@@ -550,7 +556,7 @@ Tutorial 4: Move from Rockfish
 |                       | nothing to keep                                            | here                                                         |
 +-----------------------+------------------------------------------------------------+--------------------------------------------------------------+
 | Needs ARCH            | one ticket: the landing folders (step 7) and the database  | the landing folders, once per lab (step 7)                   |
-|                       | (step 12)                                                  |                                                              |
+|                       | (step 11)                                                  |                                                              |
 +-----------------------+------------------------------------------------------------+--------------------------------------------------------------+
 | On Rockfish           | you archive the projects                                   | you detach the project                                       |
 +-----------------------+------------------------------------------------------------+--------------------------------------------------------------+
@@ -560,26 +566,25 @@ Tutorial 4: Move from Rockfish
 Route A: move the lab with its database
 ---------------------------------------
 
-+----------+--------------------+------+-----------------------------------------------------------+
-| Steps    | Where              | Who  | What                                                      |
-+==========+====================+======+===========================================================+
-| 1 to 5   | Rockfish           | you  | check the version, find the paths, archive, back up       |
-+----------+--------------------+------+-----------------------------------------------------------+
-| 6        | Skipjack           | you  | find your directory                                       |
-+----------+--------------------+------+-----------------------------------------------------------+
-| 7        | Skipjack           | ARCH | create the landing folders                                |
-+----------+--------------------+------+-----------------------------------------------------------+
-| 8        | Rockfish           | you  | copy the backup, the raw data and the project             |
-+----------+--------------------+------+-----------------------------------------------------------+
-| 9 to 11  | Skipjack           | you  | check the copy, give the group write access, re-point the |
-|          |                    |      | links                                                     |
-+----------+--------------------+------+-----------------------------------------------------------+
-| 12       | Skipjack           | ARCH | restore the database                                      |
-+----------+--------------------+------+-----------------------------------------------------------+
-| 13 to 16 | Skipjack, Rockfish | you  | unarchive, check, run a test job, finish                  |
-+----------+--------------------+------+-----------------------------------------------------------+
++----------+--------------------+------+--------------------------------------------------------------+
+| Steps    | Where              | Who  | What                                                         |
++==========+====================+======+==============================================================+
+| 1 to 5   | Rockfish           | you  | check the version, find the paths, archive, back up          |
++----------+--------------------+------+--------------------------------------------------------------+
+| 6        | Skipjack           | you  | find your directory                                          |
++----------+--------------------+------+--------------------------------------------------------------+
+| 7        | Skipjack           | ARCH | create the landing folders                                   |
++----------+--------------------+------+--------------------------------------------------------------+
+| 8        | Rockfish           | you  | copy the backup, the raw data and the project                |
++----------+--------------------+------+--------------------------------------------------------------+
+| 9, 10    | Skipjack           | you  | check the copy, give the group write access                  |
++----------+--------------------+------+--------------------------------------------------------------+
+| 11       | Skipjack           | ARCH | restore the database                                         |
++----------+--------------------+------+--------------------------------------------------------------+
+| 12 to 16 | Skipjack, Rockfish | you  | unarchive, re-point the links, check, run a test job, finish |
++----------+--------------------+------+--------------------------------------------------------------+
 
-Nothing changes on Rockfish until step 4. Steps 2, 3, 4, 8, 9, 10, 11 and 13 are done once per project;
+Nothing changes on Rockfish until step 4. Steps 2, 3, 4, 8, 9, 10, 12 and 13 are done once per project;
 the others once per lab.
 
 .. _cryosparc-tut-step-1-check-the-version-on-rockfish:
@@ -654,8 +659,8 @@ Each line is a number of links and the directory they point to: your raw data.
    find $RF_P -xtype l | wc -l                     # links already broken on Rockfish: must be 0
 
 - Several lines under one common directory: use that common directory as ``RF_RAW``.
-- Several unrelated directories: repeat the raw-data line of step 8 and step 11 for each.
-- No line at all: the project has no links. Skip the raw data in step 8, and step 11.
+- Several unrelated directories: repeat the raw-data line of step 8 and step 13 for each.
+- No line at all: the project has no links. Skip the raw data in step 8, and step 13.
 
 .. _cryosparc-tut-step-4-archive-the-project-on-rockfish:
 
@@ -792,13 +797,47 @@ PI's group:
    chmod -R g+rwX $RAW $P
    chmod g+r $BK
 
-.. _cryosparc-tut-step-11-re-point-the-links-to-the-raw-data:
+.. _cryosparc-tut-step-11-ask-arch-to-restore-the-database:
 
-Step 11: Re-point the links to the raw data
+Step 11: Ask ARCH to restore the database
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Answer your ticket, or open a new one, with:
+
+- your lab (``<pi>``) and "restore our Rockfish CryoSPARC database on Skipjack";
+- the backup file: the path in ``$BK`` (``echo $BK``).
+
+ARCH stops your master, moves the current Skipjack database aside, restores yours, starts the master
+and replaces the Rockfish job lanes with the Skipjack one. **The restore replaces everything in the
+Skipjack database:** the admin login created at install stops working, and you log in with your
+Rockfish e-mails and passwords.
+
+ARCH's answer says that the master runs again, with every process RUNNING and the license valid.
+
+.. _cryosparc-tut-step-12-log-in-and-unarchive-the-project:
+
+Step 12: Log in and unarchive the project
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open CryoSPARC (:ref:`Tutorial 2 <cryosparc-tut-tutorial-2-open-cryosparc-and-run-a-job>`) and log in with your
+   Rockfish e-mail and password: the restore brought your Rockfish logins, and the admin login created
+   at install no longer works. If your login is refused, reset it with a token from another admin of
+   your lab (:ref:`A forgotten or first password <cryosparc-tut-a-forgotten-or-first-password>`); if no admin can log in,
+   answer the ticket.
+2. Open the project, then **Actions → Unarchive Project**, with its new path written out in full, the
+   folder ``$P`` of step 9 (``echo $P``):
+   ``/scratch/<affiliation>/<pi>/cryosparc/projects/rockfish/<project folder>``.
+
+If the web interface refuses the path or the unarchive, answer the ticket with the project's number
+(step 2) and that path: ARCH can unarchive it from the command line.
+
+.. _cryosparc-tut-step-13-re-point-the-links-to-the-raw-data:
+
+Step 13: Re-point the links to the raw data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The links in the project still point at the Rockfish path. Run this with your own account.
-The first command only shows what it would do:
+Do this after the unarchive (step 12), not before. The links in the project still point at the
+Rockfish path. Run this with your own account. The first command only shows what it would do:
 
 .. code-block:: bash
 
@@ -821,40 +860,6 @@ check:
    find $P -xtype l                                # broken links: must print nothing
 
 Only the links inside the project change, never your data.
-
-.. _cryosparc-tut-step-12-ask-arch-to-restore-the-database:
-
-Step 12: Ask ARCH to restore the database
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Answer your ticket, or open a new one, with:
-
-- your lab (``<pi>``) and "restore our Rockfish CryoSPARC database on Skipjack";
-- the backup file: the path in ``$BK`` (``echo $BK``).
-
-ARCH stops your master, moves the current Skipjack database aside, restores yours, starts the master
-and replaces the Rockfish job lanes with the Skipjack one. **The restore replaces everything in the
-Skipjack database:** the admin login created at install stops working, and you log in with your
-Rockfish e-mails and passwords.
-
-ARCH's answer says that the master runs again, with every process RUNNING and the license valid.
-
-.. _cryosparc-tut-step-13-log-in-and-unarchive-the-project:
-
-Step 13: Log in and unarchive the project
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Open CryoSPARC (:ref:`Tutorial 2 <cryosparc-tut-tutorial-2-open-cryosparc-and-run-a-job>`) and log in with your
-   Rockfish e-mail and password: the restore brought your Rockfish logins, and the admin login created
-   at install no longer works. If your login is refused, reset it with a token from another admin of
-   your lab (:ref:`A forgotten or first password <cryosparc-tut-a-forgotten-or-first-password>`); if no admin can log in,
-   answer the ticket.
-2. Open the project, then **Actions → Unarchive Project**, with its new path written out in full, the
-   folder ``$P`` of step 9 (``echo $P``):
-   ``/scratch/<affiliation>/<pi>/cryosparc/projects/rockfish/<project folder>``.
-
-If the web interface refuses the path or the unarchive, answer the ticket with the project's number
-(step 2) and that path: ARCH can unarchive it from the command line.
 
 .. _cryosparc-tut-step-14-check-the-project:
 
@@ -894,11 +899,12 @@ The project is detached on Rockfish and attached here. Your users must already e
    no longer has a lock file, so ``ls $RF_P/cs.lock`` answers ``No such file or directory``.
 3. **Skipjack:** find your directory and have ARCH create the landing folders (Route A, steps 6 and 7).
 4. **Rockfish:** copy the raw data and the project (Route A, step 8, without the backup line).
-5. **Skipjack:** check the copy, give the group write access, re-point the links (Route A, steps 9 to
-   11). Here ``cs.lock`` must not exist.
+5. **Skipjack:** check the copy and give the group write access (Route A, steps 9 and 10). Here
+   ``cs.lock`` must not exist.
 6. **Skipjack web interface:** **Projects → Attach Project**, with the project's folder (the one that
    holds ``project.json``, ``$P`` of step 9). Note the project's new number.
-7. Check the project and run a test job (Route A, steps 14 and 15, with your Skipjack login).
+7. **Skipjack:** re-point the links to the raw data (Route A, step 13), after the attach.
+8. Check the project and run a test job (Route A, steps 14 and 15, with your Skipjack login).
 
 .. _cryosparc-tut-what-to-expect-after-the-move:
 
@@ -910,7 +916,7 @@ What to expect after the move
 - **Projects you did not archive** before the backup (Route A) are listed here too, but still point at
   Rockfish and do not open. Ask ARCH before touching them.
 - **Deleted jobs stay hidden.** Jobs that were running when you stopped come back as not finished.
-- **Results and logs are kept.** A job can run again once its inputs resolve here, which is what step 11
+- **Results and logs are kept.** A job can run again once its inputs resolve here, which is what step 13
   does for the raw data.
 
 .. _cryosparc-tut-if-something-fails-during-the-move:
@@ -1009,7 +1015,8 @@ every job CryoSPARC submits run as this account, not as a person.
 A lab installed before these accounts existed runs under the manager's or the PI's own account until
 ARCH moves it. That person runs, as themselves, the ``cryosparc.sh`` commands these tutorials leave to
 ARCH (``/apps/helpers/cryosparc.sh start``, ``stop``, ``status``, ``backup``, ``update``, ``config``, ``lane``, with
-``CS_LAB=<pi>`` in front when in several PIs' groups), can start the master from OnDemand
+``CS_LAB=<pi>`` in front when in several PIs' groups; ``status``, ``passwd``, ``backup`` and ``lane`` on the
+master's node, see :ref:`Commands <cryosparc-tut-commands>`), can start the master from OnDemand
 (**Interactive Apps → CryoSPARC Master**), and copies data as that account.
 
 .. _cryosparc-tut-settings:
@@ -1041,7 +1048,8 @@ and lists every prompt of ``config`` with the value it offers.
 |                                                              | ``config`` offers ``25000`` to every new lab, and ARCH types yours at install:   |
 |                                                              | it cannot change once the database exists                                        |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``MASTER_HOST``                                              | the node the master runs on: ``csr091`` for now. Never a login node              |
+| ``MASTER_HOST``                                              | the node the master runs on: one of ``cryo01`` to ``cryo04``, set by ARCH. Never |
+|                                                              | a login node                                                                     |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
 | ``MASTER_PARTITION``, ``MASTER_QOS``, ``MASTER_RESERVATION`` | how the master's job reaches that host, set by ARCH at install                   |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
@@ -1119,10 +1127,28 @@ Commands
 
 ARCH runs these as the lab's account (ask on a ticket):
 
+**Note: run** ``status``, ``passwd``, ``backup`` **and** ``lane`` **on the master's node.** They talk to CryoSPARC
+through a socket on the node the master runs on. Log in to that node first, then run the command there:
+
+.. code-block:: bash
+
+   squeue -u <account> -n cryosparc-<pi> -h -o %N     # the master's node: <host>
+   ssh <host>
+
+``<account>`` is the account the master runs as (``ext-<pi>-cryosparc``, or a person's own account for an
+older lab). Typed on a login node, they try to reach the master through Slurm and can stop with
+``srun: error: ... DNS SRV lookup failed`` and ``srun: fatal: Could not establish a configuration source``.
+
+The node lets you in only because the master's job runs there, and your session becomes part of that
+job: it shares the job's CPUs and memory (run nothing heavy there), and it closes when the job ends.
+So ``start`` and ``stop`` go on a login node, never from that session.
+
 +----------------------------------------------+------------------------------------------------------------------+
 | Command                                      | What it does                                                     |
 +==============================================+==================================================================+
 | ``start``, ``stop``, ``restart``, ``status`` | the master's job                                                 |
++----------------------------------------------+------------------------------------------------------------------+
+| ``passwd``                                   | change the password of the admin created at install              |
 +----------------------------------------------+------------------------------------------------------------------+
 | ``show``, ``config``                         | print and edit the lab's settings                                |
 +----------------------------------------------+------------------------------------------------------------------+
@@ -1154,38 +1180,47 @@ You run these as yourself:
 When something fails
 --------------------
 
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Symptom                                                                       | Cause, fix                                                                       |
-+===============================================================================+==================================================================================+
-| ``No CryoSPARC is installed for <pi> yet`` at the end of ``config``           | expected: you saved your license ID in your own home (Tutorial 1, step 5)        |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``you are in the groups of several labs``                                     | ``config`` did not name the lab and you are in several PIs' groups:              |
-|                                                                               | ``CS_LAB=<pi> /apps/helpers/cryosparc.sh config``                                |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``MASTER_HOST: give the lab's host ...; nothing was saved``                   | you pressed Enter at ``MASTER_HOST``: run ``config`` again and type ``csr091``   |
-|                                                                               | there                                                                            |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| The master's job stays pending                                                | ``squeue -u ext-<pi>-cryosparc`` shows the reason. Its host is busy or down:     |
-|                                                                               | open a ticket                                                                    |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``Account 'X' is not available for user ...`` when a job is submitted         | the lab's ``ACCOUNT`` is wrong: open a ticket (ARCH fixes it with ``config``,    |
-|                                                                               | then ``lane``)                                                                   |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| A job fails at submit with ``[BILLING] ... Proceed? [y/N]`` and ``Cancelled`` | the cluster asks for a cost confirmation CryoSPARC cannot give: open a ticket    |
-|                                                                               | (ARCH sets ``ACCEPT_COST=yes``, then ``lane``)                                   |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| OnDemand session shows "nothing answers" or a connection error                | the master is stopped (``squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>`` prints |
-|                                                                               | nothing): ask ARCH to start it, then reload the page in Firefox                  |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Your lab is not in the OnDemand list                                          | ARCH adds it: open a ticket                                                      |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| SSH tunnel: ``channel open failed: administratively prohibited``              | the login node refused the forward: use OnDemand, and tell ARCH the login host   |
-|                                                                               | and port you used                                                                |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Where the logs are                                                            | the master job's log ``<DEST>/state/run/master-<job>.log`` and CryoSPARC's       |
-|                                                                               | service logs in ``<DEST>/state/run/`` are readable only by the lab's account:    |
-|                                                                               | ARCH reads them. Give the job's number and the error the web interface shows     |
-+-------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| Symptom                                                                       | Cause, fix                                                                           |
++===============================================================================+======================================================================================+
+| ``No CryoSPARC is installed for <pi> yet`` at the end of ``config``           | expected: you saved your license ID in your own home (Tutorial 1, step 5)            |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| ``srun: error: ... DNS SRV lookup failed`` and                                | the command ran on a login node: run it on the master's node                         |
+| ``srun: fatal: Could not establish a configuration source`` after ``status``, | (:ref:`Commands <cryosparc-tut-commands>`, the note)                                 |
+| ``passwd``, ``backup`` or ``lane``                                            |                                                                                      |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| ``'<command>' is not yours to run``                                           | your lab runs as ``ext-<pi>-cryosparc``, so ``cryosparc.sh`` runs only               |
+|                                                                               | ``config``, ``show``, ``versions`` and ``project-relink`` for you: ask ARCH on a     |
+|                                                                               | ticket; passwords change in the web interface                                        |
+|                                                                               | (:ref:`A forgotten or first password <cryosparc-tut-a-forgotten-or-first-password>`) |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| ``you are in the groups of several labs``                                     | ``config`` did not name the lab and you are in several PIs' groups:                  |
+|                                                                               | ``CS_LAB=<pi> /apps/helpers/cryosparc.sh config``                                    |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| ``MASTER_HOST: give the lab's host ...; nothing was saved``                   | you pressed Enter at ``MASTER_HOST``: run ``config`` again and type ``cryo01``       |
+|                                                                               | there                                                                                |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| The master's job stays pending                                                | ``squeue -u ext-<pi>-cryosparc`` shows the reason. Its host is busy or down:         |
+|                                                                               | open a ticket                                                                        |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| ``Account 'X' is not available for user ...`` when a job is submitted         | the lab's ``ACCOUNT`` is wrong: open a ticket (ARCH fixes it with ``config``,        |
+|                                                                               | then ``lane``)                                                                       |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| A job fails at submit with ``[BILLING] ... Proceed? [y/N]`` and ``Cancelled`` | the cluster asks for a cost confirmation CryoSPARC cannot give: open a ticket        |
+|                                                                               | (ARCH sets ``ACCEPT_COST=yes``, then ``lane``)                                       |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| OnDemand session shows "nothing answers" or a connection error                | the master is stopped (``squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>`` prints     |
+|                                                                               | nothing): ask ARCH to start it, then reload the page in Firefox                      |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| Your lab is not in the OnDemand list                                          | ARCH adds it: open a ticket                                                          |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| SSH tunnel: ``channel open failed: administratively prohibited``              | the login node refused the forward: use OnDemand, and tell ARCH the login host       |
+|                                                                               | and port you used                                                                    |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
+| Where the logs are                                                            | the master job's log ``<DEST>/state/run/master-<job>.log`` and CryoSPARC's           |
+|                                                                               | service logs in ``<DEST>/state/run/`` are readable only by the lab's account:        |
+|                                                                               | ARCH reads them. Give the job's number and the error the web interface shows         |
++-------------------------------------------------------------------------------+--------------------------------------------------------------------------------------+
 
 Anything else: open a ticket with ARCH (Tutorial 1, step 4, has the addresses). Paste the command and
 its output, never the license ID.

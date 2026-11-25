@@ -18,8 +18,9 @@ directories. What is shared is the software: one image per CryoSPARC version in
 Quick start
 ###########
 
-``<pi>`` is your PI's JHED. The PI and the lab manager run the commands as the lab's CryoSPARC account
-(``sudo -Hu ext-<pi>-cryosparc``); a lab installed under your own account runs them without that prefix.
+``<pi>`` is your PI's JHED. Your lab's CryoSPARC runs as the lab's CryoSPARC account,
+``ext-<pi>-cryosparc``, and nobody in the lab acts as that account: ARCH runs the commands that need it
+(install, start, stop, backup, update, settings). The lab works in CryoSPARC's web interface.
 
 **Getting your lab's master (once):**
 
@@ -34,21 +35,24 @@ Quick start
    or a module is missing or broken", asking for a CryoSPARC master (details in
    :ref:`Before you start <cryosparc-before-you-start>`). Never put the license ID in it.
 
-4. **License ID:** when ARCH gives you ``sudo``, type it at ``LICENSE_ID`` and say so in the ticket:
+4. **License ID**, as yourself (no ``sudo``) on a login node: run ``config``, type your license ID at
+   ``LICENSE_ID`` and your lab's host at ``MASTER_HOST`` (``csr091`` for now), press Enter at every other
+   line, and say in the ticket that you did:
 
    .. code-block:: bash
 
-      sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh config
+      /apps/helpers/cryosparc.sh config     # saves ~/.cryosparc/<pi>.ini in your home, mode 600
+
+   ARCH reads the license from that file. Delete it once ARCH has installed your lab.
 
 5. ARCH installs the master and sends you the port, the host and the admin password (once).
 
-**Every day**, on a login node:
+**Every day:** the master is a Slurm job that keeps running. ARCH starts it, stops it, backs it up and
+updates it: ask on a ticket. Anyone can see whether it runs:
 
 .. code-block:: bash
 
-   sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh start    # starts the master (a Slurm job)
-   sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh status
-   sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh stop
+   squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>
 
 **Open it** (everyone in the lab):
 
@@ -96,30 +100,29 @@ Before you start
    form, choose **"I need software installed, or a module is missing or broken"** under "What best
    describes your issue?" and fill in:
 
-   +---------------------------+----------------------------------------------------------------------------------+
-   | Field                     | What to write                                                                    |
-   +===========================+==================================================================================+
-   | What do you need?         | A CryoSPARC master for my lab                                                    |
-   +---------------------------+----------------------------------------------------------------------------------+
-   | Software name and version | CryoSPARC and the version (``/apps/helpers/cryosparc.sh versions`` lists the     |
-   |                           | images), or "latest"                                                             |
-   +---------------------------+----------------------------------------------------------------------------------+
-   | Website or download link  | https://cryosparc.com                                                            |
-   +---------------------------+----------------------------------------------------------------------------------+
-   | License                   | academic license from Structura, held by your PI. **Never the license ID         |
-   |                           | itself** (step 3)                                                                |
-   +---------------------------+----------------------------------------------------------------------------------+
-   | What will you use it for? | your project, in a sentence                                                      |
-   +---------------------------+----------------------------------------------------------------------------------+
-   | Who will use it?          | the PI, who runs the lab's CryoSPARC account (the PI, the lab manager or both:   |
-   |                           | see :ref:`The lab's CryoSPARC account <cryosparc-the-labs-cryosparc-account>`),  |
-   |                           | and the members (JHED IDs)                                                       |
-   +---------------------------+----------------------------------------------------------------------------------+
-   | Special requirements      | the GPU partition you need (e.g. ``a100``), where your projects and raw data     |
-   |                           | live (they become ``PROJECT_DIRS``), and whether you are moving a lab from       |
-   |                           | Rockfish (see                                                                    |
-   |                           | :ref:`Moving a lab from Rockfish <cryosparc-moving-a-lab-from-rockfish>`)        |
-   +---------------------------+----------------------------------------------------------------------------------+
+   +---------------------------+---------------------------------------------------------------------------------+
+   | Field                     | What to write                                                                   |
+   +===========================+=================================================================================+
+   | What do you need?         | A CryoSPARC master for my lab                                                   |
+   +---------------------------+---------------------------------------------------------------------------------+
+   | Software name and version | CryoSPARC and the version (``/apps/helpers/cryosparc.sh versions`` lists the    |
+   |                           | images), or "latest"                                                            |
+   +---------------------------+---------------------------------------------------------------------------------+
+   | Website or download link  | https://cryosparc.com                                                           |
+   +---------------------------+---------------------------------------------------------------------------------+
+   | License                   | academic license from Structura, held by your PI.                               |
+   |                           | **Never the license ID itself** (step 3)                                        |
+   +---------------------------+---------------------------------------------------------------------------------+
+   | What will you use it for? | your project, in a sentence                                                     |
+   +---------------------------+---------------------------------------------------------------------------------+
+   | Who will use it?          | the PI, the lab manager, which of them is the lab's CryoSPARC admin (with their |
+   |                           | e-mail: it becomes the admin's login, ``EMAIL``), and the members (JHED IDs)    |
+   +---------------------------+---------------------------------------------------------------------------------+
+   | Special requirements      | the GPU partition you need (e.g. ``a100``), where your projects and raw data    |
+   |                           | live (they become ``PROJECT_DIRS``), and whether you are moving a lab from      |
+   |                           | Rockfish (see                                                                   |
+   |                           | :ref:`Moving a lab from Rockfish <cryosparc-moving-a-lab-from-rockfish>`)       |
+   +---------------------------+---------------------------------------------------------------------------------+
 
    **The lab manager creates the lab's CryoSPARC account** (see
    :ref:`The lab's CryoSPARC account <cryosparc-the-labs-cryosparc-account>`) before the ticket, with the portal's
@@ -136,18 +139,20 @@ Before you start
    |                       | ``<lab>.cryosparc@gmail.com``), kept by the PI or the manager, never someone's   |
    |                       | own                                                                              |
    +-----------------------+----------------------------------------------------------------------------------+
-   | Password              | a strong one, kept by the manager. Nobody logs in with it: the account is used   |
-   |                       | only through ``sudo``                                                            |
+   | Password              | a strong one, kept by the manager. Nobody logs in with it, and nobody in the lab |
+   |                       | acts as the account: only ARCH does                                              |
    +-----------------------+----------------------------------------------------------------------------------+
 
    Then the PI or the manager adds it to the ``cryosparc`` project and its allocation (Project Detail →
    Add Users), like any member: until then the account stays inactive. In the ticket (still **"I need
-   software installed, or a module is missing or broken"**), say that the account exists and who runs it:
-   the PI, the manager or both.
+   software installed, or a module is missing or broken"**), say that the account exists.
 
-3. Give ARCH the license ID through the settings file, not the ticket: once ARCH has given you ``sudo`` to
-   the lab's account, run ``sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh config`` and type it at
-   ``LICENSE_ID`` (the file is mode 600). Say in the ticket that you did.
+3. Give ARCH the license ID through a settings file in your own home, not the ticket. On a login node,
+   as yourself (no ``sudo``), run ``/apps/helpers/cryosparc.sh config``, type the license ID at ``LICENSE_ID``
+   and your lab's host at ``MASTER_HOST`` (the brackets show the login node, which ``config`` refuses), and
+   press Enter at every other line. It saves ``~/.cryosparc/<pi>.ini``, mode 600: ARCH reads the license
+   there and types the rest of your lab's settings itself. Say in the ticket that you did, and delete
+   that file once your lab is installed.
 
 4. ARCH answers with your port and host, installs the master and sends you the admin password once.
 
@@ -159,9 +164,8 @@ You need:
   from Structura, like the first.
 
 - Your PI's directory on ``/scratch`` for the install, the database and the SSD cache:
-  ``/scratch/<affiliation>/<pi>/cryosparc`` by default. The lab is the PI's: a manager or member sets it
-  up from their own account, as a member of the PI's group. If you are in several PIs' groups, name
-  the lab each time: ``CS_LAB=<pi> /apps/helpers/cryosparc.sh ...``.
+  ``/scratch/<affiliation>/<pi>/cryosparc`` by default. The lab is the PI's. If you are in several PIs'
+  groups, name the lab when you run ``config``: ``CS_LAB=<pi> /apps/helpers/cryosparc.sh config``.
 
 - Your lab's **Slurm account for CryoSPARC**, ``<pi>_cryosparc``: it comes from the ColdFront project
   with abbreviation ``cryosparc`` and its approved allocation (step 1 above). Jobs are charged to it.
@@ -190,13 +194,12 @@ installs the lab's CryoSPARC under it. The master, its database and every job Cr
 +-------------------------+----------------------------------------------------------------------------------+
 | Who creates it          | the lab manager, with the portal's registration form (see                        |
 |                         | :ref:`Before you start <cryosparc-before-you-start>`); ARCH then locks its login |
-|                         | shell and gives the PI and the manager ``sudo`` to it                            |
+|                         | shell                                                                            |
 +-------------------------+----------------------------------------------------------------------------------+
 | No login                | Its password exists only because the form requires one: the manager keeps it,    |
 |                         | and nobody logs in as the account (it has no login shell, so no SSH session).    |
-|                         | The PI and the manager run the commands of this guide as it:                     |
-|                         | ``sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh <command>`` (and        |
-|                         | ``sudo -Hu ext-<pi>-cryosparc sbatch ...``)                                      |
+|                         | Nobody in the lab acts as it either (no ``sudo``): ARCH runs the commands that   |
+|                         | need it (install, start, stop, backup, update, settings), on request             |
 +-------------------------+----------------------------------------------------------------------------------+
 | Files                   | It is a member of the PI's group: the lab's CryoSPARC tree (``DEST``, the        |
 |                         | database, the projects) belongs to it, with the PI's group                       |
@@ -209,9 +212,10 @@ installs the lab's CryoSPARC under it. The master, its database and every job Cr
 |                         | the web interface (Slurm's job name ``cs_<P>_<J>`` points to it)                 |
 +-------------------------+----------------------------------------------------------------------------------+
 
-Where this guide says "your account" or "the account the master runs as", it means this account, reached
-with ``sudo -u``. A lab installed before these accounts existed runs under the manager's or PI's own
-account until ARCH moves it.
+Where this guide says "the account the master runs as", it means this account: the ``cryosparc.sh``
+commands below run as it, so ARCH runs them for you. A lab installed before these accounts existed runs
+under the manager's or PI's own account until ARCH moves it; until then that person runs those commands
+as themselves.
 
 What ARCH assigns per lab looks like this. Apart from the first row (ARCH's own test lab), the names and
 accounts are **examples only**, scientists from history: they are not labs, users or Slurm accounts of
@@ -261,13 +265,13 @@ One-time setup (done by ARCH)
 ARCH creates your lab's master under the lab's CryoSPARC account: it fills the settings
 (``~/.cryosparc/<pi>.ini`` in that account's home), installs the version you agreed on and starts it as a
 Slurm job of that account on the assigned host. You receive the admin
-password once; change it with ``passwd``. What ARCH needs from you: the license ID, the project
-directories, and the CryoSPARC version (``/apps/helpers/cryosparc.sh versions`` lists them).
-You can fill the settings yourself beforehand with ``config``. ARCH runs ``init`` (on a compute node, as your
-account) before your first start; until then ``start``, ``status`` and ``open`` only say that no CryoSPARC is
-installed for your lab yet.
+password once; change it in the web interface (see :ref:`Lab members' accounts <cryosparc-lab-members-accounts>`).
+What ARCH needs from you: the license ID (through ``config`` in your own home, see
+:ref:`Before you start <cryosparc-before-you-start>`), the project directories, the CryoSPARC admin's e-mail, and the
+CryoSPARC version (``/apps/helpers/cryosparc.sh versions`` lists them). ARCH runs ``config`` and ``init`` (on a
+compute node, as the lab's account).
 
-Settings in that file (``/apps/helpers/cryosparc.sh show`` prints yours):
+Settings in that file (ARCH sends you what ``show`` prints for your lab; a setting changes on a ticket):
 
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
 | Setting                                                      | Value                                                                            |
@@ -293,7 +297,7 @@ Settings in that file (``/apps/helpers/cryosparc.sh show`` prints yours):
 |                                                              | lab; leave them as they are                                                      |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
 | ``MASTER_CPUS``, ``MASTER_MEM``, ``MASTER_TIME``             | the master job's size (``4``, ``24G``) and time limit (blank: none, it runs      |
-|                                                              | until you stop it)                                                               |
+|                                                              | until it is stopped)                                                             |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
 | ``LICENSE_ID``                                               | your lab's license                                                               |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
@@ -313,7 +317,7 @@ Settings in that file (``/apps/helpers/cryosparc.sh show`` prints yours):
 | ``EMAIL``, ``ADMIN_USER``                                    | the CryoSPARC admin login                                                        |
 +--------------------------------------------------------------+----------------------------------------------------------------------------------+
 
-The ``.ini`` holds your license ID: it is mode 600, keep it that way and do not paste it in tickets.
+The ``.ini`` holds the license ID: it is mode 600, and the license ID never goes in a ticket.
 ``config`` asks every setting except ``PHASE``, ``CS_SIF`` and (once installed) ``VERSION``: those record what
 is installed and only ``init``, ``update`` and ``migrate`` set them.
 
@@ -331,20 +335,18 @@ is installed and only ``init``, ``update`` and ``migrate`` set them.
 Every day
 #########
 
-The master runs as a Slurm job of the lab's account, on your lab's host, charged to ``ACCOUNT``, until you
-stop it. Only the account the lab is installed under starts and stops it (with the lab's CryoSPARC
-account: the PI and the manager, through ``sudo -Hu ext-<pi>-cryosparc`` before each command below); lab
-members only open it. The OnDemand **CryoSPARC Master** app runs as the person logged in, so it starts
-only a lab installed under that person's own account. Start it any of these ways; all three submit the
-same job:
+The master runs as a Slurm job of the lab's account, on your lab's host, charged to ``ACCOUNT``, until it
+is stopped. It needs no daily start: it has no time limit of its own (``MASTER_TIME`` blank), comes back
+by itself on the same host after a node failure, and ARCH brings it back after a maintenance or when
+it reaches the time limit of the partition it runs on. ARCH starts and stops it, as the lab's account;
+ask on a ticket when you need it stopped, restarted or brought back. Everyone in the lab only opens it. To see
+whether it runs, and since when:
 
-- ``cryosparc.sh start`` on a login node: submits the job and waits up to 15 minutes for CryoSPARC
-  to answer. A job still waiting in the queue after that stays queued (``status`` shows when it is up).
+.. code-block:: bash
 
-- **OnDemand:** **Interactive Apps > CryoSPARC Master**, pick your lab, **Launch**. The session card
-  shows the address and how to open it.
+   squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>   # state R: running, on <host>; nothing: stopped
 
-- ``sbatch $DEST/state/master.sbatch`` on a login node.
+What ARCH runs for you, as the lab's account, on a login node (for reference):
 
 .. code-block:: bash
 
@@ -353,13 +355,11 @@ same job:
    /apps/helpers/cryosparc.sh stop           # clean stop: CryoSPARC stops its database, then the job ends
    /apps/helpers/cryosparc.sh restart        # stop, then start
    /apps/helpers/cryosparc.sh open           # how to reach the web interface from your workstation
-   /apps/helpers/cryosparc.sh passwd         # change the admin password
 
-**Delete** on the OnDemand card stops it too
-(Slurm signals the job and the master stops within Slurm's grace period); ``stop`` is the cleaner way.
-Run these commands on a login node: ``status``, ``backup``, ``passwd`` and ``lane`` run themselves inside the
-master's job, on its node. The job's log is ``$DEST/state/run/master-<job>.log`` (started from OnDemand:
-the session's ``output.log``).
+A lab still installed under the manager's or PI's own account runs these itself, as that account; it can
+also start the master from OnDemand, **Interactive Apps > CryoSPARC Master** (which runs as the person
+logged in), or with ``sbatch $DEST/state/master.sbatch``. The job's log is
+``$DEST/state/run/master-<job>.log``.
 
 .. _cryosparc-the-masters-job-file:
 
@@ -368,35 +368,38 @@ The master's job file
 
 ``$DEST/state/master.sbatch`` is the Slurm job that runs your master: ``sbatch`` takes it, and the
 CryoSPARC Master app in OnDemand runs the same file with the same options. ``cryosparc.sh`` writes it
-from your settings (``init``, ``config``, ``start``, ``lane``, and any command that tells you to ``sbatch`` it
-while it does not exist yet), so a change goes through ``config``: an edit by hand is lost.
+from your lab's settings (``init``, ``config``, ``start``, ``lane``, and any command that tells you to ``sbatch``
+it while it does not exist yet), so a change goes through ``config`` (ARCH's, on a ticket): an edit by
+hand is lost.
 
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| In the file                                 | From the setting                                                                 |
-+=============================================+==================================================================================+
-| ``--job-name=cryosparc-<NAME>``             | ``NAME``; ``status`` and ``stop`` find the job by this name                      |
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| ``--partition``, ``--nodelist``             | ``MASTER_PARTITION``, ``MASTER_HOST``                                            |
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| ``--account``, ``--qos``, ``--reservation`` | ``ACCOUNT``; ``MASTER_QOS`` and ``MASTER_RESERVATION``, when set                 |
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| ``--cpus-per-task``, ``--mem``, ``--time``  | ``MASTER_CPUS``, ``MASTER_MEM``; ``MASTER_TIME``, when set (otherwise no time    |
-|                                             | limit)                                                                           |
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| ``--requeue``                               | always: after a node failure the job comes back on the same host                 |
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| ``--comment=accept_cost``                   | ``ACCEPT_COST=yes``                                                              |
-+---------------------------------------------+----------------------------------------------------------------------------------+
-| ``--output``                                | ``$DEST/state/run/master-<job>.log``                                             |
-+---------------------------------------------+----------------------------------------------------------------------------------+
++---------------------------------------------+-------------------------------------------------------------------------------+
+| In the file                                 | From the setting                                                              |
++=============================================+===============================================================================+
+| ``--job-name=cryosparc-<NAME>``             | ``NAME``; ``status`` and ``stop`` find the job by this name                   |
++---------------------------------------------+-------------------------------------------------------------------------------+
+| ``--partition``, ``--nodelist``             | ``MASTER_PARTITION``, ``MASTER_HOST``                                         |
++---------------------------------------------+-------------------------------------------------------------------------------+
+| ``--account``, ``--qos``, ``--reservation`` | ``ACCOUNT``; ``MASTER_QOS`` and ``MASTER_RESERVATION``, when set              |
++---------------------------------------------+-------------------------------------------------------------------------------+
+| ``--cpus-per-task``, ``--mem``, ``--time``  | ``MASTER_CPUS``, ``MASTER_MEM``; ``MASTER_TIME``, when set (otherwise no time |
+|                                             | limit)                                                                        |
++---------------------------------------------+-------------------------------------------------------------------------------+
+| ``--requeue``                               | always: after a node failure the job comes back on the same host              |
++---------------------------------------------+-------------------------------------------------------------------------------+
+| ``--comment=accept_cost``                   | ``ACCEPT_COST=yes``                                                           |
++---------------------------------------------+-------------------------------------------------------------------------------+
+| ``--output``                                | ``$DEST/state/run/master-<job>.log``                                          |
++---------------------------------------------+-------------------------------------------------------------------------------+
 
-Its last line runs ``cryosparc.sh master-job``, which starts CryoSPARC and holds the job until you stop it.
+Its last line runs ``cryosparc.sh master-job``, which starts CryoSPARC and holds the job until it is
+stopped.
 
-The web interface listens on ``http://<host>:PORT``, inside the cluster only. Two ways in, both printed by
-``open`` with your host and port filled in:
+The web interface listens on ``http://<host>:PORT``, inside the cluster only. Two ways in, with the host and
+port ARCH sent you:
 
 1. **SSH tunnel**, from your workstation: ``ssh -N -L PORT:<host>:PORT <user>@<login host>``, keep it
-   running, then open ``http://localhost:PORT`` in your browser, with the login host ``open`` prints. If ssh
+   running, then open ``http://localhost:PORT`` in your browser. The login host is
+   ``login01.arch.jhu.edu`` (Schmidt Sciences labs: ``login01.schmidtsciences.jhu.edu``). If ssh
    answers ``channel open failed: administratively prohibited``, the login node refused the forward: use
    OnDemand, and tell ARCH the login host and port you used.
 
@@ -404,7 +407,7 @@ The web interface listens on ``http://<host>:PORT``, inside the cluster only. Tw
    **Launch CryoSPARC** on the session card. Firefox opens on your lab's master (your usual OnDemand
    login, then your CryoSPARC login); closing Firefox ends the session.
 
-Other lab members are added as CryoSPARC users inside the web interface, or from the command line below.
+Other lab members are added as CryoSPARC users by the lab's CryoSPARC admin, in the web interface (below).
 
 
 
@@ -420,27 +423,25 @@ Other lab members are added as CryoSPARC users inside the web interface, or from
 Lab members' accounts
 #####################
 
-Inside the master's job, as the account that runs the master: from a login node, open a shell in that
-job (on the master's node), then:
+The lab's CryoSPARC admin (the login ``EMAIL``, the PI or the manager) manages the lab's CryoSPARC logins
+in the web interface: click your user name, then **Admin > User Management**. There you create a login
+for each member (an e-mail, a username, a first password you give them), make another admin, and see
+the reset tokens below. See CryoSPARC's
+`user management guide <https://guide.cryosparc.com/setup-configuration-and-management/software-system-guides/tutorial-user-management>`__.
 
-.. code-block:: bash
+**A forgotten or first password.** CryoSPARC never e-mails a reset link or token:
 
-   A=ext-<pi>-cryosparc                                   # the lab's CryoSPARC account
-   J=$(squeue -h -u $A -n cryosparc-<name> -o %i)         # the master's job
-   sudo -Hu $A SLURM_JOB_ID=$J srun --jobid=$J --overlap --pty bash   # a shell inside it, as that account
-   apptainer instance list                      # the master's instance: cryosparc-<name>
-   I=instance://cryosparc-<name>
-   C=/opt/cryosparc/cryosparc_master/bin/cryosparcm
-   apptainer exec $I $C user create --email <email> --password '<password>' --username <user> \
-       --firstname <first> --lastname <last>    # add --role admin for another CryoSPARC admin
-   apptainer exec $I $C user resetpassword --email <email> --password '<new password>'
-   apptainer exec $I $C user list               # accounts, with an Admin column
-   apptainer exec $I $C user --help             # every user command
+1. On the login page, **Reset Password > I need a reset token**, with the login's e-mail.
 
-These are the CryoSPARC 5 commands; on 4.x they are ``cryosparcm createuser`` and ``cryosparcm resetpassword``
-with the same options (no ``--role``). CryoSPARC never e-mails a reset link or token: **Reset password > I need
-a reset token** on the login page creates a token that only the lab's CryoSPARC admin can see and pass on,
-so ``user resetpassword`` is the quicker way.
+2. The lab's CryoSPARC admin, logged in (another browser window for their own password), reads the
+   token in **Admin > User Management** and passes it on.
+
+3. On the login page, **Reset Password > I have a reset token**: the e-mail, the token and the new
+   password.
+
+Change the admin password ARCH sent you this way. If the lab has no working admin login left, ARCH
+resets one from the command line (``cryosparcm user resetpassword``, inside the master's job, as the lab's
+account): ask on a ticket.
 
 
 
@@ -460,10 +461,11 @@ Jobs are submitted to Slurm by the lane ``init`` created (``$DEST/lanes/<partiti
 ``ACCOUNT``, as the account the master runs as, whichever CryoSPARC user queued them: jobs that ask for GPUs on ``PARTITION``, CPU-only jobs on ``CPU_PARTITION``
 (and both in ``RESERVATION`` when set). In the job builder choose the lane named ``slurm-<partition>``.
 
-``lane`` writes both lane files from your settings, so a change goes through ``config`` and then ``lane``;
-an edit made by hand in ``$DEST/lanes/`` is lost the next time ``lane`` runs. If a job fails at submit with
-a ``[BILLING] ... Proceed? [y/N]`` / ``Cancelled`` message, the cluster is asking for a cost confirmation
-that a non-interactive submit cannot give: set ``ACCEPT_COST=yes`` with ``config``, then run ``lane``.
+``lane`` writes both lane files from your lab's settings, so a change goes through ``config`` and then
+``lane``, both ARCH's (ask on a ticket); an edit made by hand in ``$DEST/lanes/`` is lost the next time
+``lane`` runs. If a job fails at submit with a ``[BILLING] ... Proceed? [y/N]`` / ``Cancelled`` message, the
+cluster is asking for a cost confirmation that a non-interactive submit cannot give: ask ARCH to set
+``ACCEPT_COST=yes`` and rewrite the lane.
 The lane in ``/apps/software/cryosparc/examples/lane-a100/`` is a reference for what ``lane`` writes.
 
 
@@ -482,14 +484,13 @@ Versions
 
 .. code-block:: bash
 
-   /apps/helpers/cryosparc.sh versions          # images available, the one your lab runs
+   /apps/helpers/cryosparc.sh versions          # images available (anyone can run it, as yourself)
    /apps/helpers/cryosparc.sh versions --remote # also what CryoSPARC has released
-   /apps/helpers/cryosparc.sh update 5.0.8      # move your lab to that version (stops the job, swaps, starts a new one)
 
-Forward only: the first start on a newer version migrates your database, and an older version
-will not start on a migrated database. Take a ``backup`` before an ``update``.
-``update`` stops the master's job and submits a new one, on the same host and port; nothing else about
-your lab changes across versions.
+To move your lab to another version, ask ARCH: it takes a ``backup``, then runs ``update <version>`` as the
+lab's account (stops the master's job, swaps the image, submits a new one, on the same host and port;
+nothing else about your lab changes across versions). Forward only: the first start on a newer version
+migrates your database, and an older version will not start on a migrated database.
 
 
 
@@ -505,11 +506,9 @@ your lab changes across versions.
 Backup and restore
 ##################
 
-``backup`` and ``restore`` run as the account the master runs under: with the lab's CryoSPARC account, the
-PI or the manager put ``sudo -Hu ext-<pi>-cryosparc`` before each command below (a lab installed under a
-person's own account runs them as that account). ``restore`` must be that account because mongod writes
-only a ``database/`` that belongs to it. Neither needs ARCH; during a move from Rockfish, ARCH runs the
-``restore`` with you.
+``backup`` and ``restore`` run as the account the master runs under, so ARCH runs them for a lab on its
+CryoSPARC account: ask on a ticket. (A lab installed under a person's own account runs them as that
+account.) ``restore`` must be that account because mongod writes only a ``database/`` that belongs to it.
 
 .. code-block:: bash
 
@@ -517,7 +516,7 @@ only a ``database/`` that belongs to it. Neither needs ARCH; during a move from 
    /apps/helpers/cryosparc.sh backup /scratch/.../somewhere   # any directory under DEST or a project dir
    /apps/helpers/cryosparc.sh stop
    /apps/helpers/cryosparc.sh restore /scratch/.../cryosparc_backup_....archive   # a short job on your lab's host
-   /apps/helpers/cryosparc.sh start            # or OnDemand > CryoSPARC Master
+   /apps/helpers/cryosparc.sh start
 
 The backup is the database only. Your project directories are your data and are not copied; a
 backup matches them as they were when it was taken, so do not restore one older than your projects.
@@ -540,28 +539,31 @@ ARCH creates your lab here first (see :ref:`One-time setup <cryosparc-one-time-s
 with you. Until the cut-over, Rockfish is only read: the rehearsal backup and the copies change nothing
 there. At the cut-over you archive (or detach) your projects on Rockfish, which does change its database:
 from then on the way back is to unarchive them there (or attach them again, with new project numbers).
-Keep the Rockfish copy until you confirm the one here. The transfers need no sudo; commands of ``cryosparc.sh``
-run as the lab's CryoSPARC account, with ``sudo -Hu ext-<pi>-cryosparc``.
+Keep the Rockfish copy until you confirm the one here. The transfers need no sudo and are yours; the
+``cryosparc.sh`` commands that run as the lab's CryoSPARC account (``show``, ``config``, ``restore``) are ARCH's.
 
 .. _cryosparc-what-moves-and-how:
 
 What moves, and how
 -------------------
 
-+--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-| What                                                         | How                                                          | Who            |
-+==============================================================+==============================================================+================+
-| CryoSPARC accounts, settings, and (when the rehearsal shows  | a database backup on Rockfish, restored here; your Rockfish  | ARCH, with you |
-| it works) your projects as they are                          | login and password keep working                              |                |
-+--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-| Project directories                                          | Globus, then one ``rsync`` pass for the links (below)        | you            |
-+--------------------------------------------------------------+--------------------------------------------------------------+----------------+
-| Raw data (movies, gain references)                           | Globus, to a directory under your ``PROJECT_DIRS``           | you            |
-+--------------------------------------------------------------+--------------------------------------------------------------+----------------+
++-------------------------------------------------------------+-------------------------------------------------------------+----------------+
+| What                                                        | How                                                         | Who            |
++=============================================================+=============================================================+================+
+| CryoSPARC accounts, settings, and (when the rehearsal shows | a database backup on Rockfish, restored here; your Rockfish | ARCH, with you |
+| it works) your projects as they are                         | login and password keep working                             |                |
++-------------------------------------------------------------+-------------------------------------------------------------+----------------+
+| Project directories                                         | Globus, then one ``rsync`` pass for the links (below)       | you            |
++-------------------------------------------------------------+-------------------------------------------------------------+----------------+
+| Raw data (movies, gain references)                          | Globus, to a directory under your ``PROJECT_DIRS``          | you            |
++-------------------------------------------------------------+-------------------------------------------------------------+----------------+
 
 Files arrive owned by whoever transfers them, so your Rockfish user and group numbers do not matter.
 The lab's CryoSPARC account has no login, so **you** (the PI or the manager) transfer as yourself, into
-directories of your PI's group; then give the group write on what arrived, so the master can work there:
+directories of your PI's group. ``DEST`` belongs to the lab's account and your group cannot write there:
+ask ARCH, in the move's ticket, to create the landing folders ``$DEST/backups``, ``$DEST/rawdata`` and
+``$DEST/projects/rockfish`` with group write (mode 2770). Then give the group write on what arrived, so
+the master can work there:
 
 .. code-block:: bash
 
@@ -598,7 +600,7 @@ Run it **on Rockfish**, pushing to this cluster (the way we tested), as yourself
        <rf-path>/<project>/ <you>@<sj-login>:<sj-path>/<project>/
    ssh -S /tmp/sj-ctl -O exit <sj-login>         # when done
 
-``<sj-login>`` is the login host ``open`` prints. ``-rlt`` keeps links and dates and leaves owner, group and
+``<sj-login>`` is ``login01.arch.jhu.edu`` (Schmidt Sciences labs: ``login01.schmidtsciences.jhu.edu``). ``-rlt`` keeps links and dates and leaves owner, group and
 modes to this cluster. Each new connection asks for your password and code, and the login nodes limit how
 many sessions you can open: that is why every ``rsync`` goes through the one connection.
 
@@ -608,10 +610,10 @@ The steps
 ---------
 
 1. **Decide where things go here.** The project folders and the raw data must sit under your lab's ``DEST``
-   or a directory listed in ``PROJECT_DIRS`` (``sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh show``):
-   the master sees nothing else. The simplest is ``$DEST/projects/<project>`` for the projects and a folder
-   such as ``$DEST/rawdata/`` for the raw data, both visible without any change. A directory elsewhere has to
-   be added to ``PROJECT_DIRS`` with ``config``, then ``restart`` (the same way): the container's mounts are fixed
+   or a directory listed in ``PROJECT_DIRS`` (both in what ARCH sent you at install): the master sees
+   nothing else. The simplest is the landing folders above, ``$DEST/projects/rockfish/<project>`` for the
+   projects and ``$DEST/rawdata/`` for the raw data, both visible without any change. A directory elsewhere
+   has to be added to ``PROJECT_DIRS`` by ARCH (``config``, then ``restart``): the container's mounts are fixed
    when the master starts.
 
 2. **First copy, while you keep working on Rockfish:** raw data and projects with Globus; ARCH restores a
@@ -645,9 +647,10 @@ The route we have tested, one project at a time. The project gets a new number h
 1. **On Rockfish, detach the project:** in the web interface, the project's Actions menu → **Detach**.
    Wait until it finishes: the project folder no longer has a ``cs.lock``.
 
-2. **See where things go here:** ``sudo -Hu ext-<pi>-cryosparc /apps/helpers/cryosparc.sh show`` prints
-   ``DEST``; set it in your shell (``DEST=<that path>``) for the commands below. Projects go to
-   ``$DEST/projects/``, raw data to a folder such as ``$DEST/rawdata/``.
+2. **See where things go here:** ``DEST`` is in what ARCH sent you at install
+   (``/scratch/<affiliation>/<pi>/cryosparc`` by default); set it in your shell (``DEST=<that path>``) for
+   the commands below. Projects go to the landing folder ``$DEST/projects/rockfish/``, raw data to
+   ``$DEST/rawdata/`` (ARCH creates both with group write, see :ref:`What moves, and how <cryosparc-what-moves-and-how>`).
 
 3. **Copy the raw data** with Globus, keeping its folder layout under one directory
    (Rockfish ``<raw path>/...`` → ``$DEST/rawdata/...``).
@@ -658,22 +661,22 @@ The route we have tested, one project at a time. The project gets a new number h
    .. code-block:: bash
 
       rsync -rlt --partial --info=progress2 -e "ssh -S /tmp/sj-ctl" \
-          <rf-path>/<project>/ <you>@<sj-login>:<DEST>/projects/<project>/
+          <rf-path>/<project>/ <you>@<sj-login>:<DEST>/projects/rockfish/<project>/
 
 5. **Give the group write**, as yourself (skip this for a lab under your own account):
 
    .. code-block:: bash
 
-      chmod -R g+rwX $DEST/projects/<project> $DEST/rawdata
+      chmod -R g+rwX $DEST/projects/rockfish/<project> $DEST/rawdata
 
 6. **Re-point the links to the raw data**, as yourself. Read what the first command reports, then run it
    again with ``--yes``; at the end ``find`` prints nothing:
 
    .. code-block:: bash
 
-      /apps/helpers/cryosparc.sh project-relink $DEST/projects/<project> <rockfish raw path> $DEST/rawdata
-      /apps/helpers/cryosparc.sh project-relink $DEST/projects/<project> <rockfish raw path> $DEST/rawdata --yes
-      find $DEST/projects/<project> -xtype l
+      /apps/helpers/cryosparc.sh project-relink $DEST/projects/rockfish/<project> <rockfish raw path> $DEST/rawdata
+      /apps/helpers/cryosparc.sh project-relink $DEST/projects/rockfish/<project> <rockfish raw path> $DEST/rawdata --yes
+      find $DEST/projects/rockfish/<project> -xtype l
 
 7. **Attach here:** in the web interface, **Projects → Attach Project**, with the folder that holds
    ``project.json``. Note the new project number.
@@ -692,8 +695,8 @@ What to expect
 
 - Results and logs are kept, but a job whose inputs pointed at a Rockfish path cannot run again until those
   inputs resolve here. When the raw data's path changed, the links must be rewritten: ``find <project> -xtype l``
-  lists the broken ones. Rewrite them for the whole project as yourself, without ``sudo`` (you
-  copied it, so the links are yours; the lab's account also can, once the group has write):
+  lists the broken ones. Rewrite them for the whole project as yourself (you copied it, so
+  the links are yours):
 
   .. code-block:: bash
 
@@ -709,19 +712,19 @@ What to expect
 If attach or unarchive fails
 ----------------------------
 
-+------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Message or symptom                                                     | Cause, fix                                                                       |
-+========================================================================+==================================================================================+
-| Attach refused, lock found                                             | the project is still attached on Rockfish: detach it there first                 |
-+------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Path rejected                                                          | you gave the parent directory: give the project folder itself (the one with      |
-|                                                                        | ``project.json``)                                                                |
-+------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| The file picker shows nothing, or "400" in ``$DEST/state/run/api.log`` | leading spaces in the path box: clear it and retype the path                     |
-+------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Path not found                                                         | the directory is not under ``PROJECT_DIRS``: add it with ``config``, then        |
-|                                                                        | ``restart``                                                                      |
-+------------------------------------------------------------------------+----------------------------------------------------------------------------------+
++--------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Message or symptom                                                             | Cause, fix                                                                   |
++================================================================================+==============================================================================+
+| Attach refused, lock found                                                     | the project is still attached on Rockfish: detach it there first             |
++--------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Path rejected                                                                  | you gave the parent directory: give the project folder itself (the one with  |
+|                                                                                | ``project.json``)                                                            |
++--------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| The file picker shows nothing (ARCH sees "400" in ``$DEST/state/run/api.log``) | leading spaces in the path box: clear it and retype the path                 |
++--------------------------------------------------------------------------------+------------------------------------------------------------------------------+
+| Path not found                                                                 | the directory is not under ``PROJECT_DIRS``: ask ARCH to add it (``config``, |
+|                                                                                | then ``restart``)                                                            |
++--------------------------------------------------------------------------------+------------------------------------------------------------------------------+
 
 References: CryoSPARC's guides on
 `migrating an instance <https://guide.cryosparc.com/setup-configuration-and-management/software-system-guides/tutorial-migrating-your-cryosparc-instance>`__
@@ -743,35 +746,28 @@ and `data management <https://guide.cryosparc.com/setup-configuration-and-manage
 When something fails
 ####################
 
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Symptom                                                                          | Cause, fix                                                                       |
-+==================================================================================+==================================================================================+
-| ``Account 'X' is not available for user ...`` at submit                          | ``ACCOUNT`` is not a Slurm account you belong to: fix it with ``config``, then   |
-|                                                                                  | ``lane``                                                                         |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``the master of <name> is not running``                                          | start it: ``cryosparc.sh start``, OnDemand > CryoSPARC Master, or                |
-|                                                                                  | ``sbatch $DEST/state/master.sbatch``                                             |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``Invalid qos specification`` or                                                 | your account cannot use the ``cryosparc`` QOS, partition or reservation yet:     |
-| ``Invalid account or account/partition combination`` when the master starts      | open a ticket                                                                    |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| The master's job stays pending                                                   | ``squeue -u ext-<pi>-cryosparc`` (or ``--me``, for a lab under your own account) |
-|                                                                                  | shows the reason; its host is busy or down: open a ticket                        |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``ports in use within N-N+10`` in the master job's log                           | another lab uses that range: change ``PORT`` in ``config``                       |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| ``SLURM_MODE=bind needs the host Slurm client ...``                              | the host has no ``/apps/helpers/slurm-apptainer.sh``: tell ARCH                  |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| OnDemand session shows "nothing answers" or a connection error                   | the master is stopped: ``status``, then start it (above); reload the page in     |
-|                                                                                  | Firefox                                                                          |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Your lab is not in the OnDemand list                                             | ARCH adds it: open a ticket                                                      |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| SSH tunnel: ``channel open failed: administratively prohibited``                 | the login node refused the forward: use OnDemand, and tell ARCH the login host   |
-|                                                                                  | and port you used                                                                |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
-| Logs                                                                             | ``status``; the master job's log ``$DEST/state/run/master-<job>.log``;           |
-|                                                                                  | CryoSPARC's service logs under ``$DEST/state/run/``                              |
-+----------------------------------------------------------------------------------+----------------------------------------------------------------------------------+
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| Symptom                                                          | Cause, fix                                                                       |
++==================================================================+==================================================================================+
+| ``Account 'X' is not available for user ...`` at submit          | ``ACCOUNT`` is not a Slurm account the lab's account belongs to: open a ticket   |
+|                                                                  | (ARCH fixes it with ``config``, then ``lane``)                                   |
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| The master's job stays pending                                   | ``squeue -u ext-<pi>-cryosparc`` (or ``--me``, for a lab under your own account) |
+|                                                                  | shows the reason; its host is busy or down: open a ticket                        |
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| OnDemand session shows "nothing answers" or a connection error   | the master is stopped (``squeue -u ext-<pi>-cryosparc -n cryosparc-<pi>`` prints |
+|                                                                  | nothing): open a ticket for ARCH to start it, then reload the page in Firefox    |
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| Your lab is not in the OnDemand list                             | ARCH adds it: open a ticket                                                      |
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| SSH tunnel: ``channel open failed: administratively prohibited`` | the login node refused the forward: use OnDemand, and tell ARCH the login host   |
+|                                                                  | and port you used                                                                |
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
+| Logs                                                             | the master job's log ``$DEST/state/run/master-<job>.log`` and CryoSPARC's        |
+|                                                                  | service logs under ``$DEST/state/run/`` are readable only by the lab's account:  |
+|                                                                  | ARCH reads them, open a ticket                                                   |
++------------------------------------------------------------------+----------------------------------------------------------------------------------+
 
-Anything else: ``/apps/helpers/cryosparc.sh help``, or open a ticket with ARCH.
+What ARCH sees when it runs ``cryosparc.sh`` as the lab's account (``Invalid qos specification``,
+``ports in use``, ``SLURM_MODE=bind needs the host Slurm client``) is ARCH's to fix. Anything else: open a ticket
+with ARCH.

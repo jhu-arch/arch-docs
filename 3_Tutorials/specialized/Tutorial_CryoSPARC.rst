@@ -35,6 +35,21 @@ Quick start
    or a module is missing or broken", asking for a CryoSPARC master (details in
    :ref:`Before you start <cryosparc-before-you-start>`). Never put the license ID in it.
 
+   **Note: the lab's CryoSPARC on Project Storage (optional).** By default the lab's CryoSPARC
+   directory (its database, its state and the default ``projects/``) is
+   ``/scratch/<affiliation>/<pi>/cryosparc``. If your PI has Project Storage (WekaFS, ``/projects/<pi>``),
+   the lab manager can put it there instead, before ARCH installs and only while
+   ``/scratch/<affiliation>/<pi>/cryosparc`` does not exist yet:
+
+   .. code-block:: bash
+
+      mkdir /projects/<pi>/cryosparc
+      ln -s /projects/<pi>/cryosparc /scratch/<affiliation>/<pi>/cryosparc
+
+   Say so in the ticket: ARCH gives ``/projects/<pi>/cryosparc`` to the lab's account before it installs,
+   because CryoSPARC must own its directory. The settings keep the ``/scratch`` path. VAST becomes an
+   option the same way once it is available on Skipjack.
+
 4. **License ID**, as yourself (no ``sudo``) on a login node: run ``config``, type your license ID at
    ``LICENSE_ID`` and your lab's host at ``MASTER_HOST`` (``csr091`` for now), press Enter at every other
    line, and say in the ticket that you did:
